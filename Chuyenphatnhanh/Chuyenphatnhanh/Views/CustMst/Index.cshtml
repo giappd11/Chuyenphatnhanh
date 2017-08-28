@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Chuyenphatnhanh.Models.CUST_MST>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Chuyenphatnhanh.Content.Texts.RGlobal.CustName
+        </th>
+        <th>
+            @Chuyenphatnhanh.Content.Texts.RGlobal.Phone
+        </th>
+        <th>
+            @Chuyenphatnhanh.Content.Texts.RGlobal.Address
+        </th>  
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CUST_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PHONE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADDRESS)
+        </td>
+        <td>
+            @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Edit, "Edit", new { id=item.CUST_ID }) |
+            @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.View, "Details", new { id=item.CUST_ID }) |
+            @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Delete, "Delete", new { id=item.CUST_ID })
+        </td>
+    </tr>
+}
+
+</table>

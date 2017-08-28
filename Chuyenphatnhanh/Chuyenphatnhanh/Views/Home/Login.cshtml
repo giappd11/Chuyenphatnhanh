@@ -1,0 +1,53 @@
+﻿@model Chuyenphatnhanh.Models.LoginForm
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutNotlogin.cshtml";
+} 
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+     
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="link-login">
+            <ul class="h-ul-li">
+                <li class="active"><a href="/Home/Login">Đăng nhập</a></li>
+            </ul>
+        </div>
+        @Html.ValidationMessageFor(modle => modle.MessageError,"", new { @class = "text-danger" } )
+        <div class="group-ip-animate">
+            @Html.EditorFor(model => model.USER_NAME, new { htmlAttributes = new { @class = "log-input" } })
+            
+            <span class="bar"></span>
+            @Html.LabelFor(model => model.USER_NAME, htmlAttributes: new { @class = "control-label " }) 
+            @Html.ValidationMessageFor(model => model.USER_NAME, "", new { @class = "text-danger" })
+        </div>
+        <div class="group-ip-animate">
+            @Html.PasswordFor(model => model.PASSWORD, new {   @class = "log-input" })
+            
+            <span class="bar"></span>
+             @Html.LabelFor(model => model.PASSWORD, htmlAttributes: new { @class = "control-label " }) 
+            @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
+        </div>
+        <button type="submit" class="log-button h-btn mrt-20" id="btnLogin">Đăng nhập</button>
+}
+ 
+<style>
+    body,html {
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        -moz-flex-direction: column;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -moz-justify-content: center;
+        -webkit-justify-content: center;
+        -ms-justify-content: center;
+        justify-content: center;
+        background-color: #000 !important;
+    }
+
+</style>

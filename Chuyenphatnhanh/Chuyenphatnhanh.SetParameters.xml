@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="Chuyenphatnhanh" />
+  <setParameter name="DBConnection-Web.config Connection String" value="metadata=res://*/Models.Application.csdl|res://*/Models.Application.ssdl|res://*/Models.Application.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-M9D4R6N\SQLEXPRESS;initial catalog=ChuyenPhatNhanh;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" />
+</parameters>

@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ChuyenPhatNhanh.dbo.BILL_HDR_TBL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BILL_HDR_TBL">
+          <Key>
+            <PropertyRef Name="BILL_HDR_ID" />
+          </Key>
+          <Property Name="BILL_HDR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DELETE_FLAG" Type="bit" />
+          <Property Name="REG_ID" Type="int" />
+          <Property Name="MOD_ID" Type="int" />
+          <Property Name="REG_DATE" Type="date" />
+          <Property Name="MOD_DATE" Type="date" />
+          <Property Name="CUST_FROM_ID" Type="int" />
+          <Property Name="CUST_TO_ID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ChuyenPhatNhanh.dbo.BILL_TBL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BILL_TBL">
+          <Key>
+            <PropertyRef Name="BILL_ID" />
+          </Key>
+          <Property Name="BILL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WEIGHT" Type="numeric" Precision="18" Scale="5" />
+          <Property Name="PRICE" Type="money" />
+          <Property Name="AMOUNT" Type="money" />
+          <Property Name="SEND_DATE" Type="date" />
+          <Property Name="BILL_STATUS" Type="nchar" MaxLength="2" />
+          <Property Name="DELETE_FLAG" Type="bit" />
+          <Property Name="REG_DATE" Type="date" />
+          <Property Name="MOD_DATE" Type="date" />
+          <Property Name="REG_UID" Type="int" />
+          <Property Name="MOD_UID" Type="int" />
+          <Property Name="BILL_HDR_ID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'ChuyenPhatNhanh.dbo.BRANCH_MST' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="BRANCH_MST">
+          <Property Name="BRANCH_ID" Type="int" />
+          <Property Name="BRANCH_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="50" />
+          <Property Name="DELETE_FLAG" Type="bit" />
+          <Property Name="REG_DATE" Type="datetime" />
+          <Property Name="MOD_DATE" Type="datetime" />
+          <Property Name="REG_UID" Type="int" />
+          <Property Name="MOD_UID" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'ChuyenPhatNhanh.dbo.COMMON_CODE' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="COMMON_CODE">
+          <Property Name="CODE_ID" Type="int" />
+          <Property Name="COMMON_CODE_VALUE" Type="varchar" MaxLength="50" />
+          <Property Name="COMMON_CODE_DESC" Type="varchar" MaxLength="50" />
+          <Property Name="PARENT_CODE_VALUE" Type="varchar" MaxLength="50" />
+          <Property Name="COMMON_CODE" Type="varchar" MaxLength="50" />
+          <Property Name="DELETE_FLAG" Type="bit" />
+          <Property Name="REG_DATE" Type="datetime" />
+          <Property Name="MOD_DATE" Type="datetime" />
+          <Property Name="REG_UID" Type="int" />
+          <Property Name="MOD_UID" Type="int" />
+        </EntityType>-->
+        <EntityType Name="CUST_MST">
+          <Key>
+            <PropertyRef Name="CUST_ID" />
+          </Key>
+          <Property Name="CUST_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CUST_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="PHONE" Type="varchar" MaxLength="15" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="50" />
+          <Property Name="DELETE_FLAG" Type="bit" />
+          <Property Name="REG_DATE" Type="datetime" />
+          <Property Name="MOD_DATE" Type="datetime" />
+          <Property Name="REG_UID" Type="int" />
+          <Property Name="MOD_UID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ChuyenPhatNhanh.dbo.PRODUCT_MST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PRODUCT_MST">
+          <Key>
+            <PropertyRef Name="PROD_ID" />
+          </Key>
+          <Property Name="PROD_ID" Type="int" Nullable="false" />
+          <Property Name="PROD_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="PRICE" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="CATEGORY" Type="int" />
+          <Property Name="DELETE_FLAG" Type="bit" />
+          <Property Name="REG_DATE" Type="datetime" />
+          <Property Name="MOD_DATE" Type="datetime" />
+          <Property Name="REG_UID" Type="int" />
+          <Property Name="MOD_UID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ChuyenPhatNhanh.dbo.SHIPPING_TBL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SHIPPING_TBL">
+          <Key>
+            <PropertyRef Name="SHIPPING_ID" />
+          </Key>
+          <Property Name="SHIPPING_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BILL_HDR_ID" Type="int" />
+          <Property Name="BILL_ID" Type="int" />
+          <Property Name="SHIPPING_STATUS" Type="bit" />
+          <Property Name="DELETE_FLAG" Type="bit" />
+          <Property Name="REG_ID" Type="int" />
+          <Property Name="MOD_ID" Type="int" />
+          <Property Name="REG_DATE" Type="date" />
+          <Property Name="MOD_DATE" Type="date" />
+        </EntityType>
+        <EntityType Name="USER_MST">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_NAME" Type="varchar" MaxLength="15" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="50" />
+          <Property Name="NUMBER_LOGIN_FAIL" Type="int" />
+          <Property Name="LAST_CHANGE_PASS" Type="date" />
+          <Property Name="OLD_PASSWORD" Type="varchar" MaxLength="50" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="50" />
+          <Property Name="PHONE" Type="varchar" MaxLength="15" />
+          <Property Name="BRANCH" Type="int" />
+          <Property Name="DELETE_FLAG" Type="bit" />
+          <Property Name="REG_DATE" Type="datetime" />
+          <Property Name="MOD_DATE" Type="datetime" />
+          <Property Name="REG_UID" Type="int" />
+          <Property Name="MOD_UID" Type="int" />
+        </EntityType>
+        <EntityContainer Name="ModelsStoreContainer">
+          <EntitySet Name="CUST_MST" EntityType="Self.CUST_MST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_MST" EntityType="Self.USER_MST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BILL_HDR_TBL" EntityType="Self.BILL_HDR_TBL" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BILL_HDR_TBL].[BILL_HDR_ID] AS [BILL_HDR_ID], 
+    [BILL_HDR_TBL].[DELETE_FLAG] AS [DELETE_FLAG], 
+    [BILL_HDR_TBL].[REG_ID] AS [REG_ID], 
+    [BILL_HDR_TBL].[MOD_ID] AS [MOD_ID], 
+    [BILL_HDR_TBL].[REG_DATE] AS [REG_DATE], 
+    [BILL_HDR_TBL].[MOD_DATE] AS [MOD_DATE], 
+    [BILL_HDR_TBL].[CUST_FROM_ID] AS [CUST_FROM_ID], 
+    [BILL_HDR_TBL].[CUST_TO_ID] AS [CUST_TO_ID]
+    FROM [dbo].[BILL_HDR_TBL] AS [BILL_HDR_TBL]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BILL_TBL" EntityType="Self.BILL_TBL" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BILL_TBL].[BILL_ID] AS [BILL_ID], 
+    [BILL_TBL].[WEIGHT] AS [WEIGHT], 
+    [BILL_TBL].[PRICE] AS [PRICE], 
+    [BILL_TBL].[AMOUNT] AS [AMOUNT], 
+    [BILL_TBL].[SEND_DATE] AS [SEND_DATE], 
+    [BILL_TBL].[BILL_STATUS] AS [BILL_STATUS], 
+    [BILL_TBL].[DELETE_FLAG] AS [DELETE_FLAG], 
+    [BILL_TBL].[REG_DATE] AS [REG_DATE], 
+    [BILL_TBL].[MOD_DATE] AS [MOD_DATE], 
+    [BILL_TBL].[REG_UID] AS [REG_UID], 
+    [BILL_TBL].[MOD_UID] AS [MOD_UID], 
+    [BILL_TBL].[BILL_HDR_ID] AS [BILL_HDR_ID]
+    FROM [dbo].[BILL_TBL] AS [BILL_TBL]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PRODUCT_MST" EntityType="Self.PRODUCT_MST" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PRODUCT_MST].[PROD_ID] AS [PROD_ID], 
+    [PRODUCT_MST].[PROD_NAME] AS [PROD_NAME], 
+    [PRODUCT_MST].[PRICE] AS [PRICE], 
+    [PRODUCT_MST].[CATEGORY] AS [CATEGORY], 
+    [PRODUCT_MST].[DELETE_FLAG] AS [DELETE_FLAG], 
+    [PRODUCT_MST].[REG_DATE] AS [REG_DATE], 
+    [PRODUCT_MST].[MOD_DATE] AS [MOD_DATE], 
+    [PRODUCT_MST].[REG_UID] AS [REG_UID], 
+    [PRODUCT_MST].[MOD_UID] AS [MOD_UID]
+    FROM [dbo].[PRODUCT_MST] AS [PRODUCT_MST]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SHIPPING_TBL" EntityType="Self.SHIPPING_TBL" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SHIPPING_TBL].[SHIPPING_ID] AS [SHIPPING_ID], 
+    [SHIPPING_TBL].[BILL_HDR_ID] AS [BILL_HDR_ID], 
+    [SHIPPING_TBL].[BILL_ID] AS [BILL_ID], 
+    [SHIPPING_TBL].[SHIPPING_STATUS] AS [SHIPPING_STATUS], 
+    [SHIPPING_TBL].[DELETE_FLAG] AS [DELETE_FLAG], 
+    [SHIPPING_TBL].[REG_ID] AS [REG_ID], 
+    [SHIPPING_TBL].[MOD_ID] AS [MOD_ID], 
+    [SHIPPING_TBL].[REG_DATE] AS [REG_DATE], 
+    [SHIPPING_TBL].[MOD_DATE] AS [MOD_DATE]
+    FROM [dbo].[SHIPPING_TBL] AS [SHIPPING_TBL]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CUST_MST">
+          <Key>
+            <PropertyRef Name="CUST_ID" />
+          </Key>
+          <Property Name="CUST_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CUST_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DELETE_FLAG" Type="Boolean" />
+          <Property Name="REG_DATE" Type="DateTime" Precision="3" />
+          <Property Name="MOD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REG_UID" Type="Int32" />
+          <Property Name="MOD_UID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="USER_MST">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_NAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NUMBER_LOGIN_FAIL" Type="Int32" />
+          <Property Name="LAST_CHANGE_PASS" Type="DateTime" Precision="0" />
+          <Property Name="OLD_PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="BRANCH" Type="Int32" />
+          <Property Name="DELETE_FLAG" Type="Boolean" />
+          <Property Name="REG_DATE" Type="DateTime" Precision="3" />
+          <Property Name="MOD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REG_UID" Type="Int32" />
+          <Property Name="MOD_UID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BILL_HDR_TBL">
+          <Key>
+            <PropertyRef Name="BILL_HDR_ID" />
+          </Key>
+          <Property Name="BILL_HDR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DELETE_FLAG" Type="Boolean" />
+          <Property Name="REG_ID" Type="Int32" />
+          <Property Name="MOD_ID" Type="Int32" />
+          <Property Name="REG_DATE" Type="DateTime" Precision="0" />
+          <Property Name="MOD_DATE" Type="DateTime" Precision="0" />
+          <Property Name="CUST_FROM_ID" Type="Int32" />
+          <Property Name="CUST_TO_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BILL_TBL">
+          <Key>
+            <PropertyRef Name="BILL_ID" />
+          </Key>
+          <Property Name="BILL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WEIGHT" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="PRICE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AMOUNT" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SEND_DATE" Type="DateTime" Precision="0" />
+          <Property Name="BILL_STATUS" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="DELETE_FLAG" Type="Boolean" />
+          <Property Name="REG_DATE" Type="DateTime" Precision="0" />
+          <Property Name="MOD_DATE" Type="DateTime" Precision="0" />
+          <Property Name="REG_UID" Type="Int32" />
+          <Property Name="MOD_UID" Type="Int32" />
+          <Property Name="BILL_HDR_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PRODUCT_MST">
+          <Key>
+            <PropertyRef Name="PROD_ID" />
+          </Key>
+          <Property Name="PROD_ID" Type="Int32" Nullable="false" />
+          <Property Name="PROD_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PRICE" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CATEGORY" Type="Int32" />
+          <Property Name="DELETE_FLAG" Type="Boolean" />
+          <Property Name="REG_DATE" Type="DateTime" Precision="3" />
+          <Property Name="MOD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REG_UID" Type="Int32" />
+          <Property Name="MOD_UID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SHIPPING_TBL">
+          <Key>
+            <PropertyRef Name="SHIPPING_ID" />
+          </Key>
+          <Property Name="SHIPPING_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BILL_HDR_ID" Type="Int32" />
+          <Property Name="BILL_ID" Type="Int32" />
+          <Property Name="SHIPPING_STATUS" Type="Boolean" />
+          <Property Name="DELETE_FLAG" Type="Boolean" />
+          <Property Name="REG_ID" Type="Int32" />
+          <Property Name="MOD_ID" Type="Int32" />
+          <Property Name="REG_DATE" Type="DateTime" Precision="0" />
+          <Property Name="MOD_DATE" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="DBConnection" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CUST_MST" EntityType="Self.CUST_MST" />
+          <EntitySet Name="USER_MST" EntityType="Self.USER_MST" />
+          <EntitySet Name="BILL_HDR_TBL" EntityType="Self.BILL_HDR_TBL" />
+          <EntitySet Name="BILL_TBL" EntityType="Self.BILL_TBL" />
+          <EntitySet Name="PRODUCT_MST" EntityType="Self.PRODUCT_MST" />
+          <EntitySet Name="SHIPPING_TBL" EntityType="Self.SHIPPING_TBL" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="DBConnection">
+          <EntitySetMapping Name="CUST_MST">
+            <EntityTypeMapping TypeName="Models.CUST_MST">
+              <MappingFragment StoreEntitySet="CUST_MST">
+                <ScalarProperty Name="CUST_ID" ColumnName="CUST_ID" />
+                <ScalarProperty Name="CUST_NAME" ColumnName="CUST_NAME" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
+                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
+                <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
+                <ScalarProperty Name="REG_UID" ColumnName="REG_UID" />
+                <ScalarProperty Name="MOD_UID" ColumnName="MOD_UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_MST">
+            <EntityTypeMapping TypeName="Models.USER_MST">
+              <MappingFragment StoreEntitySet="USER_MST">
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="NUMBER_LOGIN_FAIL" ColumnName="NUMBER_LOGIN_FAIL" />
+                <ScalarProperty Name="LAST_CHANGE_PASS" ColumnName="LAST_CHANGE_PASS" />
+                <ScalarProperty Name="OLD_PASSWORD" ColumnName="OLD_PASSWORD" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="BRANCH" ColumnName="BRANCH" />
+                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
+                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
+                <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
+                <ScalarProperty Name="REG_UID" ColumnName="REG_UID" />
+                <ScalarProperty Name="MOD_UID" ColumnName="MOD_UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BILL_HDR_TBL">
+            <EntityTypeMapping TypeName="Models.BILL_HDR_TBL">
+              <MappingFragment StoreEntitySet="BILL_HDR_TBL">
+                <ScalarProperty Name="BILL_HDR_ID" ColumnName="BILL_HDR_ID" />
+                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
+                <ScalarProperty Name="REG_ID" ColumnName="REG_ID" />
+                <ScalarProperty Name="MOD_ID" ColumnName="MOD_ID" />
+                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
+                <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
+                <ScalarProperty Name="CUST_FROM_ID" ColumnName="CUST_FROM_ID" />
+                <ScalarProperty Name="CUST_TO_ID" ColumnName="CUST_TO_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BILL_TBL">
+            <EntityTypeMapping TypeName="Models.BILL_TBL">
+              <MappingFragment StoreEntitySet="BILL_TBL">
+                <ScalarProperty Name="BILL_ID" ColumnName="BILL_ID" />
+                <ScalarProperty Name="WEIGHT" ColumnName="WEIGHT" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+                <ScalarProperty Name="SEND_DATE" ColumnName="SEND_DATE" />
+                <ScalarProperty Name="BILL_STATUS" ColumnName="BILL_STATUS" />
+                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
+                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
+                <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
+                <ScalarProperty Name="REG_UID" ColumnName="REG_UID" />
+                <ScalarProperty Name="MOD_UID" ColumnName="MOD_UID" />
+                <ScalarProperty Name="BILL_HDR_ID" ColumnName="BILL_HDR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCT_MST">
+            <EntityTypeMapping TypeName="Models.PRODUCT_MST">
+              <MappingFragment StoreEntitySet="PRODUCT_MST">
+                <ScalarProperty Name="PROD_ID" ColumnName="PROD_ID" />
+                <ScalarProperty Name="PROD_NAME" ColumnName="PROD_NAME" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
+                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
+                <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
+                <ScalarProperty Name="REG_UID" ColumnName="REG_UID" />
+                <ScalarProperty Name="MOD_UID" ColumnName="MOD_UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SHIPPING_TBL">
+            <EntityTypeMapping TypeName="Models.SHIPPING_TBL">
+              <MappingFragment StoreEntitySet="SHIPPING_TBL">
+                <ScalarProperty Name="SHIPPING_ID" ColumnName="SHIPPING_ID" />
+                <ScalarProperty Name="BILL_HDR_ID" ColumnName="BILL_HDR_ID" />
+                <ScalarProperty Name="BILL_ID" ColumnName="BILL_ID" />
+                <ScalarProperty Name="SHIPPING_STATUS" ColumnName="SHIPPING_STATUS" />
+                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
+                <ScalarProperty Name="REG_ID" ColumnName="REG_ID" />
+                <ScalarProperty Name="MOD_ID" ColumnName="MOD_ID" />
+                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
+                <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

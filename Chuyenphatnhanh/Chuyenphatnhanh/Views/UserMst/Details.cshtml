@@ -1,0 +1,120 @@
+﻿@model Chuyenphatnhanh.Models.USER_MST
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+} 
+
+<div> 
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.USER_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USER_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PASSWORD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PASSWORD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NUMBER_LOGIN_FAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NUMBER_LOGIN_FAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LAST_CHANGE_PASS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LAST_CHANGE_PASS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OLD_PASSWORD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OLD_PASSWORD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADDRESS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADDRESS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHONE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHONE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BRANCH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BRANCH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DELETE_FLAG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DELETE_FLAG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REG_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REG_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOD_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOD_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REG_UID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REG_UID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOD_UID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOD_UID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.USER_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

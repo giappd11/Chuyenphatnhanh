@@ -1,0 +1,263 @@
+﻿* {
+    font-family: 'Roboto-Regular';
+}
+
+input {
+    font-family: 'Roboto-Regular';
+}
+
+div.left-menu {
+    top: 0;
+}
+
+body.show-left div.page-content.importexcel,
+body.show-left div.page-content.h-info,
+body.show-left div.page-content.ct-thuho,
+body.show-left div.page-content.ct-tracking,
+body.show-left div.page-content.ct-status,
+.history {
+    padding-top: 0px !important
+}
+
+ 
+
+.login-5sao .group-ip-animate input:focus ~ label, .login-5sao .group-ip-animate input.ok ~ label {
+    color: #ababab;
+}
+
+.group-ip-animate input:focus ~ label, .group-ip-animate input.ok ~ label {
+    top: 3px;
+    font-size: 11px;
+    color: #ddd;
+}
+
+.login-5sao .group-ip-animate label {
+    color: #ababab;
+    font-size: 14px;
+}
+
+ 
+label {
+    cursor: default;
+}
+
+.log-input {
+    background: 0;
+    border: 0;
+    border-bottom: 1px solid #9c9d9c;
+    outline: 0;
+    width: 100%;
+    font-size: 26px;
+    padding: 15px 5px 10px 5px;
+}
+
+.log-input {
+    padding: 8px 5px;
+    margin-top: 10px;
+}
+
+.login-5sao .log-input {
+    font-size: 14px;
+    color: #000;
+}
+
+    .login-5sao .log-input,
+    .login-5sao .log-input:focus,
+    .login-5sao .log-input:hover {
+        border-bottom: 1px solid #ddd;
+    }
+
+.wrap-login.login-5sao input:-webkit-autofill, 
+.wrap-login.login-5sao input:-webkit-autofill:hover, 
+.wrap-login.login-5sao input:-webkit-autofill:focus, 
+.wrap-login.login-5sao input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset;
+    -webkit-text-fill-color: #000 !important;
+}
+
+.login-5sao .h-btn {
+    margin: 48px 0 10px;
+    height: 45px;
+    text-transform: uppercase;
+    background: #00e676;
+    font-family: 'Roboto-Bold';
+}
+
+button, html input[type="button"], 
+input[type="reset"], 
+input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+input, 
+button, 
+select, 
+textarea {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.log-button {
+    border: 0;
+    width: 100%;
+    text-align: center;
+    border-radius: 3px;
+    background-color: #25ac67;
+    padding: 5px;
+    color: #fff;
+    font-size: 30px;
+    margin: 45px 0 45px 0;
+}
+.wrap-login {
+    font-family: 'Roboto-Light' !important;
+    color: #fff;
+    position: absolute;
+    right: 10%;
+    top: 10%;
+    width: 400px;
+    display: inline-block;
+    z-index: 3;
+}
+.log-button {
+    font-size: 17px;
+    padding: 7px 0;
+    margin: 25px 0;
+}
+
+#bg {
+    -moz-transition: opacity 2s ease-in-out;
+    -webkit-transition: opacity 2s ease-in-out;
+    -ms-transition: opacity 2s ease-in-out;
+    transition: opacity 2s ease-in-out;
+    height: 100%;
+    left: 0;
+    opacity: .25;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1
+}
+
+    #bg div {
+        -moz-transition: opacity 3s ease,visibility 3s;
+        -webkit-transition: opacity 3s ease,visibility 3s;
+        -ms-transition: opacity 3s ease,visibility 3s;
+        transition: opacity 3s ease,visibility 3s;
+        background-size: cover;
+        height: 100%;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        visibility: hidden;
+        width: 150%;
+    }
+
+        #bg div.visible {
+            -moz-animation: bg 45s linear infinite;
+            -webkit-animation: bg 45s linear infinite;
+            -ms-animation: bg 45s linear infinite;
+            animation: bg 45s linear infinite;
+            opacity: 1;
+            visibility: visible;
+            z-index: 1;
+        }
+
+            #bg div.visible.top {
+                z-index: 2;
+            }
+           
+
+@media screen and (max-width:1280px) {
+    #bg div.visible {
+        -moz-animation: bg 29.25s linear infinite;
+        -webkit-animation: bg 29.25s linear infinite;
+        -ms-animation: bg 29.25s linear infinite;
+        animation: bg 29.25s linear infinite
+    }
+}
+
+@media screen and (max-width:736px) {
+    #bg div.visible {
+        -moz-animation: bg 18s linear infinite;
+        -webkit-animation: bg 18s linear infinite;
+        -ms-animation: bg 18s linear infinite;
+        animation: bg 18s linear infinite
+    }
+}
+
+#bg div:only-child {
+    -moz-animation-direction: alternate !important;
+    -webkit-animation-direction: alternate !important;
+    -ms-animation-direction: alternate !important;
+    animation-direction: alternate !important
+}
+
+body.is-loading #bg {
+    opacity: 0
+}
+
+@-moz-keyframes bg {
+    0% {
+        -moz-transform: translateX(0);
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0)
+    }
+
+    100% {
+        -moz-transform: translateX(-25%);
+        -webkit-transform: translateX(-25%);
+        -ms-transform: translateX(-25%);
+        transform: translateX(-25%)
+    }
+}
+
+@-webkit-keyframes bg {
+    0% {
+        -moz-transform: translateX(0);
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0)
+    }
+
+    100% {
+        -moz-transform: translateX(-25%);
+        -webkit-transform: translateX(-25%);
+        -ms-transform: translateX(-25%);
+        transform: translateX(-25%)
+    }
+}
+
+@-ms-keyframes bg {
+    0% {
+        -moz-transform: translateX(0);
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0)
+    }
+
+    100% {
+        -moz-transform: translateX(-25%);
+        -webkit-transform: translateX(-25%);
+        -ms-transform: translateX(-25%);
+        transform: translateX(-25%)
+    }
+}
+
+@keyframes bg {
+    0% {
+        -moz-transform: translateX(0);
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0)
+    }
+
+    100% {
+        -moz-transform: translateX(-25%);
+        -webkit-transform: translateX(-25%);
+        -ms-transform: translateX(-25%);
+        transform: translateX(-25%)
+    }
+}

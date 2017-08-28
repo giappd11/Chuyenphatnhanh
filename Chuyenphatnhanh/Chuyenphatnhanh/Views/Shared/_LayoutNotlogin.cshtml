@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="wrap-login login-5sao ng-scope" ng-app="GiaohangnhanhApp">
+        <div class="col-xs-12  ng-scope" ng-controller="LoginCtrl as login" id="login5sao">
+            <div class="title">
+                <p class="title-login">
+                    @{ 
+                        DateTime _date = DateTime.Now;
+                        string title;
+                        if (DateTime.Now.Hour < 12)
+                        {
+                            title = Chuyenphatnhanh.Content.Texts.RGlobal.titleloginmoning;
+                        }
+                        else if (DateTime.Now.Hour < 17)
+                        {
+                            title = Chuyenphatnhanh.Content.Texts.RGlobal.titleloginafternoon;
+                        }
+                        else
+                        {
+                            title=  Chuyenphatnhanh.Content.Texts.RGlobal.titleloginnight;
+                        }
+
+
+                    }
+                    @title
+                </p>
+                <p class="title-login-dri">@Chuyenphatnhanh.Content.Texts.RGlobal.titlelogindri</p>
+            </div>
+            @RenderBody()
+            <div class="h-end">
+                <label>
+                    Sản phẩm của Chuyenphatnhanh.com
+                     
+                </label>
+            </div>
+        </div>
+    </div> 
+    <div id="bg">
+        <div class="visible top" style="background-image: url(../../content/images/bg01.jpg ); background-position: 50% 50%;"></div>
+        <div class="" style="background-image: url(../../content/images/bg02.jpg); background-position: 50% 50%;"></div>
+        <div class="visible" style="background-image: url(../../content/images/bg03.jpg); background-position: 50% 50%;"></div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    <script>
+        jQuery(".menu-btnmain").click(function () {
+            if (jQuery("body").hasClass("show-left")) {
+                jQuery("body").removeClass("show-left");
+            } else {
+                jQuery("body").addClass("show-left");
+            }
+        });
+        jQuery('input').keypress(function (e) {
+            if (e.which == 13) {
+                jQuery('#btnLogin').click();
+                return false;
+            }
+        });
+        function InitAmination() {
+            if ($("#USER_NAME").val().length > 0) {
+                $("#USER_NAME").addClass("ok");
+                $("#PASSWORD").addClass("ok");
+            }
+        };
+        window.onload = InitAmination;
+        $("#USER_NAME").change(function () {
+            if (!$("#USER_NAME").hasClass("ok")) {
+                $("#USER_NAME").addClass("ok");
+            }
+        })
+        $("#PASSWORD").change(function () {
+            if (!$("#PASSWORD").hasClass("ok")) {
+                $("#PASSWORD").addClass("ok");
+            }
+        })
+    </script>
+</body>
+</html>
