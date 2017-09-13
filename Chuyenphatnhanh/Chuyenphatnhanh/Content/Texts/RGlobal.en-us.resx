@@ -225,4 +225,7 @@
   <data name="UserName" xml:space="preserve">
     <value>User Name</value>
   </data>
+  <data name="AccountLoged" xml:space="preserve">
+    <value>Account is loged. Please contact administrator.</value>
+  </data>
 </root>

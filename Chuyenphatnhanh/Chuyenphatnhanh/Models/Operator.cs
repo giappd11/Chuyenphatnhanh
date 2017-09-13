@@ -7,9 +7,9 @@ namespace Chuyenphatnhanh.Models
 {
     public class Operator
     {
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public DateTime ManagerTime { get; set; }
         public string UserName { get; set; }
-
+        public string Role { get; set; }
     }
 }

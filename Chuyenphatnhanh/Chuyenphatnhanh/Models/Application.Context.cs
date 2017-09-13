@@ -12,6 +12,8 @@ namespace Chuyenphatnhanh.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class DBConnection : DbContext
     {
@@ -25,11 +27,22 @@ namespace Chuyenphatnhanh.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CUST_MST> CUST_MST { get; set; }
-        public virtual DbSet<USER_MST> USER_MST { get; set; }
         public virtual DbSet<BILL_HDR_TBL> BILL_HDR_TBL { get; set; }
+        public virtual DbSet<BILL_LOG_TBL> BILL_LOG_TBL { get; set; }
         public virtual DbSet<BILL_TBL> BILL_TBL { get; set; }
+        public virtual DbSet<BRANCH_MST> BRANCH_MST { get; set; }
+        public virtual DbSet<COMMON_CODE> COMMON_CODE { get; set; }
+        public virtual DbSet<CUST_MST> CUST_MST { get; set; }
         public virtual DbSet<PRODUCT_MST> PRODUCT_MST { get; set; }
-        public virtual DbSet<SHIPPING_TBL> SHIPPING_TBL { get; set; }
+        public virtual DbSet<USER_MST> USER_MST { get; set; }
+    
+        public virtual int GetNextSequence(string sequenceName, ObjectParameter nextSeq)
+        {
+            var sequenceNameParameter = sequenceName != null ?
+                new ObjectParameter("sequenceName", sequenceName) :
+                new ObjectParameter("sequenceName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetNextSequence", sequenceNameParameter, nextSeq);
+        }
     }
 }

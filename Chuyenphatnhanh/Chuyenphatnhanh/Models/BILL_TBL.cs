@@ -14,7 +14,7 @@ namespace Chuyenphatnhanh.Models
     
     public partial class BILL_TBL
     {
-        public int BILL_ID { get; set; }
+        public string BILL_ID { get; set; }
         public Nullable<decimal> WEIGHT { get; set; }
         public Nullable<decimal> PRICE { get; set; }
         public Nullable<decimal> AMOUNT { get; set; }
@@ -23,8 +23,12 @@ namespace Chuyenphatnhanh.Models
         public Nullable<bool> DELETE_FLAG { get; set; }
         public Nullable<System.DateTime> REG_DATE { get; set; }
         public Nullable<System.DateTime> MOD_DATE { get; set; }
-        public Nullable<int> REG_UID { get; set; }
-        public Nullable<int> MOD_UID { get; set; }
-        public Nullable<int> BILL_HDR_ID { get; set; }
+        public string REG_UID { get; set; }
+        public string MOD_UID { get; set; }
+        public string BILL_HDR_ID { get; set; }
+    
+        public virtual BILL_HDR_TBL BILL_HDR_TBL { get; set; }
+        public virtual USER_MST USER_MST { get; set; }
+        public virtual USER_MST USER_MST1 { get; set; }
     }
 }

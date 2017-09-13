@@ -22,7 +22,7 @@ namespace Chuyenphatnhanh.Controllers
         }
 
         // GET: CustMst/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
@@ -55,12 +55,13 @@ namespace Chuyenphatnhanh.Controllers
             { 
                 ComplementUtil.complement(form, _custMst);
                 _custMst.DELETE_FLAG = false;
+
                 var _operator = (Operator)Session[Contant.SESSIONLOGED];
                 _custMst.MOD_DATE = DateTime.Now;
                 _custMst.MOD_UID = _operator.UserId;
                 _custMst.REG_DATE = DateTime.Now;
                 _custMst.REG_UID = _operator.UserId;
-
+                _custMst.CUST_ID = GenerateID.GennerateID(db, Contant.CUSTMST_SEQ, Contant.CUSTMST_PREFIX);
                 db.CUST_MST.Add(_custMst);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -70,7 +71,7 @@ namespace Chuyenphatnhanh.Controllers
         }
 
         // GET: CustMst/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
@@ -100,7 +101,7 @@ namespace Chuyenphatnhanh.Controllers
                 CUST_MST _custMst = new CUST_MST();
                 var _operator = (Operator)Session[Contant.SESSIONLOGED];
                 _custMst = db.CUST_MST.Where(u => u.CUST_ID == form.CUST_ID).FirstOrDefault();
-                if  (DateTime.Compare(_custMst.MOD_DATE, form.MOD_DATE) != 0)
+                if  (DateTime.Compare((DateTime) _custMst.MOD_DATE, form.MOD_DATE) != 0)
                 {
                     USER_MST _user = db.USER_MST.Find(_custMst.MOD_UID);
                     ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format( Resource.RGlobal.CustMstModified, _custMst.CUST_NAME, _user.USER_NAME));
@@ -118,7 +119,7 @@ namespace Chuyenphatnhanh.Controllers
         }
 
         // GET: CustMst/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
@@ -135,7 +136,7 @@ namespace Chuyenphatnhanh.Controllers
         // POST: CustMst/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
             CUST_MST cUST_MST = db.CUST_MST.Find(id);
             db.CUST_MST.Remove(cUST_MST);

@@ -110,10 +110,11 @@ public class MD5HashGenerator
 			// And return it
 			return sb.ToString();
 		}
-		catch (ArgumentNullException ane)
+		catch (ArgumentNullException e)
 		{
 			//If something occured during serialization, this method is called with an null argument. 
-			Console.WriteLine("Hash has not been generated.");
+            
+			Console.WriteLine("Hash has not been generated.\n" + e.ToString());
 			return null;
 		}
 	}

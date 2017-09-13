@@ -14,7 +14,26 @@ namespace Chuyenphatnhanh.Models
     
     public partial class USER_MST
     {
-        public int USER_ID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public USER_MST()
+        {
+            this.BILL_HDR_TBL = new HashSet<BILL_HDR_TBL>();
+            this.BILL_HDR_TBL1 = new HashSet<BILL_HDR_TBL>();
+            this.BILL_LOG_TBL = new HashSet<BILL_LOG_TBL>();
+            this.BILL_LOG_TBL1 = new HashSet<BILL_LOG_TBL>();
+            this.BILL_TBL = new HashSet<BILL_TBL>();
+            this.BILL_TBL1 = new HashSet<BILL_TBL>();
+            this.BRANCH_MST = new HashSet<BRANCH_MST>();
+            this.BRANCH_MST1 = new HashSet<BRANCH_MST>();
+            this.COMMON_CODE = new HashSet<COMMON_CODE>();
+            this.COMMON_CODE1 = new HashSet<COMMON_CODE>();
+            this.CUST_MST = new HashSet<CUST_MST>();
+            this.CUST_MST1 = new HashSet<CUST_MST>();
+            this.PRODUCT_MST = new HashSet<PRODUCT_MST>();
+            this.PRODUCT_MST1 = new HashSet<PRODUCT_MST>();
+        }
+    
+        public string USER_ID { get; set; }
         public string USER_NAME { get; set; }
         public string PASSWORD { get; set; }
         public Nullable<int> NUMBER_LOGIN_FAIL { get; set; }
@@ -22,11 +41,40 @@ namespace Chuyenphatnhanh.Models
         public string OLD_PASSWORD { get; set; }
         public string ADDRESS { get; set; }
         public string PHONE { get; set; }
-        public Nullable<int> BRANCH { get; set; }
+        public string BRANCH_ID { get; set; }
         public Nullable<bool> DELETE_FLAG { get; set; }
         public Nullable<System.DateTime> REG_DATE { get; set; }
         public Nullable<System.DateTime> MOD_DATE { get; set; }
-        public Nullable<int> REG_UID { get; set; }
-        public Nullable<int> MOD_UID { get; set; }
+        public string REG_UID { get; set; }
+        public string MOD_UID { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BILL_HDR_TBL> BILL_HDR_TBL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BILL_HDR_TBL> BILL_HDR_TBL1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BILL_LOG_TBL> BILL_LOG_TBL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BILL_LOG_TBL> BILL_LOG_TBL1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BILL_TBL> BILL_TBL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BILL_TBL> BILL_TBL1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BRANCH_MST> BRANCH_MST { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BRANCH_MST> BRANCH_MST1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<COMMON_CODE> COMMON_CODE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<COMMON_CODE> COMMON_CODE1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CUST_MST> CUST_MST { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CUST_MST> CUST_MST1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PRODUCT_MST> PRODUCT_MST { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PRODUCT_MST> PRODUCT_MST1 { get; set; }
     }
 }

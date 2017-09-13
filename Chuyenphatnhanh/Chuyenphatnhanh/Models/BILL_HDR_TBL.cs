@@ -14,13 +14,27 @@ namespace Chuyenphatnhanh.Models
     
     public partial class BILL_HDR_TBL
     {
-        public int BILL_HDR_ID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public BILL_HDR_TBL()
+        {
+            this.BILL_TBL = new HashSet<BILL_TBL>();
+        }
+    
+        public string BILL_HDR_ID { get; set; }
         public Nullable<bool> DELETE_FLAG { get; set; }
-        public Nullable<int> REG_ID { get; set; }
-        public Nullable<int> MOD_ID { get; set; }
+        public string REG_ID { get; set; }
+        public string MOD_ID { get; set; }
         public Nullable<System.DateTime> REG_DATE { get; set; }
         public Nullable<System.DateTime> MOD_DATE { get; set; }
-        public Nullable<int> CUST_FROM_ID { get; set; }
-        public Nullable<int> CUST_TO_ID { get; set; }
+        public string CUST_FROM_ID { get; set; }
+        public string CUST_TO_ID { get; set; }
+        public string STATUS { get; set; }
+    
+        public virtual CUST_MST CUST_MST { get; set; }
+        public virtual CUST_MST CUST_MST1 { get; set; }
+        public virtual USER_MST USER_MST { get; set; }
+        public virtual USER_MST USER_MST1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BILL_TBL> BILL_TBL { get; set; }
     }
 }

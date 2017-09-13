@@ -70,6 +70,15 @@ namespace Chuyenphatnhanh.Content.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tài khoản của bạn đã bị khóa. Vui lòng liên hệ người quản trị để được giải quyết..
+        /// </summary>
+        public static string AccountLoged {
+            get {
+                return ResourceManager.GetString("AccountLoged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Địa chỉ.
         /// </summary>
         public static string Address {

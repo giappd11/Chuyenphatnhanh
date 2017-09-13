@@ -12,17 +12,30 @@ namespace Chuyenphatnhanh.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CUST_MST : Operator
+    public partial class CUST_MST
     {
-        public int CUST_ID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CUST_MST()
+        {
+            this.BILL_HDR_TBL = new HashSet<BILL_HDR_TBL>();
+            this.BILL_HDR_TBL1 = new HashSet<BILL_HDR_TBL>();
+        }
+    
+        public string CUST_ID { get; set; }
         public string CUST_NAME { get; set; }
         public string PHONE { get; set; }
         public string ADDRESS { get; set; }
         public Nullable<bool> DELETE_FLAG { get; set; }
-        public System.DateTime REG_DATE { get; set; }
-        public System.DateTime MOD_DATE { get; set; }
-        public Nullable<int> REG_UID { get; set; }
-        public Nullable<int> MOD_UID { get; set; }
+        public Nullable<System.DateTime> REG_DATE { get; set; }
+        public Nullable<System.DateTime> MOD_DATE { get; set; }
+        public string REG_UID { get; set; }
+        public string MOD_UID { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BILL_HDR_TBL> BILL_HDR_TBL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BILL_HDR_TBL> BILL_HDR_TBL1 { get; set; }
+        public virtual USER_MST USER_MST { get; set; }
+        public virtual USER_MST USER_MST1 { get; set; }
     }
 }
-
