@@ -1,0 +1,179 @@
+﻿@model Chuyenphatnhanh.Models.BILL_HDR_TBL
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BILL_HDR_TBL</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DELETE_FLAG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DELETE_FLAG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REG_USER_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REG_USER_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOD_USER_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOD_USER_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REG_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REG_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOD_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOD_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STATUS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COUNTRY_FROM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COUNTRY_FROM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROVINCE_FROM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROVINCE_FROM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DISTRICT_FROM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DISTRICT_FROM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADDRESS_FROM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADDRESS_FROM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COUNTRY_TO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COUNTRY_TO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROVINCE_TO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROVINCE_TO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DISTRICT_TO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DISTRICT_TO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADDRESS_TO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADDRESS_TO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COUNTRY_CURRENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COUNTRY_CURRENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROVINCE_CURRENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROVINCE_CURRENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DISTRICT_CURRENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DISTRICT_CURRENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADDRESS_CURRENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADDRESS_CURRENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CUST_MST.REG_USER_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CUST_MST.REG_USER_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CUST_MST1.REG_USER_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CUST_MST1.REG_USER_NAME)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BILL_HDR_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

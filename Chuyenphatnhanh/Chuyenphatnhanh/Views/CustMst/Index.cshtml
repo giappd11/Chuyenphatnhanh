@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutList.cshtml";
 }
 
 <h2>Index</h2>
@@ -13,19 +13,58 @@
 <table class="table">
     <tr>
         <th>
-            @Chuyenphatnhanh.Content.Texts.RGlobal.CustName
+            @Html.DisplayNameFor(model => model.DELETE_FLAG)
         </th>
         <th>
-            @Chuyenphatnhanh.Content.Texts.RGlobal.Phone
+            @Html.DisplayNameFor(model => model.REG_DATE)
         </th>
         <th>
-            @Chuyenphatnhanh.Content.Texts.RGlobal.Address
-        </th>  
+            @Html.DisplayNameFor(model => model.MOD_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REG_USER_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MOD_USER_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CUST_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHONE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DEFAULT_ADDRESS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DEFAULT_COUNTRY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DEFAULT_PROVINCE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DEFAULT_DISTRICT)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DELETE_FLAG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REG_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MOD_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REG_USER_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MOD_USER_NAME)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.CUST_NAME)
         </td>
@@ -33,12 +72,21 @@
             @Html.DisplayFor(modelItem => item.PHONE)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ADDRESS)
+            @Html.DisplayFor(modelItem => item.DEFAULT_ADDRESS)
         </td>
         <td>
-            @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Edit, "Edit", new { id=item.CUST_ID }) |
-            @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.View, "Details", new { id=item.CUST_ID }) |
-            @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Delete, "Delete", new { id=item.CUST_ID })
+            @Html.DisplayFor(modelItem => item.DEFAULT_COUNTRY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DEFAULT_PROVINCE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DEFAULT_DISTRICT)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CUST_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CUST_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CUST_ID })
         </td>
     </tr>
 }

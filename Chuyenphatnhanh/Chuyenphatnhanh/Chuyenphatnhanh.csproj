@@ -160,9 +160,15 @@
       <DependentUpon>RGlobal.resx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BillController.cs" />
+    <Compile Include="Controllers\BranchMstController.cs" />
     <Compile Include="Controllers\CommonCodeController.cs" />
     <Compile Include="Controllers\CustMstController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RoleMstController.cs" />
+    <Compile Include="Controllers\TariffMstController.cs" />
+    <Compile Include="Controllers\UserConfigMstController.cs" />
     <Compile Include="Controllers\UserMstController.cs" />
     <Compile Include="Extensions\UrlHelperExtensions.cs" />
     <Compile Include="Global.asax.cs">
@@ -206,7 +212,22 @@
     <Compile Include="Models\FormBase.cs" />
     <Compile Include="Models\LoginForm.cs" />
     <Compile Include="Models\Operator.cs" />
-    <Compile Include="Models\PRODUCT_MST.cs">
+    <Compile Include="Models\ROLE_MST.cs">
+      <DependentUpon>Application.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SEC_ROLE_MST.cs">
+      <DependentUpon>Application.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Application.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Application.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TARIFF_MST.cs">
+      <DependentUpon>Application.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USER_CONFIG_MST.cs">
       <DependentUpon>Application.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\USER_MST.cs">
@@ -253,9 +274,6 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <EntityDeploy Include="Models\Application.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.cs</LastGenOutput>
@@ -319,11 +337,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\CustMst\Create.cshtml" />
-    <Content Include="Views\CustMst\Delete.cshtml" />
-    <Content Include="Views\CustMst\Details.cshtml" />
-    <Content Include="Views\CustMst\Edit.cshtml" />
-    <Content Include="Views\CustMst\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutNotlogin.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\UserMst\Create.cshtml" />
@@ -331,11 +344,43 @@
     <Content Include="Views\UserMst\Details.cshtml" />
     <Content Include="Views\UserMst\Edit.cshtml" />
     <Content Include="Views\UserMst\Index.cshtml" />
+    <Content Include="Views\UserConfigMst\Create.cshtml" />
+    <Content Include="Views\UserConfigMst\Delete.cshtml" />
+    <Content Include="Views\UserConfigMst\Details.cshtml" />
+    <Content Include="Views\UserConfigMst\Edit.cshtml" />
+    <Content Include="Views\UserConfigMst\Index.cshtml" />
+    <Content Include="Views\TariffMst\Create.cshtml" />
+    <Content Include="Views\TariffMst\Delete.cshtml" />
+    <Content Include="Views\TariffMst\Details.cshtml" />
+    <Content Include="Views\TariffMst\Edit.cshtml" />
+    <Content Include="Views\TariffMst\Index.cshtml" />
+    <Content Include="Views\RoleMst\Create.cshtml" />
+    <Content Include="Views\RoleMst\Delete.cshtml" />
+    <Content Include="Views\RoleMst\Details.cshtml" />
+    <Content Include="Views\RoleMst\Edit.cshtml" />
+    <Content Include="Views\RoleMst\Index.cshtml" />
+    <Content Include="Views\CustMst\Create.cshtml" />
+    <Content Include="Views\CustMst\Delete.cshtml" />
+    <Content Include="Views\CustMst\Details.cshtml" />
+    <Content Include="Views\CustMst\Edit.cshtml" />
+    <Content Include="Views\CustMst\Index.cshtml" />
     <Content Include="Views\CommonCode\Create.cshtml" />
     <Content Include="Views\CommonCode\Delete.cshtml" />
     <Content Include="Views\CommonCode\Details.cshtml" />
     <Content Include="Views\CommonCode\Edit.cshtml" />
     <Content Include="Views\CommonCode\Index.cshtml" />
+    <Content Include="Views\BranchMst\Create.cshtml" />
+    <Content Include="Views\BranchMst\Delete.cshtml" />
+    <Content Include="Views\BranchMst\Details.cshtml" />
+    <Content Include="Views\BranchMst\Edit.cshtml" />
+    <Content Include="Views\BranchMst\Index.cshtml" />
+    <Content Include="Views\Bill\Create.cshtml" />
+    <Content Include="Views\Bill\Delete.cshtml" />
+    <Content Include="Views\Bill\Details.cshtml" />
+    <Content Include="Views\Bill\Edit.cshtml" />
+    <Content Include="Views\Bill\Index.cshtml" />
+    <Content Include="Views\Error\ErrorRole.cshtml" />
+    <Content Include="Views\Shared\_LayoutList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

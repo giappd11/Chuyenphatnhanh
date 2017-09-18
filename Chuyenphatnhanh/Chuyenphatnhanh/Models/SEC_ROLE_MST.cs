@@ -12,19 +12,17 @@ namespace Chuyenphatnhanh.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class PRODUCT_MST
+    public partial class SEC_ROLE_MST
     {
-        public string PROD_ID { get; set; }
-        public string PROD_NAME { get; set; }
-        public Nullable<decimal> PRICE { get; set; }
-        public Nullable<int> CATEGORY { get; set; }
         public Nullable<bool> DELETE_FLAG { get; set; }
+        public string REG_USER_NAME { get; set; }
+        public string MOD_USER_NAME { get; set; }
         public Nullable<System.DateTime> REG_DATE { get; set; }
         public Nullable<System.DateTime> MOD_DATE { get; set; }
-        public string REG_UID { get; set; }
-        public string MOD_UID { get; set; }
+        public string SEC_ROLE_ID { get; set; }
+        public string VALUE { get; set; }
+        public string ROLE_ID { get; set; }
     
-        public virtual USER_MST USER_MST { get; set; }
-        public virtual USER_MST USER_MST1 { get; set; }
+        public virtual ROLE_MST ROLE_MST { get; set; }
     }
 }

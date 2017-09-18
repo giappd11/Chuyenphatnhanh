@@ -14,18 +14,15 @@ namespace Chuyenphatnhanh.Models
     
     public partial class COMMON_CODE
     {
-        public string COMMON_CODE_ID { get; set; }
-        public string COMMON_CODE_VALUE { get; set; }
-        public string COMMON_CODE_DESC { get; set; }
-        public string PARENT_CODE_VALUE { get; set; }
-        public string COMMON_CODE1 { get; set; }
         public Nullable<bool> DELETE_FLAG { get; set; }
         public Nullable<System.DateTime> REG_DATE { get; set; }
         public Nullable<System.DateTime> MOD_DATE { get; set; }
-        public string REG_UID { get; set; }
-        public string MOD_UID { get; set; }
-    
-        public virtual USER_MST USER_MST { get; set; }
-        public virtual USER_MST USER_MST1 { get; set; }
+        public string REG_USER_NAME { get; set; }
+        public string MOD_USER_NAME { get; set; }
+        public string COMMON_CODE_ID { get; set; }
+        public string COMMON_CODE1 { get; set; }
+        public string COMMON_CODE_VALUE { get; set; }
+        public string COMMON_CODE_DESC { get; set; }
+        public string PARENT_CODE_VALUE { get; set; }
     }
 }

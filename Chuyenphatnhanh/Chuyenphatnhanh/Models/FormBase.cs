@@ -13,7 +13,7 @@ namespace Chuyenphatnhanh.Models
         public Nullable<bool> DELETE_FLAG { get; set; }
         public System.DateTime REG_DATE { get; set; }
         public System.DateTime MOD_DATE { get; set; }
-        public string REG_UID { get; set; }
-        public string MOD_UID { get; set; }
+        public string REG_USER_NAME { get; set; }
+        public string MOD_USER_NAME { get; set; }
     }
 }

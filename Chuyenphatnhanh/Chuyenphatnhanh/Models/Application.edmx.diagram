@@ -5,31 +5,27 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="92caa2611c8246b590cf33ce597f758f" Name="Diagram1">
-        <EntityTypeShape EntityType="Models.BILL_HDR_TBL" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Models.BILL_LOG_TBL" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Models.BILL_TBL" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Models.BRANCH_MST" Width="1.5" PointX="0.75" PointY="4.75" />
-        <EntityTypeShape EntityType="Models.COMMON_CODE" Width="1.5" PointX="2.75" PointY="5.75" />
-        <EntityTypeShape EntityType="Models.CUST_MST" Width="1.5" PointX="4.75" PointY="5.75" />
-        <EntityTypeShape EntityType="Models.PRODUCT_MST" Width="1.5" PointX="6.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Models.USER_MST" Width="1.5" PointX="6.75" PointY="4.75" />
-        <AssociationConnector Association="Models.FK_BILL_HDR_TBL_CUST_MST" />
-        <AssociationConnector Association="Models.FK_BILL_HDR_TBL_CUST_MST1" />
-        <AssociationConnector Association="Models.FK_BILL_HDR_TBL_USER_MST" />
-        <AssociationConnector Association="Models.FK_BILL_HDR_TBL_USER_MST1" />
+        <EntityTypeShape EntityType="Models.BILL_HDR_TBL" Width="1.5" PointX="3" PointY="3.625" />
+        <EntityTypeShape EntityType="Models.BILL_LOG_TBL" Width="1.5" PointX="5.25" PointY="3.5" />
+        <EntityTypeShape EntityType="Models.BILL_TBL" Width="1.5" PointX="5.25" PointY="11.5" />
+        <EntityTypeShape EntityType="Models.BRANCH_MST" Width="1.5" PointX="7.75" PointY="7.375" />
+        <EntityTypeShape EntityType="Models.COMMON_CODE" Width="1.5" PointX="9.75" PointY="5.75" />
+        <EntityTypeShape EntityType="Models.CUST_MST" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="Models.ROLE_MST" Width="1.5" PointX="7.75" PointY="11.75" />
+        <EntityTypeShape EntityType="Models.USER_CONFIG_MST" Width="1.5" PointX="10" PointY="1.25" />
+        <EntityTypeShape EntityType="Models.USER_MST" Width="1.5" PointX="7.75" PointY="1" />
+        <AssociationConnector Association="Models.FK_BILL_HDR_TBL_CUST_MST_FROM" />
+        <AssociationConnector Association="Models.FK_BILL_HDR_TBL_CUST_MST_TO" />
+        <AssociationConnector Association="Models.FK_BILL_LOG_TBL_BILL_HDR_TBL" />
         <AssociationConnector Association="Models.FK_BILL_TBL_BILL_HDR_TBL" />
-        <AssociationConnector Association="Models.FK_BILL_LOG_TBL_USER_MST" />
-        <AssociationConnector Association="Models.FK_BILL_LOG_TBL_USER_MST1" />
-        <AssociationConnector Association="Models.FK_BILL_TBL_USER_MST" />
-        <AssociationConnector Association="Models.FK_BILL_TBL_USER_MST1" />
-        <AssociationConnector Association="Models.FK_BRANCH_MST_USER_MST1" />
-        <AssociationConnector Association="Models.FK_BRANCH_MST_USER_MST2" />
-        <AssociationConnector Association="Models.FK_COMMON_CODE_USER_MST" />
-        <AssociationConnector Association="Models.FK_COMMON_CODE_USER_MST1" />
-        <AssociationConnector Association="Models.FK_CUST_MST_USER_MST" />
-        <AssociationConnector Association="Models.FK_CUST_MST_USER_MST1" />
-        <AssociationConnector Association="Models.FK_PRODUCT_MST_USER_MST" />
-        <AssociationConnector Association="Models.FK_PRODUCT_MST_USER_MST1" />
+        <AssociationConnector Association="Models.FK_BILL_LOG_TBL_CUST_MST_FROM" />
+        <AssociationConnector Association="Models.FK_BILL_LOG_TBL_CUST_MST_TO" />
+        <AssociationConnector Association="Models.FK_USER_CONFIG_MST_BRANCH_MST" />
+        <AssociationConnector Association="Models.FK_USER_CONFIG_MST_ROLE_MST" />
+        <AssociationConnector Association="Models.FK_USER_CONFIG_MST_USER_MST" />
+        <EntityTypeShape EntityType="Models.TARIFF_MST" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="Models.SEC_ROLE_MST" Width="1.5" PointX="10" PointY="11.875" />
+        <AssociationConnector Association="Models.FK_SEC_ROLE_MST_SEC_ROLE_MST" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

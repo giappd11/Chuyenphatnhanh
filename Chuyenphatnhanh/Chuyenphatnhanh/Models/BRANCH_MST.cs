@@ -14,18 +14,27 @@ namespace Chuyenphatnhanh.Models
     
     public partial class BRANCH_MST
     {
-        public string BRANCH_ID { get; set; }
-        public string BRANCH_NAME { get; set; }
-        public string ADDRESS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public BRANCH_MST()
+        {
+            this.USER_CONFIG_MST = new HashSet<USER_CONFIG_MST>();
+        }
+    
         public Nullable<bool> DELETE_FLAG { get; set; }
         public Nullable<System.DateTime> REG_DATE { get; set; }
         public Nullable<System.DateTime> MOD_DATE { get; set; }
-        public string REG_UID { get; set; }
-        public string MOD_UID { get; set; }
-        public Nullable<decimal> LONGITUDE { get; set; }
+        public string REG_USER_NAME { get; set; }
+        public string MOD_USER_NAME { get; set; }
+        public string BRANCH_ID { get; set; }
+        public string BRANCH_NAME { get; set; }
+        public string ADDRESS { get; set; }
+        public string COUNTRY { get; set; }
+        public string PROVINCE { get; set; }
+        public string DISTRICT { get; set; }
         public Nullable<decimal> LATITUDE { get; set; }
+        public Nullable<decimal> LONGITUDE { get; set; }
     
-        public virtual USER_MST USER_MST { get; set; }
-        public virtual USER_MST USER_MST1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<USER_CONFIG_MST> USER_CONFIG_MST { get; set; }
     }
 }

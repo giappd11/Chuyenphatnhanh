@@ -9,15 +9,27 @@
           <Key>
             <PropertyRef Name="BILL_HDR_ID" />
           </Key>
-          <Property Name="BILL_HDR_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="DELETE_FLAG" Type="bit" />
-          <Property Name="REG_ID" Type="nvarchar" MaxLength="20" />
-          <Property Name="MOD_ID" Type="nvarchar" MaxLength="20" />
-          <Property Name="REG_DATE" Type="date" />
-          <Property Name="MOD_DATE" Type="date" />
+          <Property Name="REG_USER_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="MOD_USER_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="REG_DATE" Type="datetime" />
+          <Property Name="MOD_DATE" Type="datetime" />
+          <Property Name="BILL_HDR_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="CUST_FROM_ID" Type="nvarchar" MaxLength="20" />
           <Property Name="CUST_TO_ID" Type="nvarchar" MaxLength="20" />
           <Property Name="STATUS" Type="nchar" MaxLength="10" />
+          <Property Name="COUNTRY_FROM" Type="nvarchar" MaxLength="20" />
+          <Property Name="PROVINCE_FROM" Type="nvarchar" MaxLength="20" />
+          <Property Name="DISTRICT_FROM" Type="nvarchar" MaxLength="20" />
+          <Property Name="ADDRESS_FROM" Type="nvarchar" MaxLength="100" />
+          <Property Name="COUNTRY_TO" Type="nvarchar" MaxLength="20" />
+          <Property Name="PROVINCE_TO" Type="nvarchar" MaxLength="20" />
+          <Property Name="DISTRICT_TO" Type="nvarchar" MaxLength="20" />
+          <Property Name="ADDRESS_TO" Type="nvarchar" MaxLength="100" />
+          <Property Name="COUNTRY_CURRENT" Type="nvarchar" MaxLength="20" />
+          <Property Name="PROVINCE_CURRENT" Type="nvarchar" MaxLength="20" />
+          <Property Name="DISTRICT_CURRENT" Type="nvarchar" MaxLength="20" />
+          <Property Name="ADDRESS_CURRENT" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="BILL_LOG_TBL">
           <Key>
@@ -25,121 +37,169 @@
           </Key>
           <Property Name="DELETE_FLAG" Type="bit" />
           <Property Name="REG_DATE" Type="datetime" />
-          <Property Name="REG_UID" Type="nvarchar" MaxLength="20" />
+          <Property Name="REG_USER_NAME" Type="nvarchar" MaxLength="20" />
           <Property Name="MOD_DATE" Type="datetime" />
-          <Property Name="MOD_UID" Type="nvarchar" MaxLength="20" />
+          <Property Name="MOD_USER_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="BILL_LOG_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="TRANSACTION_DATE" Type="datetime" />
           <Property Name="TRANSACTION_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CUST_FROM_ID" Type="nvarchar" MaxLength="20" />
+          <Property Name="CUST_TO_ID" Type="nvarchar" MaxLength="20" />
           <Property Name="STATUS" Type="nchar" MaxLength="10" />
-          <Property Name="BILL_LOG_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="COUNTRY_FROM" Type="nvarchar" MaxLength="20" />
+          <Property Name="PROVINCE_FROM" Type="nvarchar" MaxLength="20" />
+          <Property Name="DISTRICT_FROM" Type="nvarchar" MaxLength="20" />
+          <Property Name="ADDRESS_FROM" Type="nvarchar" MaxLength="100" />
+          <Property Name="COUNTRY_TO" Type="nvarchar" MaxLength="20" />
+          <Property Name="PROVINCE_TO" Type="nvarchar" MaxLength="20" />
+          <Property Name="DISTRICT_TO" Type="nvarchar" MaxLength="20" />
+          <Property Name="ADDRESS_TO" Type="nvarchar" MaxLength="100" />
+          <Property Name="COUNTRY_CURRENT" Type="nvarchar" MaxLength="20" />
+          <Property Name="PROVINCE_CURRENT" Type="nvarchar" MaxLength="20" />
+          <Property Name="DISTRICT_CURRENT" Type="nvarchar" MaxLength="20" />
+          <Property Name="ADDRESS_CURRENT" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="BILL_TBL">
           <Key>
             <PropertyRef Name="BILL_ID" />
           </Key>
+          <Property Name="DELETE_FLAG" Type="bit" />
+          <Property Name="REG_DATE" Type="datetime" />
+          <Property Name="MOD_DATE" Type="datetime" />
+          <Property Name="REG_USER_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="MOD_USER_NAME" Type="nvarchar" MaxLength="20" />
           <Property Name="BILL_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="WEIGHT" Type="numeric" Precision="18" Scale="5" />
+          <Property Name="BILL_HDR_ID" Type="nvarchar" MaxLength="20" />
+          <Property Name="BILL_STATUS" Type="nchar" MaxLength="2" />
+          <Property Name="WEIGHT" Type="numeric" Precision="18" Scale="3" />
           <Property Name="PRICE" Type="money" />
           <Property Name="AMOUNT" Type="money" />
           <Property Name="SEND_DATE" Type="date" />
-          <Property Name="BILL_STATUS" Type="nchar" MaxLength="2" />
-          <Property Name="DELETE_FLAG" Type="bit" />
-          <Property Name="REG_DATE" Type="date" />
-          <Property Name="MOD_DATE" Type="date" />
-          <Property Name="REG_UID" Type="nvarchar" MaxLength="20" />
-          <Property Name="MOD_UID" Type="nvarchar" MaxLength="20" />
-          <Property Name="BILL_HDR_ID" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="BRANCH_MST">
           <Key>
             <PropertyRef Name="BRANCH_ID" />
           </Key>
-          <Property Name="BRANCH_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="BRANCH_NAME" Type="varchar" MaxLength="50" />
-          <Property Name="ADDRESS" Type="varchar" MaxLength="50" />
           <Property Name="DELETE_FLAG" Type="bit" />
           <Property Name="REG_DATE" Type="datetime" />
           <Property Name="MOD_DATE" Type="datetime" />
-          <Property Name="REG_UID" Type="nvarchar" MaxLength="20" />
-          <Property Name="MOD_UID" Type="nvarchar" MaxLength="20" />
-          <Property Name="LONGITUDE" Type="numeric" Precision="13" Scale="9" />
+          <Property Name="REG_USER_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="MOD_USER_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="BRANCH_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BRANCH_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="100" />
+          <Property Name="COUNTRY" Type="varchar" MaxLength="50" />
+          <Property Name="PROVINCE" Type="varchar" MaxLength="50" />
+          <Property Name="DISTRICT" Type="varchar" MaxLength="50" />
           <Property Name="LATITUDE" Type="numeric" Precision="13" Scale="9" />
+          <Property Name="LONGITUDE" Type="numeric" Precision="13" Scale="9" />
         </EntityType>
         <EntityType Name="COMMON_CODE">
           <Key>
             <PropertyRef Name="COMMON_CODE_ID" />
           </Key>
-          <Property Name="COMMON_CODE_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="COMMON_CODE_VALUE" Type="varchar" MaxLength="50" />
-          <Property Name="COMMON_CODE_DESC" Type="varchar" MaxLength="50" />
-          <Property Name="PARENT_CODE_VALUE" Type="varchar" MaxLength="50" />
-          <Property Name="COMMON_CODE" Type="varchar" MaxLength="50" />
           <Property Name="DELETE_FLAG" Type="bit" />
           <Property Name="REG_DATE" Type="datetime" />
           <Property Name="MOD_DATE" Type="datetime" />
-          <Property Name="REG_UID" Type="nvarchar" MaxLength="20" />
-          <Property Name="MOD_UID" Type="nvarchar" MaxLength="20" />
+          <Property Name="REG_USER_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="MOD_USER_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="COMMON_CODE_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="COMMON_CODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="COMMON_CODE_VALUE" Type="nvarchar" MaxLength="50" />
+          <Property Name="COMMON_CODE_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="PARENT_CODE_VALUE" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="CUST_MST">
           <Key>
             <PropertyRef Name="CUST_ID" />
           </Key>
+          <Property Name="DELETE_FLAG" Type="bit" />
+          <Property Name="REG_DATE" Type="datetime" />
+          <Property Name="MOD_DATE" Type="datetime" />
+          <Property Name="REG_USER_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="MOD_USER_NAME" Type="nvarchar" MaxLength="20" />
           <Property Name="CUST_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="CUST_NAME" Type="nvarchar" MaxLength="50" />
           <Property Name="PHONE" Type="nvarchar" MaxLength="50" />
-          <Property Name="ADDRESS" Type="nvarchar" MaxLength="50" />
-          <Property Name="DELETE_FLAG" Type="bit" />
-          <Property Name="REG_DATE" Type="datetime" />
-          <Property Name="MOD_DATE" Type="datetime" />
-          <Property Name="REG_UID" Type="nvarchar" MaxLength="20" />
-          <Property Name="MOD_UID" Type="nvarchar" MaxLength="20" />
+          <Property Name="DEFAULT_ADDRESS" Type="nvarchar" MaxLength="100" />
+          <Property Name="DEFAULT_COUNTRY" Type="nvarchar" MaxLength="20" />
+          <Property Name="DEFAULT_PROVINCE" Type="nvarchar" MaxLength="20" />
+          <Property Name="DEFAULT_DISTRICT" Type="nvarchar" MaxLength="20" />
         </EntityType>
-        <EntityType Name="PRODUCT_MST">
+        <EntityType Name="ROLE_MST">
           <Key>
-            <PropertyRef Name="PROD_ID" />
+            <PropertyRef Name="ROLE_ID" />
           </Key>
-          <Property Name="PROD_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="PROD_NAME" Type="varchar" MaxLength="50" />
-          <Property Name="PRICE" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="CATEGORY" Type="int" />
+          <Property Name="DELETE_FLAG" Type="bit" />
+          <Property Name="REG_USER_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="MOD_USER_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="REG_DATE" Type="datetime" />
+          <Property Name="MOD_DATE" Type="datetime" />
+          <Property Name="ROLE_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="TYPE_ROLE" Type="nvarchar" MaxLength="50" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SEC_ROLE_MST">
+          <Key>
+            <PropertyRef Name="SEC_ROLE_ID" />
+          </Key>
+          <Property Name="DELETE_FLAG" Type="bit" />
+          <Property Name="REG_USER_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="MOD_USER_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="REG_DATE" Type="datetime" />
+          <Property Name="MOD_DATE" Type="datetime" />
+          <Property Name="SEC_ROLE_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="VALUE" Type="nvarchar" MaxLength="50" />
+          <Property Name="ROLE_ID" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TARIFF_MST">
+          <Key>
+            <PropertyRef Name="TARIFF_ID" />
+          </Key>
           <Property Name="DELETE_FLAG" Type="bit" />
           <Property Name="REG_DATE" Type="datetime" />
           <Property Name="MOD_DATE" Type="datetime" />
-          <Property Name="REG_UID" Type="nvarchar" MaxLength="20" />
-          <Property Name="MOD_UID" Type="nvarchar" MaxLength="20" />
+          <Property Name="REG_USER_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="MOD_USER_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="TARIFF_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="WEIGHT_FROM" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="WEIGHT_TO" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DISTANCE_FROM" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="DISTANCE_TO" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="PRICE" Type="decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="USER_CONFIG_MST">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="DELETE_FLAG" Type="bit" />
+          <Property Name="REG_USER_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="MOD_USER_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="REG_DATE" Type="datetime" />
+          <Property Name="MOD_DATE" Type="datetime" />
+          <Property Name="USER_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BRANCH_ID" Type="nvarchar" MaxLength="20" />
+          <Property Name="ROLE_ID" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="USER_MST">
           <Key>
             <PropertyRef Name="USER_ID" />
           </Key>
+          <Property Name="DELETE_FLAG" Type="bit" />
+          <Property Name="REG_DATE" Type="datetime" />
+          <Property Name="MOD_DATE" Type="datetime" />
+          <Property Name="REG_USER_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="MOD_USER_NAME" Type="nvarchar" MaxLength="20" />
           <Property Name="USER_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="USER_NAME" Type="varchar" MaxLength="15" />
           <Property Name="PASSWORD" Type="varchar" MaxLength="50" />
           <Property Name="NUMBER_LOGIN_FAIL" Type="int" />
-          <Property Name="LAST_CHANGE_PASS" Type="date" />
+          <Property Name="LAST_CHANGE_PASS" Type="datetime" />
           <Property Name="OLD_PASSWORD" Type="varchar" MaxLength="50" />
           <Property Name="ADDRESS" Type="varchar" MaxLength="50" />
           <Property Name="PHONE" Type="varchar" MaxLength="15" />
-          <Property Name="BRANCH_ID" Type="nvarchar" MaxLength="20" />
-          <Property Name="DELETE_FLAG" Type="bit" />
-          <Property Name="REG_DATE" Type="datetime" />
-          <Property Name="MOD_DATE" Type="datetime" />
-          <Property Name="REG_UID" Type="nvarchar" MaxLength="20" />
-          <Property Name="MOD_UID" Type="nvarchar" MaxLength="20" />
         </EntityType>
-        <Association Name="FK_BILL_HDR_TBL_CUST_MST">
-          <End Role="CUST_MST" Type="Self.CUST_MST" Multiplicity="0..1" />
-          <End Role="BILL_HDR_TBL" Type="Self.BILL_HDR_TBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CUST_MST">
-              <PropertyRef Name="CUST_ID" />
-            </Principal>
-            <Dependent Role="BILL_HDR_TBL">
-              <PropertyRef Name="CUST_TO_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BILL_HDR_TBL_CUST_MST1">
+        <Association Name="FK_BILL_HDR_TBL_CUST_MST_FROM">
           <End Role="CUST_MST" Type="Self.CUST_MST" Multiplicity="0..1" />
           <End Role="BILL_HDR_TBL" Type="Self.BILL_HDR_TBL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -151,51 +211,51 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BILL_HDR_TBL_USER_MST">
-          <End Role="USER_MST" Type="Self.USER_MST" Multiplicity="0..1" />
+        <Association Name="FK_BILL_HDR_TBL_CUST_MST_TO">
+          <End Role="CUST_MST" Type="Self.CUST_MST" Multiplicity="0..1" />
           <End Role="BILL_HDR_TBL" Type="Self.BILL_HDR_TBL" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
+            <Principal Role="CUST_MST">
+              <PropertyRef Name="CUST_ID" />
             </Principal>
             <Dependent Role="BILL_HDR_TBL">
-              <PropertyRef Name="MOD_ID" />
+              <PropertyRef Name="CUST_TO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BILL_HDR_TBL_USER_MST1">
-          <End Role="USER_MST" Type="Self.USER_MST" Multiplicity="0..1" />
-          <End Role="BILL_HDR_TBL" Type="Self.BILL_HDR_TBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="BILL_HDR_TBL">
-              <PropertyRef Name="REG_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BILL_LOG_TBL_USER_MST">
-          <End Role="USER_MST" Type="Self.USER_MST" Multiplicity="0..1" />
+        <Association Name="FK_BILL_LOG_TBL_BILL_HDR_TBL">
+          <End Role="BILL_HDR_TBL" Type="Self.BILL_HDR_TBL" Multiplicity="1" />
           <End Role="BILL_LOG_TBL" Type="Self.BILL_LOG_TBL" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
+            <Principal Role="BILL_HDR_TBL">
+              <PropertyRef Name="BILL_HDR_ID" />
             </Principal>
             <Dependent Role="BILL_LOG_TBL">
-              <PropertyRef Name="REG_UID" />
+              <PropertyRef Name="TRANSACTION_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BILL_LOG_TBL_USER_MST1">
-          <End Role="USER_MST" Type="Self.USER_MST" Multiplicity="0..1" />
+        <Association Name="FK_BILL_LOG_TBL_CUST_MST_FROM">
+          <End Role="CUST_MST" Type="Self.CUST_MST" Multiplicity="0..1" />
           <End Role="BILL_LOG_TBL" Type="Self.BILL_LOG_TBL" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
+            <Principal Role="CUST_MST">
+              <PropertyRef Name="CUST_ID" />
             </Principal>
             <Dependent Role="BILL_LOG_TBL">
-              <PropertyRef Name="MOD_UID" />
+              <PropertyRef Name="CUST_FROM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BILL_LOG_TBL_CUST_MST_TO">
+          <End Role="CUST_MST" Type="Self.CUST_MST" Multiplicity="0..1" />
+          <End Role="BILL_LOG_TBL" Type="Self.BILL_LOG_TBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUST_MST">
+              <PropertyRef Name="CUST_ID" />
+            </Principal>
+            <Dependent Role="BILL_LOG_TBL">
+              <PropertyRef Name="CUST_TO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -211,126 +271,55 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BILL_TBL_USER_MST">
-          <End Role="USER_MST" Type="Self.USER_MST" Multiplicity="0..1" />
-          <End Role="BILL_TBL" Type="Self.BILL_TBL" Multiplicity="*" />
+        <Association Name="FK_SEC_ROLE_MST_SEC_ROLE_MST">
+          <End Role="ROLE_MST" Type="Self.ROLE_MST" Multiplicity="0..1" />
+          <End Role="SEC_ROLE_MST" Type="Self.SEC_ROLE_MST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLE_MST">
+              <PropertyRef Name="ROLE_ID" />
+            </Principal>
+            <Dependent Role="SEC_ROLE_MST">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_CONFIG_MST_BRANCH_MST">
+          <End Role="BRANCH_MST" Type="Self.BRANCH_MST" Multiplicity="0..1" />
+          <End Role="USER_CONFIG_MST" Type="Self.USER_CONFIG_MST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BRANCH_MST">
+              <PropertyRef Name="BRANCH_ID" />
+            </Principal>
+            <Dependent Role="USER_CONFIG_MST">
+              <PropertyRef Name="BRANCH_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_CONFIG_MST_ROLE_MST">
+          <End Role="ROLE_MST" Type="Self.ROLE_MST" Multiplicity="0..1" />
+          <End Role="USER_CONFIG_MST" Type="Self.USER_CONFIG_MST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLE_MST">
+              <PropertyRef Name="ROLE_ID" />
+            </Principal>
+            <Dependent Role="USER_CONFIG_MST">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_CONFIG_MST_USER_MST">
+          <End Role="USER_MST" Type="Self.USER_MST" Multiplicity="1" />
+          <End Role="USER_CONFIG_MST" Type="Self.USER_CONFIG_MST" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="USER_MST">
               <PropertyRef Name="USER_ID" />
             </Principal>
-            <Dependent Role="BILL_TBL">
-              <PropertyRef Name="REG_UID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BILL_TBL_USER_MST1">
-          <End Role="USER_MST" Type="Self.USER_MST" Multiplicity="0..1" />
-          <End Role="BILL_TBL" Type="Self.BILL_TBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_MST">
+            <Dependent Role="USER_CONFIG_MST">
               <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="BILL_TBL">
-              <PropertyRef Name="MOD_UID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BRANCH_MST_USER_MST1">
-          <End Role="USER_MST" Type="Self.USER_MST" Multiplicity="0..1" />
-          <End Role="BRANCH_MST" Type="Self.BRANCH_MST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="BRANCH_MST">
-              <PropertyRef Name="REG_UID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BRANCH_MST_USER_MST2">
-          <End Role="USER_MST" Type="Self.USER_MST" Multiplicity="0..1" />
-          <End Role="BRANCH_MST" Type="Self.BRANCH_MST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="BRANCH_MST">
-              <PropertyRef Name="MOD_UID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_COMMON_CODE_USER_MST">
-          <End Role="USER_MST" Type="Self.USER_MST" Multiplicity="0..1" />
-          <End Role="COMMON_CODE" Type="Self.COMMON_CODE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="COMMON_CODE">
-              <PropertyRef Name="MOD_UID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_COMMON_CODE_USER_MST1">
-          <End Role="USER_MST" Type="Self.USER_MST" Multiplicity="0..1" />
-          <End Role="COMMON_CODE" Type="Self.COMMON_CODE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="COMMON_CODE">
-              <PropertyRef Name="MOD_UID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CUST_MST_USER_MST">
-          <End Role="USER_MST" Type="Self.USER_MST" Multiplicity="0..1" />
-          <End Role="CUST_MST" Type="Self.CUST_MST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="CUST_MST">
-              <PropertyRef Name="REG_UID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CUST_MST_USER_MST1">
-          <End Role="USER_MST" Type="Self.USER_MST" Multiplicity="0..1" />
-          <End Role="CUST_MST" Type="Self.CUST_MST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="CUST_MST">
-              <PropertyRef Name="MOD_UID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRODUCT_MST_USER_MST">
-          <End Role="USER_MST" Type="Self.USER_MST" Multiplicity="0..1" />
-          <End Role="PRODUCT_MST" Type="Self.PRODUCT_MST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="PRODUCT_MST">
-              <PropertyRef Name="REG_UID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRODUCT_MST_USER_MST1">
-          <End Role="USER_MST" Type="Self.USER_MST" Multiplicity="0..1" />
-          <End Role="PRODUCT_MST" Type="Self.PRODUCT_MST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="PRODUCT_MST">
-              <PropertyRef Name="MOD_UID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="GetNextSequence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="sequenceName" Type="nvarchar" Mode="In" />
           <Parameter Name="nextSeq" Type="bigint" Mode="InOut" />
@@ -338,6 +327,36 @@
         <Function Name="NextSeq" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bigint">
           <Parameter Name="SequenceName" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="ModelsStoreContainer">
           <EntitySet Name="BILL_HDR_TBL" EntityType="Self.BILL_HDR_TBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BILL_LOG_TBL" EntityType="Self.BILL_LOG_TBL" Schema="dbo" store:Type="Tables" />
@@ -345,75 +364,50 @@
           <EntitySet Name="BRANCH_MST" EntityType="Self.BRANCH_MST" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="COMMON_CODE" EntityType="Self.COMMON_CODE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CUST_MST" EntityType="Self.CUST_MST" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PRODUCT_MST" EntityType="Self.PRODUCT_MST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROLE_MST" EntityType="Self.ROLE_MST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEC_ROLE_MST" EntityType="Self.SEC_ROLE_MST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TARIFF_MST" EntityType="Self.TARIFF_MST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_CONFIG_MST" EntityType="Self.USER_CONFIG_MST" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USER_MST" EntityType="Self.USER_MST" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_BILL_HDR_TBL_CUST_MST" Association="Self.FK_BILL_HDR_TBL_CUST_MST">
+          <AssociationSet Name="FK_BILL_HDR_TBL_CUST_MST_FROM" Association="Self.FK_BILL_HDR_TBL_CUST_MST_FROM">
             <End Role="CUST_MST" EntitySet="CUST_MST" />
             <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_BILL_HDR_TBL_CUST_MST1" Association="Self.FK_BILL_HDR_TBL_CUST_MST1">
+          <AssociationSet Name="FK_BILL_HDR_TBL_CUST_MST_TO" Association="Self.FK_BILL_HDR_TBL_CUST_MST_TO">
             <End Role="CUST_MST" EntitySet="CUST_MST" />
             <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_BILL_HDR_TBL_USER_MST" Association="Self.FK_BILL_HDR_TBL_USER_MST">
-            <End Role="USER_MST" EntitySet="USER_MST" />
+          <AssociationSet Name="FK_BILL_LOG_TBL_BILL_HDR_TBL" Association="Self.FK_BILL_LOG_TBL_BILL_HDR_TBL">
             <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BILL_HDR_TBL_USER_MST1" Association="Self.FK_BILL_HDR_TBL_USER_MST1">
-            <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BILL_LOG_TBL_USER_MST" Association="Self.FK_BILL_LOG_TBL_USER_MST">
-            <End Role="USER_MST" EntitySet="USER_MST" />
             <End Role="BILL_LOG_TBL" EntitySet="BILL_LOG_TBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_BILL_LOG_TBL_USER_MST1" Association="Self.FK_BILL_LOG_TBL_USER_MST1">
-            <End Role="USER_MST" EntitySet="USER_MST" />
+          <AssociationSet Name="FK_BILL_LOG_TBL_CUST_MST_FROM" Association="Self.FK_BILL_LOG_TBL_CUST_MST_FROM">
+            <End Role="CUST_MST" EntitySet="CUST_MST" />
+            <End Role="BILL_LOG_TBL" EntitySet="BILL_LOG_TBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BILL_LOG_TBL_CUST_MST_TO" Association="Self.FK_BILL_LOG_TBL_CUST_MST_TO">
+            <End Role="CUST_MST" EntitySet="CUST_MST" />
             <End Role="BILL_LOG_TBL" EntitySet="BILL_LOG_TBL" />
           </AssociationSet>
           <AssociationSet Name="FK_BILL_TBL_BILL_HDR_TBL" Association="Self.FK_BILL_TBL_BILL_HDR_TBL">
             <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
             <End Role="BILL_TBL" EntitySet="BILL_TBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_BILL_TBL_USER_MST" Association="Self.FK_BILL_TBL_USER_MST">
-            <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="BILL_TBL" EntitySet="BILL_TBL" />
+          <AssociationSet Name="FK_SEC_ROLE_MST_SEC_ROLE_MST" Association="Self.FK_SEC_ROLE_MST_SEC_ROLE_MST">
+            <End Role="ROLE_MST" EntitySet="ROLE_MST" />
+            <End Role="SEC_ROLE_MST" EntitySet="SEC_ROLE_MST" />
           </AssociationSet>
-          <AssociationSet Name="FK_BILL_TBL_USER_MST1" Association="Self.FK_BILL_TBL_USER_MST1">
-            <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="BILL_TBL" EntitySet="BILL_TBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BRANCH_MST_USER_MST1" Association="Self.FK_BRANCH_MST_USER_MST1">
-            <End Role="USER_MST" EntitySet="USER_MST" />
+          <AssociationSet Name="FK_USER_CONFIG_MST_BRANCH_MST" Association="Self.FK_USER_CONFIG_MST_BRANCH_MST">
             <End Role="BRANCH_MST" EntitySet="BRANCH_MST" />
+            <End Role="USER_CONFIG_MST" EntitySet="USER_CONFIG_MST" />
           </AssociationSet>
-          <AssociationSet Name="FK_BRANCH_MST_USER_MST2" Association="Self.FK_BRANCH_MST_USER_MST2">
-            <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="BRANCH_MST" EntitySet="BRANCH_MST" />
+          <AssociationSet Name="FK_USER_CONFIG_MST_ROLE_MST" Association="Self.FK_USER_CONFIG_MST_ROLE_MST">
+            <End Role="ROLE_MST" EntitySet="ROLE_MST" />
+            <End Role="USER_CONFIG_MST" EntitySet="USER_CONFIG_MST" />
           </AssociationSet>
-          <AssociationSet Name="FK_COMMON_CODE_USER_MST" Association="Self.FK_COMMON_CODE_USER_MST">
+          <AssociationSet Name="FK_USER_CONFIG_MST_USER_MST" Association="Self.FK_USER_CONFIG_MST_USER_MST">
             <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="COMMON_CODE" EntitySet="COMMON_CODE" />
-          </AssociationSet>
-          <AssociationSet Name="FK_COMMON_CODE_USER_MST1" Association="Self.FK_COMMON_CODE_USER_MST1">
-            <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="COMMON_CODE" EntitySet="COMMON_CODE" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CUST_MST_USER_MST" Association="Self.FK_CUST_MST_USER_MST">
-            <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="CUST_MST" EntitySet="CUST_MST" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CUST_MST_USER_MST1" Association="Self.FK_CUST_MST_USER_MST1">
-            <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="CUST_MST" EntitySet="CUST_MST" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRODUCT_MST_USER_MST" Association="Self.FK_PRODUCT_MST_USER_MST">
-            <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="PRODUCT_MST" EntitySet="PRODUCT_MST" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRODUCT_MST_USER_MST1" Association="Self.FK_PRODUCT_MST_USER_MST1">
-            <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="PRODUCT_MST" EntitySet="PRODUCT_MST" />
+            <End Role="USER_CONFIG_MST" EntitySet="USER_CONFIG_MST" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -421,104 +415,131 @@
     <edmx:ConceptualModels>
       <Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="DBConnection" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="GetNextSequence">
+            <Parameter Name="sequenceName" Mode="In" Type="String" />
+            <Parameter Name="nextSeq" Mode="InOut" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Models.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Models.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
           <EntitySet Name="BILL_HDR_TBL" EntityType="Models.BILL_HDR_TBL" />
           <EntitySet Name="BILL_LOG_TBL" EntityType="Models.BILL_LOG_TBL" />
           <EntitySet Name="BILL_TBL" EntityType="Models.BILL_TBL" />
           <EntitySet Name="BRANCH_MST" EntityType="Models.BRANCH_MST" />
           <EntitySet Name="COMMON_CODE" EntityType="Models.COMMON_CODE" />
           <EntitySet Name="CUST_MST" EntityType="Models.CUST_MST" />
-          <EntitySet Name="PRODUCT_MST" EntityType="Models.PRODUCT_MST" />
+          <EntitySet Name="ROLE_MST" EntityType="Models.ROLE_MST" />
+          <EntitySet Name="USER_CONFIG_MST" EntityType="Models.USER_CONFIG_MST" />
           <EntitySet Name="USER_MST" EntityType="Models.USER_MST" />
-          <AssociationSet Name="FK_BILL_HDR_TBL_CUST_MST" Association="Models.FK_BILL_HDR_TBL_CUST_MST">
+          <AssociationSet Name="FK_BILL_HDR_TBL_CUST_MST_FROM" Association="Models.FK_BILL_HDR_TBL_CUST_MST_FROM">
             <End Role="CUST_MST" EntitySet="CUST_MST" />
             <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_BILL_HDR_TBL_CUST_MST1" Association="Models.FK_BILL_HDR_TBL_CUST_MST1">
+          <AssociationSet Name="FK_BILL_HDR_TBL_CUST_MST_TO" Association="Models.FK_BILL_HDR_TBL_CUST_MST_TO">
             <End Role="CUST_MST" EntitySet="CUST_MST" />
             <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_BILL_HDR_TBL_USER_MST" Association="Models.FK_BILL_HDR_TBL_USER_MST">
-            <End Role="USER_MST" EntitySet="USER_MST" />
+          <AssociationSet Name="FK_BILL_LOG_TBL_BILL_HDR_TBL" Association="Models.FK_BILL_LOG_TBL_BILL_HDR_TBL">
             <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BILL_HDR_TBL_USER_MST1" Association="Models.FK_BILL_HDR_TBL_USER_MST1">
-            <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
+            <End Role="BILL_LOG_TBL" EntitySet="BILL_LOG_TBL" />
           </AssociationSet>
           <AssociationSet Name="FK_BILL_TBL_BILL_HDR_TBL" Association="Models.FK_BILL_TBL_BILL_HDR_TBL">
             <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
             <End Role="BILL_TBL" EntitySet="BILL_TBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_BILL_LOG_TBL_USER_MST" Association="Models.FK_BILL_LOG_TBL_USER_MST">
-            <End Role="USER_MST" EntitySet="USER_MST" />
+          <AssociationSet Name="FK_BILL_LOG_TBL_CUST_MST_FROM" Association="Models.FK_BILL_LOG_TBL_CUST_MST_FROM">
+            <End Role="CUST_MST" EntitySet="CUST_MST" />
             <End Role="BILL_LOG_TBL" EntitySet="BILL_LOG_TBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_BILL_LOG_TBL_USER_MST1" Association="Models.FK_BILL_LOG_TBL_USER_MST1">
-            <End Role="USER_MST" EntitySet="USER_MST" />
+          <AssociationSet Name="FK_BILL_LOG_TBL_CUST_MST_TO" Association="Models.FK_BILL_LOG_TBL_CUST_MST_TO">
+            <End Role="CUST_MST" EntitySet="CUST_MST" />
             <End Role="BILL_LOG_TBL" EntitySet="BILL_LOG_TBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_BILL_TBL_USER_MST" Association="Models.FK_BILL_TBL_USER_MST">
-            <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="BILL_TBL" EntitySet="BILL_TBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BILL_TBL_USER_MST1" Association="Models.FK_BILL_TBL_USER_MST1">
-            <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="BILL_TBL" EntitySet="BILL_TBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BRANCH_MST_USER_MST1" Association="Models.FK_BRANCH_MST_USER_MST1">
-            <End Role="USER_MST" EntitySet="USER_MST" />
+          <AssociationSet Name="FK_USER_CONFIG_MST_BRANCH_MST" Association="Models.FK_USER_CONFIG_MST_BRANCH_MST">
             <End Role="BRANCH_MST" EntitySet="BRANCH_MST" />
+            <End Role="USER_CONFIG_MST" EntitySet="USER_CONFIG_MST" />
           </AssociationSet>
-          <AssociationSet Name="FK_BRANCH_MST_USER_MST2" Association="Models.FK_BRANCH_MST_USER_MST2">
+          <AssociationSet Name="FK_USER_CONFIG_MST_ROLE_MST" Association="Models.FK_USER_CONFIG_MST_ROLE_MST">
+            <End Role="ROLE_MST" EntitySet="ROLE_MST" />
+            <End Role="USER_CONFIG_MST" EntitySet="USER_CONFIG_MST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_CONFIG_MST_USER_MST" Association="Models.FK_USER_CONFIG_MST_USER_MST">
             <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="BRANCH_MST" EntitySet="BRANCH_MST" />
+            <End Role="USER_CONFIG_MST" EntitySet="USER_CONFIG_MST" />
           </AssociationSet>
-          <AssociationSet Name="FK_COMMON_CODE_USER_MST" Association="Models.FK_COMMON_CODE_USER_MST">
-            <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="COMMON_CODE" EntitySet="COMMON_CODE" />
+          <EntitySet Name="TARIFF_MST" EntityType="Models.TARIFF_MST" />
+          <EntitySet Name="SEC_ROLE_MST" EntityType="Models.SEC_ROLE_MST" />
+          <AssociationSet Name="FK_SEC_ROLE_MST_SEC_ROLE_MST" Association="Models.FK_SEC_ROLE_MST_SEC_ROLE_MST">
+            <End Role="ROLE_MST" EntitySet="ROLE_MST" />
+            <End Role="SEC_ROLE_MST" EntitySet="SEC_ROLE_MST" />
           </AssociationSet>
-          <AssociationSet Name="FK_COMMON_CODE_USER_MST1" Association="Models.FK_COMMON_CODE_USER_MST1">
-            <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="COMMON_CODE" EntitySet="COMMON_CODE" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CUST_MST_USER_MST" Association="Models.FK_CUST_MST_USER_MST">
-            <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="CUST_MST" EntitySet="CUST_MST" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CUST_MST_USER_MST1" Association="Models.FK_CUST_MST_USER_MST1">
-            <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="CUST_MST" EntitySet="CUST_MST" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRODUCT_MST_USER_MST" Association="Models.FK_PRODUCT_MST_USER_MST">
-            <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="PRODUCT_MST" EntitySet="PRODUCT_MST" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRODUCT_MST_USER_MST1" Association="Models.FK_PRODUCT_MST_USER_MST1">
-            <End Role="USER_MST" EntitySet="USER_MST" />
-            <End Role="PRODUCT_MST" EntitySet="PRODUCT_MST" />
-          </AssociationSet>
-          <FunctionImport Name="GetNextSequence">
-            <Parameter Name="sequenceName" Mode="In" Type="String" />
-            <Parameter Name="nextSeq" Mode="InOut" Type="Int64" />
-          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
         <EntityType Name="BILL_HDR_TBL">
           <Key>
             <PropertyRef Name="BILL_HDR_ID" />
           </Key>
-          <Property Name="BILL_HDR_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="DELETE_FLAG" Type="Boolean" />
-          <Property Name="REG_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="MOD_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="REG_DATE" Type="DateTime" Precision="0" />
-          <Property Name="MOD_DATE" Type="DateTime" Precision="0" />
+          <Property Name="REG_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MOD_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="REG_DATE" Type="DateTime" Precision="3" />
+          <Property Name="MOD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="BILL_HDR_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="CUST_FROM_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="CUST_TO_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="STATUS" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="CUST_MST" Relationship="Models.FK_BILL_HDR_TBL_CUST_MST" FromRole="BILL_HDR_TBL" ToRole="CUST_MST" />
-          <NavigationProperty Name="CUST_MST1" Relationship="Models.FK_BILL_HDR_TBL_CUST_MST1" FromRole="BILL_HDR_TBL" ToRole="CUST_MST" />
-          <NavigationProperty Name="USER_MST" Relationship="Models.FK_BILL_HDR_TBL_USER_MST" FromRole="BILL_HDR_TBL" ToRole="USER_MST" />
-          <NavigationProperty Name="USER_MST1" Relationship="Models.FK_BILL_HDR_TBL_USER_MST1" FromRole="BILL_HDR_TBL" ToRole="USER_MST" />
+          <Property Name="COUNTRY_FROM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PROVINCE_FROM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DISTRICT_FROM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS_FROM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="COUNTRY_TO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PROVINCE_TO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DISTRICT_TO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS_TO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="COUNTRY_CURRENT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PROVINCE_CURRENT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DISTRICT_CURRENT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS_CURRENT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CUST_MST" Relationship="Models.FK_BILL_HDR_TBL_CUST_MST_FROM" FromRole="BILL_HDR_TBL" ToRole="CUST_MST" />
+          <NavigationProperty Name="CUST_MST1" Relationship="Models.FK_BILL_HDR_TBL_CUST_MST_TO" FromRole="BILL_HDR_TBL" ToRole="CUST_MST" />
+          <NavigationProperty Name="BILL_LOG_TBL" Relationship="Models.FK_BILL_LOG_TBL_BILL_HDR_TBL" FromRole="BILL_HDR_TBL" ToRole="BILL_LOG_TBL" />
           <NavigationProperty Name="BILL_TBL" Relationship="Models.FK_BILL_TBL_BILL_HDR_TBL" FromRole="BILL_HDR_TBL" ToRole="BILL_TBL" />
         </EntityType>
         <EntityType Name="BILL_LOG_TBL">
@@ -527,150 +548,155 @@
           </Key>
           <Property Name="DELETE_FLAG" Type="Boolean" />
           <Property Name="REG_DATE" Type="DateTime" Precision="3" />
-          <Property Name="REG_UID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="REG_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="MOD_DATE" Type="DateTime" Precision="3" />
-          <Property Name="MOD_UID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MOD_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BILL_LOG_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="TRANSACTION_DATE" Type="DateTime" Precision="3" />
           <Property Name="TRANSACTION_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CUST_FROM_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CUST_TO_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="STATUS" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="BILL_LOG_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="USER_MST" Relationship="Models.FK_BILL_LOG_TBL_USER_MST" FromRole="BILL_LOG_TBL" ToRole="USER_MST" />
-          <NavigationProperty Name="USER_MST1" Relationship="Models.FK_BILL_LOG_TBL_USER_MST1" FromRole="BILL_LOG_TBL" ToRole="USER_MST" />
+          <Property Name="COUNTRY_FROM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PROVINCE_FROM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DISTRICT_FROM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS_FROM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="COUNTRY_TO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PROVINCE_TO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DISTRICT_TO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS_TO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="COUNTRY_CURRENT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PROVINCE_CURRENT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DISTRICT_CURRENT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS_CURRENT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BILL_HDR_TBL" Relationship="Models.FK_BILL_LOG_TBL_BILL_HDR_TBL" FromRole="BILL_LOG_TBL" ToRole="BILL_HDR_TBL" />
+          <NavigationProperty Name="CUST_MST" Relationship="Models.FK_BILL_LOG_TBL_CUST_MST_FROM" FromRole="BILL_LOG_TBL" ToRole="CUST_MST" />
+          <NavigationProperty Name="CUST_MST1" Relationship="Models.FK_BILL_LOG_TBL_CUST_MST_TO" FromRole="BILL_LOG_TBL" ToRole="CUST_MST" />
         </EntityType>
         <EntityType Name="BILL_TBL">
           <Key>
             <PropertyRef Name="BILL_ID" />
           </Key>
+          <Property Name="DELETE_FLAG" Type="Boolean" />
+          <Property Name="REG_DATE" Type="DateTime" Precision="3" />
+          <Property Name="MOD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REG_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MOD_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="BILL_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="WEIGHT" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="BILL_HDR_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BILL_STATUS" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="WEIGHT" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="PRICE" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="AMOUNT" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="SEND_DATE" Type="DateTime" Precision="0" />
-          <Property Name="BILL_STATUS" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
-          <Property Name="DELETE_FLAG" Type="Boolean" />
-          <Property Name="REG_DATE" Type="DateTime" Precision="0" />
-          <Property Name="MOD_DATE" Type="DateTime" Precision="0" />
-          <Property Name="REG_UID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="MOD_UID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="BILL_HDR_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BILL_HDR_TBL" Relationship="Models.FK_BILL_TBL_BILL_HDR_TBL" FromRole="BILL_TBL" ToRole="BILL_HDR_TBL" />
-          <NavigationProperty Name="USER_MST" Relationship="Models.FK_BILL_TBL_USER_MST" FromRole="BILL_TBL" ToRole="USER_MST" />
-          <NavigationProperty Name="USER_MST1" Relationship="Models.FK_BILL_TBL_USER_MST1" FromRole="BILL_TBL" ToRole="USER_MST" />
         </EntityType>
         <EntityType Name="BRANCH_MST">
           <Key>
             <PropertyRef Name="BRANCH_ID" />
           </Key>
-          <Property Name="BRANCH_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="BRANCH_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DELETE_FLAG" Type="Boolean" />
           <Property Name="REG_DATE" Type="DateTime" Precision="3" />
           <Property Name="MOD_DATE" Type="DateTime" Precision="3" />
-          <Property Name="REG_UID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="MOD_UID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="LONGITUDE" Type="Decimal" Precision="13" Scale="9" />
+          <Property Name="REG_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MOD_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BRANCH_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BRANCH_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="COUNTRY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PROVINCE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DISTRICT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LATITUDE" Type="Decimal" Precision="13" Scale="9" />
-          <NavigationProperty Name="USER_MST" Relationship="Models.FK_BRANCH_MST_USER_MST1" FromRole="BRANCH_MST" ToRole="USER_MST" />
-          <NavigationProperty Name="USER_MST1" Relationship="Models.FK_BRANCH_MST_USER_MST2" FromRole="BRANCH_MST" ToRole="USER_MST" />
+          <Property Name="LONGITUDE" Type="Decimal" Precision="13" Scale="9" />
+          <NavigationProperty Name="USER_CONFIG_MST" Relationship="Models.FK_USER_CONFIG_MST_BRANCH_MST" FromRole="BRANCH_MST" ToRole="USER_CONFIG_MST" />
         </EntityType>
         <EntityType Name="COMMON_CODE">
           <Key>
             <PropertyRef Name="COMMON_CODE_ID" />
           </Key>
-          <Property Name="COMMON_CODE_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="COMMON_CODE_VALUE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="COMMON_CODE_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PARENT_CODE_VALUE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="COMMON_CODE1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DELETE_FLAG" Type="Boolean" />
           <Property Name="REG_DATE" Type="DateTime" Precision="3" />
           <Property Name="MOD_DATE" Type="DateTime" Precision="3" />
-          <Property Name="REG_UID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="MOD_UID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="USER_MST" Relationship="Models.FK_COMMON_CODE_USER_MST" FromRole="COMMON_CODE" ToRole="USER_MST" />
-          <NavigationProperty Name="USER_MST1" Relationship="Models.FK_COMMON_CODE_USER_MST1" FromRole="COMMON_CODE" ToRole="USER_MST" />
+          <Property Name="REG_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MOD_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="COMMON_CODE_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="COMMON_CODE1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COMMON_CODE_VALUE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COMMON_CODE_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PARENT_CODE_VALUE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CUST_MST">
           <Key>
             <PropertyRef Name="CUST_ID" />
           </Key>
+          <Property Name="DELETE_FLAG" Type="Boolean" />
+          <Property Name="REG_DATE" Type="DateTime" Precision="3" />
+          <Property Name="MOD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REG_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MOD_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="CUST_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="CUST_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DELETE_FLAG" Type="Boolean" />
-          <Property Name="REG_DATE" Type="DateTime" Precision="3" />
-          <Property Name="MOD_DATE" Type="DateTime" Precision="3" />
-          <Property Name="REG_UID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="MOD_UID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BILL_HDR_TBL" Relationship="Models.FK_BILL_HDR_TBL_CUST_MST" FromRole="CUST_MST" ToRole="BILL_HDR_TBL" />
-          <NavigationProperty Name="BILL_HDR_TBL1" Relationship="Models.FK_BILL_HDR_TBL_CUST_MST1" FromRole="CUST_MST" ToRole="BILL_HDR_TBL" />
-          <NavigationProperty Name="USER_MST" Relationship="Models.FK_CUST_MST_USER_MST" FromRole="CUST_MST" ToRole="USER_MST" />
-          <NavigationProperty Name="USER_MST1" Relationship="Models.FK_CUST_MST_USER_MST1" FromRole="CUST_MST" ToRole="USER_MST" />
+          <Property Name="DEFAULT_ADDRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DEFAULT_COUNTRY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DEFAULT_PROVINCE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DEFAULT_DISTRICT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BILL_HDR_TBL" Relationship="Models.FK_BILL_HDR_TBL_CUST_MST_FROM" FromRole="CUST_MST" ToRole="BILL_HDR_TBL" />
+          <NavigationProperty Name="BILL_HDR_TBL1" Relationship="Models.FK_BILL_HDR_TBL_CUST_MST_TO" FromRole="CUST_MST" ToRole="BILL_HDR_TBL" />
+          <NavigationProperty Name="BILL_LOG_TBL" Relationship="Models.FK_BILL_LOG_TBL_CUST_MST_FROM" FromRole="CUST_MST" ToRole="BILL_LOG_TBL" />
+          <NavigationProperty Name="BILL_LOG_TBL1" Relationship="Models.FK_BILL_LOG_TBL_CUST_MST_TO" FromRole="CUST_MST" ToRole="BILL_LOG_TBL" />
         </EntityType>
-        <EntityType Name="PRODUCT_MST">
+        <EntityType Name="ROLE_MST">
           <Key>
-            <PropertyRef Name="PROD_ID" />
+            <PropertyRef Name="ROLE_ID" />
           </Key>
-          <Property Name="PROD_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="PROD_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PRICE" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="CATEGORY" Type="Int32" />
           <Property Name="DELETE_FLAG" Type="Boolean" />
+          <Property Name="REG_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MOD_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="REG_DATE" Type="DateTime" Precision="3" />
           <Property Name="MOD_DATE" Type="DateTime" Precision="3" />
-          <Property Name="REG_UID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="MOD_UID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="USER_MST" Relationship="Models.FK_PRODUCT_MST_USER_MST" FromRole="PRODUCT_MST" ToRole="USER_MST" />
-          <NavigationProperty Name="USER_MST1" Relationship="Models.FK_PRODUCT_MST_USER_MST1" FromRole="PRODUCT_MST" ToRole="USER_MST" />
+          <Property Name="ROLE_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TYPE_ROLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="USER_CONFIG_MST" Relationship="Models.FK_USER_CONFIG_MST_ROLE_MST" FromRole="ROLE_MST" ToRole="USER_CONFIG_MST" />
+          <NavigationProperty Name="SEC_ROLE_MST" Relationship="Models.FK_SEC_ROLE_MST_SEC_ROLE_MST" FromRole="ROLE_MST" ToRole="SEC_ROLE_MST" />
+        </EntityType>
+        <EntityType Name="USER_CONFIG_MST">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="DELETE_FLAG" Type="Boolean" />
+          <Property Name="REG_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MOD_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="REG_DATE" Type="DateTime" Precision="3" />
+          <Property Name="MOD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BRANCH_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ROLE_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BRANCH_MST" Relationship="Models.FK_USER_CONFIG_MST_BRANCH_MST" FromRole="USER_CONFIG_MST" ToRole="BRANCH_MST" />
+          <NavigationProperty Name="ROLE_MST" Relationship="Models.FK_USER_CONFIG_MST_ROLE_MST" FromRole="USER_CONFIG_MST" ToRole="ROLE_MST" />
+          <NavigationProperty Name="USER_MST" Relationship="Models.FK_USER_CONFIG_MST_USER_MST" FromRole="USER_CONFIG_MST" ToRole="USER_MST" />
         </EntityType>
         <EntityType Name="USER_MST">
           <Key>
             <PropertyRef Name="USER_ID" />
           </Key>
+          <Property Name="DELETE_FLAG" Type="Boolean" />
+          <Property Name="REG_DATE" Type="DateTime" Precision="3" />
+          <Property Name="MOD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REG_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MOD_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="USER_NAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NUMBER_LOGIN_FAIL" Type="Int32" />
-          <Property Name="LAST_CHANGE_PASS" Type="DateTime" Precision="0" />
+          <Property Name="LAST_CHANGE_PASS" Type="DateTime" Precision="3" />
           <Property Name="OLD_PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PHONE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="BRANCH_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="DELETE_FLAG" Type="Boolean" />
-          <Property Name="REG_DATE" Type="DateTime" Precision="3" />
-          <Property Name="MOD_DATE" Type="DateTime" Precision="3" />
-          <Property Name="REG_UID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="MOD_UID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BILL_HDR_TBL" Relationship="Models.FK_BILL_HDR_TBL_USER_MST" FromRole="USER_MST" ToRole="BILL_HDR_TBL" />
-          <NavigationProperty Name="BILL_HDR_TBL1" Relationship="Models.FK_BILL_HDR_TBL_USER_MST1" FromRole="USER_MST" ToRole="BILL_HDR_TBL" />
-          <NavigationProperty Name="BILL_LOG_TBL" Relationship="Models.FK_BILL_LOG_TBL_USER_MST" FromRole="USER_MST" ToRole="BILL_LOG_TBL" />
-          <NavigationProperty Name="BILL_LOG_TBL1" Relationship="Models.FK_BILL_LOG_TBL_USER_MST1" FromRole="USER_MST" ToRole="BILL_LOG_TBL" />
-          <NavigationProperty Name="BILL_TBL" Relationship="Models.FK_BILL_TBL_USER_MST" FromRole="USER_MST" ToRole="BILL_TBL" />
-          <NavigationProperty Name="BILL_TBL1" Relationship="Models.FK_BILL_TBL_USER_MST1" FromRole="USER_MST" ToRole="BILL_TBL" />
-          <NavigationProperty Name="BRANCH_MST" Relationship="Models.FK_BRANCH_MST_USER_MST1" FromRole="USER_MST" ToRole="BRANCH_MST" />
-          <NavigationProperty Name="BRANCH_MST1" Relationship="Models.FK_BRANCH_MST_USER_MST2" FromRole="USER_MST" ToRole="BRANCH_MST" />
-          <NavigationProperty Name="COMMON_CODE" Relationship="Models.FK_COMMON_CODE_USER_MST" FromRole="USER_MST" ToRole="COMMON_CODE" />
-          <NavigationProperty Name="COMMON_CODE1" Relationship="Models.FK_COMMON_CODE_USER_MST1" FromRole="USER_MST" ToRole="COMMON_CODE" />
-          <NavigationProperty Name="CUST_MST" Relationship="Models.FK_CUST_MST_USER_MST" FromRole="USER_MST" ToRole="CUST_MST" />
-          <NavigationProperty Name="CUST_MST1" Relationship="Models.FK_CUST_MST_USER_MST1" FromRole="USER_MST" ToRole="CUST_MST" />
-          <NavigationProperty Name="PRODUCT_MST" Relationship="Models.FK_PRODUCT_MST_USER_MST" FromRole="USER_MST" ToRole="PRODUCT_MST" />
-          <NavigationProperty Name="PRODUCT_MST1" Relationship="Models.FK_PRODUCT_MST_USER_MST1" FromRole="USER_MST" ToRole="PRODUCT_MST" />
+          <NavigationProperty Name="USER_CONFIG_MST" Relationship="Models.FK_USER_CONFIG_MST_USER_MST" FromRole="USER_MST" ToRole="USER_CONFIG_MST" />
         </EntityType>
-        <Association Name="FK_BILL_HDR_TBL_CUST_MST">
-          <End Type="Models.CUST_MST" Role="CUST_MST" Multiplicity="0..1" />
-          <End Type="Models.BILL_HDR_TBL" Role="BILL_HDR_TBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CUST_MST">
-              <PropertyRef Name="CUST_ID" />
-            </Principal>
-            <Dependent Role="BILL_HDR_TBL">
-              <PropertyRef Name="CUST_TO_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BILL_HDR_TBL_CUST_MST1">
+        <Association Name="FK_BILL_HDR_TBL_CUST_MST_FROM">
           <End Type="Models.CUST_MST" Role="CUST_MST" Multiplicity="0..1" />
           <End Type="Models.BILL_HDR_TBL" Role="BILL_HDR_TBL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -682,27 +708,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BILL_HDR_TBL_USER_MST">
-          <End Type="Models.USER_MST" Role="USER_MST" Multiplicity="0..1" />
+        <Association Name="FK_BILL_HDR_TBL_CUST_MST_TO">
+          <End Type="Models.CUST_MST" Role="CUST_MST" Multiplicity="0..1" />
           <End Type="Models.BILL_HDR_TBL" Role="BILL_HDR_TBL" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
+            <Principal Role="CUST_MST">
+              <PropertyRef Name="CUST_ID" />
             </Principal>
             <Dependent Role="BILL_HDR_TBL">
-              <PropertyRef Name="MOD_ID" />
+              <PropertyRef Name="CUST_TO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BILL_HDR_TBL_USER_MST1">
-          <End Type="Models.USER_MST" Role="USER_MST" Multiplicity="0..1" />
-          <End Type="Models.BILL_HDR_TBL" Role="BILL_HDR_TBL" Multiplicity="*" />
+        <Association Name="FK_BILL_LOG_TBL_BILL_HDR_TBL">
+          <End Type="Models.BILL_HDR_TBL" Role="BILL_HDR_TBL" Multiplicity="1" />
+          <End Type="Models.BILL_LOG_TBL" Role="BILL_LOG_TBL" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
+            <Principal Role="BILL_HDR_TBL">
+              <PropertyRef Name="BILL_HDR_ID" />
             </Principal>
-            <Dependent Role="BILL_HDR_TBL">
-              <PropertyRef Name="REG_ID" />
+            <Dependent Role="BILL_LOG_TBL">
+              <PropertyRef Name="TRANSACTION_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -718,147 +744,105 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BILL_LOG_TBL_USER_MST">
-          <End Type="Models.USER_MST" Role="USER_MST" Multiplicity="0..1" />
+        <Association Name="FK_BILL_LOG_TBL_CUST_MST_FROM">
+          <End Type="Models.CUST_MST" Role="CUST_MST" Multiplicity="0..1" />
           <End Type="Models.BILL_LOG_TBL" Role="BILL_LOG_TBL" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
+            <Principal Role="CUST_MST">
+              <PropertyRef Name="CUST_ID" />
             </Principal>
             <Dependent Role="BILL_LOG_TBL">
-              <PropertyRef Name="REG_UID" />
+              <PropertyRef Name="CUST_FROM_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BILL_LOG_TBL_USER_MST1">
-          <End Type="Models.USER_MST" Role="USER_MST" Multiplicity="0..1" />
+        <Association Name="FK_BILL_LOG_TBL_CUST_MST_TO">
+          <End Type="Models.CUST_MST" Role="CUST_MST" Multiplicity="0..1" />
           <End Type="Models.BILL_LOG_TBL" Role="BILL_LOG_TBL" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
+            <Principal Role="CUST_MST">
+              <PropertyRef Name="CUST_ID" />
             </Principal>
             <Dependent Role="BILL_LOG_TBL">
-              <PropertyRef Name="MOD_UID" />
+              <PropertyRef Name="CUST_TO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BILL_TBL_USER_MST">
-          <End Type="Models.USER_MST" Role="USER_MST" Multiplicity="0..1" />
-          <End Type="Models.BILL_TBL" Role="BILL_TBL" Multiplicity="*" />
+        <Association Name="FK_USER_CONFIG_MST_BRANCH_MST">
+          <End Type="Models.BRANCH_MST" Role="BRANCH_MST" Multiplicity="0..1" />
+          <End Type="Models.USER_CONFIG_MST" Role="USER_CONFIG_MST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BRANCH_MST">
+              <PropertyRef Name="BRANCH_ID" />
+            </Principal>
+            <Dependent Role="USER_CONFIG_MST">
+              <PropertyRef Name="BRANCH_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_CONFIG_MST_ROLE_MST">
+          <End Type="Models.ROLE_MST" Role="ROLE_MST" Multiplicity="0..1" />
+          <End Type="Models.USER_CONFIG_MST" Role="USER_CONFIG_MST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLE_MST">
+              <PropertyRef Name="ROLE_ID" />
+            </Principal>
+            <Dependent Role="USER_CONFIG_MST">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_CONFIG_MST_USER_MST">
+          <End Type="Models.USER_MST" Role="USER_MST" Multiplicity="1" />
+          <End Type="Models.USER_CONFIG_MST" Role="USER_CONFIG_MST" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="USER_MST">
               <PropertyRef Name="USER_ID" />
             </Principal>
-            <Dependent Role="BILL_TBL">
-              <PropertyRef Name="REG_UID" />
+            <Dependent Role="USER_CONFIG_MST">
+              <PropertyRef Name="USER_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BILL_TBL_USER_MST1">
-          <End Type="Models.USER_MST" Role="USER_MST" Multiplicity="0..1" />
-          <End Type="Models.BILL_TBL" Role="BILL_TBL" Multiplicity="*" />
+        <EntityType Name="TARIFF_MST">
+          <Key>
+            <PropertyRef Name="TARIFF_ID" />
+          </Key>
+          <Property Name="DELETE_FLAG" Type="Boolean" />
+          <Property Name="REG_DATE" Type="DateTime" Precision="3" />
+          <Property Name="MOD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REG_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MOD_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TARIFF_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WEIGHT_FROM" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="WEIGHT_TO" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DISTANCE_FROM" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="DISTANCE_TO" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="PRICE" Type="Decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="SEC_ROLE_MST">
+          <Key>
+            <PropertyRef Name="SEC_ROLE_ID" />
+          </Key>
+          <Property Name="DELETE_FLAG" Type="Boolean" />
+          <Property Name="REG_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MOD_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="REG_DATE" Type="DateTime" Precision="3" />
+          <Property Name="MOD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="SEC_ROLE_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VALUE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ROLE_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ROLE_MST" Relationship="Models.FK_SEC_ROLE_MST_SEC_ROLE_MST" FromRole="SEC_ROLE_MST" ToRole="ROLE_MST" />
+        </EntityType>
+        <Association Name="FK_SEC_ROLE_MST_SEC_ROLE_MST">
+          <End Type="Models.ROLE_MST" Role="ROLE_MST" Multiplicity="0..1" />
+          <End Type="Models.SEC_ROLE_MST" Role="SEC_ROLE_MST" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
+            <Principal Role="ROLE_MST">
+              <PropertyRef Name="ROLE_ID" />
             </Principal>
-            <Dependent Role="BILL_TBL">
-              <PropertyRef Name="MOD_UID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BRANCH_MST_USER_MST1">
-          <End Type="Models.USER_MST" Role="USER_MST" Multiplicity="0..1" />
-          <End Type="Models.BRANCH_MST" Role="BRANCH_MST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="BRANCH_MST">
-              <PropertyRef Name="REG_UID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BRANCH_MST_USER_MST2">
-          <End Type="Models.USER_MST" Role="USER_MST" Multiplicity="0..1" />
-          <End Type="Models.BRANCH_MST" Role="BRANCH_MST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="BRANCH_MST">
-              <PropertyRef Name="MOD_UID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_COMMON_CODE_USER_MST">
-          <End Type="Models.USER_MST" Role="USER_MST" Multiplicity="0..1" />
-          <End Type="Models.COMMON_CODE" Role="COMMON_CODE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="COMMON_CODE">
-              <PropertyRef Name="MOD_UID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_COMMON_CODE_USER_MST1">
-          <End Type="Models.USER_MST" Role="USER_MST" Multiplicity="0..1" />
-          <End Type="Models.COMMON_CODE" Role="COMMON_CODE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="COMMON_CODE">
-              <PropertyRef Name="MOD_UID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CUST_MST_USER_MST">
-          <End Type="Models.USER_MST" Role="USER_MST" Multiplicity="0..1" />
-          <End Type="Models.CUST_MST" Role="CUST_MST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="CUST_MST">
-              <PropertyRef Name="REG_UID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CUST_MST_USER_MST1">
-          <End Type="Models.USER_MST" Role="USER_MST" Multiplicity="0..1" />
-          <End Type="Models.CUST_MST" Role="CUST_MST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="CUST_MST">
-              <PropertyRef Name="MOD_UID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRODUCT_MST_USER_MST">
-          <End Type="Models.USER_MST" Role="USER_MST" Multiplicity="0..1" />
-          <End Type="Models.PRODUCT_MST" Role="PRODUCT_MST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="PRODUCT_MST">
-              <PropertyRef Name="REG_UID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRODUCT_MST_USER_MST1">
-          <End Type="Models.USER_MST" Role="USER_MST" Multiplicity="0..1" />
-          <End Type="Models.PRODUCT_MST" Role="PRODUCT_MST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_MST">
-              <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="PRODUCT_MST">
-              <PropertyRef Name="MOD_UID" />
+            <Dependent Role="SEC_ROLE_MST">
+              <PropertyRef Name="ROLE_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -868,31 +852,82 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="DBConnection">
+          <FunctionImportMapping FunctionImportName="GetNextSequence" FunctionName="Models.Store.GetNextSequence" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Models.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Models.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Models.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Models.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Models.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Models.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Models.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Models.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Models.Store.sp_upgraddiagrams" />
           <EntitySetMapping Name="BILL_HDR_TBL">
             <EntityTypeMapping TypeName="Models.BILL_HDR_TBL">
               <MappingFragment StoreEntitySet="BILL_HDR_TBL">
+                <ScalarProperty Name="ADDRESS_CURRENT" ColumnName="ADDRESS_CURRENT" />
+                <ScalarProperty Name="DISTRICT_CURRENT" ColumnName="DISTRICT_CURRENT" />
+                <ScalarProperty Name="PROVINCE_CURRENT" ColumnName="PROVINCE_CURRENT" />
+                <ScalarProperty Name="COUNTRY_CURRENT" ColumnName="COUNTRY_CURRENT" />
+                <ScalarProperty Name="ADDRESS_TO" ColumnName="ADDRESS_TO" />
+                <ScalarProperty Name="DISTRICT_TO" ColumnName="DISTRICT_TO" />
+                <ScalarProperty Name="PROVINCE_TO" ColumnName="PROVINCE_TO" />
+                <ScalarProperty Name="COUNTRY_TO" ColumnName="COUNTRY_TO" />
+                <ScalarProperty Name="ADDRESS_FROM" ColumnName="ADDRESS_FROM" />
+                <ScalarProperty Name="DISTRICT_FROM" ColumnName="DISTRICT_FROM" />
+                <ScalarProperty Name="PROVINCE_FROM" ColumnName="PROVINCE_FROM" />
+                <ScalarProperty Name="COUNTRY_FROM" ColumnName="COUNTRY_FROM" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
                 <ScalarProperty Name="CUST_TO_ID" ColumnName="CUST_TO_ID" />
                 <ScalarProperty Name="CUST_FROM_ID" ColumnName="CUST_FROM_ID" />
+                <ScalarProperty Name="BILL_HDR_ID" ColumnName="BILL_HDR_ID" />
                 <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
                 <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
-                <ScalarProperty Name="MOD_ID" ColumnName="MOD_ID" />
-                <ScalarProperty Name="REG_ID" ColumnName="REG_ID" />
+                <ScalarProperty Name="MOD_USER_NAME" ColumnName="MOD_USER_NAME" />
+                <ScalarProperty Name="REG_USER_NAME" ColumnName="REG_USER_NAME" />
                 <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
-                <ScalarProperty Name="BILL_HDR_ID" ColumnName="BILL_HDR_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BILL_LOG_TBL">
             <EntityTypeMapping TypeName="Models.BILL_LOG_TBL">
               <MappingFragment StoreEntitySet="BILL_LOG_TBL">
-                <ScalarProperty Name="BILL_LOG_ID" ColumnName="BILL_LOG_ID" />
+                <ScalarProperty Name="ADDRESS_CURRENT" ColumnName="ADDRESS_CURRENT" />
+                <ScalarProperty Name="DISTRICT_CURRENT" ColumnName="DISTRICT_CURRENT" />
+                <ScalarProperty Name="PROVINCE_CURRENT" ColumnName="PROVINCE_CURRENT" />
+                <ScalarProperty Name="COUNTRY_CURRENT" ColumnName="COUNTRY_CURRENT" />
+                <ScalarProperty Name="ADDRESS_TO" ColumnName="ADDRESS_TO" />
+                <ScalarProperty Name="DISTRICT_TO" ColumnName="DISTRICT_TO" />
+                <ScalarProperty Name="PROVINCE_TO" ColumnName="PROVINCE_TO" />
+                <ScalarProperty Name="COUNTRY_TO" ColumnName="COUNTRY_TO" />
+                <ScalarProperty Name="ADDRESS_FROM" ColumnName="ADDRESS_FROM" />
+                <ScalarProperty Name="DISTRICT_FROM" ColumnName="DISTRICT_FROM" />
+                <ScalarProperty Name="PROVINCE_FROM" ColumnName="PROVINCE_FROM" />
+                <ScalarProperty Name="COUNTRY_FROM" ColumnName="COUNTRY_FROM" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="CUST_TO_ID" ColumnName="CUST_TO_ID" />
+                <ScalarProperty Name="CUST_FROM_ID" ColumnName="CUST_FROM_ID" />
                 <ScalarProperty Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />
                 <ScalarProperty Name="TRANSACTION_DATE" ColumnName="TRANSACTION_DATE" />
-                <ScalarProperty Name="MOD_UID" ColumnName="MOD_UID" />
+                <ScalarProperty Name="BILL_LOG_ID" ColumnName="BILL_LOG_ID" />
+                <ScalarProperty Name="MOD_USER_NAME" ColumnName="MOD_USER_NAME" />
                 <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
-                <ScalarProperty Name="REG_UID" ColumnName="REG_UID" />
+                <ScalarProperty Name="REG_USER_NAME" ColumnName="REG_USER_NAME" />
                 <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
                 <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
               </MappingFragment>
@@ -901,92 +936,105 @@
           <EntitySetMapping Name="BILL_TBL">
             <EntityTypeMapping TypeName="Models.BILL_TBL">
               <MappingFragment StoreEntitySet="BILL_TBL">
-                <ScalarProperty Name="BILL_HDR_ID" ColumnName="BILL_HDR_ID" />
-                <ScalarProperty Name="MOD_UID" ColumnName="MOD_UID" />
-                <ScalarProperty Name="REG_UID" ColumnName="REG_UID" />
-                <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
-                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
-                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
-                <ScalarProperty Name="BILL_STATUS" ColumnName="BILL_STATUS" />
                 <ScalarProperty Name="SEND_DATE" ColumnName="SEND_DATE" />
                 <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
                 <ScalarProperty Name="PRICE" ColumnName="PRICE" />
                 <ScalarProperty Name="WEIGHT" ColumnName="WEIGHT" />
+                <ScalarProperty Name="BILL_STATUS" ColumnName="BILL_STATUS" />
+                <ScalarProperty Name="BILL_HDR_ID" ColumnName="BILL_HDR_ID" />
                 <ScalarProperty Name="BILL_ID" ColumnName="BILL_ID" />
+                <ScalarProperty Name="MOD_USER_NAME" ColumnName="MOD_USER_NAME" />
+                <ScalarProperty Name="REG_USER_NAME" ColumnName="REG_USER_NAME" />
+                <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
+                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
+                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BRANCH_MST">
             <EntityTypeMapping TypeName="Models.BRANCH_MST">
               <MappingFragment StoreEntitySet="BRANCH_MST">
-                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
                 <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
-                <ScalarProperty Name="MOD_UID" ColumnName="MOD_UID" />
-                <ScalarProperty Name="REG_UID" ColumnName="REG_UID" />
-                <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
-                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
-                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="DISTRICT" ColumnName="DISTRICT" />
+                <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
                 <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
                 <ScalarProperty Name="BRANCH_NAME" ColumnName="BRANCH_NAME" />
                 <ScalarProperty Name="BRANCH_ID" ColumnName="BRANCH_ID" />
+                <ScalarProperty Name="MOD_USER_NAME" ColumnName="MOD_USER_NAME" />
+                <ScalarProperty Name="REG_USER_NAME" ColumnName="REG_USER_NAME" />
+                <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
+                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
+                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="COMMON_CODE">
             <EntityTypeMapping TypeName="Models.COMMON_CODE">
               <MappingFragment StoreEntitySet="COMMON_CODE">
-                <ScalarProperty Name="MOD_UID" ColumnName="MOD_UID" />
-                <ScalarProperty Name="REG_UID" ColumnName="REG_UID" />
-                <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
-                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
-                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
-                <ScalarProperty Name="COMMON_CODE1" ColumnName="COMMON_CODE" />
                 <ScalarProperty Name="PARENT_CODE_VALUE" ColumnName="PARENT_CODE_VALUE" />
                 <ScalarProperty Name="COMMON_CODE_DESC" ColumnName="COMMON_CODE_DESC" />
                 <ScalarProperty Name="COMMON_CODE_VALUE" ColumnName="COMMON_CODE_VALUE" />
+                <ScalarProperty Name="COMMON_CODE1" ColumnName="COMMON_CODE" />
                 <ScalarProperty Name="COMMON_CODE_ID" ColumnName="COMMON_CODE_ID" />
+                <ScalarProperty Name="MOD_USER_NAME" ColumnName="MOD_USER_NAME" />
+                <ScalarProperty Name="REG_USER_NAME" ColumnName="REG_USER_NAME" />
+                <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
+                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
+                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CUST_MST">
             <EntityTypeMapping TypeName="Models.CUST_MST">
               <MappingFragment StoreEntitySet="CUST_MST">
-                <ScalarProperty Name="MOD_UID" ColumnName="MOD_UID" />
-                <ScalarProperty Name="REG_UID" ColumnName="REG_UID" />
-                <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
-                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
-                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
-                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="DEFAULT_DISTRICT" ColumnName="DEFAULT_DISTRICT" />
+                <ScalarProperty Name="DEFAULT_PROVINCE" ColumnName="DEFAULT_PROVINCE" />
+                <ScalarProperty Name="DEFAULT_COUNTRY" ColumnName="DEFAULT_COUNTRY" />
+                <ScalarProperty Name="DEFAULT_ADDRESS" ColumnName="DEFAULT_ADDRESS" />
                 <ScalarProperty Name="PHONE" ColumnName="PHONE" />
                 <ScalarProperty Name="CUST_NAME" ColumnName="CUST_NAME" />
                 <ScalarProperty Name="CUST_ID" ColumnName="CUST_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PRODUCT_MST">
-            <EntityTypeMapping TypeName="Models.PRODUCT_MST">
-              <MappingFragment StoreEntitySet="PRODUCT_MST">
-                <ScalarProperty Name="MOD_UID" ColumnName="MOD_UID" />
-                <ScalarProperty Name="REG_UID" ColumnName="REG_UID" />
+                <ScalarProperty Name="MOD_USER_NAME" ColumnName="MOD_USER_NAME" />
+                <ScalarProperty Name="REG_USER_NAME" ColumnName="REG_USER_NAME" />
                 <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
                 <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
                 <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
-                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
-                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
-                <ScalarProperty Name="PROD_NAME" ColumnName="PROD_NAME" />
-                <ScalarProperty Name="PROD_ID" ColumnName="PROD_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLE_MST">
+            <EntityTypeMapping TypeName="Models.ROLE_MST">
+              <MappingFragment StoreEntitySet="ROLE_MST">
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="TYPE_ROLE" ColumnName="TYPE_ROLE" />
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
+                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
+                <ScalarProperty Name="MOD_USER_NAME" ColumnName="MOD_USER_NAME" />
+                <ScalarProperty Name="REG_USER_NAME" ColumnName="REG_USER_NAME" />
+                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_CONFIG_MST">
+            <EntityTypeMapping TypeName="Models.USER_CONFIG_MST">
+              <MappingFragment StoreEntitySet="USER_CONFIG_MST">
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="BRANCH_ID" ColumnName="BRANCH_ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
+                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
+                <ScalarProperty Name="MOD_USER_NAME" ColumnName="MOD_USER_NAME" />
+                <ScalarProperty Name="REG_USER_NAME" ColumnName="REG_USER_NAME" />
+                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="USER_MST">
             <EntityTypeMapping TypeName="Models.USER_MST">
               <MappingFragment StoreEntitySet="USER_MST">
-                <ScalarProperty Name="MOD_UID" ColumnName="MOD_UID" />
-                <ScalarProperty Name="REG_UID" ColumnName="REG_UID" />
-                <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
-                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
-                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
-                <ScalarProperty Name="BRANCH_ID" ColumnName="BRANCH_ID" />
                 <ScalarProperty Name="PHONE" ColumnName="PHONE" />
                 <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
                 <ScalarProperty Name="OLD_PASSWORD" ColumnName="OLD_PASSWORD" />
@@ -995,10 +1043,45 @@
                 <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
                 <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
                 <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="MOD_USER_NAME" ColumnName="MOD_USER_NAME" />
+                <ScalarProperty Name="REG_USER_NAME" ColumnName="REG_USER_NAME" />
+                <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
+                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
+                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetNextSequence" FunctionName="Models.Store.GetNextSequence" />
+          <EntitySetMapping Name="TARIFF_MST">
+            <EntityTypeMapping TypeName="Models.TARIFF_MST">
+              <MappingFragment StoreEntitySet="TARIFF_MST">
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="DISTANCE_TO" ColumnName="DISTANCE_TO" />
+                <ScalarProperty Name="DISTANCE_FROM" ColumnName="DISTANCE_FROM" />
+                <ScalarProperty Name="WEIGHT_TO" ColumnName="WEIGHT_TO" />
+                <ScalarProperty Name="WEIGHT_FROM" ColumnName="WEIGHT_FROM" />
+                <ScalarProperty Name="TARIFF_ID" ColumnName="TARIFF_ID" />
+                <ScalarProperty Name="MOD_USER_NAME" ColumnName="MOD_USER_NAME" />
+                <ScalarProperty Name="REG_USER_NAME" ColumnName="REG_USER_NAME" />
+                <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
+                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
+                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEC_ROLE_MST">
+            <EntityTypeMapping TypeName="Models.SEC_ROLE_MST">
+              <MappingFragment StoreEntitySet="SEC_ROLE_MST">
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="SEC_ROLE_ID" ColumnName="SEC_ROLE_ID" />
+                <ScalarProperty Name="MOD_DATE" ColumnName="MOD_DATE" />
+                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
+                <ScalarProperty Name="MOD_USER_NAME" ColumnName="MOD_USER_NAME" />
+                <ScalarProperty Name="REG_USER_NAME" ColumnName="REG_USER_NAME" />
+                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

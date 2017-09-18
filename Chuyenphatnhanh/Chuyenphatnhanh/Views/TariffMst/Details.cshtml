@@ -1,0 +1,99 @@
+﻿@model Chuyenphatnhanh.Models.TARIFF_MST
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TARIFF_MST</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DELETE_FLAG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DELETE_FLAG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REG_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REG_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOD_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOD_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REG_USER_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REG_USER_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOD_USER_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOD_USER_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WEIGHT_FROM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WEIGHT_FROM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WEIGHT_TO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WEIGHT_TO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DISTANCE_FROM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DISTANCE_FROM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DISTANCE_TO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DISTANCE_TO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRICE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRICE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TARIFF_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -13,6 +13,21 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.DELETE_FLAG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REG_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MOD_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REG_USER_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MOD_USER_NAME)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.USER_NAME)
         </th>
         <th>
@@ -34,28 +49,28 @@
             @Html.DisplayNameFor(model => model.PHONE)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BRANCH)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DELETE_FLAG)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.REG_DATE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MOD_DATE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.REG_UID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MOD_UID)
+            @Html.DisplayNameFor(model => model.USER_CONFIG_MST.REG_USER_NAME)
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DELETE_FLAG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REG_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MOD_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REG_USER_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MOD_USER_NAME)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.USER_NAME)
         </td>
@@ -78,22 +93,7 @@
             @Html.DisplayFor(modelItem => item.PHONE)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.BRANCH)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DELETE_FLAG)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.REG_DATE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MOD_DATE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.REG_UID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MOD_UID)
+            @Html.DisplayFor(modelItem => item.USER_CONFIG_MST.REG_USER_NAME)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.USER_ID }) |

@@ -34,7 +34,7 @@ namespace Chuyenphatnhanh.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginForm form)
+        public  ActionResult Login(LoginForm form)
         {
             if (ModelState.IsValid)
             {
@@ -53,7 +53,7 @@ namespace Chuyenphatnhanh.Controllers
                     _operator.ManagerTime = DateTime.Now;
                     _operator.UserId = _user.USER_ID;
                     _operator.UserName = _user.USER_NAME;
-                    //_operator.Role = _user.
+                    _operator.Role = _user.USER_CONFIG_MST.ROLE_ID;
                     Session[Contant.SESSIONLOGED] = _operator;
                     return RedirectToAction("Index", "CustMst");
 

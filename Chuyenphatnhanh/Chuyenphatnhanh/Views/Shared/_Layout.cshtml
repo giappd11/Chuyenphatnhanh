@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @model Chuyenphatnhanh.Models.FormBase
 </head>
 <body >
 
@@ -127,42 +128,11 @@
                          </div>-->
                     </div>
                 </div>
-            </div>
-
-
-            <div id="wpMenuOrderByStatus" class="top-menu active">
-                <ul class="ul_1" style="z-index: 999999">
-                    <li class="show active"><a onclick="ChangeTab('New')" href="javascript:;">Mới tạo <span style="background-color: #3FB079" class="ng-binding">0</span></a></li>
-                    <li class="show"><a onclick="ChangeTab('WaitingToPick')" href="javascript:;">Chờ lấy lại <span style="background-color: #EEB390" class="ng-binding">0</span></a></li>
-                    <li class="show"><a onclick="ChangeTab('Picking', null)" href="javascript:;">Đang lấy hàng <span style="background-color: #2B8388" class="ng-binding">0</span></a></li>
-                    <li class="show"><a onclick="ChangeTab('Picked', null)" href="javascript:;">GHN đã lấy <span style="background-color: #35468A" class="ng-binding">0</span></a></li>
-                    <li class="show"><a onclick="ChangeTab('WaitingToDeliver', null)" href="javascript:;">Chờ giao lại <span style="background-color: #79906F" class="ng-binding">0</span></a></li>
-                    <li class="show"><a onclick="ChangeTab('Delivering', null)" href="javascript:;">Đang giao hàng <span style="background-color: #985844" class="ng-binding">0</span></a></li>
-                    <li class="show"><a onclick="ChangeTab('Delivered', null)" href="javascript:;">Giao thành công <span style="background-color: #7E57C2" class="ng-binding">0</span></a></li>
-                    <li class="show"><a onclick="ChangeTab('WaitingToReturn', null)" href="javascript:;">Chờ trả hàng <span style="background-color: #FF6F00" class="ng-binding">0</span></a></li>
-                    <li class="show"><a onclick="ChangeTab('OnReturn', null)" href="javascript:;">Đang trả hàng <span style="background-color: #88533B" class="ng-binding">0</span></a></li>
-                    <li class=""><a onclick="ChangeTab('WaitingToFinish', null)" href="javascript:;">Chờ thanh toán <span style="background-color: #79eaf1" class="ng-binding">0</span></a></li>
-                    <li class=""><a onclick="ChangeTab('WaitingToTransferCoD', null)" href="javascript:;">Chờ chuyển COD <span style="background-color: #6C3B75" class="ng-binding">0</span></a></li>
-                    <li class=""><a onclick="ChangeTab('Finish', null)" href="javascript:;">Hoàn tất <span style="background-color: #578856" class="ng-binding">0</span></a></li>
-                    <li class=""><a onclick="ChangeTab('Cancel', null)" href="javascript:;">Hủy <span style="background-color: #626762" class="ng-binding">0</span></a></li>
-                    <li class="show_im other-item-button pst-tootip">
-                        <label>Trạng thái khác</label>
-                        <span class="glyphicon glyphicon-menu-down"></span>
-                        <!-- ngIf: (orderByStatus.currentTutorialID == 4) -->
-
-                    </li>
-                </ul>
-                <div class="other-item-list" style="left: 1039.41px;">
-                <ul>
-                    <li class="show">
-                    <a onclick="ChangeTab('WaitingToFinish', null)" href="javascript:;">Chờ thanh toán <span style="background-color: #79eaf1" class="ng-binding">0</span></a>
-                        </li>
-                    <li class="show"><a onclick="ChangeTab('WaitingToTransferCoD', null)" href="javascript:;">Chờ chuyển COD <span style="background-color: #6C3B75" class="ng-binding">0</span></a></li><li class="show"><a onclick="ChangeTab('Finish', null)" href="javascript:;">Hoàn tất <span style="background-color: #578856" class="ng-binding">0</span></a></li><li class="show"><a onclick="ChangeTab('Cancel', null)" href="javascript:;">Hủy <span style="background-color: #626762" class="ng-binding">0</span></a></li></ul></div>
-
-            </div>
+            </div> 
             <div class="h-content ct-donhang">
                 <div class="container">
                     @ViewData[Chuyenphatnhanh.Util.Contant.MESSAGESUCCESS]
+                    @Html.ValidationMessageFor(modle => modle.MessageError, "", new { @class = "text-danger" })
                     @RenderBody()
                 </div>
             </div>

@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body >
+
+    @{
+        var _session = (Operator)Session[Chuyenphatnhanh.Util.Contant.SESSIONLOGED];
+        if (_session == null)
+        {
+            _session = new Operator();
+        }
+    }
+    <div class="left-menu Roboto-Light ng-scope" ng-controller="LeftMenuCtrl as leftmenu">
+        <div class="wap-menu">
+            <div class="logo">
+                <img src="./Giaohangnhanh - Đơn hàng cần xử lý_files/logoghn.png">
+                <div class="btn-close-mn visible-xs"><i class="fa fa-close"></i></div>
+            </div>
+            <div class="user-info">
+                <div class="brief-info">
+                    <div class="full-width">
+                        <div id="show-md-avatar" class="avarta" data-toggle="modal" data-target="#avarta_modal" style="cursor: pointer">
+                            <img src="~/Content/images/1.png" title="avata" />
+                        </div>
+                        <div class="info">
+                            <p class="name Roboto-Regular" style="font-size: 14px">
+                                @_session.UserId - @_session.UserName
+                                <input type="hidden" id="txtClientID" name="txtClientID" value="@_session.UserId">
+                            </p>
+                            <div class="menu-user">
+                                <div class="col-xs-6">
+                                    <a style="text-decoration: none" href="@Url.Action("Details", "UserMst" , new { id = _session.UserId })">
+                                        <img src="~/Content/images/icon-user.png">
+                                        @Chuyenphatnhanh.Content.Texts.RGlobal.Infomation
+
+                                    </a>
+                                    <!-- ngIf: (leftmenu.currentID == 9) -->
+                                </div>
+                                <div class="col-xs-6">
+                                    <a style="text-decoration: none" href="@Url.Action( "Logout", "Home")">
+                                        <img src="~/Content/images/ic-logout.png">
+                                        @Chuyenphatnhanh.Content.Texts.RGlobal.Logout
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="menu">
+                <ul>
+
+                    <li id="MenuViewByStatus" class="pst-tootip active">
+                        <a href="" ng-click="leftmenu.openViewByStatus()">
+                            <span class="icon"><i class="fa fa-list-alt"></i></span>
+                            Quản lý đơn hàng
+                        </a>
+                    </li>
+                    <li class=" pst-tootip">
+                        <a href="" ng-click="leftmenu.openSearchOrder()"><span class="icon"><i class="fa fa-search"></i></span>Tìm kiếm đơn hàng</a>
+                        <!-- ngIf: (leftmenu.currentID == 5) -->
+                    </li>
+                     
+                    <li class="pst-tootip">
+                        <a href="" target="_blank"><span class="icon"><i class="fa fa-home"></i></span>Điểm gửi hàng</a>
+                        <!-- ngIf: (leftmenu.currentID == 7) -->
+                    </li>
+                    <li class=" pst-tootip">
+                        <a href="">
+                            <span class="icon"><i class="fa fa-info-circle"></i></span>
+                            @Chuyenphatnhanh.Content.Texts.RGlobal.F_UserMst_manager
+                        </a>
+                    </li>
+                    <li class=" pst-tootip">
+                        <a href="">
+                            <span class="icon"><i class="fa fa-info-circle"></i></span>
+                            @Chuyenphatnhanh.Content.Texts.RGlobal.F_CustMstManager
+                        </a>
+                    </li>
+                    <li class=" pst-tootip">
+                        <a href="">
+                            <span class="icon"><i class="fa fa-info-circle"></i></span>Thông tin
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="pageface">
+                <div class="title">
+                    <i class="fa fa-headphones"></i>Hỗ trợ khách hàng
+                    <i class="fa fa-minus"></i>
+                </div>
+                <div class="ifr-facebook">
+                    <div class="fb-page fb_iframe_widget" >
+                        <span style="vertical-align: bottom; width: 320px; height: 420px;">
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wap-top-menu">
+        <div>
+            <div ng-controller="QuickSearchCtrl as quickSearch" class="toolbar ng-scope">
+                <div class="menu-btnmain out"><i class="fa fa-bars"></i></div>
+                <div class="toolbar-content">
+                    <div class="menu-button pull-right"><i class="fa fa-align-right"></i></div>
+                    <div id="remindful" class="pull-right Roboto-Medium" onclick="callGAScript()">
+                        <i class="fa fa-bell"></i>
+                        <!-- ngIf: quickSearch.haveNewNotify -->
+                    </div>
+                    <div class="search pull-right">
+                        <div class="hip-search">
+                            <input ng-model="qSearchContent" ng-init="qSearchContent=null" ng-keypress="($event.which === 13)?alert('abc'):0" class="form-control Roboto-Light ng-pristine ng-untouched ng-valid" type="text" placeholder="Mã ĐH | Tên người nhận | SDT" id="search_keyword" name="search_keyword">
+                            <a id="btnQuickSearch" href="#" onclick="ga('send', { hitType: 'event', eventCategory: 'Quanlydonhang', eventAction: 'Quick search', eventLabel: ' Quick search '});" class="icon_search"><i class="fa fa-search"></i></a>
+                        </div>
+                        <!-- <div ng-show="quickSearch.orders.length > 0" class="list-search ng-hide">
+                             <ul>
+                                 <!-- ngRepeat: x in quickSearch.orders
+                             </ul>
+                         </div>-->
+                    </div>
+                </div>
+            </div> 
+            <div class="h-content ct-donhang">
+                <div class="container">
+                    @ViewData[Chuyenphatnhanh.Util.Contant.MESSAGESUCCESS]
+                    @RenderBody()
+                </div>
+            </div>
+
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    <script>
+        jQuery(".menu-btnmain").click(function () {
+            if (jQuery("body").hasClass("show-left")) {
+                jQuery("body").removeClass("show-left");
+            } else {
+                jQuery("body").addClass("show-left");
+            }
+        });
+
+        if (!$("body").hasClass("show-left")) {
+            $("body").addClass("show-left");
+        }
+
+    </script>
+
+</body>
+</html>

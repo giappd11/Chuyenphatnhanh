@@ -9,11 +9,11 @@ using System.Web.Mvc;
 using Chuyenphatnhanh.Models;
 using Chuyenphatnhanh.Util;
 using Resource = Chuyenphatnhanh.Content.Texts;
+
 namespace Chuyenphatnhanh.Controllers
 {
     public class CustMstController : BaseController
-    {
-        private DBConnection db = new DBConnection();
+    { 
 
         // GET: CustMst
         public ActionResult Index()
@@ -39,7 +39,6 @@ namespace Chuyenphatnhanh.Controllers
         // GET: CustMst/Create
         public ActionResult Create()
         {
-            
             return View();
         }
 
@@ -52,21 +51,18 @@ namespace Chuyenphatnhanh.Controllers
         {
             CUST_MST _custMst = new CUST_MST();
             if (ModelState.IsValid)
-            { 
+            {
                 ComplementUtil.complement(form, _custMst);
-                _custMst.DELETE_FLAG = false;
-
-                var _operator = (Operator)Session[Contant.SESSIONLOGED];
+                _custMst.DELETE_FLAG = false; 
                 _custMst.MOD_DATE = DateTime.Now;
-                _custMst.MOD_UID = _operator.UserId;
+                _custMst.MOD_USER_NAME = _operator.UserName;
                 _custMst.REG_DATE = DateTime.Now;
-                _custMst.REG_UID = _operator.UserId;
+                _custMst.REG_USER_NAME = _operator.UserName;
                 _custMst.CUST_ID = GenerateID.GennerateID(db, Contant.CUSTMST_SEQ, Contant.CUSTMST_PREFIX);
                 db.CUST_MST.Add(_custMst);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
             }
-
             return View(form);
         }
 
@@ -92,24 +88,21 @@ namespace Chuyenphatnhanh.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(CustMstForm form )
+        public ActionResult Edit(CustMstForm form)
         {
-
             if (ModelState.IsValid)
             {
-
                 CUST_MST _custMst = new CUST_MST();
                 var _operator = (Operator)Session[Contant.SESSIONLOGED];
                 _custMst = db.CUST_MST.Where(u => u.CUST_ID == form.CUST_ID).FirstOrDefault();
-                if  (DateTime.Compare((DateTime) _custMst.MOD_DATE, form.MOD_DATE) != 0)
-                {
-                    USER_MST _user = db.USER_MST.Find(_custMst.MOD_UID);
-                    ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format( Resource.RGlobal.CustMstModified, _custMst.CUST_NAME, _user.USER_NAME));
+                if (DateTime.Compare((DateTime) _custMst.MOD_DATE, form.MOD_DATE) != 0)
+                { 
+                    ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _custMst.CUST_NAME, _custMst.MOD_USER_NAME));
                     return View(form);
                 }
                 ComplementUtil.complement(form, _custMst);
                 _custMst.MOD_DATE = DateTime.Now;
-                _custMst.MOD_UID = _operator.UserId;
+                _custMst.MOD_USER_NAME = _operator.UserName;
                 db.Entry(_custMst).State = EntityState.Modified;
                 db.SaveChanges();
                 ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
