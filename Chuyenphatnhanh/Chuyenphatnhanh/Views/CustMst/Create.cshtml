@@ -4,9 +4,7 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Create</h2>
-
+ 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -40,28 +38,19 @@
                 @Html.ValidationMessageFor(model => model.DEFAULT_ADDRESS, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.DEFAULT_COUNTRY, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DEFAULT_DISTRICT_ID, "DEFAULT_DISTRICT_ID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DEFAULT_COUNTRY, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DEFAULT_COUNTRY, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.DEFAULT_DISTRICT_ID, (SelectList)ViewBag.DEFAULT_DISTRICT_ID, string.Empty, htmlAttributes: new { @class = "form-control", @onChange = "DistrictChange(this,'DEFAULT_WARD_ID')" })
+                @Html.ValidationMessageFor(model => model.DEFAULT_DISTRICT_ID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DEFAULT_PROVINCE, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DEFAULT_WARD_ID, "DEFAULT_WARD_ID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DEFAULT_PROVINCE, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DEFAULT_PROVINCE, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DEFAULT_DISTRICT, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DEFAULT_DISTRICT, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DEFAULT_DISTRICT, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.DEFAULT_WARD_ID, (SelectList)ViewBag.DEFAULT_WARD_ID, string.Empty, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DEFAULT_WARD_ID, "", new { @class = "text-danger" })
             </div>
         </div>
 

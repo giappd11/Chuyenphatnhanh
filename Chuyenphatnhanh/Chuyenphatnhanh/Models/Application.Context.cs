@@ -31,13 +31,14 @@ namespace Chuyenphatnhanh.Models
         public virtual DbSet<BILL_LOG_TBL> BILL_LOG_TBL { get; set; }
         public virtual DbSet<BILL_TBL> BILL_TBL { get; set; }
         public virtual DbSet<BRANCH_MST> BRANCH_MST { get; set; }
-        public virtual DbSet<COMMON_CODE> COMMON_CODE { get; set; }
         public virtual DbSet<CUST_MST> CUST_MST { get; set; }
+        public virtual DbSet<DISTRICT_MST> DISTRICT_MST { get; set; }
         public virtual DbSet<ROLE_MST> ROLE_MST { get; set; }
+        public virtual DbSet<SEC_ROLE_MST> SEC_ROLE_MST { get; set; }
+        public virtual DbSet<TARIFF_MST> TARIFF_MST { get; set; }
         public virtual DbSet<USER_CONFIG_MST> USER_CONFIG_MST { get; set; }
         public virtual DbSet<USER_MST> USER_MST { get; set; }
-        public virtual DbSet<TARIFF_MST> TARIFF_MST { get; set; }
-        public virtual DbSet<SEC_ROLE_MST> SEC_ROLE_MST { get; set; }
+        public virtual DbSet<WARD_MST> WARD_MST { get; set; }
     
         public virtual int GetNextSequence(string sequenceName, ObjectParameter nextSeq)
         {

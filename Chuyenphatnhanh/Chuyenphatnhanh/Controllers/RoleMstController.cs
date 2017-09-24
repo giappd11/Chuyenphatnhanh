@@ -11,7 +11,9 @@ using Chuyenphatnhanh.Models;
 namespace Chuyenphatnhanh.Controllers
 {
     public class RoleMstController : BaseController
-    { 
+    {
+        private DBConnection db = new DBConnection();
+
         // GET: RoleMst
         public ActionResult Index()
         {

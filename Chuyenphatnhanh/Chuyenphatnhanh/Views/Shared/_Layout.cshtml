@@ -57,32 +57,56 @@
             </div>
             <div class="menu">
                 <ul>
-
                     <li id="MenuViewByStatus" class="pst-tootip active">
-                        <a href="" ng-click="leftmenu.openViewByStatus()">
+                        <a href="/Bill"  >
                             <span class="icon"><i class="fa fa-list-alt"></i></span>
                             Quản lý đơn hàng
                         </a>
                     </li>
                     <li class=" pst-tootip">
-                        <a href="" ng-click="leftmenu.openSearchOrder()"><span class="icon"><i class="fa fa-search"></i></span>Tìm kiếm đơn hàng</a>
-                        <!-- ngIf: (leftmenu.currentID == 5) -->
+                        <a href="/Bill" ><span class="icon"><i class="fa fa-search"></i></span>Tìm kiếm đơn hàng</a> 
                     </li>
                      
-                    <li class="pst-tootip">
-                        <a href="" target="_blank"><span class="icon"><i class="fa fa-home"></i></span>Điểm gửi hàng</a>
-                        <!-- ngIf: (leftmenu.currentID == 7) -->
+                    <li class=" pst-tootip">
+                        <a href="/BranchMst/Index">
+                            <span class="icon"><i class="fa fa-info-circle"></i></span>
+                            @Chuyenphatnhanh.Content.Texts.RGlobal.F_Branch_manager
+                        </a>
                     </li>
                     <li class=" pst-tootip">
-                        <a href="">
+                        <a href="/UserMst/Index">
                             <span class="icon"><i class="fa fa-info-circle"></i></span>
                             @Chuyenphatnhanh.Content.Texts.RGlobal.F_UserMst_manager
                         </a>
                     </li>
                     <li class=" pst-tootip">
-                        <a href="">
+                        <a href="/CustMst/Index">
                             <span class="icon"><i class="fa fa-info-circle"></i></span>
                             @Chuyenphatnhanh.Content.Texts.RGlobal.F_CustMstManager
+                        </a>
+                    </li> 
+                    <li class=" pst-tootip">
+                        <a href="/DistrictMst/Index">
+                            <span class="icon"><i class="fa fa-info-circle"></i></span>
+                            @Chuyenphatnhanh.Content.Texts.RGlobal.F_DistrictMst
+                        </a>
+                    </li>
+                    <li class=" pst-tootip">
+                        <a href="/WardMst/Index">
+                            <span class="icon"><i class="fa fa-info-circle"></i></span>
+                            @Chuyenphatnhanh.Content.Texts.RGlobal.F_WardMst
+                        </a>
+                    </li>
+                    <li class=" pst-tootip">
+                        <a href="/SecRoleMst/Index">
+                            <span class="icon"><i class="fa fa-info-circle"></i></span>
+                            @Chuyenphatnhanh.Content.Texts.RGlobal.F_SecRoleMst
+                        </a>
+                    </li>
+                    <li class=" pst-tootip">
+                        <a href="/RoleMst/Index">
+                            <span class="icon"><i class="fa fa-info-circle"></i></span>
+                            @Chuyenphatnhanh.Content.Texts.RGlobal.F_RoleMst
                         </a>
                     </li>
                     <li class=" pst-tootip">
@@ -114,7 +138,6 @@
                     <div class="menu-button pull-right"><i class="fa fa-align-right"></i></div>
                     <div id="remindful" class="pull-right Roboto-Medium" onclick="callGAScript()">
                         <i class="fa fa-bell"></i>
-                        <!-- ngIf: quickSearch.haveNewNotify -->
                     </div>
                     <div class="search pull-right">
                         <div class="hip-search">
@@ -131,6 +154,7 @@
             </div> 
             <div class="h-content ct-donhang">
                 <div class="container">
+                    @ViewBag.Title
                     @ViewData[Chuyenphatnhanh.Util.Contant.MESSAGESUCCESS]
                     @Html.ValidationMessageFor(modle => modle.MessageError, "", new { @class = "text-danger" })
                     @RenderBody()
@@ -140,6 +164,7 @@
         </div>
     </div>
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script>
         jQuery(".menu-btnmain").click(function () {

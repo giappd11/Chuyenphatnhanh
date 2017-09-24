@@ -14,7 +14,8 @@ namespace Chuyenphatnhanh.Util
         public static string BILLLOGTBL_SEQ     = "BillLogTbl_seq";
         public static string BILLTBL_SEQ        = "BillTbl_seq";
         public static string BRANCHMST_SEQ      = "BranchMst_seq";
-        public static string COMMONCODE_SEQ     = "CommonCode_seq";
+        public static string USERCONFIGMST_SEQ  = "UserConfigMst_seq";
+        public static string SECROLEMST_SEQ     = "SecRoleMst_seq";
         public static string CUSTMST_SEQ        = "CustMst_seq";
         public static string PRODUCTMST_SEQ     = "ProductMst_seq";
         public static string USERMST_SEQ        = "UserMst_seq";
@@ -26,5 +27,11 @@ namespace Chuyenphatnhanh.Util
         public static string CUSTMST_PREFIX     = "CU";
         public static string PRODUCTMST_PREFIX  = "PR";
         public static string USERMST_PREFIX     = "US";
+        public static string SECROLEMST_PREFIX  = "SE";
+
+        public static string MODE_DELETE = "DELETE";
+        public static string MODE_UPDATE = "UPDATE";
+        public static string MODE_CREATE = "CREATE";
+
     }
 }

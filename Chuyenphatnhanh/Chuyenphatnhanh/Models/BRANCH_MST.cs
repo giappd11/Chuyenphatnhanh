@@ -28,12 +28,11 @@ namespace Chuyenphatnhanh.Models
         public string BRANCH_ID { get; set; }
         public string BRANCH_NAME { get; set; }
         public string ADDRESS { get; set; }
-        public string COUNTRY { get; set; }
-        public string PROVINCE { get; set; }
-        public string DISTRICT { get; set; }
+        public string WARD_ID { get; set; }
         public Nullable<decimal> LATITUDE { get; set; }
         public Nullable<decimal> LONGITUDE { get; set; }
     
+        public virtual WARD_MST WARD_MST { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USER_CONFIG_MST> USER_CONFIG_MST { get; set; }
     }

@@ -17,8 +17,8 @@ namespace Chuyenphatnhanh.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ROLE_MST()
         {
-            this.USER_CONFIG_MST = new HashSet<USER_CONFIG_MST>();
             this.SEC_ROLE_MST = new HashSet<SEC_ROLE_MST>();
+            this.USER_CONFIG_MST = new HashSet<USER_CONFIG_MST>();
         }
     
         public Nullable<bool> DELETE_FLAG { get; set; }
@@ -31,8 +31,8 @@ namespace Chuyenphatnhanh.Models
         public string DESCRIPTION { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USER_CONFIG_MST> USER_CONFIG_MST { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SEC_ROLE_MST> SEC_ROLE_MST { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<USER_CONFIG_MST> USER_CONFIG_MST { get; set; }
     }
 }

@@ -124,6 +124,15 @@ namespace Chuyenphatnhanh.Content.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thêm thông tin khách hàng thành công.
+        /// </summary>
+        public static string CreateCustMstSuccess {
+            get {
+                return ResourceManager.GetString("CreateCustMstSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Khách hàng {0} đã được sửa bởi {1}.
         /// </summary>
         public static string CustMstModified {
@@ -147,6 +156,15 @@ namespace Chuyenphatnhanh.Content.Texts {
         public static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đã xóa.
+        /// </summary>
+        public static string DELETE_FLAG {
+            get {
+                return ResourceManager.GetString("DELETE_FLAG", resourceCulture);
             }
         }
         
@@ -259,6 +277,33 @@ namespace Chuyenphatnhanh.Content.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quản lý quận huyện.
+        /// </summary>
+        public static string F_DistrictMst {
+            get {
+                return ResourceManager.GetString("F_DistrictMst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quản lý Quyền truy cập.
+        /// </summary>
+        public static string F_RoleMst {
+            get {
+                return ResourceManager.GetString("F_RoleMst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sec Role Master.
+        /// </summary>
+        public static string F_SecRoleMst {
+            get {
+                return ResourceManager.GetString("F_SecRoleMst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thêm nhân viên.
         /// </summary>
         public static string F_UserMst_add {
@@ -300,6 +345,15 @@ namespace Chuyenphatnhanh.Content.Texts {
         public static string F_UserMst_xóa {
             get {
                 return ResourceManager.GetString("F_UserMst_xóa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quản lý xã phường.
+        /// </summary>
+        public static string F_WardMst {
+            get {
+                return ResourceManager.GetString("F_WardMst", resourceCulture);
             }
         }
         

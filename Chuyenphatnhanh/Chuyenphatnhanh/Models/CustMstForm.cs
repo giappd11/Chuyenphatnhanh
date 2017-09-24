@@ -23,12 +23,14 @@ namespace Chuyenphatnhanh.Models
         [Required(ErrorMessageResourceName = "RequiredField",
         ErrorMessageResourceType = typeof(RGlobal))]
         [Display(Name = "Address", ResourceType = typeof(RGlobal))]
-        public string ADDRESS { get; set; }
-        
         public string DEFAULT_ADDRESS { get; set; }
-        public string DEFAULT_COUNTRY { get; set; }
-        public string DEFAULT_PROVINCE { get; set; }
-        public string DEFAULT_DISTRICT { get; set; }
+        
+        public string DEFAULT_DISTRICT_ID { get; set; }
+        public string DEFAULT_WARD_ID { get; set; } 
+         
+
+        public string Display_Address { get; set; }
+         
 
     }
 }

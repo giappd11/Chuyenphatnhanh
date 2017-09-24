@@ -13,12 +13,34 @@ using Resource = Chuyenphatnhanh.Content.Texts;
 namespace Chuyenphatnhanh.Controllers
 {
     public class CustMstController : BaseController
-    { 
+    {
 
         // GET: CustMst
         public ActionResult Index()
         {
-            return View(db.CUST_MST.ToList());
+            List<CUST_MST> _list = db.CUST_MST.ToList();
+            List<CustMstForm> _custList = new List<CustMstForm>();
+            CustMstForm _custommer;
+            DISTRICT_MST _districtMst = null;
+            WARD_MST _wardMst = null;
+            foreach (CUST_MST _cust in _list)
+            {
+                _wardMst = null;
+                _districtMst = null;
+                _custommer = new CustMstForm();
+                ComplementUtil.complement(_cust, _custommer);
+                if (_custommer.DEFAULT_WARD_ID != null) { 
+                     _wardMst = db.WARD_MST.Where(u => u.WARD_ID == _custommer.DEFAULT_WARD_ID).FirstOrDefault();
+                }
+                if (_wardMst != null) { 
+                    _districtMst = db.DISTRICT_MST.Where(u => u.DISTRICT_ID == _wardMst.DISTRICT_ID).FirstOrDefault();
+                }
+                if (_districtMst != null) { 
+                    _custommer.Display_Address = _custommer.DEFAULT_ADDRESS + ", " + _wardMst.WARD_NAME + ", " + _districtMst.DISTRICT_NAME;
+                }
+                _custList.Add(_custommer);
+            }
+            return View(_custList);
         }
 
         // GET: CustMst/Details/5
@@ -39,6 +61,8 @@ namespace Chuyenphatnhanh.Controllers
         // GET: CustMst/Create
         public ActionResult Create()
         {
+            ViewBag.DEFAULT_DISTRICT_ID = new SelectList(db.DISTRICT_MST.OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+            ViewBag.DEFAULT_WARD_ID = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
             return View();
         }
 
@@ -53,7 +77,7 @@ namespace Chuyenphatnhanh.Controllers
             if (ModelState.IsValid)
             {
                 ComplementUtil.complement(form, _custMst);
-                _custMst.DELETE_FLAG = false; 
+                _custMst.DELETE_FLAG = false;
                 _custMst.MOD_DATE = DateTime.Now;
                 _custMst.MOD_USER_NAME = _operator.UserName;
                 _custMst.REG_DATE = DateTime.Now;
@@ -61,7 +85,16 @@ namespace Chuyenphatnhanh.Controllers
                 _custMst.CUST_ID = GenerateID.GennerateID(db, Contant.CUSTMST_SEQ, Contant.CUSTMST_PREFIX);
                 db.CUST_MST.Add(_custMst);
                 db.SaveChanges();
-                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
+                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+            }
+            ViewBag.DEFAULT_DISTRICT_ID = new SelectList(db.DISTRICT_MST.OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+            if (form.DEFAULT_DISTRICT_ID != null)
+            {
+                ViewBag.DEFAULT_WARD_ID = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == form.DEFAULT_DISTRICT_ID), "WARD_ID", "WARD_NAME");
+            }
+            else
+            {
+                ViewBag.DEFAULT_WARD_ID = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
             }
             return View(form);
         }
@@ -78,8 +111,22 @@ namespace Chuyenphatnhanh.Controllers
             {
                 return HttpNotFound();
             }
+            WARD_MST _ward = db.WARD_MST.Where(u => u.WARD_ID == cUST_MST.DEFAULT_WARD_ID).FirstOrDefault();
+            ViewBag.DEFAULT_DISTRICT_ID = new SelectList(db.DISTRICT_MST.OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+            if (_ward != null)
+            {
+                ViewBag.DEFAULT_WARD_ID = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == _ward.DISTRICT_ID), "WARD_ID", "WARD_NAME");
+            }
+            else
+            {
+                ViewBag.DEFAULT_WARD_ID = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
+            }
             CustMstForm _form = new CustMstForm();
             ComplementUtil.complement(cUST_MST, _form);
+            if (_form.DEFAULT_WARD_ID != null)
+            {
+                _form.DEFAULT_DISTRICT_ID = cUST_MST.WARD_MST.DISTRICT_ID;
+            }
             return View(_form);
         }
 
@@ -90,13 +137,15 @@ namespace Chuyenphatnhanh.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CustMstForm form)
         {
+            ViewBag.DEFAULT_DISTRICT_ID = new SelectList(db.DISTRICT_MST.OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+            ViewBag.DEFAULT_WARD_ID = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == form.DEFAULT_DISTRICT_ID), "WARD_ID", "WARD_NAME");
             if (ModelState.IsValid)
             {
                 CUST_MST _custMst = new CUST_MST();
                 var _operator = (Operator)Session[Contant.SESSIONLOGED];
                 _custMst = db.CUST_MST.Where(u => u.CUST_ID == form.CUST_ID).FirstOrDefault();
-                if (DateTime.Compare((DateTime) _custMst.MOD_DATE, form.MOD_DATE) != 0)
-                { 
+                if (DateTime.Compare((DateTime)_custMst.MOD_DATE, form.MOD_DATE) != 0)
+                {
                     ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _custMst.CUST_NAME, _custMst.MOD_USER_NAME));
                     return View(form);
                 }
@@ -106,8 +155,8 @@ namespace Chuyenphatnhanh.Controllers
                 db.Entry(_custMst).State = EntityState.Modified;
                 db.SaveChanges();
                 ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
-                return View(form);
             }
+
             return View(form);
         }
 
@@ -119,11 +168,13 @@ namespace Chuyenphatnhanh.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             CUST_MST cUST_MST = db.CUST_MST.Find(id);
+            CustMstForm _form = new CustMstForm();
+            ComplementUtil.complement(cUST_MST, _form);
             if (cUST_MST == null)
             {
                 return HttpNotFound();
             }
-            return View(cUST_MST);
+            return View(_form);
         }
 
         // POST: CustMst/Delete/5

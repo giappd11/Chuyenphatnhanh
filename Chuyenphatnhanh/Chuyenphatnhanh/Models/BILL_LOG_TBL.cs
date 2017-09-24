@@ -25,20 +25,14 @@ namespace Chuyenphatnhanh.Models
         public string CUST_FROM_ID { get; set; }
         public string CUST_TO_ID { get; set; }
         public string STATUS { get; set; }
-        public string COUNTRY_FROM { get; set; }
-        public string PROVINCE_FROM { get; set; }
-        public string DISTRICT_FROM { get; set; }
+        public string WARD_ID_FROM { get; set; }
         public string ADDRESS_FROM { get; set; }
-        public string COUNTRY_TO { get; set; }
-        public string PROVINCE_TO { get; set; }
-        public string DISTRICT_TO { get; set; }
+        public string WARD_ID_TO { get; set; }
         public string ADDRESS_TO { get; set; }
-        public string COUNTRY_CURRENT { get; set; }
-        public string PROVINCE_CURRENT { get; set; }
-        public string DISTRICT_CURRENT { get; set; }
+        public string WARD_ID_CURRENT { get; set; }
         public string ADDRESS_CURRENT { get; set; }
+        public string BRANCH_ID_CURRENT { get; set; }
     
-        public virtual BILL_HDR_TBL BILL_HDR_TBL { get; set; }
         public virtual CUST_MST CUST_MST { get; set; }
         public virtual CUST_MST CUST_MST1 { get; set; }
     }

@@ -53,7 +53,10 @@ namespace Chuyenphatnhanh.Controllers
                     _operator.ManagerTime = DateTime.Now;
                     _operator.UserId = _user.USER_ID;
                     _operator.UserName = _user.USER_NAME;
-                    _operator.Role = _user.USER_CONFIG_MST.ROLE_ID;
+                    if (_user.USER_CONFIG_MST != null) { 
+                        _operator.Role = _user.USER_CONFIG_MST.ROLE_ID;
+                        _operator.BranchID = _user.USER_CONFIG_MST.BRANCH_ID;
+                    }
                     Session[Contant.SESSIONLOGED] = _operator;
                     return RedirectToAction("Index", "CustMst");
 

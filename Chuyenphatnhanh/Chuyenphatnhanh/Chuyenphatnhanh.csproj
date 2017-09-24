@@ -162,14 +162,15 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BillController.cs" />
     <Compile Include="Controllers\BranchMstController.cs" />
-    <Compile Include="Controllers\CommonCodeController.cs" />
     <Compile Include="Controllers\CustMstController.cs" />
+    <Compile Include="Controllers\DistrictMstController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RoleMstController.cs" />
+    <Compile Include="Controllers\SecRoleMstController.cs" />
     <Compile Include="Controllers\TariffMstController.cs" />
-    <Compile Include="Controllers\UserConfigMstController.cs" />
-    <Compile Include="Controllers\UserMstController.cs" />
+    <Compile Include="Controllers\UserMsttroller.cs" />
+    <Compile Include="Controllers\WardMstController.cs" />
     <Compile Include="Extensions\UrlHelperExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -190,6 +191,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Application.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\BillHdrTblForm.cs" />
+    <Compile Include="Models\BillTblForm.cs" />
     <Compile Include="Models\BILL_HDR_TBL.cs">
       <DependentUpon>Application.tt</DependentUpon>
     </Compile>
@@ -199,18 +202,23 @@
     <Compile Include="Models\BILL_TBL.cs">
       <DependentUpon>Application.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BranchMstForm.cs" />
     <Compile Include="Models\BRANCH_MST.cs">
-      <DependentUpon>Application.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\COMMON_CODE.cs">
       <DependentUpon>Application.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CustMstForm.cs" />
     <Compile Include="Models\CUST_MST.cs">
       <DependentUpon>Application.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DistrictMstForm.cs" />
+    <Compile Include="Models\DISTRICT_MST.cs">
+      <DependentUpon>Application.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\FormBase.cs" />
     <Compile Include="Models\LoginForm.cs" />
+    <Compile Include="Models\RoleMstForm.cs" />
+    <Compile Include="Models\SecRoleMstForm.cs" />
+    <Compile Include="Models\SelectModel.cs" />
     <Compile Include="Models\Operator.cs" />
     <Compile Include="Models\ROLE_MST.cs">
       <DependentUpon>Application.tt</DependentUpon>
@@ -224,13 +232,20 @@
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>Application.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TariffMstForm.cs" />
     <Compile Include="Models\TARIFF_MST.cs">
       <DependentUpon>Application.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserConfigMstForm.cs" />
+    <Compile Include="Models\UserMstForm.cs" />
     <Compile Include="Models\USER_CONFIG_MST.cs">
       <DependentUpon>Application.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\USER_MST.cs">
+      <DependentUpon>Application.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WardMstForm.cs" />
+    <Compile Include="Models\WARD_MST.cs">
       <DependentUpon>Application.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -241,6 +256,7 @@
     <Compile Include="Util\MultiLanguageViewEngine.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\aplication.js" />
     <Content Include="Content\custom.css" />
     <Content Include="Content\fonts\Roboto-Bold.svg" />
     <Content Include="Content\fonts\Roboto-Light.svg" />
@@ -381,6 +397,26 @@
     <Content Include="Views\Bill\Index.cshtml" />
     <Content Include="Views\Error\ErrorRole.cshtml" />
     <Content Include="Views\Shared\_LayoutList.cshtml" />
+    <Content Include="Views\DistrictMst\Create.cshtml" />
+    <Content Include="Views\DistrictMst\Delete.cshtml" />
+    <Content Include="Views\DistrictMst\Details.cshtml" />
+    <Content Include="Views\DistrictMst\Edit.cshtml" />
+    <Content Include="Views\DistrictMst\Index.cshtml" />
+    <Content Include="Views\SecRoleMst\Create.cshtml" />
+    <Content Include="Views\SecRoleMst\Delete.cshtml" />
+    <Content Include="Views\SecRoleMst\Details.cshtml" />
+    <Content Include="Views\SecRoleMst\Edit.cshtml" />
+    <Content Include="Views\SecRoleMst\Index.cshtml" />
+    <Content Include="Views\UserMsttroller\Create.cshtml" />
+    <Content Include="Views\UserMsttroller\Delete.cshtml" />
+    <Content Include="Views\UserMsttroller\Details.cshtml" />
+    <Content Include="Views\UserMsttroller\Edit.cshtml" />
+    <Content Include="Views\UserMsttroller\Index.cshtml" />
+    <Content Include="Views\WardMst\Create.cshtml" />
+    <Content Include="Views\WardMst\Delete.cshtml" />
+    <Content Include="Views\WardMst\Details.cshtml" />
+    <Content Include="Views\WardMst\Edit.cshtml" />
+    <Content Include="Views\WardMst\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

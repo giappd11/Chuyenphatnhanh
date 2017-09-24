@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Chuyenphatnhanh.Models.WARD_MST>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layoutlist.cshtml";
+}
+ 
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DELETE_FLAG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REG_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MOD_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REG_USER_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MOD_USER_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WARD_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DISTRICT_MST.REG_USER_NAME)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DELETE_FLAG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REG_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MOD_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REG_USER_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MOD_USER_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WARD_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DISTRICT_MST.REG_USER_NAME)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.WARD_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WARD_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WARD_ID })
+        </td>
+    </tr>
+}
+
+</table>

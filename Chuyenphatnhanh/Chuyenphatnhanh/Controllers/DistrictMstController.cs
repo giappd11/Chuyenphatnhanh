@@ -10,105 +10,107 @@ using Chuyenphatnhanh.Models;
 
 namespace Chuyenphatnhanh.Controllers
 {
-    public class CommonCodeController : BaseController
-    { 
-        // GET: CommonCode
+    public class DistrictMstController : BaseController
+    {
+        private DBConnection db = new DBConnection();
+
+        // GET: DistrictMst
         public ActionResult Index()
         {
-            return View(db.COMMON_CODE.ToList());
+            return View(db.DISTRICT_MST.ToList());
         }
 
-        // GET: CommonCode/Details/5
+        // GET: DistrictMst/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            COMMON_CODE cOMMON_CODE = db.COMMON_CODE.Find(id);
-            if (cOMMON_CODE == null)
+            DISTRICT_MST dISTRICT_MST = db.DISTRICT_MST.Find(id);
+            if (dISTRICT_MST == null)
             {
                 return HttpNotFound();
             }
-            return View(cOMMON_CODE);
+            return View(dISTRICT_MST);
         }
 
-        // GET: CommonCode/Create
+        // GET: DistrictMst/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CommonCode/Create
+        // POST: DistrictMst/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DELETE_FLAG,REG_DATE,MOD_DATE,REG_USER_NAME,MOD_USER_NAME,COMMON_CODE_ID,COMMON_CODE1,COMMON_CODE_VALUE,COMMON_CODE_DESC,PARENT_CODE_VALUE")] COMMON_CODE cOMMON_CODE)
+        public ActionResult Create([Bind(Include = "DELETE_FLAG,REG_DATE,MOD_DATE,REG_USER_NAME,MOD_USER_NAME,DISTRICT_ID,DISTRICT_NAME")] DISTRICT_MST dISTRICT_MST)
         {
             if (ModelState.IsValid)
             {
-                db.COMMON_CODE.Add(cOMMON_CODE);
+                db.DISTRICT_MST.Add(dISTRICT_MST);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(cOMMON_CODE);
+            return View(dISTRICT_MST);
         }
 
-        // GET: CommonCode/Edit/5
+        // GET: DistrictMst/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            COMMON_CODE cOMMON_CODE = db.COMMON_CODE.Find(id);
-            if (cOMMON_CODE == null)
+            DISTRICT_MST dISTRICT_MST = db.DISTRICT_MST.Find(id);
+            if (dISTRICT_MST == null)
             {
                 return HttpNotFound();
             }
-            return View(cOMMON_CODE);
+            return View(dISTRICT_MST);
         }
 
-        // POST: CommonCode/Edit/5
+        // POST: DistrictMst/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DELETE_FLAG,REG_DATE,MOD_DATE,REG_USER_NAME,MOD_USER_NAME,COMMON_CODE_ID,COMMON_CODE1,COMMON_CODE_VALUE,COMMON_CODE_DESC,PARENT_CODE_VALUE")] COMMON_CODE cOMMON_CODE)
+        public ActionResult Edit([Bind(Include = "DELETE_FLAG,REG_DATE,MOD_DATE,REG_USER_NAME,MOD_USER_NAME,DISTRICT_ID,DISTRICT_NAME")] DISTRICT_MST dISTRICT_MST)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cOMMON_CODE).State = EntityState.Modified;
+                db.Entry(dISTRICT_MST).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(cOMMON_CODE);
+            return View(dISTRICT_MST);
         }
 
-        // GET: CommonCode/Delete/5
+        // GET: DistrictMst/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            COMMON_CODE cOMMON_CODE = db.COMMON_CODE.Find(id);
-            if (cOMMON_CODE == null)
+            DISTRICT_MST dISTRICT_MST = db.DISTRICT_MST.Find(id);
+            if (dISTRICT_MST == null)
             {
                 return HttpNotFound();
             }
-            return View(cOMMON_CODE);
+            return View(dISTRICT_MST);
         }
 
-        // POST: CommonCode/Delete/5
+        // POST: DistrictMst/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            COMMON_CODE cOMMON_CODE = db.COMMON_CODE.Find(id);
-            db.COMMON_CODE.Remove(cOMMON_CODE);
+            DISTRICT_MST dISTRICT_MST = db.DISTRICT_MST.Find(id);
+            db.DISTRICT_MST.Remove(dISTRICT_MST);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

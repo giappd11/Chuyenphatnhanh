@@ -11,13 +11,26 @@ namespace Chuyenphatnhanh.Controllers
     {
         private static string _cookieLangName = "Language";
         protected DBConnection db = new DBConnection();
-        protected Operator _operator = new Operator();
+        protected Operator _operator;
+        protected override void OnAuthorization(AuthorizationContext context)
+        {
+            _operator = (Operator)Session[Contant.SESSIONLOGED]; 
+            if (_operator == null)
+            {
+                var url = new UrlHelper(context.RequestContext);
+                var logonUrl = url.Action("Login", "Home" );
+                context.Result = new RedirectResult(logonUrl);
+
+                return;
+            } 
+
+        }
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             string cultureOnCookie = GetCultureOnCookie(filterContext.HttpContext.Request);
+            
             string cultureOnURL = filterContext.RouteData.Values.ContainsKey("lang") ? filterContext.RouteData.Values["lang"].ToString() : GlobalHelper.DefaultCulture;
             string culture = (cultureOnCookie == string.Empty) ? (filterContext.RouteData.Values["lang"].ToString()) : cultureOnCookie;
-            var _operator = (Operator)Session[Contant.SESSIONLOGED]; 
             string _value = filterContext.RouteData.Values["controller"].ToString() + "." + filterContext.RouteData.Values["action"].ToString();
             if (_operator != null)
             {
@@ -27,11 +40,6 @@ namespace Chuyenphatnhanh.Controllers
                     filterContext.HttpContext.Response.RedirectToRoute("LocalizedDefault", new { lang = culture, controller = "Error", action = "ErrorRole" });
                     return;
                 }
-            }
-            if (_operator == null)
-            {
-                filterContext.HttpContext.Response.RedirectToRoute("LocalizedDefault", new { lang = culture, controller = "Home", action = "Login" });
-                return;
             }
             if (cultureOnURL != culture)
             {

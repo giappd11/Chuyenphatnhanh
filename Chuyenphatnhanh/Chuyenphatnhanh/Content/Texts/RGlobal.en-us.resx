@@ -139,52 +139,52 @@
     <value>Customer Name</value>
   </data>
   <data name="EditCustMstSuccess" xml:space="preserve">
-    <value>Sửa thông tin khách hàng thành công</value>
+    <value>Change Customer success</value>
   </data>
   <data name="ErrorLogin" xml:space="preserve">
     <value>Wrong username or password</value>
   </data>
   <data name="F_Branch_add" xml:space="preserve">
-    <value>Thêm cửa hàng</value>
+    <value>Add Branch</value>
   </data>
   <data name="F_Branch_delete" xml:space="preserve">
-    <value>Xóa thông tin cửa hàng</value>
+    <value>Delete Branch</value>
   </data>
   <data name="F_Branch_edit" xml:space="preserve">
-    <value>Sửa thông tin cửa hàng</value>
+    <value>Edit Branch</value>
   </data>
   <data name="F_Branch_manager" xml:space="preserve">
-    <value>Quản lý cửa hàng</value>
+    <value>Branch Manager</value>
   </data>
   <data name="F_CustMstManager" xml:space="preserve">
-    <value>Quản lý khách hàng</value>
+    <value>Customer Manager</value>
   </data>
   <data name="F_CustMst_add" xml:space="preserve">
-    <value>Thêm khách hàng</value>
+    <value>Add Customer</value>
   </data>
   <data name="F_CustMst_delete" xml:space="preserve">
-    <value>Xóa khách hàng</value>
+    <value>Delete Customer</value>
   </data>
   <data name="F_CustMst_edit" xml:space="preserve">
-    <value>Sửa khách hàng</value>
+    <value>Edit Customer</value>
   </data>
   <data name="F_CustMst_search" xml:space="preserve">
-    <value>Tìm kiếm khách hàng</value>
+    <value>Search Customer</value>
   </data>
   <data name="F_UserMst_add" xml:space="preserve">
-    <value>Thêm nhân viên</value>
+    <value>Add Staff</value>
   </data>
   <data name="F_UserMst_edit" xml:space="preserve">
-    <value>Sửa nhân viên</value>
+    <value>Edit Staff</value>
   </data>
   <data name="F_UserMst_manager" xml:space="preserve">
-    <value>Quản lý nhân viên</value>
+    <value>Staff Manager</value>
   </data>
   <data name="F_UserMst_search" xml:space="preserve">
-    <value>Tìm kiếm nhân viên</value>
+    <value>Search Staff</value>
   </data>
   <data name="F_UserMst_xóa" xml:space="preserve">
-    <value>Xóa nhân viên</value>
+    <value>Delete Staff</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
@@ -227,5 +227,20 @@
   </data>
   <data name="AccountLoged" xml:space="preserve">
     <value>Account is loged. Please contact administrator.</value>
+  </data>
+  <data name="CreateCustMstSuccess" xml:space="preserve">
+    <value>Customer is created</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DELETE_FLAG" xml:space="preserve">
+    <value>Delete flag</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>Details</value>
   </data>
 </root>

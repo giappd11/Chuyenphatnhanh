@@ -3,9 +3,7 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>Edit</h2>
+} 
 
 @using (Html.BeginForm())
 {
@@ -84,26 +82,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.COUNTRY_FROM, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.WARD_ID_FROM, "WARD_ID_FROM", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.COUNTRY_FROM, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.COUNTRY_FROM, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PROVINCE_FROM, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PROVINCE_FROM, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PROVINCE_FROM, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DISTRICT_FROM, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DISTRICT_FROM, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DISTRICT_FROM, "", new { @class = "text-danger" })
+                @Html.DropDownList("WARD_ID_FROM", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.WARD_ID_FROM, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -116,26 +98,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.COUNTRY_TO, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.WARD_ID_TO, "WARD_ID_TO", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.COUNTRY_TO, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.COUNTRY_TO, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PROVINCE_TO, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PROVINCE_TO, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PROVINCE_TO, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DISTRICT_TO, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DISTRICT_TO, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DISTRICT_TO, "", new { @class = "text-danger" })
+                @Html.DropDownList("WARD_ID_TO", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.WARD_ID_TO, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -148,26 +114,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.COUNTRY_CURRENT, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.WARD_ID_CURRENT, "WARD_ID_CURRENT", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.COUNTRY_CURRENT, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.COUNTRY_CURRENT, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PROVINCE_CURRENT, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PROVINCE_CURRENT, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PROVINCE_CURRENT, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DISTRICT_CURRENT, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DISTRICT_CURRENT, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DISTRICT_CURRENT, "", new { @class = "text-danger" })
+                @Html.DropDownList("WARD_ID_CURRENT", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.WARD_ID_CURRENT, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -176,6 +126,14 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ADDRESS_CURRENT, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ADDRESS_CURRENT, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BRANCH_ID_CURRENT, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BRANCH_ID_CURRENT, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BRANCH_ID_CURRENT, "", new { @class = "text-danger" })
             </div>
         </div>
 

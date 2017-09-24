@@ -1,11 +1,9 @@
-﻿@model IEnumerable<Chuyenphatnhanh.Models.COMMON_CODE>
+﻿@model IEnumerable<Chuyenphatnhanh.Models.DISTRICT_MST>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>Index</h2>
+} 
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -28,16 +26,7 @@
             @Html.DisplayNameFor(model => model.MOD_USER_NAME)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.COMMON_CODE1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.COMMON_CODE_VALUE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.COMMON_CODE_DESC)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PARENT_CODE_VALUE)
+            @Html.DisplayNameFor(model => model.DISTRICT_NAME)
         </th>
         <th></th>
     </tr>
@@ -60,21 +49,12 @@
             @Html.DisplayFor(modelItem => item.MOD_USER_NAME)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.COMMON_CODE1)
+            @Html.DisplayFor(modelItem => item.DISTRICT_NAME)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.COMMON_CODE_VALUE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.COMMON_CODE_DESC)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PARENT_CODE_VALUE)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.COMMON_CODE_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.COMMON_CODE_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.COMMON_CODE_ID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.DISTRICT_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DISTRICT_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DISTRICT_ID })
         </td>
     </tr>
 }

@@ -1,0 +1,73 @@
+﻿@model Chuyenphatnhanh.Models.WARD_MST
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+<div>
+    <h4>WARD_MST</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DELETE_FLAG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DELETE_FLAG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REG_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REG_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOD_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOD_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REG_USER_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REG_USER_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOD_USER_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOD_USER_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WARD_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WARD_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DISTRICT_MST.REG_USER_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DISTRICT_MST.REG_USER_NAME)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WARD_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

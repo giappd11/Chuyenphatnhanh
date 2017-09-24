@@ -11,7 +11,8 @@ using Chuyenphatnhanh.Models;
 namespace Chuyenphatnhanh.Controllers
 {
     public class TariffMstController : BaseController
-    { 
+    {
+        private DBConnection db = new DBConnection();
 
         // GET: TariffMst
         public ActionResult Index()

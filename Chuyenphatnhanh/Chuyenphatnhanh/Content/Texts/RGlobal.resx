@@ -240,4 +240,22 @@
   <data name="AccountLoged" xml:space="preserve">
     <value>Tài khoản của bạn đã bị khóa. Vui lòng liên hệ người quản trị để được giải quyết.</value>
   </data>
+  <data name="CreateCustMstSuccess" xml:space="preserve">
+    <value>Thêm thông tin khách hàng thành công</value>
+  </data>
+  <data name="DELETE_FLAG" xml:space="preserve">
+    <value>Đã xóa</value>
+  </data>
+  <data name="F_DistrictMst" xml:space="preserve">
+    <value>Quản lý quận huyện</value>
+  </data>
+  <data name="F_RoleMst" xml:space="preserve">
+    <value>Quản lý Quyền truy cập</value>
+  </data>
+  <data name="F_SecRoleMst" xml:space="preserve">
+    <value>Sec Role Master</value>
+  </data>
+  <data name="F_WardMst" xml:space="preserve">
+    <value>Quản lý xã phường</value>
+  </data>
 </root>

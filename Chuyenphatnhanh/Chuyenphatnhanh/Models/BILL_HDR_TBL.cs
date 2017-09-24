@@ -17,7 +17,6 @@ namespace Chuyenphatnhanh.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public BILL_HDR_TBL()
         {
-            this.BILL_LOG_TBL = new HashSet<BILL_LOG_TBL>();
             this.BILL_TBL = new HashSet<BILL_TBL>();
         }
     
@@ -30,23 +29,19 @@ namespace Chuyenphatnhanh.Models
         public string CUST_FROM_ID { get; set; }
         public string CUST_TO_ID { get; set; }
         public string STATUS { get; set; }
-        public string COUNTRY_FROM { get; set; }
-        public string PROVINCE_FROM { get; set; }
-        public string DISTRICT_FROM { get; set; }
+        public string WARD_ID_FROM { get; set; }
         public string ADDRESS_FROM { get; set; }
-        public string COUNTRY_TO { get; set; }
-        public string PROVINCE_TO { get; set; }
-        public string DISTRICT_TO { get; set; }
+        public string WARD_ID_TO { get; set; }
         public string ADDRESS_TO { get; set; }
-        public string COUNTRY_CURRENT { get; set; }
-        public string PROVINCE_CURRENT { get; set; }
-        public string DISTRICT_CURRENT { get; set; }
+        public string WARD_ID_CURRENT { get; set; }
         public string ADDRESS_CURRENT { get; set; }
+        public string BRANCH_ID_CURRENT { get; set; }
     
         public virtual CUST_MST CUST_MST { get; set; }
         public virtual CUST_MST CUST_MST1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BILL_LOG_TBL> BILL_LOG_TBL { get; set; }
+        public virtual WARD_MST WARD_MST { get; set; }
+        public virtual WARD_MST WARD_MST1 { get; set; }
+        public virtual WARD_MST WARD_MST2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BILL_TBL> BILL_TBL { get; set; }
     }

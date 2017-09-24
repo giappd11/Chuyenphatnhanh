@@ -1,18 +1,16 @@
-﻿@model Chuyenphatnhanh.Models.COMMON_CODE
+﻿@model Chuyenphatnhanh.Models.WARD_MST
 
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Create</h2>
-
+ 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>COMMON_CODE</h4>
+        <h4>WARD_MST</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -58,42 +56,26 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.COMMON_CODE_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.WARD_ID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.COMMON_CODE_ID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.COMMON_CODE_ID, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.WARD_ID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.WARD_ID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.COMMON_CODE1, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.WARD_NAME, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.COMMON_CODE1, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.COMMON_CODE1, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.WARD_NAME, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.WARD_NAME, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.COMMON_CODE_VALUE, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DISTRICT_ID, "DISTRICT_ID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.COMMON_CODE_VALUE, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.COMMON_CODE_VALUE, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.COMMON_CODE_DESC, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.COMMON_CODE_DESC, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.COMMON_CODE_DESC, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PARENT_CODE_VALUE, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PARENT_CODE_VALUE, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PARENT_CODE_VALUE, "", new { @class = "text-danger" })
+                @Html.DropDownList("DISTRICT_ID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DISTRICT_ID, "", new { @class = "text-danger" })
             </div>
         </div>
 

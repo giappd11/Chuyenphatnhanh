@@ -12,17 +12,23 @@ namespace Chuyenphatnhanh.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class COMMON_CODE
+    public partial class DISTRICT_MST
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DISTRICT_MST()
+        {
+            this.WARD_MST = new HashSet<WARD_MST>();
+        }
+    
         public Nullable<bool> DELETE_FLAG { get; set; }
         public Nullable<System.DateTime> REG_DATE { get; set; }
         public Nullable<System.DateTime> MOD_DATE { get; set; }
         public string REG_USER_NAME { get; set; }
         public string MOD_USER_NAME { get; set; }
-        public string COMMON_CODE_ID { get; set; }
-        public string COMMON_CODE1 { get; set; }
-        public string COMMON_CODE_VALUE { get; set; }
-        public string COMMON_CODE_DESC { get; set; }
-        public string PARENT_CODE_VALUE { get; set; }
+        public string DISTRICT_ID { get; set; }
+        public string DISTRICT_NAME { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<WARD_MST> WARD_MST { get; set; }
     }
 }

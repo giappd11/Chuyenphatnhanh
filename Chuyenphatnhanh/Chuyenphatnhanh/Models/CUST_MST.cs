@@ -31,10 +31,8 @@ namespace Chuyenphatnhanh.Models
         public string CUST_ID { get; set; }
         public string CUST_NAME { get; set; }
         public string PHONE { get; set; }
+        public string DEFAULT_WARD_ID { get; set; }
         public string DEFAULT_ADDRESS { get; set; }
-        public string DEFAULT_COUNTRY { get; set; }
-        public string DEFAULT_PROVINCE { get; set; }
-        public string DEFAULT_DISTRICT { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BILL_HDR_TBL> BILL_HDR_TBL { get; set; }
@@ -44,5 +42,6 @@ namespace Chuyenphatnhanh.Models
         public virtual ICollection<BILL_LOG_TBL> BILL_LOG_TBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BILL_LOG_TBL> BILL_LOG_TBL1 { get; set; }
+        public virtual WARD_MST WARD_MST { get; set; }
     }
 }

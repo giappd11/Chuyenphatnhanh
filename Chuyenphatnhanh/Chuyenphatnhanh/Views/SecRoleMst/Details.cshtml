@@ -1,0 +1,73 @@
+﻿@model Chuyenphatnhanh.Models.SecRoleMstForm
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+<div>
+    <h4>SEC_ROLE_MST</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DELETE_FLAG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DELETE_FLAG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REG_USER_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REG_USER_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOD_USER_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOD_USER_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REG_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REG_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOD_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOD_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VALUE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VALUE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ROLE_MST.REG_USER_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ROLE_MST.REG_USER_NAME)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SEC_ROLE_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

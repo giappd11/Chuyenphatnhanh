@@ -2,11 +2,9 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutList.cshtml";
 }
-
-<h2>Index</h2>
-
+ 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -31,46 +29,31 @@
             @Html.DisplayNameFor(model => model.STATUS)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.COUNTRY_FROM)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PROVINCE_FROM)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DISTRICT_FROM)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.ADDRESS_FROM)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.COUNTRY_TO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PROVINCE_TO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DISTRICT_TO)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ADDRESS_TO)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.COUNTRY_CURRENT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PROVINCE_CURRENT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DISTRICT_CURRENT)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.ADDRESS_CURRENT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BRANCH_ID_CURRENT)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CUST_MST.REG_USER_NAME)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CUST_MST1.REG_USER_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WARD_MST.REG_USER_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WARD_MST1.REG_USER_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WARD_MST2.REG_USER_NAME)
         </th>
         <th></th>
     </tr>
@@ -96,46 +79,31 @@
             @Html.DisplayFor(modelItem => item.STATUS)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.COUNTRY_FROM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PROVINCE_FROM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DISTRICT_FROM)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.ADDRESS_FROM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.COUNTRY_TO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PROVINCE_TO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DISTRICT_TO)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ADDRESS_TO)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.COUNTRY_CURRENT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PROVINCE_CURRENT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DISTRICT_CURRENT)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.ADDRESS_CURRENT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BRANCH_ID_CURRENT)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CUST_MST.REG_USER_NAME)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CUST_MST1.REG_USER_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WARD_MST.REG_USER_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WARD_MST1.REG_USER_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WARD_MST2.REG_USER_NAME)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.BILL_HDR_ID }) |

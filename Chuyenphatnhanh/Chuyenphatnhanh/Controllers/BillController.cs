@@ -12,10 +12,12 @@ namespace Chuyenphatnhanh.Controllers
 {
     public class BillController : BaseController
     {
+        private DBConnection db = new DBConnection();
+
         // GET: Bill
         public ActionResult Index()
         {
-            var bILL_HDR_TBL = db.BILL_HDR_TBL.Include(b => b.CUST_MST).Include(b => b.CUST_MST1);
+            var bILL_HDR_TBL = db.BILL_HDR_TBL.Include(b => b.CUST_MST).Include(b => b.CUST_MST1).Include(b => b.WARD_MST).Include(b => b.WARD_MST1).Include(b => b.WARD_MST2);
             return View(bILL_HDR_TBL.ToList());
         }
 
@@ -39,6 +41,9 @@ namespace Chuyenphatnhanh.Controllers
         {
             ViewBag.CUST_FROM_ID = new SelectList(db.CUST_MST, "CUST_ID", "REG_USER_NAME");
             ViewBag.CUST_TO_ID = new SelectList(db.CUST_MST, "CUST_ID", "REG_USER_NAME");
+            ViewBag.WARD_ID_FROM = new SelectList(db.WARD_MST, "WARD_ID", "REG_USER_NAME");
+            ViewBag.WARD_ID_TO = new SelectList(db.WARD_MST, "WARD_ID", "REG_USER_NAME");
+            ViewBag.WARD_ID_CURRENT = new SelectList(db.WARD_MST, "WARD_ID", "REG_USER_NAME");
             return View();
         }
 
@@ -47,7 +52,7 @@ namespace Chuyenphatnhanh.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DELETE_FLAG,REG_USER_NAME,MOD_USER_NAME,REG_DATE,MOD_DATE,BILL_HDR_ID,CUST_FROM_ID,CUST_TO_ID,STATUS,COUNTRY_FROM,PROVINCE_FROM,DISTRICT_FROM,ADDRESS_FROM,COUNTRY_TO,PROVINCE_TO,DISTRICT_TO,ADDRESS_TO,COUNTRY_CURRENT,PROVINCE_CURRENT,DISTRICT_CURRENT,ADDRESS_CURRENT")] BILL_HDR_TBL bILL_HDR_TBL)
+        public ActionResult Create([Bind(Include = "DELETE_FLAG,REG_USER_NAME,MOD_USER_NAME,REG_DATE,MOD_DATE,BILL_HDR_ID,CUST_FROM_ID,CUST_TO_ID,STATUS,WARD_ID_FROM,ADDRESS_FROM,WARD_ID_TO,ADDRESS_TO,WARD_ID_CURRENT,ADDRESS_CURRENT,BRANCH_ID_CURRENT")] BILL_HDR_TBL bILL_HDR_TBL)
         {
             if (ModelState.IsValid)
             {
@@ -58,6 +63,9 @@ namespace Chuyenphatnhanh.Controllers
 
             ViewBag.CUST_FROM_ID = new SelectList(db.CUST_MST, "CUST_ID", "REG_USER_NAME", bILL_HDR_TBL.CUST_FROM_ID);
             ViewBag.CUST_TO_ID = new SelectList(db.CUST_MST, "CUST_ID", "REG_USER_NAME", bILL_HDR_TBL.CUST_TO_ID);
+            ViewBag.WARD_ID_FROM = new SelectList(db.WARD_MST, "WARD_ID", "REG_USER_NAME", bILL_HDR_TBL.WARD_ID_FROM);
+            ViewBag.WARD_ID_TO = new SelectList(db.WARD_MST, "WARD_ID", "REG_USER_NAME", bILL_HDR_TBL.WARD_ID_TO);
+            ViewBag.WARD_ID_CURRENT = new SelectList(db.WARD_MST, "WARD_ID", "REG_USER_NAME", bILL_HDR_TBL.WARD_ID_CURRENT);
             return View(bILL_HDR_TBL);
         }
 
@@ -75,6 +83,9 @@ namespace Chuyenphatnhanh.Controllers
             }
             ViewBag.CUST_FROM_ID = new SelectList(db.CUST_MST, "CUST_ID", "REG_USER_NAME", bILL_HDR_TBL.CUST_FROM_ID);
             ViewBag.CUST_TO_ID = new SelectList(db.CUST_MST, "CUST_ID", "REG_USER_NAME", bILL_HDR_TBL.CUST_TO_ID);
+            ViewBag.WARD_ID_FROM = new SelectList(db.WARD_MST, "WARD_ID", "REG_USER_NAME", bILL_HDR_TBL.WARD_ID_FROM);
+            ViewBag.WARD_ID_TO = new SelectList(db.WARD_MST, "WARD_ID", "REG_USER_NAME", bILL_HDR_TBL.WARD_ID_TO);
+            ViewBag.WARD_ID_CURRENT = new SelectList(db.WARD_MST, "WARD_ID", "REG_USER_NAME", bILL_HDR_TBL.WARD_ID_CURRENT);
             return View(bILL_HDR_TBL);
         }
 
@@ -83,7 +94,7 @@ namespace Chuyenphatnhanh.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DELETE_FLAG,REG_USER_NAME,MOD_USER_NAME,REG_DATE,MOD_DATE,BILL_HDR_ID,CUST_FROM_ID,CUST_TO_ID,STATUS,COUNTRY_FROM,PROVINCE_FROM,DISTRICT_FROM,ADDRESS_FROM,COUNTRY_TO,PROVINCE_TO,DISTRICT_TO,ADDRESS_TO,COUNTRY_CURRENT,PROVINCE_CURRENT,DISTRICT_CURRENT,ADDRESS_CURRENT")] BILL_HDR_TBL bILL_HDR_TBL)
+        public ActionResult Edit([Bind(Include = "DELETE_FLAG,REG_USER_NAME,MOD_USER_NAME,REG_DATE,MOD_DATE,BILL_HDR_ID,CUST_FROM_ID,CUST_TO_ID,STATUS,WARD_ID_FROM,ADDRESS_FROM,WARD_ID_TO,ADDRESS_TO,WARD_ID_CURRENT,ADDRESS_CURRENT,BRANCH_ID_CURRENT")] BILL_HDR_TBL bILL_HDR_TBL)
         {
             if (ModelState.IsValid)
             {
@@ -93,6 +104,9 @@ namespace Chuyenphatnhanh.Controllers
             }
             ViewBag.CUST_FROM_ID = new SelectList(db.CUST_MST, "CUST_ID", "REG_USER_NAME", bILL_HDR_TBL.CUST_FROM_ID);
             ViewBag.CUST_TO_ID = new SelectList(db.CUST_MST, "CUST_ID", "REG_USER_NAME", bILL_HDR_TBL.CUST_TO_ID);
+            ViewBag.WARD_ID_FROM = new SelectList(db.WARD_MST, "WARD_ID", "REG_USER_NAME", bILL_HDR_TBL.WARD_ID_FROM);
+            ViewBag.WARD_ID_TO = new SelectList(db.WARD_MST, "WARD_ID", "REG_USER_NAME", bILL_HDR_TBL.WARD_ID_TO);
+            ViewBag.WARD_ID_CURRENT = new SelectList(db.WARD_MST, "WARD_ID", "REG_USER_NAME", bILL_HDR_TBL.WARD_ID_CURRENT);
             return View(bILL_HDR_TBL);
         }
 

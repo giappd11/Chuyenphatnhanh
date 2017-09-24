@@ -10,16 +10,18 @@ using Chuyenphatnhanh.Models;
 
 namespace Chuyenphatnhanh.Controllers
 {
-    public class UserMstController : BaseController
+    public class UserMsttroller : BaseController
     {
-        // GET: UserMst
+        private DBConnection db = new DBConnection();
+
+        // GET: UserMsttroller
         public ActionResult Index()
         {
             var uSER_MST = db.USER_MST.Include(u => u.USER_CONFIG_MST);
             return View(uSER_MST.ToList());
         }
 
-        // GET: UserMst/Details/5
+        // GET: UserMsttroller/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -34,14 +36,14 @@ namespace Chuyenphatnhanh.Controllers
             return View(uSER_MST);
         }
 
-        // GET: UserMst/Create
+        // GET: UserMsttroller/Create
         public ActionResult Create()
         {
             ViewBag.USER_ID = new SelectList(db.USER_CONFIG_MST, "USER_ID", "REG_USER_NAME");
             return View();
         }
 
-        // POST: UserMst/Create
+        // POST: UserMsttroller/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -59,7 +61,7 @@ namespace Chuyenphatnhanh.Controllers
             return View(uSER_MST);
         }
 
-        // GET: UserMst/Edit/5
+        // GET: UserMsttroller/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -75,7 +77,7 @@ namespace Chuyenphatnhanh.Controllers
             return View(uSER_MST);
         }
 
-        // POST: UserMst/Edit/5
+        // POST: UserMsttroller/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -92,7 +94,7 @@ namespace Chuyenphatnhanh.Controllers
             return View(uSER_MST);
         }
 
-        // GET: UserMst/Delete/5
+        // GET: UserMsttroller/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -107,7 +109,7 @@ namespace Chuyenphatnhanh.Controllers
             return View(uSER_MST);
         }
 
-        // POST: UserMst/Delete/5
+        // POST: UserMsttroller/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
