@@ -41,7 +41,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DEFAULT_DISTRICT_ID, "DEFAULT_DISTRICT_ID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.DEFAULT_DISTRICT_ID, (SelectList)ViewBag.DEFAULT_DISTRICT_ID, string.Empty, htmlAttributes: new { @class = "form-control", @onChange = "DistrictChange(this,'DEFAULT_WARD_ID')" })
+                @Html.DropDownListFor(model => model.DEFAULT_DISTRICT_ID, ViewBag.DEFAULT_DISTRICT_ID as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "form-control", @onChange = "DistrictChange(this,'DEFAULT_WARD_ID')" })
                 @Html.ValidationMessageFor(model => model.DEFAULT_DISTRICT_ID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -49,7 +49,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DEFAULT_WARD_ID, "DEFAULT_WARD_ID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.DEFAULT_WARD_ID, (SelectList)ViewBag.DEFAULT_WARD_ID, string.Empty, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.DEFAULT_WARD_ID,  ViewBag.DEFAULT_WARD_ID as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DEFAULT_WARD_ID, "", new { @class = "text-danger" })
             </div>
         </div>

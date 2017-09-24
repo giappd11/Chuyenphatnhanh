@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Chuyenphatnhanh.Models.DISTRICT_MST>
+﻿@model IEnumerable<Chuyenphatnhanh.Models.DistrictMstForm>
 
 @{
     ViewBag.Title = "Index";
@@ -9,54 +9,29 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DELETE_FLAG)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.REG_DATE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MOD_DATE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.REG_USER_NAME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MOD_USER_NAME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DISTRICT_NAME)
-        </th>
-        <th></th>
-    </tr>
+    <thead>
+        <tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DELETE_FLAG)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.REG_DATE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MOD_DATE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.REG_USER_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MOD_USER_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DISTRICT_NAME)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DISTRICT_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DISTRICT_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DISTRICT_ID })
-        </td>
-    </tr>
-}
+            <th>
+                @Html.DisplayNameFor(model => model.DISTRICT_NAME)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
 
+                <td>
+                    @Html.DisplayFor(modelItem => item.DISTRICT_NAME)
+                </td>
+                <td>
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Edit, "Edit", new { id = item.DISTRICT_ID }) |
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.View, "Details", new { id = item.DISTRICT_ID }) |
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Delete, "Delete", new { id = item.DISTRICT_ID })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

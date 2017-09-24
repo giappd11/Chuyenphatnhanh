@@ -9,36 +9,39 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CUST_NAME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PHONE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DEFAULT_ADDRESS)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr> 
-        <td>
-            @Html.DisplayFor(modelItem => item.CUST_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PHONE)
-        </td> 
-        <td>
-            @Html.DisplayFor(modelItem => item.Display_Address)
-        </td>
-        <td>
-            @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Edit, "Edit", new { id = item.CUST_ID }) |
-            @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.View, "Details", new { id = item.CUST_ID }) |
-            @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Delete, "Delete", new { id = item.CUST_ID })
-        </td>
-    </tr>
-}
-
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CUST_NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PHONE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DEFAULT_ADDRESS)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CUST_NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PHONE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Display_Address)
+                </td>
+                <td>
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Edit, "Edit", new { id = item.CUST_ID }) |
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.View, "Details", new { id = item.CUST_ID }) |
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Delete, "Delete", new { id = item.CUST_ID })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

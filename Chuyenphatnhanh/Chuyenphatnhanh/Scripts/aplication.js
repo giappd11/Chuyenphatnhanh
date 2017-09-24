@@ -16,3 +16,8 @@ function SuccessDistrictChangeHandler(wardId, data) {
             .text(item.displayValue));
     });
 }
+
+$(document).ready(function () {
+
+    $('.table').dynatable();
+})

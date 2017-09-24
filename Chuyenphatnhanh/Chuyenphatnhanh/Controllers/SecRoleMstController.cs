@@ -116,7 +116,8 @@ namespace Chuyenphatnhanh.Controllers
                 }
 
                 ComplementUtil.complement(form, SecRoleMst);
-
+                SecRoleMst.MOD_DATE = DateTime.Now;
+                SecRoleMst.MOD_USER_NAME = _operator.UserName;
                 db.Entry(SecRoleMst).State = EntityState.Modified;
                 db.SaveChanges();
                 ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;

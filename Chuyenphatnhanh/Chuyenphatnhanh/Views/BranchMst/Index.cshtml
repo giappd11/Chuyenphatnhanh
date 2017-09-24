@@ -8,42 +8,45 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.BRANCH_NAME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ADDRESS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LATITUDE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LONGITUDE)
-        </th> 
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BRANCH_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ADDRESS_DETAILS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LATITUDE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LONGITUDE)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BRANCH_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BRANCH_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BRANCH_ID })
-        </td>
-    </tr>
-}
-
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BRANCH_NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ADDRESS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LATITUDE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LONGITUDE)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BRANCH_NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Display_Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LATITUDE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LONGITUDE)
+                </td>
+                <td>
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Edit, "Edit", new { id = item.BRANCH_ID }) |
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.View, "Details", new { id = item.BRANCH_ID }) |
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Delete, "Delete", new { id = item.BRANCH_ID })
+                </td>
+            </tr>
+        }
+    </tbody>    
 </table>

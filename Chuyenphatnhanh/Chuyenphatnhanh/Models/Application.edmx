@@ -76,8 +76,8 @@
           <Property Name="REG_USER_NAME" Type="nvarchar" MaxLength="20" />
           <Property Name="MOD_USER_NAME" Type="nvarchar" MaxLength="20" />
           <Property Name="BRANCH_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="BRANCH_NAME" Type="varchar" MaxLength="50" />
-          <Property Name="ADDRESS" Type="varchar" MaxLength="100" />
+          <Property Name="BRANCH_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="ADDRESS" Type="nvarchar" MaxLength="100" />
           <Property Name="WARD_ID" Type="nvarchar" MaxLength="20" />
           <Property Name="LATITUDE" Type="numeric" Precision="13" Scale="9" />
           <Property Name="LONGITUDE" Type="numeric" Precision="13" Scale="9" />
@@ -686,8 +686,8 @@
           <Property Name="REG_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="MOD_USER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="BRANCH_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="BRANCH_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ADDRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BRANCH_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="WARD_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="LATITUDE" Type="Decimal" Precision="13" Scale="9" />
           <Property Name="LONGITUDE" Type="Decimal" Precision="13" Scale="9" />

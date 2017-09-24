@@ -10,5 +10,6 @@ namespace Chuyenphatnhanh.Models
         public string WARD_ID { get; set; }
         public string WARD_NAME { get; set; }
         public string DISTRICT_ID { get; set; }
+        public string DISTRICT_NANE { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace Chuyenphatnhanh.Models
         public Nullable<decimal> LATITUDE { get; set; }
         public Nullable<decimal> LONGITUDE { get; set; }
 
+        public string DISTRICT_ID { get; set; }
         public string Display_Address { get; set; }
     }
 }

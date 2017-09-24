@@ -10,33 +10,37 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        
-        <th>
-            @Html.DisplayNameFor(model => model.VALUE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Role_name)
-        </th>
-        <th></th>
-    </tr>
+    <thead>
+        <tr>
 
-@foreach (var item in Model) {
-    <tr>
-         
+            <th>
+                @Html.DisplayNameFor(model => model.VALUE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role_name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.VALUE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Role_name)
-        </td>
-        <td>
-            @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Edit, "Edit", new { id = item.SEC_ROLE_ID }) |
-            @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.View, "Details", new { id = item.SEC_ROLE_ID }) |
-            @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Delete, "Delete", new { id = item.SEC_ROLE_ID })
-        </td>
-    </tr>
-}
 
+                <td>
+                    @Html.DisplayFor(modelItem => item.VALUE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role_name)
+                </td>
+                <td>
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Edit, "Edit", new { id = item.SEC_ROLE_ID }) |
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.View, "Details", new { id = item.SEC_ROLE_ID }) |
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Delete, "Delete", new { id = item.SEC_ROLE_ID })
+                </td>
+            </tr>
+        }
+
+    </tbody>
 </table>

@@ -169,7 +169,7 @@
     <Compile Include="Controllers\RoleMstController.cs" />
     <Compile Include="Controllers\SecRoleMstController.cs" />
     <Compile Include="Controllers\TariffMstController.cs" />
-    <Compile Include="Controllers\UserMsttroller.cs" />
+    <Compile Include="Controllers\UserMstController.cs" />
     <Compile Include="Controllers\WardMstController.cs" />
     <Compile Include="Extensions\UrlHelperExtensions.cs" />
     <Compile Include="Global.asax.cs">
@@ -333,6 +333,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.dynatable.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -380,11 +381,6 @@
     <Content Include="Views\CustMst\Details.cshtml" />
     <Content Include="Views\CustMst\Edit.cshtml" />
     <Content Include="Views\CustMst\Index.cshtml" />
-    <Content Include="Views\CommonCode\Create.cshtml" />
-    <Content Include="Views\CommonCode\Delete.cshtml" />
-    <Content Include="Views\CommonCode\Details.cshtml" />
-    <Content Include="Views\CommonCode\Edit.cshtml" />
-    <Content Include="Views\CommonCode\Index.cshtml" />
     <Content Include="Views\BranchMst\Create.cshtml" />
     <Content Include="Views\BranchMst\Delete.cshtml" />
     <Content Include="Views\BranchMst\Details.cshtml" />
@@ -407,11 +403,6 @@
     <Content Include="Views\SecRoleMst\Details.cshtml" />
     <Content Include="Views\SecRoleMst\Edit.cshtml" />
     <Content Include="Views\SecRoleMst\Index.cshtml" />
-    <Content Include="Views\UserMsttroller\Create.cshtml" />
-    <Content Include="Views\UserMsttroller\Delete.cshtml" />
-    <Content Include="Views\UserMsttroller\Details.cshtml" />
-    <Content Include="Views\UserMsttroller\Edit.cshtml" />
-    <Content Include="Views\UserMsttroller\Index.cshtml" />
     <Content Include="Views\WardMst\Create.cshtml" />
     <Content Include="Views\WardMst\Delete.cshtml" />
     <Content Include="Views\WardMst\Details.cshtml" />
