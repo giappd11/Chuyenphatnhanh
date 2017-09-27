@@ -4,38 +4,40 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
- 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>DISTRICT_MST</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.DELETE_FLAG)
-        @Html.HiddenFor(model => model.MOD_USER_NAME)
-        @Html.HiddenFor(model => model.REG_USER_NAME)
-        @Html.TextBoxFor(model => model.MOD_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
-        @Html.TextBoxFor(model => model.REG_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
-        @Html.HiddenFor(model => model.DISTRICT_ID)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DISTRICT_NAME, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DISTRICT_NAME, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DISTRICT_NAME, "", new { @class = "text-danger" })
+<div class="row">
+    <ul class="ul-box">
+        <li class="col-md-8 col-xs-12 center">
+            @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>DISTRICT_MST</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.DELETE_FLAG)
+                @Html.HiddenFor(model => model.MOD_USER_NAME)
+                @Html.HiddenFor(model => model.REG_USER_NAME)
+                @Html.TextBoxFor(model => model.MOD_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+                @Html.TextBoxFor(model => model.REG_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+                @Html.HiddenFor(model => model.DISTRICT_ID)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DISTRICT_NAME, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="frm-edit-client col-md-8">
+                        @Html.EditorFor(model => model.DISTRICT_NAME, new { htmlAttributes = new { @class = "col-xs-12" } })
+                        @Html.ValidationMessageFor(model => model.DISTRICT_NAME, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="frm-edit-client">
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "link-back" })<input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+        }
+    </li>
+</ul>
 </div>

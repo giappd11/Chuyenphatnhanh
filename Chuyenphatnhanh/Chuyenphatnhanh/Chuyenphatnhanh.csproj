@@ -210,6 +210,7 @@
     <Compile Include="Models\CUST_MST.cs">
       <DependentUpon>Application.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DistanceFromGoogle.cs" />
     <Compile Include="Models\DistrictMstForm.cs" />
     <Compile Include="Models\DISTRICT_MST.cs">
       <DependentUpon>Application.tt</DependentUpon>
@@ -256,6 +257,9 @@
     <Compile Include="Util\MultiLanguageViewEngine.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\chosen-sprite%402x.png" />
+    <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\images\logo.png" />
     <Content Include="Scripts\aplication.js" />
     <Content Include="Content\custom.css" />
     <Content Include="Content\fonts\Roboto-Bold.svg" />
@@ -330,6 +334,7 @@
     <Content Include="fonts\Roboto-ThinItalic.woff" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -386,11 +391,6 @@
     <Content Include="Views\BranchMst\Details.cshtml" />
     <Content Include="Views\BranchMst\Edit.cshtml" />
     <Content Include="Views\BranchMst\Index.cshtml" />
-    <Content Include="Views\Bill\Create.cshtml" />
-    <Content Include="Views\Bill\Delete.cshtml" />
-    <Content Include="Views\Bill\Details.cshtml" />
-    <Content Include="Views\Bill\Edit.cshtml" />
-    <Content Include="Views\Bill\Index.cshtml" />
     <Content Include="Views\Error\ErrorRole.cshtml" />
     <Content Include="Views\Shared\_LayoutList.cshtml" />
     <Content Include="Views\DistrictMst\Create.cshtml" />
@@ -408,6 +408,12 @@
     <Content Include="Views\WardMst\Details.cshtml" />
     <Content Include="Views\WardMst\Edit.cshtml" />
     <Content Include="Views\WardMst\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Bill\Create.cshtml" />
+    <Content Include="Views\Bill\Delete.cshtml" />
+    <Content Include="Views\Bill\Details.cshtml" />
+    <Content Include="Views\Bill\Edit.cshtml" />
+    <Content Include="Views\Bill\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

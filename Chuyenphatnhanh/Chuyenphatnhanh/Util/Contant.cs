@@ -19,6 +19,10 @@ namespace Chuyenphatnhanh.Util
         public static string CUSTMST_SEQ        = "CustMst_seq";
         public static string PRODUCTMST_SEQ     = "ProductMst_seq";
         public static string USERMST_SEQ        = "UserMst_seq";
+        public static string DISTRICTMST_SEQ    = "DistrictMst_seq";
+        public static string ROLEMST_SEQ        = "RoleMst_seq";
+        public static string TARIFFMST_SEQ      = "TariffMst_seq";
+        public static string WARDMST_SEQ        = "WardMst_seq";
         public static string BILLHDRTBL_PREFIX  = "BH";
         public static string BILLLOGTBL_PREFIX  = "BL";
         public static string BILLTBL_PREFIX     = "BT";
@@ -28,6 +32,22 @@ namespace Chuyenphatnhanh.Util
         public static string PRODUCTMST_PREFIX  = "PR";
         public static string USERMST_PREFIX     = "US";
         public static string SECROLEMST_PREFIX  = "SE";
+        public static string DISTRICTMST_PREFIX = "DI";
+        public static string ROLEMST_PREFIX     = "RO";
+        public static string TARIFFMST_PREFIX   = "TR";
+        public static string WARDMST_PREFIX     = "WM";
+
+
+        // STATUS ĐƠN HÀNG
+        public static string NHAN_HANG              = "NH";
+        public static string DANG_CHUYEN_HANG       = "CH";
+        public static string DANG_GIAO_HANG         = "GH";
+        public static string GIAO_HANG_THANH_CONG   = "TC";
+        public static string HUY_DON_HANG           = "HH";
+        public static string HANG_TRA_LAI           = "TH";
+        public static string DANG_CHUYEN_HANG_TRA   = "CT";
+        public static string DANG_GIAO_HANG_TRA     = "GT";
+        public static string TRA_THANH_CONG         = "TL";
 
         public static string MODE_DELETE = "DELETE";
         public static string MODE_UPDATE = "UPDATE";

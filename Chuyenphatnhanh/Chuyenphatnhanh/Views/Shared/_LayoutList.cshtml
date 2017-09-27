@@ -18,7 +18,13 @@
     }
     <div class="left-menu Roboto-Light ng-scope" ng-controller="LeftMenuCtrl as leftmenu">
         <div class="wap-menu">
-            <div class="logo"> 
+            <div class="logo">
+                <a href=""><img src="~/Content/images/logo.png" /></a>
+                <select onchange="changeLanguage(this)" class="chosen-select-lang" name="lang">
+                    <option value="en-US" @(Culture == "en-us" ? "selected=\"selected\"" : "")>English</option>
+                    <option value="vi-VN" @(Culture == "vi-vn" ? "selected=\"selected\"" : "")>Việt nam</option>
+                </select>
+                @Culture
                 <div class="btn-close-mn visible-xs"><i class="fa fa-close"></i></div>
             </div>
             <div class="user-info">
@@ -137,18 +143,12 @@
                     <div class="menu-button pull-right"><i class="fa fa-align-right"></i></div>
                     <div id="remindful" class="pull-right Roboto-Medium" onclick="callGAScript()">
                         <i class="fa fa-bell"></i>
-                        <!-- ngIf: quickSearch.haveNewNotify -->
                     </div>
                     <div class="search pull-right">
                         <div class="hip-search">
-                            <input ng-model="qSearchContent" ng-init="qSearchContent=null" ng-keypress="($event.which === 13)?alert('abc'):0" class="form-control Roboto-Light ng-pristine ng-untouched ng-valid" type="text" placeholder="Mã ĐH | Tên người nhận | SDT" id="search_keyword" name="search_keyword">
+                            <input ng-model="qSearchContent" ng-init="qSearchContent=null" ng-keypress="($event.which === 13)?alert('abc'):0" class="col-xs-12 Roboto-Light ng-pristine ng-untouched ng-valid" type="text" placeholder="Mã ĐH | Tên người nhận | SDT" id="search_keyword" name="search_keyword">
                             <a id="btnQuickSearch" href="#" onclick="ga('send', { hitType: 'event', eventCategory: 'Quanlydonhang', eventAction: 'Quick search', eventLabel: ' Quick search '});" class="icon_search"><i class="fa fa-search"></i></a>
                         </div>
-                        <!-- <div ng-show="quickSearch.orders.length > 0" class="list-search ng-hide">
-                             <ul>
-                                 <!-- ngRepeat: x in quickSearch.orders
-                             </ul>
-                         </div>-->
                     </div>
                 </div>
             </div> 
@@ -164,20 +164,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <script>
-        jQuery(".menu-btnmain").click(function () {
-            if (jQuery("body").hasClass("show-left")) {
-                jQuery("body").removeClass("show-left");
-            } else {
-                jQuery("body").addClass("show-left");
-            }
-        });
-
-        if (!$("body").hasClass("show-left")) {
-            $("body").addClass("show-left");
-        }
-
-    </script>
+     
 
 </body>
 </html>

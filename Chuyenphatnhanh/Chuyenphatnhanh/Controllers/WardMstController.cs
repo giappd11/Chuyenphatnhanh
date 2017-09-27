@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Chuyenphatnhanh.Models;
+using Chuyenphatnhanh.Util;
+using Resource = Chuyenphatnhanh.Content.Texts;
 
 namespace Chuyenphatnhanh.Controllers
 {
@@ -17,8 +19,15 @@ namespace Chuyenphatnhanh.Controllers
         // GET: WardMst
         public ActionResult Index()
         {
-            var wARD_MST = db.WARD_MST.Include(w => w.DISTRICT_MST);
-            return View(wARD_MST.ToList());
+            List<WARD_MST> _list = db.WARD_MST.Where(u => u.DELETE_FLAG == false).ToList();
+            List<WardMstForm> _WardList = new List<WardMstForm>();
+            foreach (WARD_MST _Ward in _list)
+            {
+                WardMstForm _WardMst = new WardMstForm();
+                ComplementUtil.complement(_Ward, _WardMst);
+                _WardList.Add(_WardMst);
+            }
+            return View(_WardList);
         }
 
         // GET: WardMst/Details/5
@@ -33,7 +42,9 @@ namespace Chuyenphatnhanh.Controllers
             {
                 return HttpNotFound();
             }
-            return View(wARD_MST);
+            WardMstForm _form = new WardMstForm();
+            ComplementUtil.complement(wARD_MST, _form);
+            return View(_form);
         }
 
         // GET: WardMst/Create
@@ -48,17 +59,24 @@ namespace Chuyenphatnhanh.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DELETE_FLAG,REG_DATE,MOD_DATE,REG_USER_NAME,MOD_USER_NAME,WARD_ID,WARD_NAME,DISTRICT_ID")] WARD_MST wARD_MST)
+        public ActionResult Create(WardMstForm form)
         {
+            WARD_MST _WardMst = new WARD_MST();
             if (ModelState.IsValid)
             {
-                db.WARD_MST.Add(wARD_MST);
+                ComplementUtil.complement(form, _WardMst);
+                _WardMst.DELETE_FLAG = false;
+                _WardMst.MOD_DATE = DateTime.Now;
+                _WardMst.MOD_USER_NAME = _operator.UserName;
+                _WardMst.REG_DATE = DateTime.Now;
+                _WardMst.REG_USER_NAME = _operator.UserName;
+                _WardMst.DISTRICT_ID = GenerateID.GennerateID(db, Contant.WARDMST_SEQ, Contant.WARDMST_PREFIX);
+                db.WARD_MST.Add(_WardMst);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
             }
-
-            ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST, "DISTRICT_ID", "REG_USER_NAME", wARD_MST.DISTRICT_ID);
-            return View(wARD_MST);
+            ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST, "DISTRICT_ID", "DISTRICT_NAME", form.DISTRICT_ID);
+            return View(form);
         }
 
         // GET: WardMst/Edit/5
@@ -73,8 +91,10 @@ namespace Chuyenphatnhanh.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST, "DISTRICT_ID", "REG_USER_NAME", wARD_MST.DISTRICT_ID);
-            return View(wARD_MST);
+            ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST, "DISTRICT_ID", "DISTRICT_NAME", wARD_MST.DISTRICT_ID);
+            WardMstForm _form = new WardMstForm();
+            ComplementUtil.complement(wARD_MST, _form);
+            return View(_form);
         }
 
         // POST: WardMst/Edit/5
@@ -82,16 +102,26 @@ namespace Chuyenphatnhanh.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DELETE_FLAG,REG_DATE,MOD_DATE,REG_USER_NAME,MOD_USER_NAME,WARD_ID,WARD_NAME,DISTRICT_ID")] WARD_MST wARD_MST)
+        public ActionResult Edit(WardMstForm form)
         {
+            ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST, "DISTRICT_ID", "DISTRICT_NAME", form.DISTRICT_ID);
             if (ModelState.IsValid)
             {
-                db.Entry(wARD_MST).State = EntityState.Modified;
+                WARD_MST _WardMst = db.WARD_MST.Find(form.WARD_ID);
+                if (DateTime.Compare((DateTime)_WardMst.MOD_DATE, form.MOD_DATE) != 0)
+                {
+                    ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _WardMst.WARD_NAME, _WardMst.MOD_USER_NAME));
+                    return View(form);
+                }
+
+                ComplementUtil.complement(form, _WardMst);
+                _WardMst.MOD_DATE = DateTime.Now;
+                _WardMst.MOD_USER_NAME = _operator.UserName;
+                db.Entry(_WardMst).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
             }
-            ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST, "DISTRICT_ID", "REG_USER_NAME", wARD_MST.DISTRICT_ID);
-            return View(wARD_MST);
+            return View(form);
         }
 
         // GET: WardMst/Delete/5
@@ -106,18 +136,33 @@ namespace Chuyenphatnhanh.Controllers
             {
                 return HttpNotFound();
             }
-            return View(wARD_MST);
+            ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST, "DISTRICT_ID", "DISTRICT_NAME", wARD_MST.DISTRICT_ID);
+            WardMstForm _form = new WardMstForm();
+            ComplementUtil.complement(wARD_MST, _form);
+            return View(_form);
         }
 
         // POST: WardMst/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(WardMstForm form)
         {
-            WARD_MST wARD_MST = db.WARD_MST.Find(id);
-            db.WARD_MST.Remove(wARD_MST);
+            ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
+            WARD_MST _WardMst = db.WARD_MST.Find(form.WARD_ID);
+            if (DateTime.Compare((DateTime)_WardMst.MOD_DATE, form.MOD_DATE) != 0)
+            {
+                ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _WardMst.WARD_NAME, _WardMst.MOD_USER_NAME));
+                return View(form);
+            }
+
+            ComplementUtil.complement(form, _WardMst);
+            _WardMst.MOD_DATE = DateTime.Now;
+            _WardMst.MOD_USER_NAME = _operator.UserName;
+            _WardMst.DELETE_FLAG = true;
+            db.Entry(_WardMst).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("Index");
+            ComplementUtil.complement(_WardMst, form);
+            return View(form);
         }
 
         protected override void Dispose(bool disposing)

@@ -22,6 +22,7 @@ namespace Chuyenphatnhanh
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
+                      "~/Scripts/chosen.jquery.min.js",
                       "~/Scripts/jquery.dynatable.js",
                       "~/Scripts/aplication.js"));
 

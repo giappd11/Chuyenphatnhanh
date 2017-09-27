@@ -258,4 +258,22 @@
   <data name="F_WardMst" xml:space="preserve">
     <value>Quản lý xã phường</value>
   </data>
+  <data name="Cust_Address" xml:space="preserve">
+    <value>Địa chỉ</value>
+  </data>
+  <data name="Cust_District" xml:space="preserve">
+    <value>Khu vực</value>
+  </data>
+  <data name="Cust_Name_from" xml:space="preserve">
+    <value>Người gửi</value>
+  </data>
+  <data name="Cust_Phone" xml:space="preserve">
+    <value>Số điện thoại</value>
+  </data>
+  <data name="Cust_ward" xml:space="preserve">
+    <value>Phường/Xã</value>
+  </data>
+  <data name="Cust_Name_To" xml:space="preserve">
+    <value>Người nhận</value>
+  </data>
 </root>

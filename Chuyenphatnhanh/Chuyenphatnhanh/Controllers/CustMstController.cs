@@ -18,7 +18,7 @@ namespace Chuyenphatnhanh.Controllers
         // GET: CustMst
         public ActionResult Index()
         {
-            List<CUST_MST> _list = db.CUST_MST.ToList();
+            List<CUST_MST> _list = db.CUST_MST.Where(u => u.DELETE_FLAG == false).ToList();
             List<CustMstForm> _custList = new List<CustMstForm>();
             CustMstForm _custommer;
             DISTRICT_MST _districtMst = null;
@@ -180,13 +180,38 @@ namespace Chuyenphatnhanh.Controllers
         // POST: CustMst/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            CUST_MST cUST_MST = db.CUST_MST.Find(id);
-            db.CUST_MST.Remove(cUST_MST);
+        public ActionResult DeleteConfirmed(CustMstForm form)
+        { 
+            CUST_MST _CustMst = db.CUST_MST.Find(form.CUST_ID);
+            if (DateTime.Compare((DateTime)_CustMst.MOD_DATE, form.MOD_DATE) != 0)
+            {
+                ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _CustMst.CUST_NAME, _CustMst.MOD_USER_NAME));
+                return View(form);
+            }
+            _CustMst.MOD_DATE = DateTime.Now;
+            _CustMst.MOD_USER_NAME = _operator.UserName;
+            _CustMst.DELETE_FLAG = true;
+            db.Entry(_CustMst).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("Index");
+            ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
+            ComplementUtil.complement(_CustMst, form);
+             
+            return View(form);
         }
+
+        [HttpGet]
+        public JsonResult GetCustomer(string phone)
+        { 
+            CUST_MST _cust = db.CUST_MST.Where(u => u.PHONE == phone).FirstOrDefault();
+            CustMstForm _form = new CustMstForm();
+            if (_cust != null)
+            {
+                ComplementUtil.complement(_cust, _form);
+                _form.DEFAULT_DISTRICT_ID = _cust.WARD_MST.DISTRICT_ID;
+            }
+            return Json(_form, JsonRequestBehavior.AllowGet);
+        }
+
 
         protected override void Dispose(bool disposing)
         {

@@ -65,6 +65,7 @@
           <Property Name="PRICE" Type="money" />
           <Property Name="AMOUNT" Type="money" />
           <Property Name="SEND_DATE" Type="date" />
+          <Property Name="COMMENT" Type="nvarchar" MaxLength="2000" />
         </EntityType>
         <EntityType Name="BRANCH_MST">
           <Key>
@@ -675,6 +676,7 @@
           <Property Name="AMOUNT" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="SEND_DATE" Type="DateTime" Precision="0" />
           <NavigationProperty Name="BILL_HDR_TBL" Relationship="Models.FK_BILL_TBL_BILL_HDR_TBL" FromRole="BILL_TBL" ToRole="BILL_HDR_TBL" />
+          <Property Name="COMMENT" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="BRANCH_MST">
           <Key>
@@ -1086,6 +1088,7 @@
           <EntitySetMapping Name="BILL_TBL">
             <EntityTypeMapping TypeName="Models.BILL_TBL">
               <MappingFragment StoreEntitySet="BILL_TBL">
+                <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
                 <ScalarProperty Name="SEND_DATE" ColumnName="SEND_DATE" />
                 <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
                 <ScalarProperty Name="PRICE" ColumnName="PRICE" />

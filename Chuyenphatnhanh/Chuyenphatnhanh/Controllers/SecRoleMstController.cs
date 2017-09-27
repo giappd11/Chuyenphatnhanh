@@ -18,7 +18,7 @@ namespace Chuyenphatnhanh.Controllers
         public ActionResult Index()
         {
             List<SecRoleMstForm> _List = new List<SecRoleMstForm>();
-            List<SEC_ROLE_MST> _ListSec = db.SEC_ROLE_MST.Include(s => s.ROLE_MST).ToList();
+            List<SEC_ROLE_MST> _ListSec = db.SEC_ROLE_MST.Where(u => u.DELETE_FLAG == false).Include(s => s.ROLE_MST).ToList();
             foreach (SEC_ROLE_MST _sec in _ListSec)
             {
                 SecRoleMstForm _form = new SecRoleMstForm();
@@ -41,7 +41,10 @@ namespace Chuyenphatnhanh.Controllers
             {
                 return HttpNotFound();
             }
-            return View(sEC_ROLE_MST);
+            SecRoleMstForm _form = new SecRoleMstForm();
+            ComplementUtil.complement(sEC_ROLE_MST, _form);
+            ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE", _form.ROLE_ID);
+            return View(_form);
         }
 
         // GET: SecRoleMst/Create
@@ -148,12 +151,22 @@ namespace Chuyenphatnhanh.Controllers
         // POST: SecRoleMst/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(SecRoleMstForm form)
         {
-            SEC_ROLE_MST sEC_ROLE_MST = db.SEC_ROLE_MST.Find(id);
-            db.SEC_ROLE_MST.Remove(sEC_ROLE_MST);
+            SEC_ROLE_MST _SecRoleMst = db.SEC_ROLE_MST.Find(form.SEC_ROLE_ID);
+            if (DateTime.Compare((DateTime)_SecRoleMst.MOD_DATE, form.MOD_DATE) != 0)
+            {
+                ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _SecRoleMst.VALUE, _SecRoleMst.MOD_USER_NAME));
+                return View(form);
+            }
+            _SecRoleMst.MOD_DATE = DateTime.Now;
+            _SecRoleMst.MOD_USER_NAME = _operator.UserName;
+            _SecRoleMst.DELETE_FLAG = true;
+            db.Entry(_SecRoleMst).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("Index");
+            ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
+            ComplementUtil.complement(_SecRoleMst, form);
+            return View(form);
         }
 
         protected override void Dispose(bool disposing)

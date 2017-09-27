@@ -16,39 +16,7 @@
 
         <dd>
             @Html.DisplayFor(model => model.DELETE_FLAG)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.REG_DATE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.REG_DATE)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MOD_DATE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MOD_DATE)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.REG_USER_NAME)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.REG_USER_NAME)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MOD_USER_NAME)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MOD_USER_NAME)
-        </dd>
+        </dd> 
 
         <dt>
             @Html.DisplayNameFor(model => model.WEIGHT_FROM)
@@ -90,11 +58,15 @@
             @Html.DisplayFor(model => model.PRICE)
         </dd>
 
-    </dl>
-
+    </dl
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
-
+        @Html.HiddenFor(model => model.DELETE_FLAG)
+        @Html.HiddenFor(model => model.MOD_USER_NAME)
+        @Html.HiddenFor(model => model.REG_USER_NAME)
+        @Html.TextBoxFor(model => model.MOD_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+        @Html.TextBoxFor(model => model.REG_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+        @Html.HiddenFor(model => model.TARIFF_ID)
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
             @Html.ActionLink("Back to List", "Index")

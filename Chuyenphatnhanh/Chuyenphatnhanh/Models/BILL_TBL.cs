@@ -26,6 +26,7 @@ namespace Chuyenphatnhanh.Models
         public Nullable<decimal> PRICE { get; set; }
         public Nullable<decimal> AMOUNT { get; set; }
         public Nullable<System.DateTime> SEND_DATE { get; set; }
+        public string COMMENT { get; set; }
     
         public virtual BILL_HDR_TBL BILL_HDR_TBL { get; set; }
     }

@@ -13,13 +13,11 @@ using Resource = Chuyenphatnhanh.Content.Texts;
 namespace Chuyenphatnhanh.Controllers
 {
     public class BranchMstController : BaseController
-    {
-        private DBConnection db = new DBConnection();
-
+    { 
         // GET: BranchMst
         public ActionResult Index()
         {
-            List<BRANCH_MST> _list = db.BRANCH_MST.ToList();
+            List<BRANCH_MST> _list = db.BRANCH_MST.Where(u => u.DELETE_FLAG == false).ToList();
             List<BranchMstForm> _branchList = new List<BranchMstForm>();
             BranchMstForm _branchMst;
             DISTRICT_MST _districtMst = null;
@@ -59,7 +57,9 @@ namespace Chuyenphatnhanh.Controllers
             {
                 return HttpNotFound();
             }
-            return View(bRANCH_MST);
+            BranchMstForm _form = new BranchMstForm();
+            ComplementUtil.complement(bRANCH_MST, _form);
+            return View(_form);
         }
 
         // GET: BranchMst/Create
@@ -190,22 +190,21 @@ namespace Chuyenphatnhanh.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(BranchMstForm form)
-        {
-            if (ModelState.IsValid)
+        { 
+            BRANCH_MST _BranchMst = db.BRANCH_MST.Find(form.BRANCH_ID);
+            if (DateTime.Compare((DateTime)_BranchMst.MOD_DATE, form.MOD_DATE) != 0)
             {
-                BRANCH_MST _BranchMst = db.BRANCH_MST.Find(form.BRANCH_ID);
-                if (DateTime.Compare((DateTime)_BranchMst.MOD_DATE, form.MOD_DATE) != 0)
-                {
-                    ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _BranchMst.BRANCH_NAME, _BranchMst.MOD_USER_NAME));
-                    return View(form);
-                }
-                ComplementUtil.complement(form, _BranchMst);
-                _BranchMst.MOD_DATE = DateTime.Now;
-                _BranchMst.MOD_USER_NAME = _operator.UserName;
-                _BranchMst.DELETE_FLAG = true;
-                db.Entry(_BranchMst).State = EntityState.Modified;
-                db.SaveChanges();
-            }
+                ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _BranchMst.BRANCH_NAME, _BranchMst.MOD_USER_NAME));
+                return View(form);
+            } 
+            _BranchMst.MOD_DATE = DateTime.Now;
+            _BranchMst.MOD_USER_NAME = _operator.UserName;
+            _BranchMst.DELETE_FLAG = true;
+            db.Entry(_BranchMst).State = EntityState.Modified;
+            db.SaveChanges();
+            ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
+            ComplementUtil.complement(_BranchMst, form);
+             
             ViewBag.WARD_ID = new SelectList(db.WARD_MST, "WARD_ID", "REG_USER_NAME", form.WARD_ID);
             return View(form);
         }

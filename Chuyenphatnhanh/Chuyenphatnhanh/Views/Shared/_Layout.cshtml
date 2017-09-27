@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="@Culture">
 <head>
     <meta content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
     @model Chuyenphatnhanh.Models.FormBase
 </head>
-<body >
+<body>
 
     @{
         var _session = (Operator)Session[Chuyenphatnhanh.Util.Contant.SESSIONLOGED];
@@ -20,6 +20,12 @@
     <div class="left-menu Roboto-Light ng-scope" ng-controller="LeftMenuCtrl as leftmenu">
         <div class="wap-menu">
             <div class="logo">
+                <a href=""><img src="~/Content/images/logo.png" /></a>
+                <select onchange="changeLanguage(this)" class="chosen-select-lang" name="lang">
+                    <option value="en-US" @(Culture == "en-us" ? "selected=\"selected\"" : "")>English</option>
+                    <option value="vi-VN" @(Culture == "vi-vn" ? "selected=\"selected\"" : "")>Việt nam</option>
+                </select>
+                @Culture
                 <div class="btn-close-mn visible-xs"><i class="fa fa-close"></i></div>
             </div>
             <div class="user-info">
@@ -57,15 +63,15 @@
             <div class="menu">
                 <ul>
                     <li id="MenuViewByStatus" class="pst-tootip active">
-                        <a href="/Bill"  >
+                        <a href="/Bill">
                             <span class="icon"><i class="fa fa-list-alt"></i></span>
                             Quản lý đơn hàng
                         </a>
                     </li>
                     <li class=" pst-tootip">
-                        <a href="/Bill" ><span class="icon"><i class="fa fa-search"></i></span>Tìm kiếm đơn hàng</a> 
+                        <a href="/Bill"><span class="icon"><i class="fa fa-search"></i></span>Tìm kiếm đơn hàng</a>
                     </li>
-                     
+
                     <li class=" pst-tootip">
                         <a href="/BranchMst/Index">
                             <span class="icon"><i class="fa fa-info-circle"></i></span>
@@ -83,7 +89,7 @@
                             <span class="icon"><i class="fa fa-info-circle"></i></span>
                             @Chuyenphatnhanh.Content.Texts.RGlobal.F_CustMstManager
                         </a>
-                    </li> 
+                    </li>
                     <li class=" pst-tootip">
                         <a href="/DistrictMst/Index">
                             <span class="icon"><i class="fa fa-info-circle"></i></span>
@@ -121,7 +127,7 @@
                     <i class="fa fa-minus"></i>
                 </div>
                 <div class="ifr-facebook">
-                    <div class="fb-page fb_iframe_widget" >
+                    <div class="fb-page fb_iframe_widget">
                         <span style="vertical-align: bottom; width: 320px; height: 420px;">
                         </span>
                     </div>
@@ -140,7 +146,7 @@
                     </div>
                     <div class="search pull-right">
                         <div class="hip-search">
-                            <input ng-model="qSearchContent" ng-init="qSearchContent=null" ng-keypress="($event.which === 13)?alert('abc'):0" class="form-control Roboto-Light ng-pristine ng-untouched ng-valid" type="text" placeholder="Mã ĐH | Tên người nhận | SDT" id="search_keyword" name="search_keyword">
+                            <input ng-model="qSearchContent" ng-init="qSearchContent=null" ng-keypress="($event.which === 13)?alert('abc'):0" class="col-xs-12 Roboto-Light ng-pristine ng-untouched ng-valid" type="text" placeholder="Mã ĐH | Tên người nhận | SDT" id="search_keyword" name="search_keyword">
                             <a id="btnQuickSearch" href="#" onclick="ga('send', { hitType: 'event', eventCategory: 'Quanlydonhang', eventAction: 'Quick search', eventLabel: ' Quick search '});" class="icon_search"><i class="fa fa-search"></i></a>
                         </div>
                         <!-- <div ng-show="quickSearch.orders.length > 0" class="list-search ng-hide">
@@ -150,12 +156,19 @@
                          </div>-->
                     </div>
                 </div>
-            </div> 
+            </div>
             <div class="h-content ct-donhang">
                 <div class="container">
-                    @ViewBag.Title
-                    @ViewData[Chuyenphatnhanh.Util.Contant.MESSAGESUCCESS]
-                    @Html.ValidationMessageFor(modle => modle.MessageError, "", new { @class = "text-danger" })
+                    <div class="row message">
+                        <div class="col-md-8 col-xs-12 center">
+                            <div class="msg">
+                                @ViewData[Chuyenphatnhanh.Util.Contant.MESSAGESUCCESS]
+                            </div>
+                            <div class="error">
+                                @Html.ValidationMessageFor(modle => modle.MessageError, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
                     @RenderBody()
                 </div>
             </div>
@@ -165,20 +178,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <script>
-        jQuery(".menu-btnmain").click(function () {
-            if (jQuery("body").hasClass("show-left")) {
-                jQuery("body").removeClass("show-left");
-            } else {
-                jQuery("body").addClass("show-left");
-            }
-        });
 
-        if (!$("body").hasClass("show-left")) {
-            $("body").addClass("show-left");
-        }
-
-    </script>
 
 </body>
 </html>

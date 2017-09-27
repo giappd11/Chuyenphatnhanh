@@ -52,10 +52,15 @@
         </dd>
 
     </dl>
-
-    @using (Html.BeginForm()) {
+     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.DELETE_FLAG)
+        @Html.HiddenFor(model => model.MOD_USER_NAME)
+        @Html.HiddenFor(model => model.REG_USER_NAME)
+        @Html.TextBoxFor(model => model.MOD_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+        @Html.TextBoxFor(model => model.REG_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
 
+        @Html.HiddenFor(model => model.BRANCH_ID)
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
             @Html.ActionLink("Back to List", "Index")

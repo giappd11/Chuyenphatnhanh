@@ -133,6 +133,60 @@ namespace Chuyenphatnhanh.Content.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Địa chỉ.
+        /// </summary>
+        public static string Cust_Address {
+            get {
+                return ResourceManager.GetString("Cust_Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Khu vực.
+        /// </summary>
+        public static string Cust_District {
+            get {
+                return ResourceManager.GetString("Cust_District", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Người gửi.
+        /// </summary>
+        public static string Cust_Name_from {
+            get {
+                return ResourceManager.GetString("Cust_Name_from", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Người nhận.
+        /// </summary>
+        public static string Cust_Name_To {
+            get {
+                return ResourceManager.GetString("Cust_Name_To", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số điện thoại.
+        /// </summary>
+        public static string Cust_Phone {
+            get {
+                return ResourceManager.GetString("Cust_Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phường/Xã.
+        /// </summary>
+        public static string Cust_ward {
+            get {
+                return ResourceManager.GetString("Cust_ward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Khách hàng {0} đã được sửa bởi {1}.
         /// </summary>
         public static string CustMstModified {

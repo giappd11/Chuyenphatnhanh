@@ -3,74 +3,76 @@
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
-} 
-
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>BRANCH_MST</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-         
-        <div class="form-group">
-            @Html.LabelFor(model => model.BRANCH_NAME, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BRANCH_NAME, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BRANCH_NAME, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ADDRESS, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ADDRESS, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ADDRESS, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DISTRICT_ID, "DISTRICT_ID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.DISTRICT_ID, ViewBag.DISTRICT_ID as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "form-control", @onChange = "DistrictChange(this,'WARD_ID')" })
-                @Html.ValidationMessageFor(model => model.DISTRICT_ID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.WARD_ID, "WARD_ID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.WARD_ID, ViewBag.WARD_ID as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.WARD_ID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-         
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LATITUDE, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LATITUDE, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LATITUDE, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LONGITUDE, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LONGITUDE, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LONGITUDE, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="row">
+    <ul class="ul-box">
+        <li class="col-md-8 col-xs-12 center">
+            @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>BRANCH_MST</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BRANCH_NAME, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="frm-edit-client col-md-8">
+                        @Html.EditorFor(model => model.BRANCH_NAME, new { htmlAttributes = new { @class = "col-xs-12" } })
+                        @Html.ValidationMessageFor(model => model.BRANCH_NAME, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ADDRESS, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="frm-edit-client col-md-8">
+                        @Html.EditorFor(model => model.ADDRESS, new { htmlAttributes = new { @class = "col-xs-12" } })
+                        @Html.ValidationMessageFor(model => model.ADDRESS, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DISTRICT_ID, "DISTRICT_ID", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="frm-edit-client col-md-8">
+                        @Html.DropDownListFor(model => model.DISTRICT_ID, ViewBag.DISTRICT_ID as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "col-xs-12 chosen-select", @onChange = "DistrictChange(this,'WARD_ID')" })
+                        @Html.ValidationMessageFor(model => model.DISTRICT_ID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.WARD_ID, "WARD_ID", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="frm-edit-client col-md-8">
+                        @Html.DropDownListFor(model => model.WARD_ID, ViewBag.WARD_ID as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "col-xs-12 chosen-select" })
+                        @Html.ValidationMessageFor(model => model.WARD_ID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LATITUDE, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="frm-edit-client col-md-8">
+                        @Html.EditorFor(model => model.LATITUDE, new { htmlAttributes = new { @class = "col-xs-12" } })
+                        @Html.ValidationMessageFor(model => model.LATITUDE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LONGITUDE, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="frm-edit-client col-md-8">
+                        @Html.EditorFor(model => model.LONGITUDE, new { htmlAttributes = new { @class = "col-xs-12" } })
+                        @Html.ValidationMessageFor(model => model.LONGITUDE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="frm-edit-client">
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "link-back" })<input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+    </li>
+</ul>
 </div>

@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Chuyenphatnhanh.Models;
+using Chuyenphatnhanh.Util;
+using Resource = Chuyenphatnhanh.Content.Texts;
 
 namespace Chuyenphatnhanh.Controllers
 {
@@ -17,7 +19,15 @@ namespace Chuyenphatnhanh.Controllers
         // GET: TariffMst
         public ActionResult Index()
         {
-            return View(db.TARIFF_MST.ToList());
+            List<TARIFF_MST> _list = db.TARIFF_MST.Where(u => u.DELETE_FLAG == false).ToList();
+            List<RoleMstForm> _TariffList = new List<RoleMstForm>();
+            foreach (TARIFF_MST _Tariff in _list)
+            {
+                RoleMstForm _TariffMst = new RoleMstForm();
+                ComplementUtil.complement(_Tariff, _TariffMst);
+                _TariffList.Add(_TariffMst);
+            }
+            return View(_TariffList); 
         }
 
         // GET: TariffMst/Details/5
@@ -32,7 +42,9 @@ namespace Chuyenphatnhanh.Controllers
             {
                 return HttpNotFound();
             }
-            return View(tARIFF_MST);
+            TariffMstForm _form = new TariffMstForm();
+            ComplementUtil.complement(tARIFF_MST, _form);
+            return View(_form);
         }
 
         // GET: TariffMst/Create
@@ -46,16 +58,23 @@ namespace Chuyenphatnhanh.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DELETE_FLAG,REG_DATE,MOD_DATE,REG_USER_NAME,MOD_USER_NAME,TARIFF_ID,WEIGHT_FROM,WEIGHT_TO,DISTANCE_FROM,DISTANCE_TO,PRICE")] TARIFF_MST tARIFF_MST)
+        public ActionResult Create(TariffMstForm form)
         {
+            TARIFF_MST _TariffMst = new TARIFF_MST();
             if (ModelState.IsValid)
             {
-                db.TARIFF_MST.Add(tARIFF_MST);
+                ComplementUtil.complement(form, _TariffMst);
+                _TariffMst.DELETE_FLAG = false;
+                _TariffMst.MOD_DATE = DateTime.Now;
+                _TariffMst.MOD_USER_NAME = _operator.UserName;
+                _TariffMst.REG_DATE = DateTime.Now;
+                _TariffMst.REG_USER_NAME = _operator.UserName;
+                _TariffMst.TARIFF_ID = GenerateID.GennerateID(db, Contant.TARIFFMST_SEQ, Contant.TARIFFMST_PREFIX);
+                db.TARIFF_MST.Add(_TariffMst);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
             }
-
-            return View(tARIFF_MST);
+            return View(form);
         }
 
         // GET: TariffMst/Edit/5
@@ -70,7 +89,9 @@ namespace Chuyenphatnhanh.Controllers
             {
                 return HttpNotFound();
             }
-            return View(tARIFF_MST);
+            TariffMstForm _form = new TariffMstForm();
+            ComplementUtil.complement(tARIFF_MST, _form);
+            return View(_form);
         }
 
         // POST: TariffMst/Edit/5
@@ -78,15 +99,25 @@ namespace Chuyenphatnhanh.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DELETE_FLAG,REG_DATE,MOD_DATE,REG_USER_NAME,MOD_USER_NAME,TARIFF_ID,WEIGHT_FROM,WEIGHT_TO,DISTANCE_FROM,DISTANCE_TO,PRICE")] TARIFF_MST tARIFF_MST)
+        public ActionResult Edit(TariffMstForm form)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tARIFF_MST).State = EntityState.Modified;
+                TARIFF_MST _TariffMst = db.TARIFF_MST.Find(form.TARIFF_ID);
+                if (DateTime.Compare((DateTime)_TariffMst.MOD_DATE, form.MOD_DATE) != 0)
+                {
+                    ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _TariffMst.TARIFF_ID, _TariffMst.MOD_USER_NAME));
+                    return View(form);
+                }
+
+                ComplementUtil.complement(form, _TariffMst);
+                _TariffMst.MOD_DATE = DateTime.Now;
+                _TariffMst.MOD_USER_NAME = _operator.UserName;
+                db.Entry(_TariffMst).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
             }
-            return View(tARIFF_MST);
+            return View(form);
         }
 
         // GET: TariffMst/Delete/5
@@ -101,18 +132,33 @@ namespace Chuyenphatnhanh.Controllers
             {
                 return HttpNotFound();
             }
-            return View(tARIFF_MST);
+            TariffMstForm _form = new TariffMstForm();
+            ComplementUtil.complement(tARIFF_MST, _form);
+            return View(_form);
         }
 
         // POST: TariffMst/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(TariffMstForm form)
         {
-            TARIFF_MST tARIFF_MST = db.TARIFF_MST.Find(id);
-            db.TARIFF_MST.Remove(tARIFF_MST);
+            TARIFF_MST _TariffMst = db.TARIFF_MST.Find(form.TARIFF_ID);
+            if (DateTime.Compare((DateTime)_TariffMst.MOD_DATE, form.MOD_DATE) != 0)
+            {
+                ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _TariffMst.TARIFF_ID, _TariffMst.MOD_USER_NAME));
+                return View(form);
+            }
+
+            ComplementUtil.complement(form, _TariffMst);
+            _TariffMst.MOD_DATE = DateTime.Now;
+            _TariffMst.MOD_USER_NAME = _operator.UserName;
+            _TariffMst.DELETE_FLAG = true;
+            db.Entry(_TariffMst).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("Index");
+            ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
+
+            ComplementUtil.complement(_TariffMst, form);
+            return View(form);
         }
 
         protected override void Dispose(bool disposing)

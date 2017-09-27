@@ -13,14 +13,15 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.BRANCH_MST.REG_USER_NAME)
+                @Html.DisplayNameFor(model => model.User_name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ROLE_MST.REG_USER_NAME)
+                @Html.DisplayNameFor(model => model.Branch_Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.USER_MST.REG_USER_NAME)
+                @Html.DisplayNameFor(model => model.Role_Name)
             </th>
+            
             <th></th>
         </tr>
     </thead>
@@ -28,16 +29,16 @@
         @foreach (var item in Model)
         {
             <tr>
-
                 <td>
-                    @Html.DisplayFor(modelItem => item.BRANCH_MST.REG_USER_NAME)
+                    @Html.DisplayFor(modelItem => item.User_name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ROLE_MST.REG_USER_NAME)
+                    @Html.DisplayFor(modelItem => item.Branch_Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.USER_MST.REG_USER_NAME)
+                    @Html.DisplayFor(modelItem => item.Role_Name)
                 </td>
+                
                 <td>
 
                     @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Edit, "Edit", new { id = item.USER_ID }) |

@@ -17,14 +17,22 @@ namespace Chuyenphatnhanh.Controllers
     {
         private DBConnection db = new DBConnection();
 
-        
+        public ActionResult Index()
+        {
+            var _sessionLoged = (Operator)Session[Contant.SESSIONLOGED];
+            if (_sessionLoged == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            return View();
+        }
         // GET: Home/Login
         public ActionResult Login()
         {
             var _sessionLoged = (Operator)Session[Contant.SESSIONLOGED];
             if (_sessionLoged != null)
             {
-                return RedirectToAction("Index", "CustMst");
+                return RedirectToAction("Index", "Home");
             }
             return View();
         }
@@ -58,7 +66,7 @@ namespace Chuyenphatnhanh.Controllers
                         _operator.BranchID = _user.USER_CONFIG_MST.BRANCH_ID;
                     }
                     Session[Contant.SESSIONLOGED] = _operator;
-                    return RedirectToAction("Index", "CustMst");
+                    return RedirectToAction("Index", "Home");
 
                 }
                 else
@@ -80,14 +88,25 @@ namespace Chuyenphatnhanh.Controllers
 
             return View(form);
         }
-         
+        
+
         public ActionResult Logout()
         {
             Session[Contant.SESSIONLOGED] = null;
             return RedirectToAction("Login");
         }
 
+        [HttpPost]
+        public ActionResult ChangeLanguage(string lang)
+        {
+            if (string.IsNullOrEmpty(lang))
+                lang = "vi-vn";
+            var cultureInfo = new System.Globalization.CultureInfo(lang);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = cultureInfo;
+            System.Threading.Thread.CurrentThread.CurrentCulture = cultureInfo;
+            return RedirectToAction("Index", "Home");
 
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

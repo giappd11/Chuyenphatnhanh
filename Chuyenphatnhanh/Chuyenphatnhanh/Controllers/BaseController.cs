@@ -57,7 +57,7 @@ namespace Chuyenphatnhanh.Controllers
         private static void SetCurrentCultureOnThread(string lang)
         {
             if (string.IsNullOrEmpty(lang))
-                lang = GlobalHelper.DefaultCulture;
+                lang = "vi-vn";
             var cultureInfo = new System.Globalization.CultureInfo(lang);
             System.Threading.Thread.CurrentThread.CurrentUICulture = cultureInfo;
             System.Threading.Thread.CurrentThread.CurrentCulture = cultureInfo;
@@ -66,7 +66,7 @@ namespace Chuyenphatnhanh.Controllers
         public static String GetCultureOnCookie(HttpRequestBase request)
         {
             var cookie = request.Cookies[_cookieLangName];
-            string culture = string.Empty;
+            string culture = "vi-vn";
             if (cookie != null)
             {
                 culture = cookie.Value;
