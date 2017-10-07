@@ -24,6 +24,8 @@ namespace Chuyenphatnhanh.Models
         public Nullable<decimal> WEIGHT_TO { get; set; }
         public Nullable<decimal> DISTANCE_FROM { get; set; }
         public Nullable<decimal> DISTANCE_TO { get; set; }
-        public Nullable<decimal> PRICE { get; set; }
+        public decimal PRICE { get; set; }
+        public string LOCATION_SPICAL { get; set; }
+        public string COMMENT { get; set; }
     }
 }

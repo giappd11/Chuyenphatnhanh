@@ -22,6 +22,7 @@ namespace Chuyenphatnhanh.Models
             this.BILL_HDR_TBL2 = new HashSet<BILL_HDR_TBL>();
             this.BRANCH_MST = new HashSet<BRANCH_MST>();
             this.CUST_MST = new HashSet<CUST_MST>();
+            this.USER_MST = new HashSet<USER_MST>();
         }
     
         public Nullable<bool> DELETE_FLAG { get; set; }
@@ -41,8 +42,10 @@ namespace Chuyenphatnhanh.Models
         public virtual ICollection<BILL_HDR_TBL> BILL_HDR_TBL2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BRANCH_MST> BRANCH_MST { get; set; }
-        public virtual DISTRICT_MST DISTRICT_MST { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CUST_MST> CUST_MST { get; set; }
+        public virtual DISTRICT_MST DISTRICT_MST { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<USER_MST> USER_MST { get; set; }
     }
 }

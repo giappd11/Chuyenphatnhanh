@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @{
+        ViewBag.Title = Model.StatusCode;
+    }
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <hgroup>
+        <h1>Error. @Model.StatusCode</h1>
+        <h2>An error occurred while processing your request.</h2>
+        @Model.StatusDescription<br />
+        @Model.Message<br />
+        @Model.DateTime
+    </hgroup>
+</body>
+</html>

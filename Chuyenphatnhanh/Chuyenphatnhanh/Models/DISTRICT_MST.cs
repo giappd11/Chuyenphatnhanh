@@ -17,6 +17,12 @@ namespace Chuyenphatnhanh.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DISTRICT_MST()
         {
+            this.BILL_HDR_TBL = new HashSet<BILL_HDR_TBL>();
+            this.BILL_HDR_TBL1 = new HashSet<BILL_HDR_TBL>();
+            this.BILL_HDR_TBL2 = new HashSet<BILL_HDR_TBL>();
+            this.BRANCH_MST = new HashSet<BRANCH_MST>();
+            this.CUST_MST = new HashSet<CUST_MST>();
+            this.USER_MST = new HashSet<USER_MST>();
             this.WARD_MST = new HashSet<WARD_MST>();
         }
     
@@ -27,7 +33,20 @@ namespace Chuyenphatnhanh.Models
         public string MOD_USER_NAME { get; set; }
         public string DISTRICT_ID { get; set; }
         public string DISTRICT_NAME { get; set; }
+        public string PROVINCE_CODE { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BILL_HDR_TBL> BILL_HDR_TBL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BILL_HDR_TBL> BILL_HDR_TBL1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BILL_HDR_TBL> BILL_HDR_TBL2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BRANCH_MST> BRANCH_MST { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CUST_MST> CUST_MST { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<USER_MST> USER_MST { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WARD_MST> WARD_MST { get; set; }
     }

@@ -17,6 +17,8 @@ namespace Chuyenphatnhanh.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public BRANCH_MST()
         {
+            this.BILL_HDR_TBL = new HashSet<BILL_HDR_TBL>();
+            this.BILL_HDR_TBL1 = new HashSet<BILL_HDR_TBL>();
             this.USER_CONFIG_MST = new HashSet<USER_CONFIG_MST>();
         }
     
@@ -31,7 +33,13 @@ namespace Chuyenphatnhanh.Models
         public string WARD_ID { get; set; }
         public Nullable<decimal> LATITUDE { get; set; }
         public Nullable<decimal> LONGITUDE { get; set; }
+        public string DISTRICT_ID { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BILL_HDR_TBL> BILL_HDR_TBL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BILL_HDR_TBL> BILL_HDR_TBL1 { get; set; }
+        public virtual DISTRICT_MST DISTRICT_MST { get; set; }
         public virtual WARD_MST WARD_MST { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USER_CONFIG_MST> USER_CONFIG_MST { get; set; }

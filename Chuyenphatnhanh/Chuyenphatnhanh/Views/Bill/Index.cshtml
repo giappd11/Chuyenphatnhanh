@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Chuyenphatnhanh.Models.BILL_HDR_TBL>
+﻿@model IEnumerable<Chuyenphatnhanh.Models.BillHdrTblForm>
 
 @{
     ViewBag.Title = "Index";
@@ -11,108 +11,48 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DELETE_FLAG)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.REG_USER_NAME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MOD_USER_NAME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.REG_DATE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MOD_DATE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.STATUS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ADDRESS_FROM)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ADDRESS_TO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ADDRESS_CURRENT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BRANCH_ID_CURRENT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CUST_MST.REG_USER_NAME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CUST_MST1.REG_USER_NAME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WARD_MST.REG_USER_NAME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WARD_MST1.REG_USER_NAME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WARD_MST2.REG_USER_NAME)
-        </th>
-        <th></th>
-    </tr>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BILL_HDR_ID)
+            </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DELETE_FLAG)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.REG_USER_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MOD_USER_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.REG_DATE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MOD_DATE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.STATUS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ADDRESS_FROM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ADDRESS_TO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ADDRESS_CURRENT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BRANCH_ID_CURRENT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CUST_MST.REG_USER_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CUST_MST1.REG_USER_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WARD_MST.REG_USER_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WARD_MST1.REG_USER_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WARD_MST2.REG_USER_NAME)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BILL_HDR_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BILL_HDR_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BILL_HDR_ID })
-        </td>
-    </tr>
-}
+            <th>
+                @Html.DisplayNameFor(model => model.AddressFrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressCurrent)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BILL_HDR_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddressFrom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddressTo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddressCurrent)
+                </td> 
+
+                <td>
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Edit, "Edit", new { id = item.BILL_HDR_ID }) |
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Delete, "Delete", new { id = item.BILL_HDR_ID })
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Print, "Report", new { id = item.BILL_HDR_ID }, new { target ="_blank"})
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>

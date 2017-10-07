@@ -13,45 +13,66 @@ using Resource = Chuyenphatnhanh.Content.Texts;
 namespace Chuyenphatnhanh.Controllers
 {
     public class SecRoleMstController : BaseController
-    { 
+    {
         // GET: SecRoleMst
         public ActionResult Index()
         {
-            List<SecRoleMstForm> _List = new List<SecRoleMstForm>();
-            List<SEC_ROLE_MST> _ListSec = db.SEC_ROLE_MST.Where(u => u.DELETE_FLAG == false).Include(s => s.ROLE_MST).ToList();
-            foreach (SEC_ROLE_MST _sec in _ListSec)
+            try
             {
-                SecRoleMstForm _form = new SecRoleMstForm();
-                ComplementUtil.complement(_sec, _form);
-                _form.Role_name = _sec.ROLE_MST.TYPE_ROLE;
-                _List.Add(_form);
+                List<SecRoleMstForm> _List = new List<SecRoleMstForm>();
+                List<SEC_ROLE_MST> _ListSec = db.SEC_ROLE_MST.Where(u => u.DELETE_FLAG == false).Include(s => s.ROLE_MST).ToList();
+                foreach (SEC_ROLE_MST _sec in _ListSec)
+                {
+                    SecRoleMstForm _form = new SecRoleMstForm();
+                    ComplementUtil.complement(_sec, _form);
+                    _form.Role_name = _sec.ROLE_MST.TYPE_ROLE;
+                    _List.Add(_form);
+                }
+                return View(_List);
             }
-            return View(_List);
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         // GET: SecRoleMst/Details/5
         public ActionResult Details(string id)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                SEC_ROLE_MST sEC_ROLE_MST = db.SEC_ROLE_MST.Find(id);
+                if (sEC_ROLE_MST == null)
+                {
+                    return HttpNotFound();
+                }
+                SecRoleMstForm _form = new SecRoleMstForm();
+                ComplementUtil.complement(sEC_ROLE_MST, _form);
+                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE", _form.ROLE_ID);
+                return View(_form);
             }
-            SEC_ROLE_MST sEC_ROLE_MST = db.SEC_ROLE_MST.Find(id);
-            if (sEC_ROLE_MST == null)
+            catch (Exception e)
             {
-                return HttpNotFound();
+                throw e;
             }
-            SecRoleMstForm _form = new SecRoleMstForm();
-            ComplementUtil.complement(sEC_ROLE_MST, _form);
-            ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE", _form.ROLE_ID);
-            return View(_form);
         }
 
         // GET: SecRoleMst/Create
         public ActionResult Create()
         {
-            ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE");
-            return View();
+            try
+            {
+                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE");
+                return View();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         // POST: SecRoleMst/Create
@@ -59,47 +80,60 @@ namespace Chuyenphatnhanh.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( SecRoleMstForm form)
+        public ActionResult Create(SecRoleMstForm form)
         {
-
-            if (ModelState.IsValid)
+            try
             {
-                SEC_ROLE_MST sEC_ROLE_MST = new SEC_ROLE_MST();
+                if (ModelState.IsValid)
+                {
+                    SEC_ROLE_MST sEC_ROLE_MST = new SEC_ROLE_MST();
 
-                ComplementUtil.complement(form, sEC_ROLE_MST);
+                    ComplementUtil.complement(form, sEC_ROLE_MST);
 
-                sEC_ROLE_MST.DELETE_FLAG = false;
-                sEC_ROLE_MST.MOD_DATE = DateTime.Now;
-                sEC_ROLE_MST.REG_DATE = DateTime.Now;
-                sEC_ROLE_MST.MOD_USER_NAME = _operator.UserName;
-                sEC_ROLE_MST.REG_USER_NAME = _operator.UserName;
-                sEC_ROLE_MST.SEC_ROLE_ID = GenerateID.GennerateID(db, Contant.SECROLEMST_SEQ, Contant.SECROLEMST_PREFIX);
-                db.SEC_ROLE_MST.Add(sEC_ROLE_MST);
-                db.SaveChanges();
-                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+                    sEC_ROLE_MST.DELETE_FLAG = false;
+                    sEC_ROLE_MST.MOD_DATE = DateTime.Now;
+                    sEC_ROLE_MST.REG_DATE = DateTime.Now;
+                    sEC_ROLE_MST.MOD_USER_NAME = _operator.UserName;
+                    sEC_ROLE_MST.REG_USER_NAME = _operator.UserName;
+                    sEC_ROLE_MST.SEC_ROLE_ID = GenerateID.GennerateID(db, Contant.SECROLEMST_SEQ, Contant.SECROLEMST_PREFIX);
+                    db.SEC_ROLE_MST.Add(sEC_ROLE_MST);
+                    db.SaveChanges();
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+                }
+
+                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE", form.ROLE_ID);
+                return View(form);
             }
-
-            ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE", form.ROLE_ID);
-            return View(form);
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         // GET: SecRoleMst/Edit/5
         public ActionResult Edit(string id)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            SEC_ROLE_MST sEC_ROLE_MST = db.SEC_ROLE_MST.Find(id);
-            if (sEC_ROLE_MST == null)
-            {
-                return HttpNotFound();
-            }
-            SecRoleMstForm _form = new SecRoleMstForm();
-            ComplementUtil.complement(sEC_ROLE_MST, _form);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                SEC_ROLE_MST sEC_ROLE_MST = db.SEC_ROLE_MST.Find(id);
+                if (sEC_ROLE_MST == null)
+                {
+                    return HttpNotFound();
+                }
+                SecRoleMstForm _form = new SecRoleMstForm();
+                ComplementUtil.complement(sEC_ROLE_MST, _form);
 
-            ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE", _form.ROLE_ID);
-            return View(_form);
+                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE", _form.ROLE_ID);
+                return View(_form);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         // POST: SecRoleMst/Edit/5
@@ -109,43 +143,57 @@ namespace Chuyenphatnhanh.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(SecRoleMstForm form)
         {
-            if (ModelState.IsValid)
+            try
             {
-                SEC_ROLE_MST SecRoleMst = db.SEC_ROLE_MST.Find(form.SEC_ROLE_ID);
-                if (DateTime.Compare((DateTime)SecRoleMst.MOD_DATE, form.MOD_DATE) != 0)
+                if (ModelState.IsValid)
                 {
-                    ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, SecRoleMst.SEC_ROLE_ID, SecRoleMst.MOD_USER_NAME));
-                    return View(form);
-                }
+                    SEC_ROLE_MST SecRoleMst = db.SEC_ROLE_MST.Find(form.SEC_ROLE_ID);
+                    if (DateTime.Compare((DateTime)SecRoleMst.MOD_DATE, form.MOD_DATE) != 0)
+                    {
+                        ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, SecRoleMst.SEC_ROLE_ID, SecRoleMst.MOD_USER_NAME));
+                        return View(form);
+                    }
 
-                ComplementUtil.complement(form, SecRoleMst);
-                SecRoleMst.MOD_DATE = DateTime.Now;
-                SecRoleMst.MOD_USER_NAME = _operator.UserName;
-                db.Entry(SecRoleMst).State = EntityState.Modified;
-                db.SaveChanges();
-                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
+                    ComplementUtil.complement(form, SecRoleMst);
+                    SecRoleMst.MOD_DATE = DateTime.Now;
+                    SecRoleMst.MOD_USER_NAME = _operator.UserName;
+                    db.Entry(SecRoleMst).State = EntityState.Modified;
+                    db.SaveChanges();
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
+                }
+                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE", form.ROLE_ID);
+                return View(form);
             }
-            ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE", form.ROLE_ID);
-            return View(form);
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         // GET: SecRoleMst/Delete/5
         public ActionResult Delete(string id)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            SEC_ROLE_MST sEC_ROLE_MST = db.SEC_ROLE_MST.Find(id);
-            if (sEC_ROLE_MST == null)
-            {
-                return HttpNotFound();
-            }
-            SecRoleMstForm _form = new SecRoleMstForm();
-            ComplementUtil.complement(sEC_ROLE_MST, _form);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                SEC_ROLE_MST sEC_ROLE_MST = db.SEC_ROLE_MST.Find(id);
+                if (sEC_ROLE_MST == null)
+                {
+                    return HttpNotFound();
+                }
+                SecRoleMstForm _form = new SecRoleMstForm();
+                ComplementUtil.complement(sEC_ROLE_MST, _form);
 
-            ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE", _form.ROLE_ID);
-            return View(_form); 
+                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE", _form.ROLE_ID);
+                return View(_form);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         // POST: SecRoleMst/Delete/5
@@ -153,20 +201,27 @@ namespace Chuyenphatnhanh.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(SecRoleMstForm form)
         {
-            SEC_ROLE_MST _SecRoleMst = db.SEC_ROLE_MST.Find(form.SEC_ROLE_ID);
-            if (DateTime.Compare((DateTime)_SecRoleMst.MOD_DATE, form.MOD_DATE) != 0)
+            try
             {
-                ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _SecRoleMst.VALUE, _SecRoleMst.MOD_USER_NAME));
+                SEC_ROLE_MST _SecRoleMst = db.SEC_ROLE_MST.Find(form.SEC_ROLE_ID);
+                if (DateTime.Compare((DateTime)_SecRoleMst.MOD_DATE, form.MOD_DATE) != 0)
+                {
+                    ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _SecRoleMst.VALUE, _SecRoleMst.MOD_USER_NAME));
+                    return View(form);
+                }
+                _SecRoleMst.MOD_DATE = DateTime.Now;
+                _SecRoleMst.MOD_USER_NAME = _operator.UserName;
+                _SecRoleMst.DELETE_FLAG = true;
+                db.Entry(_SecRoleMst).State = EntityState.Modified;
+                db.SaveChanges();
+                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
+                ComplementUtil.complement(_SecRoleMst, form);
                 return View(form);
             }
-            _SecRoleMst.MOD_DATE = DateTime.Now;
-            _SecRoleMst.MOD_USER_NAME = _operator.UserName;
-            _SecRoleMst.DELETE_FLAG = true;
-            db.Entry(_SecRoleMst).State = EntityState.Modified;
-            db.SaveChanges();
-            ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
-            ComplementUtil.complement(_SecRoleMst, form);
-            return View(form);
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         protected override void Dispose(bool disposing)

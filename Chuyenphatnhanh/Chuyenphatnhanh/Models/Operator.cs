@@ -11,6 +11,7 @@ namespace Chuyenphatnhanh.Models
         public DateTime ManagerTime { get; set; }
         public string UserName { get; set; }
         public string Role { get; set; }
+        public string RoleName { get; set; }
         public string BranchID { get; set; }
     }
 }

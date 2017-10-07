@@ -65,9 +65,20 @@ namespace Chuyenphatnhanh.Models
         [Display(Name = "Cust_ward", ResourceType = typeof(RGlobal))]
         public string WARD_ID_TO { get; set; }
 
+        public string BRANCH_ID_CURRENT { get; set; }
+        public string BRANCH_ID_TEMP { get; set; }
+        public string ADDRESS_TEMP { get; set; }
+        public string WARD_ID_TEMP { get; set; }
+        public string DISTRICT_ID_TEMP { get; set; }
+        public Nullable<decimal> AMOUNT { get; set; }
+
         public List<BillTblForm> Bill { get; set; }
 
+        public string AddressFrom { get; set; }
+        public string AddressTo { get; set; }
+        public string AddressCurrent { get; set; }
 
+        public string statusString { get; set; }
 
     }
 }

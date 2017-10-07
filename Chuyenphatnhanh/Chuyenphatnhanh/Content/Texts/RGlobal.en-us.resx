@@ -244,21 +244,57 @@
     <value>Details</value>
   </data>
   <data name="Cust_Address" xml:space="preserve">
-    <value>Địa chỉ</value>
+    <value>Address</value>
   </data>
   <data name="Cust_District" xml:space="preserve">
-    <value>Khu vực</value>
+    <value>District</value>
   </data>
   <data name="Cust_Name_from" xml:space="preserve">
-    <value>Người gửi</value>
+    <value>From</value>
   </data>
   <data name="Cust_Phone" xml:space="preserve">
-    <value>Số điện thoại</value>
+    <value>Phone</value>
   </data>
   <data name="Cust_ward" xml:space="preserve">
-    <value>Phường/Xã</value>
+    <value>Ward</value>
   </data>
   <data name="Cust_Name_To" xml:space="preserve">
-    <value>Người nhận</value>
+    <value>To</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Đơn giá</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Giá trị gói hàng</value>
+  </data>
+  <data name="SendDate" xml:space="preserve">
+    <value>Send Date</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="accessdenis" xml:space="preserve">
+    <value>Access Denied. Please contact to Administrator.</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="F_HuyDon" xml:space="preserve">
+    <value>Hủy đơn hàng</value>
+  </data>
+  <data name="F_nhanChuyenHang" xml:space="preserve">
+    <value>Chuyển hàng</value>
+  </data>
+  <data name="F_NhanShipHang" xml:space="preserve">
+    <value>Ship Hàng</value>
+  </data>
+  <data name="F_TaomoiDonHang" xml:space="preserve">
+    <value>Tạo mới đơn hàng</value>
   </data>
 </root>

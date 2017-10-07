@@ -16,13 +16,12 @@ namespace Chuyenphatnhanh
                name: "LocalizedDefault",
                url: "{lang}/{controller}/{action}",
                defaults: new { controller = "Home", action = "Index" },
-               constraints: new { lang = "vi-vn|en-us" }
+               constraints: new { lang = "vi-VN|en-US" }
            );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index",lang= "vi-vn", id = UrlParameter.Optional },
-                constraints: new { lang = "vi-vn|en-us" }
+                defaults: new { controller = "Home", action = "Index",lang= "vi-VN", id = UrlParameter.Optional }  
             );
         }
     }

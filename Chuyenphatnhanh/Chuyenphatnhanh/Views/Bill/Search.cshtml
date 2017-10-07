@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Chuyenphatnhanh.Models.BillHdrTblForm>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutList.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BILL_HDR_ID)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.AddressFrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressCurrent)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BILL_HDR_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddressFrom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddressTo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddressCurrent)
+                </td> 
+
+                <td>
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Edit, "Edit", new { id = item.BILL_HDR_ID }) |
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.View, "Details", new { id = item.BILL_HDR_ID }) |
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Delete, "Delete", new { id = item.BILL_HDR_ID })
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Delete, "Report", new { id = item.BILL_HDR_ID }, new { target ="_blank"})
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

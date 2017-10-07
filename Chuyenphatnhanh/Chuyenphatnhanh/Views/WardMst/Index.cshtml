@@ -16,7 +16,7 @@
                 @Html.DisplayNameFor(model => model.WARD_NAME)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DISTRICT_MST.REG_USER_NAME)
+                @Html.DisplayNameFor(model => model.DISTRICT_NAME)
             </th>
             <th></th>
         </tr>
@@ -29,7 +29,7 @@
                     @Html.DisplayFor(modelItem => item.WARD_NAME)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DISTRICT_MST.REG_USER_NAME)
+                    @Html.DisplayFor(modelItem => item.DISTRICT_NAME)
                 </td>
                 <td> 
                     @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Edit, "Edit", new { id = item.WARD_ID }) |

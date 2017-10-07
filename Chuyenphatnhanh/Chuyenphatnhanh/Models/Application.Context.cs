@@ -27,6 +27,7 @@ namespace Chuyenphatnhanh.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<COMMON_ERROR> COMMON_ERROR { get; set; }
         public virtual DbSet<BILL_HDR_TBL> BILL_HDR_TBL { get; set; }
         public virtual DbSet<BILL_LOG_TBL> BILL_LOG_TBL { get; set; }
         public virtual DbSet<BILL_TBL> BILL_TBL { get; set; }

@@ -19,8 +19,6 @@ namespace Chuyenphatnhanh.Models
         {
             this.BILL_HDR_TBL = new HashSet<BILL_HDR_TBL>();
             this.BILL_HDR_TBL1 = new HashSet<BILL_HDR_TBL>();
-            this.BILL_LOG_TBL = new HashSet<BILL_LOG_TBL>();
-            this.BILL_LOG_TBL1 = new HashSet<BILL_LOG_TBL>();
         }
     
         public Nullable<bool> DELETE_FLAG { get; set; }
@@ -33,15 +31,13 @@ namespace Chuyenphatnhanh.Models
         public string PHONE { get; set; }
         public string DEFAULT_WARD_ID { get; set; }
         public string DEFAULT_ADDRESS { get; set; }
+        public string DEFAULT_DISTRICT_ID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BILL_HDR_TBL> BILL_HDR_TBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BILL_HDR_TBL> BILL_HDR_TBL1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BILL_LOG_TBL> BILL_LOG_TBL { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BILL_LOG_TBL> BILL_LOG_TBL1 { get; set; }
+        public virtual DISTRICT_MST DISTRICT_MST { get; set; }
         public virtual WARD_MST WARD_MST { get; set; }
     }
 }

@@ -4,8 +4,11 @@
  */
 @font-face {
     font-family: 'FontAwesome';
-    src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/fonts/fontawesome-webfont.eot?v=4.5.0");
-    src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/fonts/fontawesome-webfont.eot?#iefix&v=4.5.0") format('embedded-opentype'), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/fonts/fontawesome-webfont.woff2?v=4.5.0") format('woff2'), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/fonts/fontawesome-webfont.woff?v=4.5.0") format('woff'), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/fonts/fontawesome-webfont.ttf?v=4.5.0") format('truetype'), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/fonts/fontawesome-webfont.svg?v=4.5.0#fontawesomeregular") format('svg');
+    src: url("fonts/fontawesome-webfont.eot?v=4.5.0");
+    src: url("fonts/fontawesome-webfont.eot?#iefix&v=4.5.0") format('embedded-opentype'), 
+         url("fonts/fontawesome-webfont.woff2?v=4.5.0") format('woff2'), 
+         url("fonts/fontawesome-webfont.woff?v=4.5.0") format('woff'),
+         url("fonts/fontawesome-webfont.ttf?v=4.5.0") format('truetype');
     font-weight: normal;
     font-style: normal
 }
@@ -2717,7 +2720,9 @@ blockquote, q {
 
 @font-face {
     font-family: 'Roboto-Medium';
-    src: url("fonts/Roboto-Medium.eot?#iefix") format('embedded-opentype'), url("fonts/Roboto-Medium.woff") format('woff'), url("fonts/Roboto-Medium.ttf") format('truetype'), url("fonts/Roboto-Medium.svg#Roboto-Medium") format('svg');
+    src: url("fonts/Roboto-Medium.eot?#iefix") format('embedded-opentype'),
+       /* url("fonts/Roboto-Medium.woff") format('woff'), */
+        url("fonts/Roboto-Medium.ttf") format('truetype'), url("fonts/Roboto-Medium.svg#Roboto-Medium") format('svg');
     font-weight: normal;
     font-style: normal
 }
@@ -2769,7 +2774,10 @@ blockquote, q {
 
 @font-face {
     font-family: 'Roboto-Light';
-    src: url("fonts/Roboto-Light.eot?#iefix") format('embedded-opentype'), url("fonts/Roboto-Light.woff") format('woff'), url("fonts/Roboto-Light.ttf") format('truetype'), url("fonts/Roboto-Light.svg#Roboto-Light") format('svg');
+    src: url("fonts/Roboto-Light.eot?#iefix") format('embedded-opentype'),
+    /* url("fonts/Roboto-Light.woff") format('woff'),
+        url("fonts/Roboto-Light.ttf") format('truetype'), */
+    url("fonts/Roboto-Light.svg#Roboto-Light") format('svg');
     font-weight: normal;
     font-style: normal
 }
@@ -2804,7 +2812,9 @@ blockquote, q {
 
 @font-face {
     font-family: 'Roboto-Regular';
-    src: url("fonts/Roboto-Regular.eot?#iefix") format('embedded-opentype'), url("fonts/Roboto-Regular.woff") format('woff'), url("fonts/Roboto-Regular.ttf") format('truetype'), url("fonts/Roboto-Regular.svg#Roboto-Regular") format('svg');
+    src: url("fonts/Roboto-Regular.eot?#iefix") format('embedded-opentype'),
+    /*url("fonts/Roboto-Regular.woff") format('woff'), */
+    url("fonts/Roboto-Regular.ttf") format('truetype'), url("fonts/Roboto-Regular.svg#Roboto-Regular") format('svg');
     font-weight: normal;
     font-style: normal
 }
@@ -11053,7 +11063,6 @@ div.left-menu div.menu {
     div.left-menu div.menu > ul > li.active {
         border-left: 6px #25ac67 solid;
         padding-left: 14px;
-        font-family: 'Roboto-Regular', 'Arial', serif
     }
 
         div.left-menu div.menu > ul > li:hover a, div.left-menu div.menu > ul > li:active a,
@@ -13647,7 +13656,7 @@ div.top-menu ul > li > a {
     position: relative
 }
 
-div.toolbar .hip-search > input {
+div.toolbar .hip-search   input {
     border: 0;
     background: 0;
     box-shadow: none;
@@ -13657,23 +13666,23 @@ div.toolbar .hip-search > input {
     padding: 5px 0
 }
 
-    div.toolbar .hip-search > input:focus {
+    div.toolbar .hip-search  input:focus {
         border-bottom-color: #3fb079
     }
 
-    div.toolbar .hip-search > input::-webkit-input-placeholder, .log-input::-webkit-input-placeholder {
+    div.toolbar .hip-search  input::-webkit-input-placeholder, .log-input::-webkit-input-placeholder {
         color: #ddd
     }
 
-    div.toolbar .hip-search > input:-moz-placeholder, .log-input:-moz-placeholder {
+    div.toolbar .hip-search  input:-moz-placeholder, .log-input:-moz-placeholder {
         color: #ddd
     }
 
-    div.toolbar .hip-search > input::-moz-placeholder, .log-input::-moz-placeholder {
+    div.toolbar .hip-search  input::-moz-placeholder, .log-input::-moz-placeholder {
         color: #ddd
     }
 
-    div.toolbar .hip-search > input:-ms-input-placeholder, .log-input:-ms-input-placeholder {
+    div.toolbar .hip-search  input:-ms-input-placeholder, .log-input:-ms-input-placeholder {
         color: #ddd
     }
 
@@ -13683,7 +13692,7 @@ input#search_keyword {
     padding-right: 30px
 }
 
-div.toolbar .hip-search > .icon_search {
+div.toolbar .hip-search .icon_search {
     background: 0;
     color: #ddd;
     right: -5px;
@@ -13691,9 +13700,10 @@ div.toolbar .hip-search > .icon_search {
     width: 22px;
     height: 22px;
     position: absolute;
-    top: 0;
     bottom: 0;
-    margin: auto
+    margin: auto;
+    top: 30px;
+    border: 0;
 }
 
 div.top-menu {
@@ -13808,7 +13818,6 @@ div.left-menu div.user-info, div.left-menu {
     div.left-menu div.menu > ul > li:hover a, div.left-menu div.menu > ul > li:active a,
     div.left-menu div.menu > ul > li.active a {
         color: #fff;
-        font-family: 'Roboto-Bold'
     }
 
 .ul-box .wrap-box, div.wap-content div.wap-top-menu, div.top-menu ul {
@@ -18188,7 +18197,9 @@ div.left-menu div.menu > ul > li.hover a {
 
 div.left-menu div.menu a {
     color: #fff;
-    opacity: .25
+    opacity: .25;
+    line-height: 25px;
+    display: inline-block;
 }
 
 div.left-menu div.menu > ul > li.active a {
@@ -22281,7 +22292,7 @@ div.wap-top-menu .btn {
 }
 
 .ajax-wall {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     background-color: White;
@@ -23400,6 +23411,9 @@ label {
     .h-phienchuyentien .hd-tb .btn {
         font-size: 10px
     }
+    .wrap-login{
+        width: 100% !important;
+    }
 }
 
 @media ( max-width :360px) {
@@ -23738,11 +23752,12 @@ ul.ul-box {
 .logo img {
     max-height: 100%;
 }
-
+.form-horizontal .col-md-4 ,
 .create-order .col-md-4 {
     width: 33.33333333%;
     float: left;
 }
+.form-horizontal .col-md-8,
 .create-order .col-md-8 {
     width: 66.66666667%;
     float: left;
@@ -23764,3 +23779,18 @@ ul.ul-box {
     color: red;
     font-size: 20px;
 }
+label.left {
+    float: left !important;
+}
+.toggle {
+    float: right;
+    color: #fff;
+    padding: 4px 5px;
+}
+.sub_menu {
+    margin-left: 10px;
+}
+    .sub_menu li {
+        padding: 6px 0 2px 0;
+    }
+     

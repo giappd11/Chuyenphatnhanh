@@ -27,7 +27,11 @@ namespace Chuyenphatnhanh.Models
         public string OLD_PASSWORD { get; set; }
         public string ADDRESS { get; set; }
         public string PHONE { get; set; }
+        public string WARD_ID { get; set; }
+        public string DISTRICT_ID { get; set; }
     
+        public virtual DISTRICT_MST DISTRICT_MST { get; set; }
         public virtual USER_CONFIG_MST USER_CONFIG_MST { get; set; }
+        public virtual WARD_MST WARD_MST { get; set; }
     }
 }

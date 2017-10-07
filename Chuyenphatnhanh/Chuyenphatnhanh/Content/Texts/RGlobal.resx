@@ -276,4 +276,40 @@
   <data name="Cust_Name_To" xml:space="preserve">
     <value>Người nhận</value>
   </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Đơn giá</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Ghi chú</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Tên gói hàng</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Giá trị gói hàng</value>
+  </data>
+  <data name="SendDate" xml:space="preserve">
+    <value>Ngày gửi</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Cân nặng</value>
+  </data>
+  <data name="accessdenis" xml:space="preserve">
+    <value>Bạn không đủ quyền để thực hiện chức năng. Liên hệ quản trị viên để được giải đáp.</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>In Phiếu</value>
+  </data>
+  <data name="F_HuyDon" xml:space="preserve">
+    <value>Hủy đơn hàng</value>
+  </data>
+  <data name="F_nhanChuyenHang" xml:space="preserve">
+    <value>Chuyển hàng</value>
+  </data>
+  <data name="F_NhanShipHang" xml:space="preserve">
+    <value>Ship Hàng</value>
+  </data>
+  <data name="F_TaomoiDonHang" xml:space="preserve">
+    <value>Tạo mới đơn hàng</value>
+  </data>
 </root>

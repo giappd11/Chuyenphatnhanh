@@ -29,19 +29,29 @@ namespace Chuyenphatnhanh.Models
         public string CUST_FROM_ID { get; set; }
         public string CUST_TO_ID { get; set; }
         public string STATUS { get; set; }
+        public string DISTRICT_ID_FROM { get; set; }
         public string WARD_ID_FROM { get; set; }
         public string ADDRESS_FROM { get; set; }
+        public string DISTRICT_ID_TO { get; set; }
         public string WARD_ID_TO { get; set; }
         public string ADDRESS_TO { get; set; }
+        public string DISTRICT_ID_CURRENT { get; set; }
         public string WARD_ID_CURRENT { get; set; }
         public string ADDRESS_CURRENT { get; set; }
         public string BRANCH_ID_CURRENT { get; set; }
+        public string BRANCH_ID_TEMP { get; set; }
+        public Nullable<decimal> AMOUNT { get; set; }
     
-        public virtual CUST_MST CUST_MST { get; set; }
-        public virtual CUST_MST CUST_MST1 { get; set; }
-        public virtual WARD_MST WARD_MST { get; set; }
-        public virtual WARD_MST WARD_MST1 { get; set; }
-        public virtual WARD_MST WARD_MST2 { get; set; }
+        public virtual BRANCH_MST BRANCH_MST_CURRENT { get; set; }
+        public virtual BRANCH_MST BRANCH_MST_TEMP { get; set; }
+        public virtual CUST_MST CUST_MST_FROM { get; set; }
+        public virtual CUST_MST CUST_MST_TO { get; set; }
+        public virtual DISTRICT_MST DISTRICT_MST_CURRENT { get; set; }
+        public virtual DISTRICT_MST DISTRICT_MST_FROM { get; set; }
+        public virtual DISTRICT_MST DISTRICT_MST_TO { get; set; }
+        public virtual WARD_MST WARD_MST_CURRENT { get; set; }
+        public virtual WARD_MST WARD_MST_FROM { get; set; }
+        public virtual WARD_MST WARD_MST_TO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BILL_TBL> BILL_TBL { get; set; }
     }

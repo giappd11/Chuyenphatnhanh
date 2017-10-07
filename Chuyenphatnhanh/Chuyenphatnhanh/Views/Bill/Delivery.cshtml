@@ -1,0 +1,218 @@
+﻿@model Chuyenphatnhanh.Models.BillHdrTblForm
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <ul class="ul-box">
+        <li class="col-md-8 col-xs-12 center">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal create-order">
+                    <h4>BILL_HDR_TBL</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.DELETE_FLAG)
+                    @Html.HiddenFor(model => model.MOD_USER_NAME)
+                    @Html.HiddenFor(model => model.REG_USER_NAME)
+                    @Html.TextBoxFor(model => model.MOD_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+                    @Html.TextBoxFor(model => model.REG_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+                    @Html.HiddenFor(model => model.BILL_HDR_ID)
+                    @Html.HiddenFor(model => model.STATUS)
+                    @Html.HiddenFor(model => model.BRANCH_ID_CURRENT)
+                    <div class="item sender col-md-6 ">
+                        <div class="col-xs-12 wrap-title">
+                            <div class="title">Người gửi</div>
+                        </div>
+                        <div class="sub-content h-form-content">
+                            @Html.HiddenFor(model => model.CUST_FROM_ID)
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.Cust_From_Phone, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="frm-edit-client col-md-8">
+                                    @Html.EditorFor(model => model.Cust_From_Phone, new { htmlAttributes = new { @class = "col-xs-12", @readonly = "readOnly" } })
+                                    @Html.ValidationMessageFor(model => model.Cust_From_Phone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.Cust_From_Name, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="frm-edit-client col-md-8">
+                                    @Html.EditorFor(model => model.Cust_From_Name, new { htmlAttributes = new { @class = "col-xs-12", @readonly = "readOnly" } })
+                                    @Html.ValidationMessageFor(model => model.Cust_From_Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.ADDRESS_FROM, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="frm-edit-client col-md-8">
+                                    @Html.EditorFor(model => model.ADDRESS_FROM, new { htmlAttributes = new { @class = "col-xs-12", @readonly = "readOnly" } })
+                                    @Html.ValidationMessageFor(model => model.ADDRESS_FROM, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.DISTRICT_ID_FROM, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="frm-edit-client col-md-8">
+                                    @Html.DropDownListFor(model => model.DISTRICT_ID_FROM, ViewBag.DISTRICT_ID_FROM as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "col-xs-12  chosen-select", @disabled = "disabled" })
+                                    @Html.HiddenFor(model => model.DISTRICT_ID_FROM)
+                                    @Html.ValidationMessageFor(model => model.DISTRICT_ID_FROM, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.WARD_ID_FROM, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="frm-edit-client col-md-8">
+                                    @Html.DropDownListFor(model => model.WARD_ID_FROM, ViewBag.WARD_ID_FROM as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "col-xs-12 chosen-select", @disabled = "disabled" })
+                                    @Html.HiddenFor(model => model.WARD_ID_FROM)
+                                    @Html.ValidationMessageFor(model => model.WARD_ID_FROM, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item recipient  col-md-6">
+                        <div class="col-xs-12 wrap-title">
+                            <div class="title">Người nhận</div>
+                        </div>
+                        <div class="sub-content h-form-content">
+                            @Html.HiddenFor(model => model.CUST_TO_ID)
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.Cust_To_Phone, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="frm-edit-client col-md-8">
+                                    @Html.EditorFor(model => model.Cust_To_Phone, new { htmlAttributes = new { @class = "col-xs-12", @readonly = "readOnly" } })
+                                    @Html.ValidationMessageFor(model => model.Cust_To_Phone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.Cust_To_Name, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="frm-edit-client col-md-8">
+                                    @Html.EditorFor(model => model.Cust_To_Name, new { htmlAttributes = new { @class = "col-xs-12", @readonly = "readOnly" } })
+                                    @Html.ValidationMessageFor(model => model.Cust_To_Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.ADDRESS_TO, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="frm-edit-client col-md-8">
+                                    @Html.EditorFor(model => model.ADDRESS_TO, new { htmlAttributes = new { @class = "col-xs-12", @readonly = "readOnly" } })
+                                    @Html.ValidationMessageFor(model => model.ADDRESS_TO, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.DISTRICT_ID_TO, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="frm-edit-client col-md-8">
+                                    @Html.DropDownListFor(model => model.DISTRICT_ID_TO, ViewBag.DISTRICT_ID_TO as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "col-xs-12  chosen-select", @disabled = "disabled" })
+                                    @Html.HiddenFor(model => model.DISTRICT_ID_TO)
+                                    @Html.ValidationMessageFor(model => model.DISTRICT_ID_TO, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.WARD_ID_TO, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="frm-edit-client col-md-8">
+                                    @Html.DropDownListFor(model => model.WARD_ID_TO, ViewBag.WARD_ID_TO as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "col-xs-12 chosen-select", @disabled = "disabled" })
+                                    @Html.HiddenFor(model => model.WARD_ID_TO)
+                                    @Html.ValidationMessageFor(model => model.WARD_ID_TO, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="item parcel bill0">
+                        @if (Model.Bill == null)
+                        {
+                            Model.Bill = new List<BillTblForm>();
+                            Model.Bill.Add(new BillTblForm());
+                        }
+                        @for (int i = 0; i < Model.Bill.Count(); i++)
+                        {
+
+                            @Html.HiddenFor(model => model.Bill[i].DELETE_FLAG)
+                            @Html.HiddenFor(model => model.Bill[i].MOD_USER_NAME)
+                            @Html.HiddenFor(model => model.Bill[i].REG_USER_NAME)
+                            @Html.TextBoxFor(model => model.Bill[i].MOD_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+                            @Html.TextBoxFor(model => model.Bill[i].REG_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+                            @Html.HiddenFor(model => model.Bill[i].BILL_ID)
+                            @Html.HiddenFor(model => model.Bill[i].BILL_HDR_ID)
+                            <div class="col-xs-12 wrap-title">
+                                <div class="title">Gói hàng @i</div>
+                               <!--<span class="icon addnewBill"><i class="fa fa-info-circle"></i></span>-->
+                                <input type="hidden" name="billCount" class="billCount" value="@Model.Bill.Count()" />
+                            </div>
+                            <div class="sub-content h-form-content">
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.Bill[i].NAME, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="frm-edit-client col-md-8">
+                                        @Html.EditorFor(model => model.Bill[i].NAME, new { htmlAttributes = new { @class = "col-xs-12", @readonly = "readOnly" } })
+                                        @Html.ValidationMessageFor(model => model.Bill[i].NAME, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.Bill[i].WEIGHT, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="frm-edit-client col-md-8">
+                                        @Html.EditorFor(model => model.Bill[i].WEIGHT, new { htmlAttributes = new { @class = "col-xs-12", @readonly = "readOnly" } })
+                                        @Html.ValidationMessageFor(model => model.Bill[i].WEIGHT, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.Bill[i].PRICE, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="frm-edit-client col-md-8">
+                                        @Html.EditorFor(model => model.Bill[i].PRICE, new { htmlAttributes = new { @class = "col-xs-12", @readonly = "readOnly" } })
+                                        @Html.ValidationMessageFor(model => model.Bill[i].PRICE, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.Bill[i].COMMENT, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="frm-edit-client col-md-8">
+                                        @Html.EditorFor(model => model.Bill[i].COMMENT, new { htmlAttributes = new { @class = "col-xs-12", @readonly = "readOnly" } })
+                                        @Html.ValidationMessageFor(model => model.Bill[i].COMMENT, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                    <div class="item postage ">
+                        <div class="col-xs-12 wrap-title">
+                            <div class="title">Cước phí</div>
+                        </div>
+                        <div class="sub-content h-form-content">
+                            <div class="form-group row">
+                                <label class="control-label col-md-4">Tổng tiền</label>
+                                <div class="frm-edit-client col-md-8 price-sum">
+                                    <label class="currency">&nbsp;VND</label><label class="totalAmount">@Html.DisplayFor(model => model.AMOUNT)</label>
+                                    @Html.HiddenFor(model => model.AMOUNT)
+                                </div>
+                            </div>
+
+                        </div> 
+                    </div>
+                    <div class="item postage ">
+                        <div class="col-xs-12 wrap-title">
+                            <div class="title">Thông tin vận chuyển</div>
+                        </div>
+                        <div class="sub-content h-form-content">
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.statusString, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="frm-edit-client col-md-8">
+                                    @Html.DisplayFor(model => model.statusString)
+                                    @Html.HiddenFor(model => model.statusString)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="frm-edit-client">
+                            @Html.ActionLink("Back to List", "Index", null, new { @class = "link-back" })<input type="submit" value="Update" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </li>
+    </ul>
+</div>
+
+
+  

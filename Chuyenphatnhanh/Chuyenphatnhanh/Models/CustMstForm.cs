@@ -24,8 +24,15 @@ namespace Chuyenphatnhanh.Models
         ErrorMessageResourceType = typeof(RGlobal))]
         [Display(Name = "Address", ResourceType = typeof(RGlobal))]
         public string DEFAULT_ADDRESS { get; set; }
-        
+
+        [Required(ErrorMessageResourceName = "RequiredField",
+        ErrorMessageResourceType = typeof(RGlobal))]
+        [Display(Name = "Cust_District", ResourceType = typeof(RGlobal))]
         public string DEFAULT_DISTRICT_ID { get; set; }
+
+        [Required(ErrorMessageResourceName = "RequiredField",
+        ErrorMessageResourceType = typeof(RGlobal))]
+        [Display(Name = "Cust_ward", ResourceType = typeof(RGlobal))]
         public string DEFAULT_WARD_ID { get; set; } 
          
 

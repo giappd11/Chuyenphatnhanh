@@ -23,6 +23,7 @@ namespace Chuyenphatnhanh.Util
         public static string ROLEMST_SEQ        = "RoleMst_seq";
         public static string TARIFFMST_SEQ      = "TariffMst_seq";
         public static string WARDMST_SEQ        = "WardMst_seq";
+        public static string COMMONERROR_SEQ    = "CommonError_seq";
         public static string BILLHDRTBL_PREFIX  = "BH";
         public static string BILLLOGTBL_PREFIX  = "BL";
         public static string BILLTBL_PREFIX     = "BT";
@@ -36,22 +37,37 @@ namespace Chuyenphatnhanh.Util
         public static string ROLEMST_PREFIX     = "RO";
         public static string TARIFFMST_PREFIX   = "TR";
         public static string WARDMST_PREFIX     = "WM";
-
+        public static string COMMONERROR_PREFIX = "ER";
 
         // STATUS ĐƠN HÀNG
-        public static string NHAN_HANG              = "NH";
-        public static string DANG_CHUYEN_HANG       = "CH";
-        public static string DANG_GIAO_HANG         = "GH";
-        public static string GIAO_HANG_THANH_CONG   = "TC";
-        public static string HUY_DON_HANG           = "HH";
-        public static string HANG_TRA_LAI           = "TH";
-        public static string DANG_CHUYEN_HANG_TRA   = "CT";
-        public static string DANG_GIAO_HANG_TRA     = "GT";
-        public static string TRA_THANH_CONG         = "TL";
+        public static string NHAN_HANG                  = "NH";
+        public static string DANG_CHUYEN_HANG           = "CH";
+        public static string CHUYEN_HANG_THANH_CONG     = "NT";
+        public static string DANG_GIAO_HANG             = "GH";
+        public static string GIAO_HANG_THANH_CONG       = "TC";
+        public static string HUY_DON_HANG               = "HH";
+        public static string CHUYEN_HANG_TRA_THANH_CONG = "TH";
+        public static string DANG_CHUYEN_HANG_TRA       = "CT";
+        public static string DANG_GIAO_HANG_TRA         = "GT"; 
+        public static string TRA_THANH_CONG             = "TL";
 
-        public static string MODE_DELETE = "DELETE";
-        public static string MODE_UPDATE = "UPDATE";
-        public static string MODE_CREATE = "CREATE";
+
+        public static string PROVINCE_CODE_HN       = "HN";
+        public static string PROVINCE_CODE_HCM      = "HCM";
+        public static string PROVINCE_CODE_DN       = "DN";
+
+        public static string SPECIAL_HN_HCM         = "HN_HCM";
+        public static string SPECIAL_DN_HN_HCM      = "HN_DN";
+        public static string SPECIAL_SAMELOCATION   = "SAMELOCATION";
+
+        public static string ROLE_TELLER            = "TELLER";
+        public static string ROLE_ADMIN             = "ADMIN";
+        public static string ROLE_CARRIER           = "CARRIER";
+        public static string ROLE_SHIPPER           = "SHIPPER";
+
+        public static string MODE_DELETE            = "DELETE";
+        public static string MODE_UPDATE            = "UPDATE";
+        public static string MODE_CREATE            = "CREATE";
 
     }
 }

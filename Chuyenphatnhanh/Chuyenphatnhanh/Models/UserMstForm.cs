@@ -15,5 +15,6 @@ namespace Chuyenphatnhanh.Models
         public string OLD_PASSWORD { get; set; }
         public string ADDRESS { get; set; }
         public string PHONE { get; set; }
+        public UserConfigMstForm Config { get; set; }
     }
 }
