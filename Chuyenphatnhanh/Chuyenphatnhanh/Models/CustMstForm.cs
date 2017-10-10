@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using Chuyenphatnhanh.Content.Texts;
+using Chuyenphatnhanh.Util;
 
 namespace Chuyenphatnhanh.Models
 {

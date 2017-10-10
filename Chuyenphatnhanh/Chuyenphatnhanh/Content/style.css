@@ -5569,7 +5569,8 @@ th {
 .table {
     width: 100%;
     max-width: 100%;
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    position: relative;
 }
 
     .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th,
@@ -14460,9 +14461,16 @@ body.show-left div.page-content.ct-status, .history {
 
 .link-edit {
     box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, .07), 1px 2px 5px 0 rgba(0, 0, 0, .06);
-    margin-top: 10px
+    margin-top: 10px;
+    width: 100px;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+    padding: 5px 0px;
+    border-radius: 4px;
+    background: #aaf;
+    color: #fff;
 }
-
 .btn.add.btn-excel {
     background-color: #54B358 !important
 }

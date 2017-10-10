@@ -22,6 +22,7 @@ namespace Chuyenphatnhanh.Models
         public string BILL_LOG_ID { get; set; }
         public Nullable<System.DateTime> TRANSACTION_DATE { get; set; }
         public string TRANSACTION_ID { get; set; }
+        public string TRANSACTION_UID { get; set; }
         public string CUST_FROM_ID { get; set; }
         public string CUST_TO_ID { get; set; }
         public string STATUS { get; set; }
@@ -31,12 +32,9 @@ namespace Chuyenphatnhanh.Models
         public string DISTRICT_ID_TO { get; set; }
         public string WARD_ID_TO { get; set; }
         public string ADDRESS_TO { get; set; }
-        public string DISTRICT_ID_CURRENT { get; set; }
-        public string WARD_ID_CURRENT { get; set; }
-        public string ADDRESS_CURRENT { get; set; }
         public string BRANCH_ID_CURRENT { get; set; }
         public string BRANCH_ID_TEMP { get; set; }
-        public string TRANSACTION_UID { get; set; }
         public Nullable<decimal> AMOUNT { get; set; }
+        public string UID_CURRENT { get; set; }
     }
 }

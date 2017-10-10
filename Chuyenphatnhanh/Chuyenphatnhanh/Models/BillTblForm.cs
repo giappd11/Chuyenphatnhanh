@@ -27,7 +27,7 @@ namespace Chuyenphatnhanh.Models
         [Display(Name = "Price", ResourceType = typeof(RGlobal))]
         public Nullable<decimal> PRICE { get; set; } 
         [Display(Name = "Amount", ResourceType = typeof(RGlobal))]
-        [AggregateFunction(AggregateFunction.Sum)]
+
         public Nullable<decimal> AMOUNT { get; set; }
          
         [Display(Name = "SendDate", ResourceType = typeof(RGlobal))]

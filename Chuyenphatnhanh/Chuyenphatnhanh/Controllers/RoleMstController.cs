@@ -87,7 +87,7 @@ namespace Chuyenphatnhanh.Controllers
                     _RoleMst.ROLE_ID = GenerateID.GennerateID(db, Contant.ROLEMST_SEQ, Contant.ROLEMST_PREFIX);
                     db.ROLE_MST.Add(_RoleMst);
                     db.SaveChanges();
-                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.CreateSuccess;
                 }
                 return View(form);
             }
@@ -144,7 +144,7 @@ namespace Chuyenphatnhanh.Controllers
                     _RoleMst.MOD_USER_NAME = _operator.UserName;
                     db.Entry(_RoleMst).State = EntityState.Modified;
                     db.SaveChanges();
-                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.ChangeSuccess;
                 }
                 return View(form);
             }
@@ -196,7 +196,7 @@ namespace Chuyenphatnhanh.Controllers
                 _RoleMst.DELETE_FLAG = true;
                 db.Entry(_RoleMst).State = EntityState.Modified;
                 db.SaveChanges();
-                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
+                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.DeleteSuccess;
                 ComplementUtil.complement(_RoleMst, form);
                 return View(form);
             }

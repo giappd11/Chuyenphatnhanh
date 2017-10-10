@@ -286,15 +286,114 @@
     <value>Print</value>
   </data>
   <data name="F_HuyDon" xml:space="preserve">
-    <value>Hủy đơn hàng</value>
+    <value>Cancel</value>
   </data>
   <data name="F_nhanChuyenHang" xml:space="preserve">
     <value>Chuyển hàng</value>
   </data>
   <data name="F_NhanShipHang" xml:space="preserve">
-    <value>Ship Hàng</value>
+    <value>Ship</value>
   </data>
   <data name="F_TaomoiDonHang" xml:space="preserve">
     <value>Tạo mới đơn hàng</value>
+  </data>
+  <data name="F_ChuyenHang" xml:space="preserve">
+    <value>Transfer</value>
+  </data>
+  <data name="F_ChuyenHangTraLai" xml:space="preserve">
+    <value>Chuyển hàng trả lại</value>
+  </data>
+  <data name="F_GiaoHang" xml:space="preserve">
+    <value>Giao Hàng</value>
+  </data>
+  <data name="F_GiaoHangThanhCong" xml:space="preserve">
+    <value>Shiped</value>
+  </data>
+  <data name="F_GiaoHangTralai" xml:space="preserve">
+    <value>Giao hàng trả lại</value>
+  </data>
+  <data name="F_LuuKho" xml:space="preserve">
+    <value>Chuyển vào kho</value>
+  </data>
+  <data name="F_LuuKhoHangTraLai" xml:space="preserve">
+    <value>Chuyển vào kho hàng trả lại</value>
+  </data>
+  <data name="F_TraHangThanhCong" xml:space="preserve">
+    <value>Trả lại hàng</value>
+  </data>
+  <data name="AddressCurrent" xml:space="preserve">
+    <value>Current address</value>
+  </data>
+  <data name="AddressFrom" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="AddressTo" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="branch_temp" xml:space="preserve">
+    <value>Next Branch</value>
+  </data>
+  <data name="F_ChuyenHangThanhCong" xml:space="preserve">
+    <value>Hoàn thành chuyển hàng</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Status_Cancle" xml:space="preserve">
+    <value>Đơn hàng bị hủy</value>
+  </data>
+  <data name="Status_ChuyenHangHuyThanhCong" xml:space="preserve">
+    <value>Hàng trả lại được nhập vào kho</value>
+  </data>
+  <data name="Status_ChuyenHangThanhCong" xml:space="preserve">
+    <value>Hàng được nhập vào kho</value>
+  </data>
+  <data name="Status_dangChuyenHang" xml:space="preserve">
+    <value>Hàng đang được vận chuyển đến kho khác</value>
+  </data>
+  <data name="Status_DangVanChuyenHangHuy" xml:space="preserve">
+    <value>Hàng trả lại đang được vận chuyển đến kho khác</value>
+  </data>
+  <data name="Status_HangShiped" xml:space="preserve">
+    <value>Đã giao hàng</value>
+  </data>
+  <data name="Status_HangShipedTraLai" xml:space="preserve">
+    <value>Đã giao hàng trả lại</value>
+  </data>
+  <data name="Status_nhanHang" xml:space="preserve">
+    <value>Hàng ở kho</value>
+  </data>
+  <data name="Status_ShipHang" xml:space="preserve">
+    <value>Đang giao hàng</value>
+  </data>
+  <data name="Status_ShipHangTraLai" xml:space="preserve">
+    <value>Đang giao hàng trả lại</value>
+  </data>
+  <data name="Exists" xml:space="preserve">
+    <value>{0} existing</value>
+  </data>
+  <data name="ChangeSuccess" xml:space="preserve">
+    <value>Upadate successful</value>
+  </data>
+  <data name="CreateSuccess" xml:space="preserve">
+    <value>Create success</value>
+  </data>
+  <data name="DeleteSuccess" xml:space="preserve">
+    <value>Delete successful</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="Branch" xml:space="preserve">
+    <value>Branch</value>
+  </data>
+  <data name="user_name" xml:space="preserve">
+    <value>User name</value>
   </data>
 </root>

@@ -1,28 +1,44 @@
 ﻿@model Chuyenphatnhanh.Models.DistrictMstForm
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
- 
 
-<div>
-    <h4>DISTRICT_MST</h4>
-    <hr />
-    <dl class="dl-horizontal">
-         
+<div class="row">
+    <ul class="ul-box">
+        <li class="col-md-8 col-xs-12 center">
+            @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DISTRICT_NAME)
-        </dt>
+            <div class="form-horizontal">
+                <h4>DISTRICT_MST</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.DELETE_FLAG)
+                @Html.HiddenFor(model => model.MOD_USER_NAME)
+                @Html.HiddenFor(model => model.REG_USER_NAME)
+                @Html.TextBoxFor(model => model.MOD_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+                @Html.TextBoxFor(model => model.REG_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+                @Html.HiddenFor(model => model.DISTRICT_ID)
 
-        <dd>
-            @Html.DisplayFor(model => model.DISTRICT_NAME)
-        </dd>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DISTRICT_NAME, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="frm-edit-client col-md-8">
+                        @Html.EditorFor(model => model.DISTRICT_NAME, new { htmlAttributes = new { @class = "col-xs-12" ,@disabled = "disabled" } })
+                        @Html.ValidationMessageFor(model => model.DISTRICT_NAME, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-    </dl>
+                <div class="form-group">
+                    <div class="frm-edit-client">
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "link-back" }) 
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.DISTRICT_ID }, new { @class = "link-edit" })
+                    </div>
+                </div>
+            </div>
+        }
+    </li>
+</ul>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.DISTRICT_ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

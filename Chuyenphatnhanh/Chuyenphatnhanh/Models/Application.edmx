@@ -17,19 +17,17 @@
           <Property Name="BILL_HDR_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="CUST_FROM_ID" Type="nvarchar" MaxLength="20" />
           <Property Name="CUST_TO_ID" Type="nvarchar" MaxLength="20" />
-          <Property Name="STATUS" Type="nchar" MaxLength="10" />
+          <Property Name="STATUS" Type="nvarchar" MaxLength="50" />
           <Property Name="DISTRICT_ID_FROM" Type="nvarchar" MaxLength="20" />
           <Property Name="WARD_ID_FROM" Type="nvarchar" MaxLength="20" />
           <Property Name="ADDRESS_FROM" Type="nvarchar" MaxLength="100" />
           <Property Name="DISTRICT_ID_TO" Type="nvarchar" MaxLength="20" />
           <Property Name="WARD_ID_TO" Type="nvarchar" MaxLength="20" />
           <Property Name="ADDRESS_TO" Type="nvarchar" MaxLength="100" />
-          <Property Name="DISTRICT_ID_CURRENT" Type="nvarchar" MaxLength="20" />
-          <Property Name="WARD_ID_CURRENT" Type="nvarchar" MaxLength="20" />
-          <Property Name="ADDRESS_CURRENT" Type="nvarchar" MaxLength="100" />
           <Property Name="BRANCH_ID_CURRENT" Type="nvarchar" MaxLength="20" />
           <Property Name="BRANCH_ID_TEMP" Type="nvarchar" MaxLength="20" />
           <Property Name="AMOUNT" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="UID_CURRENT" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="BILL_LOG_TBL">
           <Key>
@@ -46,19 +44,17 @@
           <Property Name="TRANSACTION_UID" Type="nvarchar" MaxLength="20" />
           <Property Name="CUST_FROM_ID" Type="nvarchar" MaxLength="20" />
           <Property Name="CUST_TO_ID" Type="nvarchar" MaxLength="20" />
-          <Property Name="STATUS" Type="nchar" MaxLength="10" />
+          <Property Name="STATUS" Type="nvarchar" MaxLength="10" />
           <Property Name="DISTRICT_ID_FROM" Type="nvarchar" MaxLength="20" />
           <Property Name="WARD_ID_FROM" Type="nvarchar" MaxLength="20" />
           <Property Name="ADDRESS_FROM" Type="nvarchar" MaxLength="100" />
           <Property Name="DISTRICT_ID_TO" Type="nvarchar" MaxLength="20" />
           <Property Name="WARD_ID_TO" Type="nvarchar" MaxLength="20" />
           <Property Name="ADDRESS_TO" Type="nvarchar" MaxLength="100" />
-          <Property Name="DISTRICT_ID_CURRENT" Type="nvarchar" MaxLength="20" />
-          <Property Name="WARD_ID_CURRENT" Type="nvarchar" MaxLength="20" />
-          <Property Name="ADDRESS_CURRENT" Type="nvarchar" MaxLength="100" />
           <Property Name="BRANCH_ID_CURRENT" Type="nvarchar" MaxLength="20" />
           <Property Name="BRANCH_ID_TEMP" Type="nvarchar" MaxLength="20" />
           <Property Name="AMOUNT" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="UID_CURRENT" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="BILL_TBL">
           <Key>
@@ -275,18 +271,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BILL_HDR_TBL_DISTRICT_MST_CURRENT">
-          <End Role="DISTRICT_MST" Type="Self.DISTRICT_MST" Multiplicity="0..1" />
-          <End Role="BILL_HDR_TBL" Type="Self.BILL_HDR_TBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DISTRICT_MST">
-              <PropertyRef Name="DISTRICT_ID" />
-            </Principal>
-            <Dependent Role="BILL_HDR_TBL">
-              <PropertyRef Name="DISTRICT_ID_CURRENT" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_BILL_HDR_TBL_DISTRICT_MST_FROM">
           <End Role="DISTRICT_MST" Type="Self.DISTRICT_MST" Multiplicity="0..1" />
           <End Role="BILL_HDR_TBL" Type="Self.BILL_HDR_TBL" Multiplicity="*" />
@@ -311,15 +295,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BILL_HDR_TBL_WARD_MST_CURRENT">
-          <End Role="WARD_MST" Type="Self.WARD_MST" Multiplicity="0..1" />
+        <Association Name="FK_BILL_HDR_TBL_USER_MST">
+          <End Role="USER_MST" Type="Self.USER_MST" Multiplicity="0..1" />
           <End Role="BILL_HDR_TBL" Type="Self.BILL_HDR_TBL" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WARD_MST">
-              <PropertyRef Name="WARD_ID" />
+            <Principal Role="USER_MST">
+              <PropertyRef Name="USER_ID" />
             </Principal>
             <Dependent Role="BILL_HDR_TBL">
-              <PropertyRef Name="WARD_ID_CURRENT" />
+              <PropertyRef Name="UID_CURRENT" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -555,10 +539,6 @@
             <End Role="CUST_MST" EntitySet="CUST_MST" />
             <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_BILL_HDR_TBL_DISTRICT_MST_CURRENT" Association="Self.FK_BILL_HDR_TBL_DISTRICT_MST_CURRENT">
-            <End Role="DISTRICT_MST" EntitySet="DISTRICT_MST" />
-            <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
-          </AssociationSet>
           <AssociationSet Name="FK_BILL_HDR_TBL_DISTRICT_MST_FROM" Association="Self.FK_BILL_HDR_TBL_DISTRICT_MST_FROM">
             <End Role="DISTRICT_MST" EntitySet="DISTRICT_MST" />
             <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
@@ -567,8 +547,8 @@
             <End Role="DISTRICT_MST" EntitySet="DISTRICT_MST" />
             <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_BILL_HDR_TBL_WARD_MST_CURRENT" Association="Self.FK_BILL_HDR_TBL_WARD_MST_CURRENT">
-            <End Role="WARD_MST" EntitySet="WARD_MST" />
+          <AssociationSet Name="FK_BILL_HDR_TBL_USER_MST" Association="Self.FK_BILL_HDR_TBL_USER_MST">
+            <End Role="USER_MST" EntitySet="USER_MST" />
             <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
           </AssociationSet>
           <AssociationSet Name="FK_BILL_HDR_TBL_WARD_MST_FROM" Association="Self.FK_BILL_HDR_TBL_WARD_MST_FROM">
@@ -696,10 +676,6 @@
             <End Role="CUST_MST" EntitySet="CUST_MST" />
             <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_BILL_HDR_TBL_DISTRICT_MST_CURRENT" Association="Models.FK_BILL_HDR_TBL_DISTRICT_MST_CURRENT">
-            <End Role="DISTRICT_MST" EntitySet="DISTRICT_MST" />
-            <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
-          </AssociationSet>
           <AssociationSet Name="FK_BILL_HDR_TBL_DISTRICT_MST_FROM" Association="Models.FK_BILL_HDR_TBL_DISTRICT_MST_FROM">
             <End Role="DISTRICT_MST" EntitySet="DISTRICT_MST" />
             <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
@@ -708,8 +684,8 @@
             <End Role="DISTRICT_MST" EntitySet="DISTRICT_MST" />
             <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_BILL_HDR_TBL_WARD_MST_CURRENT" Association="Models.FK_BILL_HDR_TBL_WARD_MST_CURRENT">
-            <End Role="WARD_MST" EntitySet="WARD_MST" />
+          <AssociationSet Name="FK_BILL_HDR_TBL_USER_MST" Association="Models.FK_BILL_HDR_TBL_USER_MST">
+            <End Role="USER_MST" EntitySet="USER_MST" />
             <End Role="BILL_HDR_TBL" EntitySet="BILL_HDR_TBL" />
           </AssociationSet>
           <AssociationSet Name="FK_BILL_HDR_TBL_WARD_MST_FROM" Association="Models.FK_BILL_HDR_TBL_WARD_MST_FROM">
@@ -805,30 +781,27 @@
           <Property Name="BILL_HDR_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="CUST_FROM_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="CUST_TO_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="STATUS" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DISTRICT_ID_FROM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="WARD_ID_FROM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ADDRESS_FROM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DISTRICT_ID_TO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="WARD_ID_TO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ADDRESS_TO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="DISTRICT_ID_CURRENT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="WARD_ID_CURRENT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="ADDRESS_CURRENT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="BRANCH_ID_CURRENT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="BRANCH_ID_TEMP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AMOUNT" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="UID_CURRENT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BRANCH_MST_CURRENT" Relationship="Models.FK_BILL_HDR_TBL_BRANCH_MST_CURRENT" FromRole="BILL_HDR_TBL" ToRole="BRANCH_MST" />
           <NavigationProperty Name="BRANCH_MST_TEMP" Relationship="Models.FK_BILL_HDR_TBL_BRANCH_MST_TEMP" FromRole="BILL_HDR_TBL" ToRole="BRANCH_MST" />
           <NavigationProperty Name="CUST_MST_FROM" Relationship="Models.FK_BILL_HDR_TBL_CUST_MST_FROM" FromRole="BILL_HDR_TBL" ToRole="CUST_MST" />
           <NavigationProperty Name="CUST_MST_TO" Relationship="Models.FK_BILL_HDR_TBL_CUST_MST_TO" FromRole="BILL_HDR_TBL" ToRole="CUST_MST" />
-          <NavigationProperty Name="DISTRICT_MST_CURRENT" Relationship="Models.FK_BILL_HDR_TBL_DISTRICT_MST_CURRENT" FromRole="BILL_HDR_TBL" ToRole="DISTRICT_MST" />
           <NavigationProperty Name="DISTRICT_MST_FROM" Relationship="Models.FK_BILL_HDR_TBL_DISTRICT_MST_FROM" FromRole="BILL_HDR_TBL" ToRole="DISTRICT_MST" />
           <NavigationProperty Name="DISTRICT_MST_TO" Relationship="Models.FK_BILL_HDR_TBL_DISTRICT_MST_TO" FromRole="BILL_HDR_TBL" ToRole="DISTRICT_MST" />
-          <NavigationProperty Name="WARD_MST_CURRENT" Relationship="Models.FK_BILL_HDR_TBL_WARD_MST_CURRENT" FromRole="BILL_HDR_TBL" ToRole="WARD_MST" />
+          <NavigationProperty Name="USER_MST" Relationship="Models.FK_BILL_HDR_TBL_USER_MST" FromRole="BILL_HDR_TBL" ToRole="USER_MST" />
           <NavigationProperty Name="WARD_MST_FROM" Relationship="Models.FK_BILL_HDR_TBL_WARD_MST_FROM" FromRole="BILL_HDR_TBL" ToRole="WARD_MST" />
           <NavigationProperty Name="WARD_MST_TO" Relationship="Models.FK_BILL_HDR_TBL_WARD_MST_TO" FromRole="BILL_HDR_TBL" ToRole="WARD_MST" />
           <NavigationProperty Name="BILL_TBL" Relationship="Models.FK_BILL_TBL_BILL_HDR_TBL" FromRole="BILL_HDR_TBL" ToRole="BILL_TBL" />
-          <Property Name="AMOUNT" Type="Decimal" Precision="18" Scale="3" />
         </EntityType>
         <EntityType Name="BILL_LOG_TBL">
           <Key>
@@ -842,22 +815,20 @@
           <Property Name="BILL_LOG_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="TRANSACTION_DATE" Type="DateTime" Precision="3" />
           <Property Name="TRANSACTION_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TRANSACTION_UID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="CUST_FROM_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="CUST_TO_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="STATUS" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="STATUS" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="DISTRICT_ID_FROM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="WARD_ID_FROM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ADDRESS_FROM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DISTRICT_ID_TO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="WARD_ID_TO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ADDRESS_TO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="DISTRICT_ID_CURRENT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="WARD_ID_CURRENT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="ADDRESS_CURRENT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="BRANCH_ID_CURRENT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="BRANCH_ID_TEMP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="TRANSACTION_UID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="AMOUNT" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="UID_CURRENT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="BILL_TBL">
           <Key>
@@ -932,9 +903,8 @@
           <Property Name="DISTRICT_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="DISTRICT_NAME" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
           <Property Name="PROVINCE_CODE" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BILL_HDR_TBL" Relationship="Models.FK_BILL_HDR_TBL_DISTRICT_MST_CURRENT" FromRole="DISTRICT_MST" ToRole="BILL_HDR_TBL" />
-          <NavigationProperty Name="BILL_HDR_TBL1" Relationship="Models.FK_BILL_HDR_TBL_DISTRICT_MST_FROM" FromRole="DISTRICT_MST" ToRole="BILL_HDR_TBL" />
-          <NavigationProperty Name="BILL_HDR_TBL2" Relationship="Models.FK_BILL_HDR_TBL_DISTRICT_MST_TO" FromRole="DISTRICT_MST" ToRole="BILL_HDR_TBL" />
+          <NavigationProperty Name="BILL_HDR_TBL" Relationship="Models.FK_BILL_HDR_TBL_DISTRICT_MST_FROM" FromRole="DISTRICT_MST" ToRole="BILL_HDR_TBL" />
+          <NavigationProperty Name="BILL_HDR_TBL1" Relationship="Models.FK_BILL_HDR_TBL_DISTRICT_MST_TO" FromRole="DISTRICT_MST" ToRole="BILL_HDR_TBL" />
           <NavigationProperty Name="BRANCH_MST" Relationship="Models.FK_BRANCH_MST_DISTRICT_MST" FromRole="DISTRICT_MST" ToRole="BRANCH_MST" />
           <NavigationProperty Name="CUST_MST" Relationship="Models.FK_CUST_MST_DISTRICT_MST" FromRole="DISTRICT_MST" ToRole="CUST_MST" />
           <NavigationProperty Name="USER_MST" Relationship="Models.FK_USER_MST_DISTRICT_MST" FromRole="DISTRICT_MST" ToRole="USER_MST" />
@@ -1022,6 +992,7 @@
           <Property Name="PHONE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="WARD_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="DISTRICT_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BILL_HDR_TBL" Relationship="Models.FK_BILL_HDR_TBL_USER_MST" FromRole="USER_MST" ToRole="BILL_HDR_TBL" />
           <NavigationProperty Name="DISTRICT_MST" Relationship="Models.FK_USER_MST_DISTRICT_MST" FromRole="USER_MST" ToRole="DISTRICT_MST" />
           <NavigationProperty Name="USER_CONFIG_MST" Relationship="Models.FK_USER_CONFIG_MST_USER_MST" FromRole="USER_MST" ToRole="USER_CONFIG_MST" />
           <NavigationProperty Name="WARD_MST" Relationship="Models.FK_USER_MST_WARD_MST" FromRole="USER_MST" ToRole="WARD_MST" />
@@ -1038,9 +1009,8 @@
           <Property Name="WARD_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="WARD_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DISTRICT_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BILL_HDR_TBL" Relationship="Models.FK_BILL_HDR_TBL_WARD_MST_CURRENT" FromRole="WARD_MST" ToRole="BILL_HDR_TBL" />
-          <NavigationProperty Name="BILL_HDR_TBL1" Relationship="Models.FK_BILL_HDR_TBL_WARD_MST_FROM" FromRole="WARD_MST" ToRole="BILL_HDR_TBL" />
-          <NavigationProperty Name="BILL_HDR_TBL2" Relationship="Models.FK_BILL_HDR_TBL_WARD_MST_TO" FromRole="WARD_MST" ToRole="BILL_HDR_TBL" />
+          <NavigationProperty Name="BILL_HDR_TBL" Relationship="Models.FK_BILL_HDR_TBL_WARD_MST_FROM" FromRole="WARD_MST" ToRole="BILL_HDR_TBL" />
+          <NavigationProperty Name="BILL_HDR_TBL1" Relationship="Models.FK_BILL_HDR_TBL_WARD_MST_TO" FromRole="WARD_MST" ToRole="BILL_HDR_TBL" />
           <NavigationProperty Name="BRANCH_MST" Relationship="Models.FK_BRANCH_MST_WARD_MST" FromRole="WARD_MST" ToRole="BRANCH_MST" />
           <NavigationProperty Name="CUST_MST" Relationship="Models.FK_CUST_MST_WARD_MST" FromRole="WARD_MST" ToRole="CUST_MST" />
           <NavigationProperty Name="DISTRICT_MST" Relationship="Models.FK_WARD_MST_DISTRICT_MST" FromRole="WARD_MST" ToRole="DISTRICT_MST" />
@@ -1094,18 +1064,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BILL_HDR_TBL_DISTRICT_MST_CURRENT">
-          <End Type="Models.DISTRICT_MST" Role="DISTRICT_MST" Multiplicity="0..1" />
-          <End Type="Models.BILL_HDR_TBL" Role="BILL_HDR_TBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DISTRICT_MST">
-              <PropertyRef Name="DISTRICT_ID" />
-            </Principal>
-            <Dependent Role="BILL_HDR_TBL">
-              <PropertyRef Name="DISTRICT_ID_CURRENT" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_BILL_HDR_TBL_DISTRICT_MST_FROM">
           <End Type="Models.DISTRICT_MST" Role="DISTRICT_MST" Multiplicity="0..1" />
           <End Type="Models.BILL_HDR_TBL" Role="BILL_HDR_TBL" Multiplicity="*" />
@@ -1130,15 +1088,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BILL_HDR_TBL_WARD_MST_CURRENT">
-          <End Type="Models.WARD_MST" Role="WARD_MST" Multiplicity="0..1" />
+        <Association Name="FK_BILL_HDR_TBL_USER_MST">
+          <End Type="Models.USER_MST" Role="USER_MST" Multiplicity="0..1" />
           <End Type="Models.BILL_HDR_TBL" Role="BILL_HDR_TBL" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WARD_MST">
-              <PropertyRef Name="WARD_ID" />
+            <Principal Role="USER_MST">
+              <PropertyRef Name="USER_ID" />
             </Principal>
             <Dependent Role="BILL_HDR_TBL">
-              <PropertyRef Name="WARD_ID_CURRENT" />
+              <PropertyRef Name="UID_CURRENT" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1358,12 +1316,10 @@
           <EntitySetMapping Name="BILL_HDR_TBL">
             <EntityTypeMapping TypeName="Models.BILL_HDR_TBL">
               <MappingFragment StoreEntitySet="BILL_HDR_TBL">
+                <ScalarProperty Name="UID_CURRENT" ColumnName="UID_CURRENT" />
                 <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
                 <ScalarProperty Name="BRANCH_ID_TEMP" ColumnName="BRANCH_ID_TEMP" />
                 <ScalarProperty Name="BRANCH_ID_CURRENT" ColumnName="BRANCH_ID_CURRENT" />
-                <ScalarProperty Name="ADDRESS_CURRENT" ColumnName="ADDRESS_CURRENT" />
-                <ScalarProperty Name="WARD_ID_CURRENT" ColumnName="WARD_ID_CURRENT" />
-                <ScalarProperty Name="DISTRICT_ID_CURRENT" ColumnName="DISTRICT_ID_CURRENT" />
                 <ScalarProperty Name="ADDRESS_TO" ColumnName="ADDRESS_TO" />
                 <ScalarProperty Name="WARD_ID_TO" ColumnName="WARD_ID_TO" />
                 <ScalarProperty Name="DISTRICT_ID_TO" ColumnName="DISTRICT_ID_TO" />
@@ -1385,13 +1341,10 @@
           <EntitySetMapping Name="BILL_LOG_TBL">
             <EntityTypeMapping TypeName="Models.BILL_LOG_TBL">
               <MappingFragment StoreEntitySet="BILL_LOG_TBL">
+                <ScalarProperty Name="UID_CURRENT" ColumnName="UID_CURRENT" />
                 <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
-                <ScalarProperty Name="TRANSACTION_UID" ColumnName="TRANSACTION_UID" />
                 <ScalarProperty Name="BRANCH_ID_TEMP" ColumnName="BRANCH_ID_TEMP" />
                 <ScalarProperty Name="BRANCH_ID_CURRENT" ColumnName="BRANCH_ID_CURRENT" />
-                <ScalarProperty Name="ADDRESS_CURRENT" ColumnName="ADDRESS_CURRENT" />
-                <ScalarProperty Name="WARD_ID_CURRENT" ColumnName="WARD_ID_CURRENT" />
-                <ScalarProperty Name="DISTRICT_ID_CURRENT" ColumnName="DISTRICT_ID_CURRENT" />
                 <ScalarProperty Name="ADDRESS_TO" ColumnName="ADDRESS_TO" />
                 <ScalarProperty Name="WARD_ID_TO" ColumnName="WARD_ID_TO" />
                 <ScalarProperty Name="DISTRICT_ID_TO" ColumnName="DISTRICT_ID_TO" />
@@ -1401,6 +1354,7 @@
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
                 <ScalarProperty Name="CUST_TO_ID" ColumnName="CUST_TO_ID" />
                 <ScalarProperty Name="CUST_FROM_ID" ColumnName="CUST_FROM_ID" />
+                <ScalarProperty Name="TRANSACTION_UID" ColumnName="TRANSACTION_UID" />
                 <ScalarProperty Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />
                 <ScalarProperty Name="TRANSACTION_DATE" ColumnName="TRANSACTION_DATE" />
                 <ScalarProperty Name="BILL_LOG_ID" ColumnName="BILL_LOG_ID" />

@@ -86,7 +86,7 @@ namespace Chuyenphatnhanh.Controllers
                     _DistrictMst.DISTRICT_ID = GenerateID.GennerateID(db, Contant.DISTRICTMST_SEQ, Contant.DISTRICTMST_PREFIX);
                     db.DISTRICT_MST.Add(_DistrictMst);
                     db.SaveChanges();
-                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.CreateSuccess;
                 }
                 return View(form);
             }
@@ -143,7 +143,7 @@ namespace Chuyenphatnhanh.Controllers
                     _DistrictMst.MOD_USER_NAME = _operator.UserName;
                     db.Entry(_DistrictMst).State = EntityState.Modified;
                     db.SaveChanges();
-                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.ChangeSuccess;
                 }
                 return View(form);
             }
@@ -195,7 +195,7 @@ namespace Chuyenphatnhanh.Controllers
                 _DistrictMst.DELETE_FLAG = true;
                 db.Entry(_DistrictMst).State = EntityState.Modified;
                 db.SaveChanges();
-                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
+                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.DeleteSuccess;
                 ComplementUtil.complement(_DistrictMst, form);
                 return View(form);
             }

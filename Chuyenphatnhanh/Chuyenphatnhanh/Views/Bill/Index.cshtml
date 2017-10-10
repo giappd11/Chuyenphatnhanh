@@ -1,15 +1,28 @@
 ﻿@model IEnumerable<Chuyenphatnhanh.Models.BillHdrTblForm>
-
+@using Chuyenphatnhanh.Util
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutList.cshtml";
 }
-
+@{
+    var _session = (Operator)Session[Chuyenphatnhanh.Util.Contant.SESSIONLOGED];
+    if (_session == null)
+    {
+        _session = new Operator();
+    }
+}
 <h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<table>
+    <tr>
+        <td></td>
+    </tr>
+
+</table>
+<hr />
 <table class="table">
     <thead>
         <tr>
@@ -47,9 +60,56 @@
                 </td> 
 
                 <td>
-                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Edit, "Edit", new { id = item.BILL_HDR_ID }) |
-                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Delete, "Delete", new { id = item.BILL_HDR_ID })
-                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Print, "Report", new { id = item.BILL_HDR_ID }, new { target ="_blank"})
+                    @if (Contant.NHAN_HANG.Equals(item.STATUS.Trim()))
+                    {
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Edit, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_ChuyenHang, "TranferBranch", "Bill",  new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_GiaoHang,  "Edit", "Bill", new { id = item.BILL_HDR_ID }, null) 
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_HuyDon,   "Edit", "Bill", new { id = item.BILL_HDR_ID }, null)
+                    }
+                    @if (Contant.DANG_CHUYEN_HANG.Equals(item.STATUS.Trim()))
+                    {
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_ChuyenHangThanhCong, "TranferBranchComplete", "Bill", new { id = item.BILL_HDR_ID }, null) 
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_LuuKho, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null)
+                    }
+
+                    @if (Contant.CHUYEN_HANG_THANH_CONG.Equals(item.STATUS.Trim()))
+                    {
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_ChuyenHang, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null) 
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_GiaoHang, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null) 
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_HuyDon, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null)
+                    }
+                    @if (Contant.DANG_GIAO_HANG.Equals(item.STATUS.Trim()))
+                    {
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_GiaoHangThanhCong, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null) 
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_HuyDon, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null)
+                    }
+                    @if (Contant.GIAO_HANG_THANH_CONG.Equals(item.STATUS.Trim()))
+                    {
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.View, "Details", "Bill", new { id = item.BILL_HDR_ID }, null)  
+                    }
+                    @if (Contant.HUY_DON_HANG.Equals(item.STATUS.Trim()))
+                    {
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_ChuyenHangTraLai, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null)
+                    }
+                    @if (Contant.DANG_CHUYEN_HANG_TRA.Equals(item.STATUS.Trim()))
+                    {
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_LuuKhoHangTraLai, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null)
+                    }
+                    @if (Contant.CHUYEN_HANG_TRA_THANH_CONG.Equals(item.STATUS.Trim()))
+                    {
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_ChuyenHangTraLai, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null) 
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_GiaoHangTralai, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null) 
+                    }
+                    @if (Contant.DANG_GIAO_HANG_TRA.Equals(item.STATUS.Trim()))
+                    {
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_TraHangThanhCong, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null)
+                    }
+                    @if (Contant.TRA_THANH_CONG.Equals(item.STATUS.Trim()))
+                    {
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.View, "Details", "Bill", new { id = item.BILL_HDR_ID }, null)
+                    } 
+                     
                 </td>
             </tr>
         }

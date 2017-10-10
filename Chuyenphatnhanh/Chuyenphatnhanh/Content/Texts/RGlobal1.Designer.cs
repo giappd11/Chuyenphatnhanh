@@ -88,11 +88,47 @@ namespace Chuyenphatnhanh.Content.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Giá trị.
+        /// </summary>
+        public static string Action {
+            get {
+                return ResourceManager.GetString("Action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Địa chỉ.
         /// </summary>
         public static string Address {
             get {
                 return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Địa chỉ hiện tại .
+        /// </summary>
+        public static string AddressCurrent {
+            get {
+                return ResourceManager.GetString("AddressCurrent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gửi từ.
+        /// </summary>
+        public static string AddressFrom {
+            get {
+                return ResourceManager.GetString("AddressFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gửi đến.
+        /// </summary>
+        public static string AddressTo {
+            get {
+                return ResourceManager.GetString("AddressTo", resourceCulture);
             }
         }
         
@@ -120,6 +156,42 @@ namespace Chuyenphatnhanh.Content.Texts {
         public static string BackToList {
             get {
                 return ResourceManager.GetString("BackToList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chi nhánh.
+        /// </summary>
+        public static string Branch {
+            get {
+                return ResourceManager.GetString("Branch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tên chi nhánh.
+        /// </summary>
+        public static string Branch_name {
+            get {
+                return ResourceManager.GetString("Branch_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chuyển tới cửa hàng.
+        /// </summary>
+        public static string branch_temp {
+            get {
+                return ResourceManager.GetString("branch_temp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cập nhật thành công.
+        /// </summary>
+        public static string ChangeSuccess {
+            get {
+                return ResourceManager.GetString("ChangeSuccess", resourceCulture);
             }
         }
         
@@ -156,6 +228,15 @@ namespace Chuyenphatnhanh.Content.Texts {
         public static string CreateCustMstSuccess {
             get {
                 return ResourceManager.GetString("CreateCustMstSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tạo mới thành công.
+        /// </summary>
+        public static string CreateSuccess {
+            get {
+                return ResourceManager.GetString("CreateSuccess", resourceCulture);
             }
         }
         
@@ -250,6 +331,24 @@ namespace Chuyenphatnhanh.Content.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Xóa thành công.
+        /// </summary>
+        public static string DeleteSuccess {
+            get {
+                return ResourceManager.GetString("DeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mô tả.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sửa.
         /// </summary>
         public static string Edit {
@@ -273,6 +372,15 @@ namespace Chuyenphatnhanh.Content.Texts {
         public static string ErrorLogin {
             get {
                 return ResourceManager.GetString("ErrorLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} đã tồn tại.
+        /// </summary>
+        public static string Exists {
+            get {
+                return ResourceManager.GetString("Exists", resourceCulture);
             }
         }
         
@@ -309,6 +417,33 @@ namespace Chuyenphatnhanh.Content.Texts {
         public static string F_Branch_manager {
             get {
                 return ResourceManager.GetString("F_Branch_manager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chuyển hàng.
+        /// </summary>
+        public static string F_ChuyenHang {
+            get {
+                return ResourceManager.GetString("F_ChuyenHang", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hoàn thành chuyển hàng.
+        /// </summary>
+        public static string F_ChuyenHangThanhCong {
+            get {
+                return ResourceManager.GetString("F_ChuyenHangThanhCong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chuyển hàng trả lại.
+        /// </summary>
+        public static string F_ChuyenHangTraLai {
+            get {
+                return ResourceManager.GetString("F_ChuyenHangTraLai", resourceCulture);
             }
         }
         
@@ -367,11 +502,56 @@ namespace Chuyenphatnhanh.Content.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Giao Hàng.
+        /// </summary>
+        public static string F_GiaoHang {
+            get {
+                return ResourceManager.GetString("F_GiaoHang", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đã Giao Hàng.
+        /// </summary>
+        public static string F_GiaoHangThanhCong {
+            get {
+                return ResourceManager.GetString("F_GiaoHangThanhCong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Giao hàng trả lại.
+        /// </summary>
+        public static string F_GiaoHangTralai {
+            get {
+                return ResourceManager.GetString("F_GiaoHangTralai", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hủy đơn hàng.
         /// </summary>
         public static string F_HuyDon {
             get {
                 return ResourceManager.GetString("F_HuyDon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chuyển vào kho.
+        /// </summary>
+        public static string F_LuuKho {
+            get {
+                return ResourceManager.GetString("F_LuuKho", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chuyển vào kho hàng trả lại.
+        /// </summary>
+        public static string F_LuuKhoHangTraLai {
+            get {
+                return ResourceManager.GetString("F_LuuKhoHangTraLai", resourceCulture);
             }
         }
         
@@ -417,6 +597,15 @@ namespace Chuyenphatnhanh.Content.Texts {
         public static string F_TaomoiDonHang {
             get {
                 return ResourceManager.GetString("F_TaomoiDonHang", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trả lại hàng.
+        /// </summary>
+        public static string F_TraHangThanhCong {
+            get {
+                return ResourceManager.GetString("F_TraHangThanhCong", resourceCulture);
             }
         }
         
@@ -493,6 +682,15 @@ namespace Chuyenphatnhanh.Content.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vĩ độ.
+        /// </summary>
+        public static string LATITUDE {
+            get {
+                return ResourceManager.GetString("LATITUDE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đăng nhập.
         /// </summary>
         public static string Login {
@@ -507,6 +705,15 @@ namespace Chuyenphatnhanh.Content.Texts {
         public static string Logout {
             get {
                 return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kinh độ.
+        /// </summary>
+        public static string LONGITUDE {
+            get {
+                return ResourceManager.GetString("LONGITUDE", resourceCulture);
             }
         }
         
@@ -565,6 +772,15 @@ namespace Chuyenphatnhanh.Content.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quyền.
+        /// </summary>
+        public static string Role {
+            get {
+                return ResourceManager.GetString("Role", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gửi.
         /// </summary>
         public static string Send {
@@ -579,6 +795,105 @@ namespace Chuyenphatnhanh.Content.Texts {
         public static string SendDate {
             get {
                 return ResourceManager.GetString("SendDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trạng thái.
+        /// </summary>
+        public static string Status {
+            get {
+                return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đơn hàng bị hủy.
+        /// </summary>
+        public static string Status_Cancle {
+            get {
+                return ResourceManager.GetString("Status_Cancle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hàng trả lại được nhập vào kho.
+        /// </summary>
+        public static string Status_ChuyenHangHuyThanhCong {
+            get {
+                return ResourceManager.GetString("Status_ChuyenHangHuyThanhCong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hàng được nhập vào kho.
+        /// </summary>
+        public static string Status_ChuyenHangThanhCong {
+            get {
+                return ResourceManager.GetString("Status_ChuyenHangThanhCong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hàng đang được vận chuyển đến kho khác.
+        /// </summary>
+        public static string Status_dangChuyenHang {
+            get {
+                return ResourceManager.GetString("Status_dangChuyenHang", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hàng trả lại đang được vận chuyển đến kho khác.
+        /// </summary>
+        public static string Status_DangVanChuyenHangHuy {
+            get {
+                return ResourceManager.GetString("Status_DangVanChuyenHangHuy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đã giao hàng.
+        /// </summary>
+        public static string Status_HangShiped {
+            get {
+                return ResourceManager.GetString("Status_HangShiped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đã giao hàng trả lại.
+        /// </summary>
+        public static string Status_HangShipedTraLai {
+            get {
+                return ResourceManager.GetString("Status_HangShipedTraLai", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hàng ở kho.
+        /// </summary>
+        public static string Status_nhanHang {
+            get {
+                return ResourceManager.GetString("Status_nhanHang", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đang giao hàng.
+        /// </summary>
+        public static string Status_ShipHang {
+            get {
+                return ResourceManager.GetString("Status_ShipHang", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đang giao hàng trả lại.
+        /// </summary>
+        public static string Status_ShipHangTraLai {
+            get {
+                return ResourceManager.GetString("Status_ShipHangTraLai", resourceCulture);
             }
         }
         
@@ -615,6 +930,15 @@ namespace Chuyenphatnhanh.Content.Texts {
         public static string titleloginnight {
             get {
                 return ResourceManager.GetString("titleloginnight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tên đăng nhập.
+        /// </summary>
+        public static string user_name {
+            get {
+                return ResourceManager.GetString("user_name", resourceCulture);
             }
         }
         

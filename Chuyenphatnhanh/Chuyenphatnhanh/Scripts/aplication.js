@@ -23,7 +23,7 @@ function SuccessDistrictChangeHandler(wardId, data) {
 }
 
 $(document).ready(function () {
-    $('.table').dynatable();
+    $('.table').dynatable({ features: { responsive: true } });
 })
 
 var config = {
@@ -109,7 +109,7 @@ if ($(window).width() > 992) {
 }
 
 function changeLanguage(lang) {
-    MultiLanguage.Cookies.setCookie("Language", lang.value, 30);
+    MultiLanguage.Cookies.setCookie("Language", lang.value.toLowerCase(), 30);
     location.reload(true);
 }
 
@@ -122,18 +122,21 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $(".order-create #Cust_From_Phone").blur(function () {
-        $('#ajax-wall').css("display", "block");
+        
         var _phone = $("#Cust_From_Phone").val();
-        $.ajax({
-            url: '/' + MultiLanguage.Cookies.getCookie('Language') + '/CustMst/GetCustomer?phone=' + _phone,
-            type: 'get',
-            dataType: 'json',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                pushdata(data);
-                $('#ajax-wall').css("display", "none");
-            }
-        });
+        if (_phone != "") {
+            $('#ajax-wall').css("display", "block");
+            $.ajax({
+                url: '/' + MultiLanguage.Cookies.getCookie('Language') + '/CustMst/GetCustomer?phone=' + _phone,
+                type: 'get',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    pushdata(data);
+                }
+            });
+            $('#ajax-wall').css("display", "none");
+        }
     })
 })
 
@@ -149,19 +152,22 @@ function pushdata(data) {
 
 $(document).ready(function () {
     $(".order-create  #Cust_To_Phone").blur(function () {
-        $('#ajax-wall').css("display", "none");
+        
         var _phone = $("#Cust_To_Phone").val();
-        $.ajax({
-            url: '/' + MultiLanguage.Cookies.getCookie('Language') + '/CustMst/GetCustomer?phone=' + _phone,
-            type: 'get',
-            dataType: 'json',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                pushdataTo(data);
-                $('#ajax-wall').css("display", "none");
-            }
-            
-        });
+        if (_phone != "") {
+            $('#ajax-wall').css("display", "none");
+            $.ajax({
+                url: '/' + MultiLanguage.Cookies.getCookie('Language') + '/CustMst/GetCustomer?phone=' + _phone,
+                type: 'get',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    pushdataTo(data);
+                }
+
+            });
+            $('#ajax-wall').css("display", "none");
+        }
     });
 
 
@@ -255,17 +261,19 @@ function caculTotalAmoun() {
         });
         weights.substring(0, weights.length - 2);
         var url = '/' + MultiLanguage.Cookies.getCookie('Language') +'/Bill/CaculAmount?districtfrom=' + districtfrom + '&wardfrom=' + wardfrom + '&districtto=' + districtto + '&wardto=' + wardto + '&weight=' + weights;
-        $.ajax({
-            url: url,
-            type: 'get',
-            dataType: 'json',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                $('.totalAmount').html(data);
-                $('#AMOUNT').val(data);
-                $('#ajax-wall').css("display", "none");
-            }
-        });
+
+            $.ajax({
+                url: url,
+                type: 'get',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $('.totalAmount').html(data);
+                    $('#AMOUNT').val(data);
+                    $('#ajax-wall').css("display", "none");
+                }
+            }); 
+        $('#ajax-wall').css("display", "none");
         return false;
     } catch (err) {
         console.log(err);

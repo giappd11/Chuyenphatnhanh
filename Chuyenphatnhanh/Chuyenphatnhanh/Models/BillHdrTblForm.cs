@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using Chuyenphatnhanh.Content.Texts;
+using Chuyenphatnhanh.Util;
 
 namespace Chuyenphatnhanh.Models
 {
@@ -16,6 +17,7 @@ namespace Chuyenphatnhanh.Models
 
         [Required(ErrorMessageResourceName = "RequiredField",
         ErrorMessageResourceType = typeof(RGlobal))]
+        [ValidateFieldFromDb("CUST_MST,PHONE")]
         [Display(Name = "Cust_Phone", ResourceType = typeof(RGlobal))]
         public string Cust_From_Phone { get; set; }
 
@@ -42,6 +44,7 @@ namespace Chuyenphatnhanh.Models
         public string CUST_TO_ID { get; set; }
         [Required(ErrorMessageResourceName = "RequiredField",
         ErrorMessageResourceType = typeof(RGlobal))]
+        [ValidateFieldFromDb("CUST_MST,PHONE")]
         [Display(Name = "Cust_Phone", ResourceType = typeof(RGlobal))]
         public string Cust_To_Phone { get; set; }
 
@@ -66,18 +69,26 @@ namespace Chuyenphatnhanh.Models
         public string WARD_ID_TO { get; set; }
 
         public string BRANCH_ID_CURRENT { get; set; }
+        [Display(Name = "branch_temp", ResourceType = typeof(RGlobal))]
         public string BRANCH_ID_TEMP { get; set; }
         public string ADDRESS_TEMP { get; set; }
         public string WARD_ID_TEMP { get; set; }
         public string DISTRICT_ID_TEMP { get; set; }
         public Nullable<decimal> AMOUNT { get; set; }
+        public string UID_CURRENT { get; set; }
+
 
         public List<BillTblForm> Bill { get; set; }
 
+        
+        [Display(Name = "AddressFrom", ResourceType = typeof(RGlobal))]
         public string AddressFrom { get; set; }
+        [Display(Name = "AddressTo", ResourceType = typeof(RGlobal))]
         public string AddressTo { get; set; }
+        [Display(Name = "AddressCurrent", ResourceType = typeof(RGlobal))]
         public string AddressCurrent { get; set; }
 
+        [Display(Name = "Status", ResourceType = typeof(RGlobal))]
         public string statusString { get; set; }
 
     }

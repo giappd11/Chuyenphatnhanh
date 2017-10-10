@@ -285,6 +285,7 @@
     <Compile Include="Util\GenerateID.cs" />
     <Compile Include="Util\MD5HashGenerator.cs" />
     <Compile Include="Util\MultiLanguageViewEngine.cs" />
+    <Compile Include="Util\ValidateFieldFromDb.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\chosen-sprite%402x.png" />
@@ -399,7 +400,6 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\UserMst\Create.cshtml" />
     <Content Include="Views\UserMst\Delete.cshtml" />
-    <Content Include="Views\UserMst\Details.cshtml" />
     <Content Include="Views\UserMst\Edit.cshtml" />
     <Content Include="Views\UserMst\Index.cshtml" />
     <Content Include="Views\UserConfigMst\Create.cshtml" />
@@ -413,13 +413,10 @@
     <Content Include="Views\TariffMst\Edit.cshtml" />
     <Content Include="Views\TariffMst\Index.cshtml" />
     <Content Include="Views\RoleMst\Create.cshtml" />
-    <Content Include="Views\RoleMst\Delete.cshtml" />
-    <Content Include="Views\RoleMst\Details.cshtml" />
     <Content Include="Views\RoleMst\Edit.cshtml" />
     <Content Include="Views\RoleMst\Index.cshtml" />
     <Content Include="Views\CustMst\Create.cshtml" />
-    <Content Include="Views\CustMst\Delete.cshtml" />
-    <Content Include="Views\CustMst\Details.cshtml" />
+    <Content Include="Views\CustMst\Delete1.cshtml" />
     <Content Include="Views\CustMst\Edit.cshtml" />
     <Content Include="Views\CustMst\Index.cshtml" />
     <Content Include="Views\BranchMst\Create.cshtml" />
@@ -429,18 +426,12 @@
     <Content Include="Views\BranchMst\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutList.cshtml" />
     <Content Include="Views\DistrictMst\Create.cshtml" />
-    <Content Include="Views\DistrictMst\Delete.cshtml" />
-    <Content Include="Views\DistrictMst\Details.cshtml" />
     <Content Include="Views\DistrictMst\Edit.cshtml" />
     <Content Include="Views\DistrictMst\Index.cshtml" />
     <Content Include="Views\SecRoleMst\Create.cshtml" />
-    <Content Include="Views\SecRoleMst\Delete.cshtml" />
-    <Content Include="Views\SecRoleMst\Details.cshtml" />
     <Content Include="Views\SecRoleMst\Edit.cshtml" />
     <Content Include="Views\SecRoleMst\Index.cshtml" />
     <Content Include="Views\WardMst\Create.cshtml" />
-    <Content Include="Views\WardMst\Delete.cshtml" />
-    <Content Include="Views\WardMst\Details.cshtml" />
     <Content Include="Views\WardMst\Edit.cshtml" />
     <Content Include="Views\WardMst\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -454,6 +445,18 @@
     <Content Include="Views\Bill\TranferBranch.cshtml" />
     <Content Include="Views\Bill\Delivery.cshtml" />
     <Content Include="Views\Bill\DeliveryComplete.cshtml" />
+    <Content Include="Views\Bill\ListNH.cshtml" />
+    <Content Include="Views\RoleMst\Details.cshtml" />
+    <Content Include="Views\RoleMst\Delete.cshtml" />
+    <Content Include="Views\SecRoleMst\Delete.cshtml" />
+    <Content Include="Views\SecRoleMst\Details.cshtml" />
+    <Content Include="Views\WardMst\Delete.cshtml" />
+    <Content Include="Views\WardMst\Details.cshtml" />
+    <Content Include="Views\DistrictMst\Details.cshtml" />
+    <Content Include="Views\DistrictMst\Delete.cshtml" />
+    <Content Include="Views\CustMst\Details.cshtml" />
+    <Content Include="Views\CustMst\Delete.cshtml" />
+    <Content Include="Views\UserMst\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

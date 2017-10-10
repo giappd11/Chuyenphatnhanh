@@ -1,0 +1,61 @@
+﻿@model Chuyenphatnhanh.Models.CustMstForm
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CUST_MST</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DELETE_FLAG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DELETE_FLAG)
+        </dd>
+
+         
+        <dt>
+            @Html.DisplayNameFor(model => model.CUST_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CUST_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHONE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHONE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DEFAULT_ADDRESS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DEFAULT_ADDRESS)
+        </dd>
+    </dl>
+
+     @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.CUST_ID)
+        @Html.HiddenFor(model => model.DELETE_FLAG)
+        @Html.HiddenFor(model => model.MOD_USER_NAME)
+        @Html.HiddenFor(model => model.REG_USER_NAME)
+        @Html.TextBoxFor(model => model.MOD_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+        @Html.TextBoxFor(model => model.REG_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

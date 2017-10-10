@@ -22,7 +22,9 @@
                 @Html.HiddenFor(model => model.REG_USER_NAME)
                 @Html.TextBoxFor(model => model.MOD_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
                 @Html.TextBoxFor(model => model.REG_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
-
+                @Html.TextBoxFor(model => model.LAST_CHANGE_PASS, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+                @Html.HiddenFor(model => model.NUMBER_LOGIN_FAIL)
+                @Html.HiddenFor(model => model.OLD_PASSWORD)
                 @Html.HiddenFor(model => model.USER_ID)
 
                 <div class="form-group">
@@ -40,31 +42,7 @@
                         @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.NUMBER_LOGIN_FAIL, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="frm-edit-client col-md-8">
-                        @Html.EditorFor(model => model.NUMBER_LOGIN_FAIL, new { htmlAttributes = new { @class = "col-xs-12" } })
-                        @Html.ValidationMessageFor(model => model.NUMBER_LOGIN_FAIL, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.LAST_CHANGE_PASS, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="frm-edit-client col-md-8">
-                        @Html.EditorFor(model => model.LAST_CHANGE_PASS, new { htmlAttributes = new { @class = "col-xs-12" } })
-                        @Html.ValidationMessageFor(model => model.LAST_CHANGE_PASS, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.OLD_PASSWORD, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="frm-edit-client col-md-8">
-                        @Html.EditorFor(model => model.OLD_PASSWORD, new { htmlAttributes = new { @class = "col-xs-12" } })
-                        @Html.ValidationMessageFor(model => model.OLD_PASSWORD, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
+ 
                 <div class="form-group">
                     @Html.LabelFor(model => model.ADDRESS, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="frm-edit-client col-md-8">
@@ -72,12 +50,50 @@
                         @Html.ValidationMessageFor(model => model.ADDRESS, "", new { @class = "text-danger" })
                     </div>
                 </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DISTRICT_ID, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="frm-edit-client col-md-8">
+                        @Html.DropDownListFor(model => model.DISTRICT_ID, ViewBag.DISTRICT_ID as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "col-xs-12  chosen-select", @onChange = "DistrictChange(this,'WARD_ID')" })
+                        @Html.ValidationMessageFor(model => model.DISTRICT_ID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
+                <div class="form-group">
+                    @Html.LabelFor(model => model.WARD_ID, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="frm-edit-client col-md-8">
+                        @Html.DropDownListFor(model => model.WARD_ID, ViewBag.WARD_ID as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "col-xs-12 chosen-select" })
+                        @Html.ValidationMessageFor(model => model.WARD_ID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
                 <div class="form-group">
                     @Html.LabelFor(model => model.PHONE, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="frm-edit-client col-md-8">
                         @Html.EditorFor(model => model.PHONE, new { htmlAttributes = new { @class = "col-xs-12" } })
                         @Html.ValidationMessageFor(model => model.PHONE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Config.BRANCH_ID, "BRANCH_ID", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="frm-edit-client col-md-8"> 
+                        @Html.HiddenFor(model => model.Config.DELETE_FLAG)
+                        @Html.HiddenFor(model => model.Config.MOD_USER_NAME)
+                        @Html.HiddenFor(model => model.Config.REG_USER_NAME)
+                        @Html.TextBoxFor(model => model.Config.MOD_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+                        @Html.TextBoxFor(model => model.Config.REG_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+                        @Html.HiddenFor(model => model.Config.USER_ID)
+
+
+                        @Html.DropDownListFor(model => model.Config.BRANCH_ID, ViewData["Config.BRANCH_ID"] as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "col-xs-12 chosen-select" })
+
+                        @Html.ValidationMessageFor(model => model.Config.BRANCH_ID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Config.ROLE_ID, "ROLE_ID", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="frm-edit-client col-md-8"> 
+                        @Html.DropDownListFor(model => model.Config.ROLE_ID, ViewData["Config.ROLE_ID"] as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "col-xs-12 chosen-select" })
+                        @Html.ValidationMessageFor(model => model.Config.ROLE_ID, "", new { @class = "text-danger" })
                     </div>
                 </div>
 

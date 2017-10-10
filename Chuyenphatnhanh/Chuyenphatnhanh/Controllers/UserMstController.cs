@@ -41,6 +41,7 @@ namespace Chuyenphatnhanh.Controllers
         {
             try
             {
+
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -50,8 +51,24 @@ namespace Chuyenphatnhanh.Controllers
                 {
                     return HttpNotFound();
                 }
+                ViewData["Config.ROLE_ID"] = new SelectList(db.ROLE_MST.Where(u => u.DELETE_FLAG == false), "ROLE_ID", "TYPE_ROLE");
+                ViewData["Config.BRANCH_ID"] = new SelectList(db.BRANCH_MST.Where(u => u.DELETE_FLAG == false), "BRANCH_ID", "BRANCH_NAME");
+                ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST.Where(u => u.DELETE_FLAG == false).OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+
+                WARD_MST _wardTo = db.WARD_MST.Find(uSER_MST.WARD_ID);
+                if (_wardTo != null)
+                {
+                    ViewBag.WARD_ID = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == uSER_MST.DISTRICT_ID && u.DELETE_FLAG == false), "WARD_ID", "WARD_NAME");
+                }
+                else
+                {
+                    ViewBag.WARD_ID = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
+                }
                 UserMstForm _form = new UserMstForm();
                 ComplementUtil.complement(uSER_MST, _form);
+                _form.Config = new UserConfigMstForm();
+                ComplementUtil.complement(uSER_MST.USER_CONFIG_MST, _form.Config);
+
                 return View(_form);
             }
             catch (Exception e)
@@ -63,8 +80,10 @@ namespace Chuyenphatnhanh.Controllers
         // GET: UserMst/Create
         public ActionResult Create()
         {
-            ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE");
-            ViewBag.BRANCH_ID = new SelectList(db.BRANCH_MST, "BRANCH_ID", "BRANCH_NAME" );
+            ViewData["Config.ROLE_ID"] = new SelectList(db.ROLE_MST.Where(u => u.DELETE_FLAG == false), "ROLE_ID", "TYPE_ROLE");
+            ViewData["Config.BRANCH_ID"] = new SelectList(db.BRANCH_MST.Where(u => u.DELETE_FLAG == false), "BRANCH_ID", "BRANCH_NAME" );
+            ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST.Where(u => u.DELETE_FLAG == false).OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+            ViewBag.WARD_ID = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
             return View();
         }
 
@@ -77,19 +96,43 @@ namespace Chuyenphatnhanh.Controllers
         {
             try
             {
-                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE", form.Config.ROLE_ID);
-                ViewBag.BRANCH_ID = new SelectList(db.BRANCH_MST, "BRANCH_ID", "BRANCH_NAME", form.Config.BRANCH_ID);
+                ViewData["Config.ROLE_ID"] = new SelectList(db.ROLE_MST.Where(u => u.DELETE_FLAG == false), "ROLE_ID", "TYPE_ROLE", form.Config.ROLE_ID);
+                ViewData["Config.BRANCH_ID"] = new SelectList(db.BRANCH_MST.Where(u => u.DELETE_FLAG == false), "BRANCH_ID", "BRANCH_NAME", form.Config.BRANCH_ID);
+                ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST.Where(u => u.DELETE_FLAG == false).OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+                
+                WARD_MST _wardTo = db.WARD_MST.Find( form.WARD_ID);
+                if (_wardTo != null)
+                {
+                    ViewBag.WARD_ID = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == form.DISTRICT_ID && u.DELETE_FLAG == false), "WARD_ID", "WARD_NAME");
+                }
+                else
+                {
+                    ViewBag.WARD_ID = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
+                }
                 USER_MST _UserMst = new USER_MST();
                 if (ModelState.IsValid)
                 {
+                    DateTime _date = DateTime.Now;
                     ComplementUtil.complement(form, _UserMst);
                     _UserMst.DELETE_FLAG = false;
-                    _UserMst.MOD_DATE = DateTime.Now;
+                    _UserMst.MOD_DATE = _date;
                     _UserMst.MOD_USER_NAME = _operator.UserName;
-                    _UserMst.REG_DATE = DateTime.Now;
+                    _UserMst.REG_DATE = _date;
                     _UserMst.REG_USER_NAME = _operator.UserName;
+                    _UserMst.PASSWORD = MD5HashGenerator.GenerateKey("1");
                     _UserMst.USER_ID = GenerateID.GennerateID(db, Contant.USERMST_SEQ, Contant.USERMST_PREFIX);
                     db.USER_MST.Add(_UserMst);
+
+                    USER_CONFIG_MST _config = new USER_CONFIG_MST();
+                    _config.ROLE_ID = form.Config.ROLE_ID;
+                    _config.BRANCH_ID = form.Config.BRANCH_ID;
+                    _config.DELETE_FLAG = false;
+                    _config.MOD_DATE = _date;
+                    _config.MOD_USER_NAME = _operator.UserName;
+                    _config.REG_DATE = _date;
+                    _config.REG_USER_NAME = _operator.UserName;
+                    _config.USER_ID = _UserMst.USER_ID;
+                    db.USER_CONFIG_MST.Add(_config);
                     db.SaveChanges();
                     ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
                 }
@@ -106,6 +149,7 @@ namespace Chuyenphatnhanh.Controllers
         {
             try
             {
+                
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -115,8 +159,23 @@ namespace Chuyenphatnhanh.Controllers
                 {
                     return HttpNotFound();
                 }
+                ViewData["Config.ROLE_ID"]  = new SelectList(db.ROLE_MST.Where(u => u.DELETE_FLAG == false), "ROLE_ID", "TYPE_ROLE");
+                ViewData["Config.BRANCH_ID"] = new SelectList(db.BRANCH_MST.Where(u => u.DELETE_FLAG == false), "BRANCH_ID", "BRANCH_NAME");
+                ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST.Where(u => u.DELETE_FLAG == false).OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+
+                WARD_MST _wardTo = db.WARD_MST.Find(uSER_MST.WARD_ID);
+                if (_wardTo != null)
+                {
+                    ViewBag.WARD_ID = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == uSER_MST.DISTRICT_ID&& u.DELETE_FLAG == false), "WARD_ID", "WARD_NAME");
+                }
+                else
+                {
+                    ViewBag.WARD_ID = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
+                }
                 UserMstForm _form = new UserMstForm();
                 ComplementUtil.complement(uSER_MST, _form);
+                _form.Config = new UserConfigMstForm();
+                ComplementUtil.complement(uSER_MST.USER_CONFIG_MST, _form.Config);
                  
                 return View(_form);
             }
@@ -136,10 +195,22 @@ namespace Chuyenphatnhanh.Controllers
             try
             {
 
-                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE", form.Config.ROLE_ID);
-                ViewBag.BRANCH_ID = new SelectList(db.BRANCH_MST, "BRANCH_ID", "BRANCH_NAME", form.Config.BRANCH_ID);
+                ViewData["Config.ROLE_ID"] = new SelectList(db.ROLE_MST.Where(u => u.DELETE_FLAG == false), "ROLE_ID", "TYPE_ROLE", form.Config.ROLE_ID);
+                ViewData["Config.BRANCH_ID"] = new SelectList(db.BRANCH_MST.Where(u => u.DELETE_FLAG ==false), "BRANCH_ID", "BRANCH_NAME", form.Config.BRANCH_ID);
+                ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST.Where(u => u.DELETE_FLAG == false).OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+
+                WARD_MST _wardTo = db.WARD_MST.Find(form.WARD_ID);
+                if (_wardTo != null)
+                {
+                    ViewBag.WARD_ID = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == form.DISTRICT_ID && u.DELETE_FLAG == false), "WARD_ID", "WARD_NAME");
+                }
+                else
+                {
+                    ViewBag.WARD_ID = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
+                } 
                 if (ModelState.IsValid)
                 {
+                    DateTime _date = DateTime.Now;
                     USER_MST _UserMst = db.USER_MST.Find(form.USER_ID);
                     if (DateTime.Compare((DateTime)_UserMst.MOD_DATE, form.MOD_DATE) != 0)
                     {
@@ -151,8 +222,22 @@ namespace Chuyenphatnhanh.Controllers
                     _UserMst.MOD_DATE = DateTime.Now;
                     _UserMst.MOD_USER_NAME = _operator.UserName;
                     db.Entry(_UserMst).State = EntityState.Modified;
+
+                    USER_CONFIG_MST _config = db.USER_CONFIG_MST.Find(_UserMst.USER_ID);
+
+                    if (DateTime.Compare((DateTime)_config.MOD_DATE, form.Config.MOD_DATE) != 0)
+                    {
+                        ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _UserMst.USER_NAME, _UserMst.MOD_USER_NAME));
+                        return View(form);
+                    }
+
+                    ComplementUtil.complement(form.Config, _config);
+                    _config.MOD_DATE = _date;
+                    _config.MOD_USER_NAME = _operator.UserName; 
+                    db.Entry(_config).State = EntityState.Modified;
+
                     db.SaveChanges();
-                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.ChangeSuccess;
                 }
                 return View(form);
             }
@@ -177,8 +262,23 @@ namespace Chuyenphatnhanh.Controllers
                 {
                     return HttpNotFound();
                 }
+                ViewData["Config.ROLE_ID"] = new SelectList(db.ROLE_MST.Where(u => u.DELETE_FLAG == false), "ROLE_ID", "TYPE_ROLE");
+                ViewData["Config.BRANCH_ID"] = new SelectList(db.BRANCH_MST.Where(u => u.DELETE_FLAG == false), "BRANCH_ID", "BRANCH_NAME");
+                ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST.Where(u => u.DELETE_FLAG == false).OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+
+                WARD_MST _wardTo = db.WARD_MST.Find(uSER_MST.WARD_ID);
+                if (_wardTo != null)
+                {
+                    ViewBag.WARD_ID = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == uSER_MST.DISTRICT_ID && u.DELETE_FLAG == false), "WARD_ID", "WARD_NAME");
+                }
+                else
+                {
+                    ViewBag.WARD_ID = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
+                }
                 UserMstForm _form = new UserMstForm();
                 ComplementUtil.complement(uSER_MST, _form);
+                _form.Config = new UserConfigMstForm();
+                ComplementUtil.complement(uSER_MST.USER_CONFIG_MST, _form.Config);
                 return View(_form);
             }
             catch (Exception e)
@@ -200,7 +300,19 @@ namespace Chuyenphatnhanh.Controllers
                     ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _UserMst.USER_NAME, _UserMst.MOD_USER_NAME));
                     return View(form);
                 }
+                ViewData["Config.ROLE_ID"] = new SelectList(db.ROLE_MST.Where(u => u.DELETE_FLAG == false), "ROLE_ID", "TYPE_ROLE");
+                ViewData["Config.BRANCH_ID"] = new SelectList(db.BRANCH_MST.Where(u => u.DELETE_FLAG == false), "BRANCH_ID", "BRANCH_NAME");
+                ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST.Where(u => u.DELETE_FLAG == false).OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
 
+                WARD_MST _wardTo = db.WARD_MST.Find(form.WARD_ID);
+                if (_wardTo != null)
+                {
+                    ViewBag.WARD_ID = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == form.DISTRICT_ID&& u.DELETE_FLAG == false), "WARD_ID", "WARD_NAME");
+                }
+                else
+                {
+                    ViewBag.WARD_ID = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
+                }
                 ComplementUtil.complement(form, _UserMst);
                 _UserMst.MOD_DATE = DateTime.Now;
                 _UserMst.MOD_USER_NAME = _operator.UserName;
@@ -209,6 +321,7 @@ namespace Chuyenphatnhanh.Controllers
                 db.SaveChanges();
                 ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
                 ComplementUtil.complement(_UserMst, form);
+
                 return View(form);
             }
             catch (Exception e)

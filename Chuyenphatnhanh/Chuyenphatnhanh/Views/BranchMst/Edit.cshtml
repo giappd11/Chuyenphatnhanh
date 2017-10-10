@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.DISTRICT_ID, "DISTRICT_ID", htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.DISTRICT_ID,  htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="frm-edit-client col-md-8">
                         @Html.DropDownListFor(model => model.DISTRICT_ID, ViewBag.DISTRICT_ID as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "col-xs-12 chosen-select", @onChange = "DistrictChange(this,'WARD_ID')" })
                         @Html.ValidationMessageFor(model => model.DISTRICT_ID, "", new { @class = "text-danger" })
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.WARD_ID, "WARD_ID", htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.WARD_ID,   htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="frm-edit-client col-md-8">
                         @Html.DropDownListFor(model => model.WARD_ID, ViewBag.WARD_ID as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "col-xs-12  chosen-select" })
                         @Html.ValidationMessageFor(model => model.WARD_ID, "", new { @class = "text-danger" })

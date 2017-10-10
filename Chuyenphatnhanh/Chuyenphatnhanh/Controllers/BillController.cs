@@ -22,8 +22,7 @@ namespace Chuyenphatnhanh.Controllers
         public ActionResult Index()
         {
             try
-            {
-                 
+            { 
                 List<BILL_HDR_TBL> _BillHdr = db.BILL_HDR_TBL.Where(u => u.DELETE_FLAG == false && u.BRANCH_ID_CURRENT == _operator.BranchID && u.STATUS != Contant.GIAO_HANG_THANH_CONG).ToList();
                 List<BillHdrTblForm> _BillHdrList = new List<BillHdrTblForm>();
                 BillHdrTblForm BillHdr;
@@ -42,10 +41,13 @@ namespace Chuyenphatnhanh.Controllers
                         _Address = _bill.ADDRESS_TO + ", " + _bill.WARD_MST_TO.WARD_NAME + ", " + _bill.DISTRICT_MST_TO.DISTRICT_NAME;
                         BillHdr.AddressTo = _Address;
                     }
-                    if (_bill.WARD_ID_CURRENT != null && _bill.DISTRICT_ID_CURRENT != null)
+                    if (_bill.BRANCH_ID_CURRENT != null)
                     {
-                        _Address = _bill.ADDRESS_CURRENT + ", " + _bill.WARD_MST_CURRENT.WARD_NAME + ", " + _bill.DISTRICT_MST_CURRENT.DISTRICT_NAME;
-                        BillHdr.AddressCurrent = _Address;
+                        BRANCH_MST _branch = db.BRANCH_MST.Find(_bill.BRANCH_ID_CURRENT);
+                        if (_branch != null) { 
+                            _Address = _branch.ADDRESS + ", " + _branch.WARD_MST.WARD_NAME + ", " + _branch.DISTRICT_MST.DISTRICT_NAME;
+                            BillHdr.AddressCurrent = _Address;
+                        }
                     }
                     _BillHdrList.Add(BillHdr);
                 }
@@ -57,7 +59,49 @@ namespace Chuyenphatnhanh.Controllers
                 throw e;
             }
         }
+        // GET: Bill
+        public ActionResult ListNH()
+        {
+            try
+            {
 
+                List<BILL_HDR_TBL> _BillHdr = db.BILL_HDR_TBL.Where(u => u.DELETE_FLAG == false && u.BRANCH_ID_CURRENT == _operator.BranchID && u.STATUS == Contant.NHAN_HANG ).ToList();
+                List<BillHdrTblForm> _BillHdrList = new List<BillHdrTblForm>();
+                BillHdrTblForm BillHdr;
+                foreach (BILL_HDR_TBL _bill in _BillHdr)
+                {
+                    BillHdr = new BillHdrTblForm();
+                    ComplementUtil.complement(_bill, BillHdr);
+                    string _Address = null;
+                    if (_bill.WARD_ID_FROM != null && _bill.DISTRICT_ID_FROM != null)
+                    {
+                        _Address = _bill.ADDRESS_FROM + ", " + _bill.WARD_MST_FROM.WARD_NAME + ", " + _bill.DISTRICT_MST_FROM.DISTRICT_NAME;
+                        BillHdr.AddressFrom = _Address;
+                    }
+                    if (_bill.WARD_ID_TO != null && _bill.DISTRICT_ID_TO != null)
+                    {
+                        _Address = _bill.ADDRESS_TO + ", " + _bill.WARD_MST_TO.WARD_NAME + ", " + _bill.DISTRICT_MST_TO.DISTRICT_NAME;
+                        BillHdr.AddressTo = _Address;
+                    }
+                    if (_bill.BRANCH_ID_CURRENT != null)
+                    {
+                        BRANCH_MST _branch = db.BRANCH_MST.Find(_bill.BRANCH_ID_CURRENT);
+                        if (_branch != null)
+                        {
+                            _Address = _branch.ADDRESS + ", " + _branch.WARD_MST.WARD_NAME + ", " + _branch.DISTRICT_MST.DISTRICT_NAME;
+                            BillHdr.AddressCurrent = _Address;
+                        }
+                    }
+                    _BillHdrList.Add(BillHdr);
+                }
+                return View(_BillHdrList);
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
         // GET: Bill/Details/5
         public ActionResult Details(string id)
         {
@@ -221,9 +265,6 @@ namespace Chuyenphatnhanh.Controllers
                         ViewData[Contant.MESSSAGEERROR] = Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
                         return View(form);
                     }
-                    _Hdr.WARD_ID_CURRENT = _branch.WARD_ID;
-                    _Hdr.ADDRESS_CURRENT = _branch.ADDRESS;
-                    _Hdr.DISTRICT_ID_CURRENT = _branch.DISTRICT_ID;
                     _Hdr.BRANCH_ID_CURRENT = _operator.BranchID;
 
                     db.BILL_HDR_TBL.Add(_Hdr);
@@ -289,10 +330,11 @@ namespace Chuyenphatnhanh.Controllers
                 WARD_MST _wardTo = db.WARD_MST.Where(u => u.WARD_ID == bILL_HDR_TBL.WARD_ID_TO).FirstOrDefault();
                 ViewBag.DISTRICT_ID_FROM = new SelectList(db.DISTRICT_MST.OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
                 ViewBag.DISTRICT_ID_TO = new SelectList(db.DISTRICT_MST.OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+                ViewBag.BRANCH_ID_TEMP = new SelectList(db.BRANCH_MST.Where(u => u.DELETE_FLAG == false).OrderBy(u => u.BRANCH_NAME), "BRANCH_ID", "BRANCH_NAME");
                 if (_wardFrom != null)
                 {
                     ViewBag.WARD_ID_FROM = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == _wardFrom.DISTRICT_ID), "WARD_ID", "WARD_NAME");
-                    form.DISTRICT_ID_FROM = _wardFrom.DISTRICT_ID;
+                    
                 }
                 else
                 {
@@ -301,7 +343,7 @@ namespace Chuyenphatnhanh.Controllers
                 if (_wardTo != null)
                 {
                     ViewBag.WARD_ID_TO = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == _wardTo.DISTRICT_ID), "WARD_ID", "WARD_NAME");
-                    form.DISTRICT_ID_TO = _wardTo.DISTRICT_ID;
+                    
                 }
                 else
                 {
@@ -349,7 +391,7 @@ namespace Chuyenphatnhanh.Controllers
                 if (_wardFrom != null)
                 {
                     ViewBag.WARD_ID_FROM = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == _wardFrom.DISTRICT_ID), "WARD_ID", "WARD_NAME");
-                    form.DISTRICT_ID_FROM = _wardFrom.DISTRICT_ID;
+                     
                 }
                 else
                 {
@@ -358,7 +400,7 @@ namespace Chuyenphatnhanh.Controllers
                 if (_wardTo != null)
                 {
                     ViewBag.WARD_ID_TO = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == _wardTo.DISTRICT_ID), "WARD_ID", "WARD_NAME");
-                    form.DISTRICT_ID_TO = _wardTo.DISTRICT_ID;
+                     
                 }
                 else
                 {
@@ -695,10 +737,14 @@ namespace Chuyenphatnhanh.Controllers
                         _Address = _bill.ADDRESS_TO + ", " + _bill.WARD_MST_TO.WARD_NAME + ", " + _bill.DISTRICT_MST_TO.DISTRICT_NAME;
                         BillHdr.AddressTo = _Address;
                     }
-                    if (_bill.WARD_ID_CURRENT != null && _bill.DISTRICT_ID_CURRENT != null)
+                    if (_bill.BRANCH_ID_CURRENT != null)
                     {
-                        _Address = _bill.ADDRESS_CURRENT + ", " + _bill.WARD_MST_CURRENT.WARD_NAME + ", " + _bill.DISTRICT_MST_CURRENT.DISTRICT_NAME;
-                        BillHdr.AddressCurrent = _Address;
+                        BRANCH_MST _branch = db.BRANCH_MST.Find(_bill.BRANCH_ID_CURRENT);
+                        if (_branch != null)
+                        {
+                            _Address = _branch.ADDRESS + ", " + _branch.WARD_MST.WARD_NAME + ", " + _branch.DISTRICT_MST.DISTRICT_NAME;
+                            BillHdr.AddressCurrent = _Address;
+                        }
                     }
                     _BillHdrList.Add(BillHdr);
                 }
@@ -711,48 +757,12 @@ namespace Chuyenphatnhanh.Controllers
             }
         }
 
-        // GET: Bill/TranferBranch/5
-        public ActionResult TranferBranch()
-        {
-            try
-            {
-                List<BILL_HDR_TBL> _BillHdr = db.BILL_HDR_TBL.Where(u => u.DELETE_FLAG == false && u.BRANCH_ID_CURRENT == _operator.BranchID && u.STATUS != Contant.GIAO_HANG_THANH_CONG).ToList();
-                List<BillHdrTblForm> _BillHdrList = new List<BillHdrTblForm>();
-                BillHdrTblForm BillHdr;
-                foreach (BILL_HDR_TBL _bill in _BillHdr)
-                {
-                    BillHdr = new BillHdrTblForm();
-                    ComplementUtil.complement(_bill, BillHdr);
-                    string _Address = null;
-                    if (_bill.WARD_ID_FROM != null && _bill.DISTRICT_ID_FROM != null)
-                    {
-                        _Address = _bill.ADDRESS_FROM + ", " + _bill.WARD_MST_FROM.WARD_NAME + ", " + _bill.DISTRICT_MST_FROM.DISTRICT_NAME;
-                        BillHdr.AddressFrom = _Address;
-                    }
-                    if (_bill.WARD_ID_TO != null && _bill.DISTRICT_ID_TO != null)
-                    {
-                        _Address = _bill.ADDRESS_TO + ", " + _bill.WARD_MST_TO.WARD_NAME + ", " + _bill.DISTRICT_MST_TO.DISTRICT_NAME;
-                        BillHdr.AddressTo = _Address;
-                    }
-                    if (_bill.WARD_ID_CURRENT != null && _bill.DISTRICT_ID_CURRENT != null)
-                    {
-                        _Address = _bill.ADDRESS_CURRENT + ", " + _bill.WARD_MST_CURRENT.WARD_NAME + ", " + _bill.DISTRICT_MST_CURRENT.DISTRICT_NAME;
-                        BillHdr.AddressCurrent = _Address;
-                    }
-                    _BillHdrList.Add(BillHdr);
-                }
-                return View(_BillHdrList);
-
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
+        
 
         // GET: Bill/TranferBranch/5
         public ActionResult TranferBranch(string id)
         {
+              
             return Edit(id);
         }
 
@@ -804,7 +814,7 @@ namespace Chuyenphatnhanh.Controllers
                     _BillHdrTbl.MOD_DATE = _date;
                     _BillHdrTbl.MOD_USER_NAME = _operator.UserName;
                     _BillHdrTbl.STATUS = Contant.DANG_CHUYEN_HANG;
-
+                    _BillHdrTbl.UID_CURRENT = _operator.UserId;
                     db.Entry(_BillHdrTbl).State = EntityState.Modified;
 
                     foreach (BillTblForm _form in form.Bill)
@@ -891,7 +901,7 @@ namespace Chuyenphatnhanh.Controllers
                     _BillHdrTbl.STATUS = Contant.CHUYEN_HANG_THANH_CONG;
                     _BillHdrTbl.BRANCH_ID_CURRENT = _BillHdrTbl.BRANCH_ID_TEMP;
                     _BillHdrTbl.BRANCH_ID_TEMP = null;
-
+                    _BillHdrTbl.UID_CURRENT = null;
                     db.Entry(_BillHdrTbl).State = EntityState.Modified;
 
                     foreach (BillTblForm _form in form.Bill)
@@ -1152,9 +1162,7 @@ namespace Chuyenphatnhanh.Controllers
                      
 
                     BRANCH_MST _branch = db.BRANCH_MST.Where(u => u.BRANCH_ID == _operator.BranchID && u.DELETE_FLAG == false).FirstOrDefault();
-                    _Hdr.WARD_ID_CURRENT = _branch.WARD_ID;
-                    _Hdr.ADDRESS_CURRENT = _branch.ADDRESS;
-                    _Hdr.DISTRICT_ID_CURRENT = _branch.DISTRICT_ID;
+                    
                     _Hdr.BRANCH_ID_CURRENT = _operator.BranchID;
 
                     db.BILL_HDR_TBL.Add(_Hdr);
@@ -1188,54 +1196,54 @@ namespace Chuyenphatnhanh.Controllers
         public string GetStatusDes(string status)
         {
 
-            if (Contant.NHAN_HANG.Equals(status))
+            if (Contant.NHAN_HANG.Equals(status.Trim()))
             {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_nhanHang;
             }
 
-            else if (Contant.DANG_CHUYEN_HANG.Equals(status))
+            else if (Contant.DANG_CHUYEN_HANG.Equals(status.Trim()))
             {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_dangChuyenHang;
             }
 
-            else if (Contant.CHUYEN_HANG_THANH_CONG.Equals(status))
+            else if (Contant.CHUYEN_HANG_THANH_CONG.Equals(status.Trim()))
             {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_ChuyenHangThanhCong;
             }
 
-            else if (Contant.DANG_GIAO_HANG.Equals(status))
+            else if (Contant.DANG_GIAO_HANG.Equals(status.Trim()))
             {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_ShipHang;
             }
 
-            else if (Contant.GIAO_HANG_THANH_CONG.Equals(status))
+            else if (Contant.GIAO_HANG_THANH_CONG.Equals(status.Trim()))
             {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_HangShiped;
             }
 
-            else if (Contant.HUY_DON_HANG.Equals(status))
+            else if (Contant.HUY_DON_HANG.Equals(status.Trim()))
             {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_Cancle;
             }
 
-            else if (Contant.CHUYEN_HANG_TRA_THANH_CONG.Equals(status))
+            else if (Contant.CHUYEN_HANG_TRA_THANH_CONG.Equals(status.Trim()))
             {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_ChuyenHangHuyThanhCong;
             }
 
-            else if (Contant.DANG_CHUYEN_HANG_TRA.Equals(status))
+            else if (Contant.DANG_CHUYEN_HANG_TRA.Equals(status.Trim()))
             {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_DangVanChuyenHangHuy;
             }
 
-            else if (Contant.DANG_GIAO_HANG_TRA.Equals(status))
+            else if (Contant.DANG_GIAO_HANG_TRA.Equals(status.Trim()))
             {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_ShipHangTraLai;
             }
 
-            else if (Contant.TRA_THANH_CONG.Equals(status))
+            else if (Contant.TRA_THANH_CONG.Equals(status.Trim()))
             {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_HangShipedTraLai;
             }
             else
             {

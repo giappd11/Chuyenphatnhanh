@@ -1,105 +1,74 @@
 ﻿@model Chuyenphatnhanh.Models.CustMstForm
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
- 
-<div>
-    <h4>CUST_MST</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DELETE_FLAG)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DELETE_FLAG)
-        </dd>
+<div class="row">
+    <ul class="ul-box">
+        <li class="col-md-8 col-xs-12 center">
+            @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <dt>
-            @Html.DisplayNameFor(model => model.REG_DATE)
-        </dt>
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.CUST_ID)
+                @Html.HiddenFor(model => model.DELETE_FLAG)
+                @Html.HiddenFor(model => model.MOD_USER_NAME)
+                @Html.HiddenFor(model => model.REG_USER_NAME)
+                @Html.TextBoxFor(model => model.MOD_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+                @Html.TextBoxFor(model => model.REG_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CUST_NAME, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="frm-edit-client col-md-8">
+                        @Html.EditorFor(model => model.CUST_NAME, new { htmlAttributes = new { @class = "col-xs-12" , @disabled  = "disabled" } })
+                        @Html.ValidationMessageFor(model => model.CUST_NAME, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.REG_DATE)
-        </dd>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PHONE, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="frm-edit-client col-md-8">
+                        @Html.EditorFor(model => model.PHONE, new { htmlAttributes = new { @class = "col-xs-12", @disabled = "disabled" } })
+                        @Html.ValidationMessageFor(model => model.PHONE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MOD_DATE)
-        </dt>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DEFAULT_ADDRESS, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="frm-edit-client col-md-8">
+                        @Html.EditorFor(model => model.DEFAULT_ADDRESS, new { htmlAttributes = new { @class = "col-xs-12", @disabled = "disabled" } })
+                        @Html.ValidationMessageFor(model => model.DEFAULT_ADDRESS, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.MOD_DATE)
-        </dd>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DEFAULT_DISTRICT_ID,  htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="frm-edit-client col-md-8">
+                        @Html.DropDownListFor(model => model.DEFAULT_DISTRICT_ID, ViewBag.DEFAULT_DISTRICT_ID as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "col-xs-12  chosen-select", @disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.DEFAULT_DISTRICT_ID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.REG_USER_NAME)
-        </dt>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DEFAULT_WARD_ID,   htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="frm-edit-client col-md-8">
+                        @Html.DropDownListFor(model => model.DEFAULT_WARD_ID, ViewBag.DEFAULT_WARD_ID as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "col-xs-12 chosen-select", @disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.DEFAULT_WARD_ID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.REG_USER_NAME)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MOD_USER_NAME)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MOD_USER_NAME)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CUST_NAME)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CUST_NAME)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PHONE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PHONE)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DEFAULT_ADDRESS)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DEFAULT_ADDRESS)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DEFAULT_COUNTRY)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DEFAULT_COUNTRY)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DEFAULT_PROVINCE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DEFAULT_PROVINCE)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DEFAULT_DISTRICT)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DEFAULT_DISTRICT)
-        </dd>
-
-    </dl>
+                <div class="form-group">
+                    <div class="frm-edit-client">
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "link-back" })
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.CUST_ID }, new { @class = "link-edit" })
+                    </div>
+                </div>
+            </div>
+        }
+    </li>
+</ul>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CUST_ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

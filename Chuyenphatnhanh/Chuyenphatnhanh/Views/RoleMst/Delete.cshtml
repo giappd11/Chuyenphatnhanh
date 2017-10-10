@@ -1,47 +1,54 @@
 ﻿@model Chuyenphatnhanh.Models.RoleMstForm
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
- 
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>ROLE_MST</h4>
-    <hr />
-    <dl class="dl-horizontal">
-         
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TYPE_ROLE)
-        </dt>
+<div class="row">
+    <ul class="ul-box">
+        <li class="col-md-8 col-xs-12 center">
+            @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.TYPE_ROLE)
-        </dd>
+            <div class="form-horizontal">
+                <h3>Are you sure you want to delete this?</h3>
+                <h4>ROLE_MST</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.DELETE_FLAG)
+                @Html.HiddenFor(model => model.MOD_USER_NAME)
+                @Html.HiddenFor(model => model.REG_USER_NAME)
+                @Html.TextBoxFor(model => model.MOD_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+                @Html.TextBoxFor(model => model.REG_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DESCRIPTION)
-        </dt>
+                @Html.HiddenFor(model => model.ROLE_ID)
 
-        <dd>
-            @Html.DisplayFor(model => model.DESCRIPTION)
-        </dd>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TYPE_ROLE, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="frm-edit-client col-md-8">
+                        @Html.EditorFor(model => model.TYPE_ROLE, new { htmlAttributes = new { @class = "col-xs-12" } })
+                        @Html.ValidationMessageFor(model => model.TYPE_ROLE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-    </dl>
-     @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-        @Html.HiddenFor(model => model.DELETE_FLAG)
-        @Html.HiddenFor(model => model.MOD_USER_NAME)
-        @Html.HiddenFor(model => model.REG_USER_NAME)
-        @Html.TextBoxFor(model => model.MOD_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
-        @Html.TextBoxFor(model => model.REG_DATE, "{0:dd/MM/yyyy HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DESCRIPTION, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="frm-edit-client col-md-8">
+                        @Html.EditorFor(model => model.DESCRIPTION, new { htmlAttributes = new { @class = "col-xs-12" } })
+                        @Html.ValidationMessageFor(model => model.DESCRIPTION, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        @Html.HiddenFor(model => model.ROLE_ID)
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+                <div class="form-group">
+                    <div class="frm-edit-client">
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "link-back" })<input type="submit" value="Delete" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+    </li>
+</ul>
 </div>

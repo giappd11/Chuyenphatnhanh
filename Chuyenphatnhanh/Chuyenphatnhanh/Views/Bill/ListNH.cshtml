@@ -5,8 +5,18 @@
     Layout = "~/Views/Shared/_LayoutList.cshtml";
 }
 
-<h2>Tìm kiếm</h2>
- 
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <td></td>
+    </tr>
+
+</table>
+<hr />
 <table class="table">
     <thead>
         <tr>
@@ -45,6 +55,7 @@
 
                 <td>
                     @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Edit, "Edit", new { id = item.BILL_HDR_ID }) |
+                    @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Delete, "Delete", new { id = item.BILL_HDR_ID })
                     @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Print, "Report", new { id = item.BILL_HDR_ID }, new { target ="_blank"})
                 </td>
             </tr>

@@ -34,9 +34,9 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.ROLE_ID, "ROLE_ID", htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.ROLE_ID,  htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="frm-edit-client col-md-8">
-                        @Html.DropDownList("ROLE_ID", null, htmlAttributes: new { @class = "col-xs-12" })
+                        @Html.DropDownList("ROLE_ID", null, htmlAttributes: new { @class = "col-xs-12 chosen-select" })
                         @Html.ValidationMessageFor(model => model.ROLE_ID, "", new { @class = "text-danger" })
                     </div>
                 </div>

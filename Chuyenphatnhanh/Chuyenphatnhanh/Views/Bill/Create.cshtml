@@ -122,42 +122,52 @@
                         @for( int i = 0; i < Model.Bill.Count(); i++ )
                         {
                             
-                                <div class="col-xs-12 wrap-title">
-                                    <div class="title">Gói hàng</div>
-                                    <span class="icon addnewBill"><i class="fa fa-plus"></i></span>
-                                    <input type="hidden" name="billCount" class="billCount" value="@Model.Bill.Count()" />
-                                </div>
-                                <div class="sub-content h-form-content">
-                                    <div class="form-group row">
-                                        @Html.LabelFor(model => model.Bill[i].NAME, htmlAttributes: new { @class = "control-label col-md-4" })
-                                        <div class="frm-edit-client col-md-8">
-                                            @Html.EditorFor(model => model.Bill[i].NAME, new { htmlAttributes = new { @class = "col-xs-12" } })
-                                            @Html.ValidationMessageFor(model => model.Bill[i].NAME, "", new { @class = "text-danger" })
-                                        </div>
+                            <div class="col-xs-12 wrap-title">
+                                <div class="title">Gói hàng</div>
+                                <span class="icon addnewBill"><i class="fa fa-plus"></i></span>
+                                <input type="hidden" name="billCount" class="billCount" value="@Model.Bill.Count()" />
+                            </div>
+                            <div class="sub-content h-form-content">
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.Bill[i].NAME, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="frm-edit-client col-md-8">
+                                        @Html.EditorFor(model => model.Bill[i].NAME, new { htmlAttributes = new { @class = "col-xs-12" } })
+                                        @Html.ValidationMessageFor(model => model.Bill[i].NAME, "", new { @class = "text-danger" })
                                     </div>
-                                    <div class="form-group row">
-                                        @Html.LabelFor(model => model.Bill[i].WEIGHT, htmlAttributes: new { @class = "control-label col-md-4" })
-                                        <div class="frm-edit-client col-md-8">
+                                </div>
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.Bill[i].WEIGHT, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="frm-edit-client col-md-8">
+                                        <div class="col-md-6 row">
                                             @Html.EditorFor(model => model.Bill[i].WEIGHT, new { htmlAttributes = new { @class = "col-xs-12 weight" } })
                                             @Html.ValidationMessageFor(model => model.Bill[i].WEIGHT, "", new { @class = "text-danger" })
                                         </div>
+                                        <div class="col-md-6">
+                                            <label class="left">&nbsp; Gram</label>
+                                        </div>
                                     </div>
-                                    <div class="form-group row">
-                                        @Html.LabelFor(model => model.Bill[i].PRICE, htmlAttributes: new { @class = "control-label col-md-4" })
-                                        <div class="frm-edit-client col-md-8"> 
+                                </div>
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.Bill[i].PRICE, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="frm-edit-client col-md-8"> 
+                                        <div class="col-md-6 row">
                                             @Html.EditorFor(model => model.Bill[i].PRICE, new { htmlAttributes = new { @class = "col-xs-12" } })
                                             @Html.ValidationMessageFor(model => model.Bill[i].PRICE, "", new { @class = "text-danger" })
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        @Html.LabelFor(model => model.Bill[i].COMMENT, htmlAttributes: new { @class = "control-label col-md-4" })
-                                        <div class="frm-edit-client col-md-8">
-                                            @Html.EditorFor(model => model.Bill[i].COMMENT, new { htmlAttributes = new { @class = "col-xs-12" } })
-                                            @Html.ValidationMessageFor(model => model.Bill[i].COMMENT, "", new { @class = "text-danger" })
+                                        <div class="col-md-6">
+                                            <label class="left">&nbsp; VND</label>
                                         </div>
                                     </div>
-                                    
                                 </div>
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.Bill[i].COMMENT, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="frm-edit-client col-md-8">
+                                        @Html.EditorFor(model => model.Bill[i].COMMENT, new { htmlAttributes = new { @class = "col-xs-12" } })
+                                        @Html.ValidationMessageFor(model => model.Bill[i].COMMENT, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                    
+                            </div>
                         }
                     </div>
                     <div class="item postage ">

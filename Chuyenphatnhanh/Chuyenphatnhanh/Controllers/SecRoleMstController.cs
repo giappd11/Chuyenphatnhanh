@@ -52,7 +52,7 @@ namespace Chuyenphatnhanh.Controllers
                 }
                 SecRoleMstForm _form = new SecRoleMstForm();
                 ComplementUtil.complement(sEC_ROLE_MST, _form);
-                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE", _form.ROLE_ID);
+                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST.Where(u => u.DELETE_FLAG == false), "ROLE_ID", "TYPE_ROLE", _form.ROLE_ID);
                 return View(_form);
             }
             catch (Exception e)
@@ -66,7 +66,7 @@ namespace Chuyenphatnhanh.Controllers
         {
             try
             {
-                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE");
+                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST.Where(u => u.DELETE_FLAG == false), "ROLE_ID", "TYPE_ROLE");
                 return View();
             }
             catch (Exception e)
@@ -98,10 +98,10 @@ namespace Chuyenphatnhanh.Controllers
                     sEC_ROLE_MST.SEC_ROLE_ID = GenerateID.GennerateID(db, Contant.SECROLEMST_SEQ, Contant.SECROLEMST_PREFIX);
                     db.SEC_ROLE_MST.Add(sEC_ROLE_MST);
                     db.SaveChanges();
-                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.CreateSuccess;
                 }
 
-                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE", form.ROLE_ID);
+                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST.Where(u => u.DELETE_FLAG == false), "ROLE_ID", "TYPE_ROLE", form.ROLE_ID);
                 return View(form);
             }
             catch (Exception e)
@@ -127,7 +127,7 @@ namespace Chuyenphatnhanh.Controllers
                 SecRoleMstForm _form = new SecRoleMstForm();
                 ComplementUtil.complement(sEC_ROLE_MST, _form);
 
-                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE", _form.ROLE_ID);
+                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST.Where(u => u.DELETE_FLAG == false), "ROLE_ID", "TYPE_ROLE", _form.ROLE_ID);
                 return View(_form);
             }
             catch (Exception e)
@@ -159,9 +159,9 @@ namespace Chuyenphatnhanh.Controllers
                     SecRoleMst.MOD_USER_NAME = _operator.UserName;
                     db.Entry(SecRoleMst).State = EntityState.Modified;
                     db.SaveChanges();
-                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.ChangeSuccess;
                 }
-                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE", form.ROLE_ID);
+                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST.Where(u => u.DELETE_FLAG == false), "ROLE_ID", "TYPE_ROLE", form.ROLE_ID);
                 return View(form);
             }
             catch (Exception e)
@@ -187,7 +187,7 @@ namespace Chuyenphatnhanh.Controllers
                 SecRoleMstForm _form = new SecRoleMstForm();
                 ComplementUtil.complement(sEC_ROLE_MST, _form);
 
-                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST, "ROLE_ID", "TYPE_ROLE", _form.ROLE_ID);
+                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST.Where(u => u.DELETE_FLAG == false), "ROLE_ID", "TYPE_ROLE", _form.ROLE_ID);
                 return View(_form);
             }
             catch (Exception e)
@@ -204,6 +204,7 @@ namespace Chuyenphatnhanh.Controllers
             try
             {
                 SEC_ROLE_MST _SecRoleMst = db.SEC_ROLE_MST.Find(form.SEC_ROLE_ID);
+                ViewBag.ROLE_ID = new SelectList(db.ROLE_MST.Where(u => u.DELETE_FLAG == false), "ROLE_ID", "TYPE_ROLE");
                 if (DateTime.Compare((DateTime)_SecRoleMst.MOD_DATE, form.MOD_DATE) != 0)
                 {
                     ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _SecRoleMst.VALUE, _SecRoleMst.MOD_USER_NAME));
@@ -214,7 +215,7 @@ namespace Chuyenphatnhanh.Controllers
                 _SecRoleMst.DELETE_FLAG = true;
                 db.Entry(_SecRoleMst).State = EntityState.Modified;
                 db.SaveChanges();
-                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
+                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.DeleteSuccess;
                 ComplementUtil.complement(_SecRoleMst, form);
                 return View(form);
             }

@@ -67,7 +67,23 @@ namespace Chuyenphatnhanh.Controllers
                 {
                     return HttpNotFound();
                 }
-                return View(cUST_MST);
+                WARD_MST _ward = db.WARD_MST.Where(u => u.WARD_ID == cUST_MST.DEFAULT_WARD_ID).FirstOrDefault();
+                ViewBag.DEFAULT_DISTRICT_ID = new SelectList(db.DISTRICT_MST.OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+                if (_ward != null)
+                {
+                    ViewBag.DEFAULT_WARD_ID = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == _ward.DISTRICT_ID), "WARD_ID", "WARD_NAME");
+                }
+                else
+                {
+                    ViewBag.DEFAULT_WARD_ID = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
+                }
+                CustMstForm _form = new CustMstForm();
+                ComplementUtil.complement(cUST_MST, _form);
+                if (_form.DEFAULT_WARD_ID != null)
+                {
+                    _form.DEFAULT_DISTRICT_ID = cUST_MST.WARD_MST.DISTRICT_ID;
+                }
+                return View(_form);
             }
             catch (Exception e)
             {
@@ -214,11 +230,25 @@ namespace Chuyenphatnhanh.Controllers
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
                 CUST_MST cUST_MST = db.CUST_MST.Find(id);
-                CustMstForm _form = new CustMstForm();
-                ComplementUtil.complement(cUST_MST, _form);
                 if (cUST_MST == null)
                 {
                     return HttpNotFound();
+                }
+                WARD_MST _ward = db.WARD_MST.Where(u => u.WARD_ID == cUST_MST.DEFAULT_WARD_ID).FirstOrDefault();
+                ViewBag.DEFAULT_DISTRICT_ID = new SelectList(db.DISTRICT_MST.OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+                if (_ward != null)
+                {
+                    ViewBag.DEFAULT_WARD_ID = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == _ward.DISTRICT_ID), "WARD_ID", "WARD_NAME");
+                }
+                else
+                {
+                    ViewBag.DEFAULT_WARD_ID = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
+                }
+                CustMstForm _form = new CustMstForm();
+                ComplementUtil.complement(cUST_MST, _form);
+                if (_form.DEFAULT_WARD_ID != null)
+                {
+                    _form.DEFAULT_DISTRICT_ID = cUST_MST.WARD_MST.DISTRICT_ID;
                 }
                 return View(_form);
             }
@@ -246,7 +276,16 @@ namespace Chuyenphatnhanh.Controllers
                 _CustMst.DELETE_FLAG = true;
                 db.Entry(_CustMst).State = EntityState.Modified;
                 db.SaveChanges();
-                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
+                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.DeleteSuccess;
+                ViewBag.DEFAULT_DISTRICT_ID = new SelectList(db.DISTRICT_MST.OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+                if (form.DEFAULT_DISTRICT_ID != null)
+                {
+                    ViewBag.DEFAULT_WARD_ID = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == form.DEFAULT_DISTRICT_ID), "WARD_ID", "WARD_NAME");
+                }
+                else
+                {
+                    ViewBag.DEFAULT_WARD_ID = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
+                }
                 ComplementUtil.complement(_CustMst, form);
 
                 return View(form);

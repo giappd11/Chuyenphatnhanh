@@ -19,7 +19,6 @@ namespace Chuyenphatnhanh.Models
         {
             this.BILL_HDR_TBL = new HashSet<BILL_HDR_TBL>();
             this.BILL_HDR_TBL1 = new HashSet<BILL_HDR_TBL>();
-            this.BILL_HDR_TBL2 = new HashSet<BILL_HDR_TBL>();
             this.BRANCH_MST = new HashSet<BRANCH_MST>();
             this.CUST_MST = new HashSet<CUST_MST>();
             this.USER_MST = new HashSet<USER_MST>();
@@ -39,8 +38,6 @@ namespace Chuyenphatnhanh.Models
         public virtual ICollection<BILL_HDR_TBL> BILL_HDR_TBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BILL_HDR_TBL> BILL_HDR_TBL1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BILL_HDR_TBL> BILL_HDR_TBL2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BRANCH_MST> BRANCH_MST { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

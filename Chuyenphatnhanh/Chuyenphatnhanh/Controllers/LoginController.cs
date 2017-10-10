@@ -63,14 +63,16 @@ namespace Chuyenphatnhanh.Controllers
                 else
                 {
                     _user = db.USER_MST.Where(u => u.USER_NAME == form.USER_NAME).FirstOrDefault();
-                    _user.NUMBER_LOGIN_FAIL++;
-                    _user.MOD_DATE = DateTime.Now;
-                    db.Entry(_user).State = EntityState.Modified;
-                    db.SaveChanges();
-                    if (_user.NUMBER_LOGIN_FAIL > 5)
-                    {
-                        ModelState.AddModelError(Contant.MESSSAGEERROR, Resource.RGlobal.AccountLoged);
-                        return View(form);
+                    if (_user != null) { 
+                        _user.NUMBER_LOGIN_FAIL++;
+                        _user.MOD_DATE = DateTime.Now;
+                        db.Entry(_user).State = EntityState.Modified;
+                        db.SaveChanges();
+                        if (_user.NUMBER_LOGIN_FAIL > 5)
+                        {
+                            ModelState.AddModelError(Contant.MESSSAGEERROR, Resource.RGlobal.AccountLoged);
+                            return View(form);
+                        }
                     }
                     ModelState.AddModelError(Contant.MESSSAGEERROR, Resource.RGlobal.ErrorLogin);
                     return View(form);

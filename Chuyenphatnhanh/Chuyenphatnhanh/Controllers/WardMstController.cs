@@ -26,6 +26,10 @@ namespace Chuyenphatnhanh.Controllers
                 {
                     WardMstForm _WardMst = new WardMstForm();
                     ComplementUtil.complement(_Ward, _WardMst);
+                    if (_Ward.DISTRICT_MST != null)
+                    {
+                        _WardMst.DISTRICT_NAME = _Ward.DISTRICT_MST.DISTRICT_NAME;
+                    }
                     _WardList.Add(_WardMst);
                 }
                 return View(_WardList);
@@ -50,8 +54,10 @@ namespace Chuyenphatnhanh.Controllers
                 {
                     return HttpNotFound();
                 }
+
                 WardMstForm _form = new WardMstForm();
                 ComplementUtil.complement(wARD_MST, _form);
+                ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST.Where(u =>u.DELETE_FLAG == false), "DISTRICT_ID", "DISTRICT_NAME");
                 return View(_form);
             }
             catch (Exception e)
@@ -65,7 +71,8 @@ namespace Chuyenphatnhanh.Controllers
         {
             try
             {
-                ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST, "DISTRICT_ID", "DISTRICT_NAME");
+
+                ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST.Where(u => u.DELETE_FLAG == false), "DISTRICT_ID", "DISTRICT_NAME" );
                 return View();
             }
             catch (Exception e)
@@ -92,12 +99,12 @@ namespace Chuyenphatnhanh.Controllers
                     _WardMst.MOD_USER_NAME = _operator.UserName;
                     _WardMst.REG_DATE = DateTime.Now;
                     _WardMst.REG_USER_NAME = _operator.UserName;
-                    _WardMst.DISTRICT_ID = GenerateID.GennerateID(db, Contant.WARDMST_SEQ, Contant.WARDMST_PREFIX);
+                    _WardMst.WARD_ID = GenerateID.GennerateID(db, Contant.WARDMST_SEQ, Contant.WARDMST_PREFIX);
                     db.WARD_MST.Add(_WardMst);
                     db.SaveChanges();
-                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.CreateSuccess;
                 }
-                ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST, "DISTRICT_ID", "DISTRICT_NAME", form.DISTRICT_ID);
+                ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST.Where(u => u.DELETE_FLAG == false), "DISTRICT_ID", "DISTRICT_NAME", form.DISTRICT_ID);  
                 return View(form);
             }
             catch (Exception e)
@@ -120,7 +127,8 @@ namespace Chuyenphatnhanh.Controllers
                 {
                     return HttpNotFound();
                 }
-                ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST, "DISTRICT_ID", "DISTRICT_NAME", wARD_MST.DISTRICT_ID);
+
+                ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST.Where(u => u.DELETE_FLAG == false), "DISTRICT_ID", "DISTRICT_NAME", wARD_MST.DISTRICT_ID);
                 WardMstForm _form = new WardMstForm();
                 ComplementUtil.complement(wARD_MST, _form);
                 return View(_form);
@@ -140,7 +148,8 @@ namespace Chuyenphatnhanh.Controllers
         {
             try
             {
-                ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST, "DISTRICT_ID", "DISTRICT_NAME", form.DISTRICT_ID);
+
+                ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST.Where(u => u.DELETE_FLAG == false), "DISTRICT_ID", "DISTRICT_NAME", form.DISTRICT_ID);
                 if (ModelState.IsValid)
                 {
                     WARD_MST _WardMst = db.WARD_MST.Find(form.WARD_ID);
@@ -155,7 +164,7 @@ namespace Chuyenphatnhanh.Controllers
                     _WardMst.MOD_USER_NAME = _operator.UserName;
                     db.Entry(_WardMst).State = EntityState.Modified;
                     db.SaveChanges();
-                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.ChangeSuccess;
                 }
                 return View(form);
             }
@@ -179,7 +188,8 @@ namespace Chuyenphatnhanh.Controllers
                 {
                     return HttpNotFound();
                 }
-                ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST, "DISTRICT_ID", "DISTRICT_NAME", wARD_MST.DISTRICT_ID);
+
+                ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST.Where(u => u.DELETE_FLAG == false), "DISTRICT_ID", "DISTRICT_NAME", wARD_MST.DISTRICT_ID);
                 WardMstForm _form = new WardMstForm();
                 ComplementUtil.complement(wARD_MST, _form);
                 return View(_form);
@@ -197,7 +207,7 @@ namespace Chuyenphatnhanh.Controllers
         {
             try
             {
-                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.EditCustMstSuccess;
+                ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.DeleteSuccess;
                 WARD_MST _WardMst = db.WARD_MST.Find(form.WARD_ID);
                 if (DateTime.Compare((DateTime)_WardMst.MOD_DATE, form.MOD_DATE) != 0)
                 {
@@ -212,6 +222,7 @@ namespace Chuyenphatnhanh.Controllers
                 db.Entry(_WardMst).State = EntityState.Modified;
                 db.SaveChanges();
                 ComplementUtil.complement(_WardMst, form);
+                ViewBag.DISTRICT_ID = new SelectList(db.DISTRICT_MST.Where(u => u.DELETE_FLAG == false), "DISTRICT_ID", "DISTRICT_NAME", form.DISTRICT_ID);
                 return View(form);
             }
             catch (Exception e)

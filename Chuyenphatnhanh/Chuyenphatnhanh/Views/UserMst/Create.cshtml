@@ -26,34 +26,10 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.PASSWORD, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.PHONE, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="frm-edit-client col-md-8">
-                        @Html.EditorFor(model => model.PASSWORD, new { htmlAttributes = new { @class = "col-xs-12" } })
-                        @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.NUMBER_LOGIN_FAIL, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="frm-edit-client col-md-8">
-                        @Html.EditorFor(model => model.NUMBER_LOGIN_FAIL, new { htmlAttributes = new { @class = "col-xs-12" } })
-                        @Html.ValidationMessageFor(model => model.NUMBER_LOGIN_FAIL, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.LAST_CHANGE_PASS, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="frm-edit-client col-md-8">
-                        @Html.EditorFor(model => model.LAST_CHANGE_PASS, new { htmlAttributes = new { @class = "col-xs-12" } })
-                        @Html.ValidationMessageFor(model => model.LAST_CHANGE_PASS, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.OLD_PASSWORD, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="frm-edit-client col-md-8">
-                        @Html.EditorFor(model => model.OLD_PASSWORD, new { htmlAttributes = new { @class = "col-xs-12" } })
-                        @Html.ValidationMessageFor(model => model.OLD_PASSWORD, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.PHONE, new { htmlAttributes = new { @class = "col-xs-12" } })
+                        @Html.ValidationMessageFor(model => model.PHONE, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -66,25 +42,17 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.PHONE, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.Config.BRANCH_ID,  htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="frm-edit-client col-md-8">
-                        @Html.EditorFor(model => model.PHONE, new { htmlAttributes = new { @class = "col-xs-12" } })
-                        @Html.ValidationMessageFor(model => model.PHONE, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Config.BRANCH_ID, "BRANCH_ID", htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="frm-edit-client col-md-8">
-                        @Html.DropDownList("BRANCH_ID", null, htmlAttributes: new { @class = "col-xs-12" })
+                        @Html.DropDownListFor(model => model.Config.BRANCH_ID, ViewBag.BRANCH_ID as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "col-xs-12 chosen-select" })
                         @Html.ValidationMessageFor(model => model.Config.BRANCH_ID, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Config.ROLE_ID, "ROLE_ID", htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.Config.ROLE_ID,   htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="frm-edit-client col-md-8">
-                        @Html.DropDownList("ROLE_ID", null, htmlAttributes: new { @class = "col-xs-12" })
+                        @Html.DropDownListFor(model => model.Config.ROLE_ID, ViewBag.ROLE_ID as List<SelectListItem>, string.Empty, htmlAttributes: new { @class = "col-xs-12 chosen-select" })
                         @Html.ValidationMessageFor(model => model.Config.ROLE_ID, "", new { @class = "text-danger" })
                     </div>
                 </div>

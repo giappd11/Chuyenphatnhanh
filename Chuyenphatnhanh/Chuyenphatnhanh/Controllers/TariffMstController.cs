@@ -231,8 +231,15 @@ namespace Chuyenphatnhanh.Controllers
                 }
                 else
                 {
-                    _TariffMst = db.TARIFF_MST.Where(u =>
-                        (u.WEIGHT_FROM <= Weight && u.WEIGHT_TO >= Weight) && u.LOCATION_SPICAL == Location_Special).FirstOrDefault();
+                    if (Weight > 2000) { 
+                        _TariffMst = db.TARIFF_MST.Where(u =>
+                         (u.WEIGHT_FROM <= Weight && u.WEIGHT_TO >= Weight) && u.LOCATION_SPICAL == Location_Special).FirstOrDefault();
+                    }
+                    else
+                    {
+                        _TariffMst = db.TARIFF_MST.Where(u =>
+                        (u.WEIGHT_FROM <= Weight && u.WEIGHT_TO == null) && u.LOCATION_SPICAL == Location_Special).FirstOrDefault();
+                    }
                 }
                 if (_TariffMst == null)
                 {
