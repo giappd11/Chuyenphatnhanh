@@ -40,6 +40,7 @@ namespace Chuyenphatnhanh.Models
         ErrorMessageResourceType = typeof(RGlobal))]
         [Display(Name = "Cust_District", ResourceType = typeof(RGlobal))]
         public string DISTRICT_ID { get; set; }
+        public string NAME { get; set; }
         public UserConfigMstForm Config { get; set; }
     }
 }

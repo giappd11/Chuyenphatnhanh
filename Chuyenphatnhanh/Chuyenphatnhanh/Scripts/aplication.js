@@ -280,7 +280,7 @@ function caculTotalAmoun() {
     }
 }
 
-$('a:not(".chosen-single")').click(function () {
+$('a:not(".chosen-single, .right")').click(function () {
     $('#ajax-wall').css("display", "block");
 });
 

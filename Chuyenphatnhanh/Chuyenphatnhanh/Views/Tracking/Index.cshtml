@@ -1,0 +1,60 @@
+﻿ 
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_LayoutGuest.cshtml";
+}
+
+ 
+
+<div id="main" style="margin-left: 0px;">
+    <div class="container-fluid">
+
+
+        <link href="/content/css/responsive.css?v=5.15.70.5" rel="stylesheet" type="text/css">
+
+        <form action="/Tracking/Search" method="post">
+
+            <style>
+                #StartDeliveringTime {
+                    display: -webkit-inline-box;
+                }
+            </style>
+
+            <div class="container1">
+                <div class="full_page">
+                    <ul class="breadcrumb">
+                         
+                        <li>Kiểm tra đơn hàng</li>
+                    </ul>
+
+
+
+                    <div class="order">
+
+                        <p class="search">
+                            <span class="ic_search"></span>
+
+                            <input class="input-xxlarge" data-val="true" data-val-required="Vui l&amp;#242;ng nhập m&amp;#227; phiếu gửi" id="OrderCode" name="search" placeholder="Nhập mã đơn hàng cần theo dõi và nhấn Enter" style="font-size:20px;height:24px;text-align:center;" type="text" value="">
+                            <input type="submit" id="btnFindTracking" style="display: none">
+
+                        </p>
+
+
+                        <div class="row-fluid">
+                            <div class="span12 ">
+                                <center>
+                                    <h3>Vui lòng nhập mã phiếu gửi</h3>
+                                </center>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <center>
+                    <h4>Mọi chi tiết vui lòng liên hệ tổng đài 18001201</h4>
+                </center>
+            </div>
+
+        </form>
+    </div>
+</div>

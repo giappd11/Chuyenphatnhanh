@@ -14,11 +14,13 @@
 
                 <div class="form-horizontal create-order order-create ">
                     <h4>BILL_HDR_TBL</h4>
+                    @if (Model.BILL_HDR_ID != null && !"".Equals(Model.BILL_HDR_ID))
+                    {
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Print, "Report", new { id = Model.BILL_HDR_ID }, new { @target = "_blank", @class = "right" })
+                    }
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @if (Model.BILL_HDR_ID != null && !"".Equals(Model.BILL_HDR_ID)) {   
-                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Print, "Report", new { id = Model.BILL_HDR_ID }, new { target = "_blank" })
-                    }
+                   
                     <div class="item sender ">
                         <div class="col-xs-12 wrap-title">
                             <div class="title">Người gửi</div>

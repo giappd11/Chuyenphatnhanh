@@ -112,6 +112,13 @@ namespace Chuyenphatnhanh.Controllers
                 USER_MST _UserMst = new USER_MST();
                 if (ModelState.IsValid)
                 {
+                    var list = db.USER_MST.Where(u => u.USER_NAME == form.USER_NAME);
+                    if (list.Count() > 0)
+                    {
+                        ViewData[Contant.MESSSAGEERROR] = string.Format( Chuyenphatnhanh.Content.Texts.RGlobal.Exists, form.USER_NAME);
+                        return View(form);
+                    }
+                    
                     DateTime _date = DateTime.Now;
                     ComplementUtil.complement(form, _UserMst);
                     _UserMst.DELETE_FLAG = false;
@@ -210,8 +217,16 @@ namespace Chuyenphatnhanh.Controllers
                 } 
                 if (ModelState.IsValid)
                 {
+                    
                     DateTime _date = DateTime.Now;
                     USER_MST _UserMst = db.USER_MST.Find(form.USER_ID);
+                    var list = db.USER_MST.Where(u => u.USER_NAME == form.USER_NAME);
+                    if (list.Count() > 0 && !form.USER_NAME.Equals(_UserMst.USER_NAME))
+                    {
+                        ViewData[Contant.MESSSAGEERROR] = string.Format(Chuyenphatnhanh.Content.Texts.RGlobal.Exists, form.USER_NAME);
+                        return View(form);
+                    }
+
                     if (DateTime.Compare((DateTime)_UserMst.MOD_DATE, form.MOD_DATE) != 0)
                     {
                         ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _UserMst.USER_NAME, _UserMst.MOD_USER_NAME));

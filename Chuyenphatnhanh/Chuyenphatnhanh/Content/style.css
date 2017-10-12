@@ -19509,7 +19509,8 @@ div.top-menu.active {
 .con-details-tracking {
     border-left: 2px solid #cfd8dc;
     padding: 0 15px;
-    margin: 15px 0
+    margin: 15px 0 0 0;
+    border-bottom: 1px solid #ddd;
 }
 
     .con-details-tracking .item label:last-child span:first-child,
@@ -23093,12 +23094,13 @@ div.wap-top-menu .btn {
 
 .con-details-tracking .item {
     padding-right: 420px;
-    padding-left: 45px
+    padding-left: 45px;
+    height: 30px;
 }
 
     .con-details-tracking .item label:last-child span:first-child {
         display: inline-block;
-        width: 265px
+        width: 500px
     }
 
 @media ( max-width :991px) {
@@ -23801,4 +23803,15 @@ label.left {
     .sub_menu li {
         padding: 6px 0 2px 0;
     }
-     
+.tongquan .form-group:nth-child(2n) {
+    background: #ddd;
+}
+.tongquan .form-group {
+    display: block;
+    clear: both;
+    overflow: hidden;
+    margin: 0;
+}
+.tongquan {
+    margin-bottom: 20px;
+}

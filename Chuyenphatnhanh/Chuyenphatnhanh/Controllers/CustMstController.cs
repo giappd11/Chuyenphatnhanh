@@ -118,6 +118,12 @@ namespace Chuyenphatnhanh.Controllers
                 CUST_MST _custMst = new CUST_MST();
                 if (ModelState.IsValid)
                 {
+                    var list = db.CUST_MST.Where(u => u.PHONE == form.PHONE);
+                    if (list.Count() > 0)
+                    {
+                        ViewData[Contant.MESSSAGEERROR] = string.Format(Chuyenphatnhanh.Content.Texts.RGlobal.Exists, form.PHONE);
+                        return View(form);
+                    }
                     ComplementUtil.complement(form, _custMst);
                     _custMst.DELETE_FLAG = false;
                     _custMst.MOD_DATE = DateTime.Now;

@@ -35,6 +35,7 @@ namespace Chuyenphatnhanh.Models
         public string PHONE { get; set; }
         public string WARD_ID { get; set; }
         public string DISTRICT_ID { get; set; }
+        public string NAME { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BILL_HDR_TBL> BILL_HDR_TBL { get; set; }

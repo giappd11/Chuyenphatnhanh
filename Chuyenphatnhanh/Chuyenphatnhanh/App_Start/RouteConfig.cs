@@ -21,7 +21,7 @@ namespace Chuyenphatnhanh
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index",lang= "vi-vn", id = UrlParameter.Optional }  
+                defaults: new { controller = "Home", action = "Index",lang= "en-us", id = UrlParameter.Optional }  
             );
         }
     }

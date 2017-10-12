@@ -9,12 +9,14 @@ using System.Web.Mvc;
 using Chuyenphatnhanh.Models;
 using Chuyenphatnhanh.Util;
 using Resource = Chuyenphatnhanh.Content.Texts;
+using Chuyenphatnhanh.Helpers;
+
 namespace Chuyenphatnhanh.Controllers
 {
     public class LoginController : Controller
     {
         private DBConnection db = new DBConnection();
-
+        private static string _cookieLangName = "Language";
         // GET: Home/Login
         public ActionResult Login()
         {
@@ -50,6 +52,7 @@ namespace Chuyenphatnhanh.Controllers
                     _operator.ManagerTime = DateTime.Now;
                     _operator.UserId = _user.USER_ID;
                     _operator.UserName = _user.USER_NAME;
+                    _operator.NameUser = _user.NAME;
                     if (_user.USER_CONFIG_MST != null)
                     {
                         _operator.Role = _user.USER_CONFIG_MST.ROLE_ID;
@@ -82,6 +85,43 @@ namespace Chuyenphatnhanh.Controllers
             return View(form);
         }
 
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            string cultureOnCookie = GetCultureOnCookie(filterContext.HttpContext.Request);
+            string cultureOnURL = filterContext.RouteData.Values.ContainsKey("lang") ? filterContext.RouteData.Values["lang"].ToString() : GlobalHelper.DefaultCulture;
+            string culture = (cultureOnCookie == string.Empty) ? (filterContext.RouteData.Values["lang"].ToString()) : cultureOnCookie;
+            if (cultureOnURL != culture)
+            {
+                filterContext.HttpContext.Response.RedirectToRoute("LocalizedDefault", new { lang = culture, controller = filterContext.RouteData.Values["controller"], action = filterContext.RouteData.Values["action"] });
+                return;
+            }
+            SetCurrentCultureOnThread(culture);
+            if (culture != MultiLanguageViewEngine.CurrentCulture)
+            {
+                (ViewEngines.Engines[0] as MultiLanguageViewEngine).SetCurrentCulture(culture);
+            }
+            base.OnActionExecuting(filterContext);
+        }
+
+        private static void SetCurrentCultureOnThread(string lang)
+        {
+            if (string.IsNullOrEmpty(lang))
+                lang = GlobalHelper.DefaultCulture;
+            var cultureInfo = new System.Globalization.CultureInfo(lang);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = cultureInfo;
+            System.Threading.Thread.CurrentThread.CurrentCulture = cultureInfo;
+        }
+
+        public static String GetCultureOnCookie(HttpRequestBase request)
+        {
+            var cookie = request.Cookies[_cookieLangName];
+            string culture = string.Empty;
+            if (cookie != null)
+            {
+                culture = cookie.Value;
+            }
+            return culture;
+        }
 
         public ActionResult Logout()
         {

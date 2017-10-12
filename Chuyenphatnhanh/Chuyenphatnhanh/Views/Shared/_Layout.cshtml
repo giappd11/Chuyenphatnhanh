@@ -34,7 +34,7 @@
                         </div>
                         <div class="info">
                             <p class="name Roboto-Regular" style="font-size: 14px">
-                                @_session.UserId - @_session.UserName
+                                @_session.UserName - @_session.NameUser
                                 <input type="hidden" id="txtClientID" name="txtClientID" value="@_session.UserId">
                             </p>
                             <div class="menu-user">
@@ -60,6 +60,12 @@
             </div>
             <div class="menu">
                 <ul>
+                    <li class=" pst-tootip">
+                        <a href="@Url.HttpRouteUrl(this.Culture==GlobalHelper.DefaultCulture ? "Default" : "LocalizedDefault",new { lang=GlobalHelper.CurrentCulture, action="Index", controller="Home"})">
+                            <span class="icon"><i class="fa fa-info-circle"></i></span>
+                            @Chuyenphatnhanh.Content.Texts.RGlobal.Home
+                        </a>
+                    </li>
                     <li id="MenuViewByStatus" class="pst-tootip">
                         <a href="@Url.HttpRouteUrl(this.Culture==GlobalHelper.DefaultCulture ? "Default" : "LocalizedDefault",new { lang=GlobalHelper.CurrentCulture, action="Index", controller="Bill"})">
                             <span class="icon"><i class="fa fa-list-alt"></i></span>
@@ -69,31 +75,12 @@
                         <div class="sub_menu" style="display:none">
                             <ul class="">
                                 <li class="pst-tootip">
-                                    <a href="@Url.HttpRouteUrl(this.Culture==GlobalHelper.DefaultCulture ? "Default" : "LocalizedDefault",new { lang=GlobalHelper.CurrentCulture, action="Index", controller="Bill"})">
+                                    <a href="@Url.HttpRouteUrl(this.Culture==GlobalHelper.DefaultCulture ? "Default" : "LocalizedDefault",new { lang=GlobalHelper.CurrentCulture, action="Create", controller="Bill"})">
                                         <span class="icon"><i class="fa fa-info-circle"></i></span>
                                         @Chuyenphatnhanh.Content.Texts.RGlobal.F_TaomoiDonHang
                                     </a>
                                 </li>
-                                <li class="pst-tootip">
-                                    <a href="@Url.HttpRouteUrl(this.Culture==GlobalHelper.DefaultCulture ? "Default" : "LocalizedDefault",new { lang=GlobalHelper.CurrentCulture, action="TranferBranch", controller="Bill"})">
-                                        <span class="icon"><i class="fa fa-info-circle"></i></span>
-                                        @Chuyenphatnhanh.Content.Texts.RGlobal.F_nhanChuyenHang
-                                    </a>
-                                </li>
-                                <li class="pst-tootip">
-                                    <a href="@Url.HttpRouteUrl(this.Culture==GlobalHelper.DefaultCulture ? "Default" : "LocalizedDefault",new { lang=GlobalHelper.CurrentCulture, action="Index", controller="Bill"})">
-                                        <span class="icon"><i class="fa fa-info-circle"></i></span>
-                                        @Chuyenphatnhanh.Content.Texts.RGlobal.F_NhanShipHang
-                                    </a>
-                                </li>
-                                <li class="pst-tootip">
-                                    <a href="@Url.HttpRouteUrl(this.Culture==GlobalHelper.DefaultCulture ? "Default" : "LocalizedDefault",new { lang=GlobalHelper.CurrentCulture, action="Cancel", controller="Bill"})">
-                                        <span class="icon"><i class="fa fa-info-circle"></i></span>
-                                        @Chuyenphatnhanh.Content.Texts.RGlobal.F_HuyDon
-                                    </a>
-                                </li>
                             </ul>
-
                         </div>
                     </li>
 
@@ -102,17 +89,6 @@
                             <span class="icon"><i class="fa fa-info-circle"></i></span>
                             @Chuyenphatnhanh.Content.Texts.RGlobal.F_Branch_manager
                         </a>
-                        <i class="fa fa-plus toggle"></i>
-                        <div class="sub_menu" style="display:none">
-                            <ul class="">
-                                <li class="pst-tootip">
-                                    <a href="@Url.HttpRouteUrl(this.Culture==GlobalHelper.DefaultCulture ? "Default" : "LocalizedDefault",new { lang=GlobalHelper.CurrentCulture, action="Index", controller="BranchMst"})">
-                                        <span class="icon"><i class="fa fa-info-circle"></i></span>
-                                        @Chuyenphatnhanh.Content.Texts.RGlobal.F_Branch_manager
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
                     </li>
                     <li class=" pst-tootip">
                         <a href="@Url.HttpRouteUrl(this.Culture==GlobalHelper.DefaultCulture ? "Default" : "LocalizedDefault",new { lang=GlobalHelper.CurrentCulture, action="Index", controller="UserMst"})">
@@ -151,8 +127,9 @@
                         </a>
                     </li>
                     <li class=" pst-tootip">
-                        <a href="">
-                            <span class="icon"><i class="fa fa-info-circle"></i></span>Thông tin
+                        <a href="@Url.HttpRouteUrl(this.Culture==GlobalHelper.DefaultCulture ? "Default" : "LocalizedDefault",new { lang=GlobalHelper.CurrentCulture, action="Index", controller="Report"})">
+                            <span class="icon"><i class="fa fa-info-circle"></i></span>
+                            @Chuyenphatnhanh.Content.Texts.RGlobal.F_Report
                         </a>
                     </li>
                 </ul>

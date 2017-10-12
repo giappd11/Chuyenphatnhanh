@@ -130,7 +130,7 @@
     <value>Back to List</value>
   </data>
   <data name="Contact" xml:space="preserve">
-    <value>Contact</value>
+    <value>Liên hệ</value>
   </data>
   <data name="CopyText" xml:space="preserve">
     <value>ASP.NET Application</value>
@@ -250,10 +250,10 @@
     <value>Quản lý quận huyện</value>
   </data>
   <data name="F_RoleMst" xml:space="preserve">
-    <value>Quản lý Quyền truy cập</value>
+    <value>Quản lý Quyền</value>
   </data>
   <data name="F_SecRoleMst" xml:space="preserve">
-    <value>Sec Role Master</value>
+    <value>Quản lý quyền truy cập</value>
   </data>
   <data name="F_WardMst" xml:space="preserve">
     <value>Quản lý xã phường</value>
@@ -419,5 +419,11 @@
   </data>
   <data name="user_name" xml:space="preserve">
     <value>Tên đăng nhập</value>
+  </data>
+  <data name="UserLoginnotinBranch" xml:space="preserve">
+    <value>Nhân viên không làm việc trong cửa hàng</value>
+  </data>
+  <data name="F_Report" xml:space="preserve">
+    <value>Báo cáo</value>
   </data>
 </root>

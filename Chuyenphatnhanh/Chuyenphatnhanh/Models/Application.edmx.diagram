@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="92caa2611c8246b590cf33ce597f758f" Name="Diagram1" ZoomLevel="71">
-        <EntityTypeShape EntityType="Models.BILL_HDR_TBL" Width="1.5" PointX="7.5" PointY="23.125" />
-        <EntityTypeShape EntityType="Models.BILL_LOG_TBL" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Models.BILL_TBL" Width="1.5" PointX="9.75" PointY="29.625" />
-        <EntityTypeShape EntityType="Models.BRANCH_MST" Width="1.5" PointX="5.25" PointY="24.25" />
-        <EntityTypeShape EntityType="Models.CUST_MST" Width="1.5" PointX="5.25" PointY="19.5" />
-        <EntityTypeShape EntityType="Models.DISTRICT_MST" Width="1.5" PointX="0.75" PointY="13.375" />
-        <EntityTypeShape EntityType="Models.ROLE_MST" Width="1.5" PointX="10.25" PointY="20" />
-        <EntityTypeShape EntityType="Models.SEC_ROLE_MST" Width="1.5" PointX="12.5" PointY="20.125" />
-        <EntityTypeShape EntityType="Models.TARIFF_MST" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Models.USER_CONFIG_MST" Width="1.5" PointX="12.5" PointY="24.875" />
-        <EntityTypeShape EntityType="Models.USER_MST" Width="1.5" PointX="10.25" PointY="24.125" />
-        <EntityTypeShape EntityType="Models.WARD_MST" Width="1.5" PointX="3" PointY="35.875" />
+      <Diagram DiagramId="92caa2611c8246b590cf33ce597f758f" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="Models.BILL_HDR_TBL" Width="1.5" PointX="10.500001" PointY="23.352399088541674" />
+        <EntityTypeShape EntityType="Models.BILL_LOG_TBL" Width="1.5" PointX="3.125" PointY="13.625" />
+        <EntityTypeShape EntityType="Models.BILL_TBL" Width="1.5" PointX="12.750001" PointY="24.794659830729177" />
+        <EntityTypeShape EntityType="Models.BRANCH_MST" Width="1.5" PointX="8.2500004999999987" PointY="24.50620768229167" />
+        <EntityTypeShape EntityType="Models.CUST_MST" Width="1.5" PointX="5.2500005" PointY="24.698509114583338" />
+        <EntityTypeShape EntityType="Models.DISTRICT_MST" Width="1.5" PointX="0.75" PointY="13.468893229166667" />
+        <EntityTypeShape EntityType="Models.ROLE_MST" Width="1.5" PointX="8.250001" PointY="19.035036621093756" />
+        <EntityTypeShape EntityType="Models.SEC_ROLE_MST" Width="1.5" PointX="10.5" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.TARIFF_MST" Width="1.5" PointX="6.125" PointY="13.625" />
+        <EntityTypeShape EntityType="Models.USER_CONFIG_MST" Width="1.5" PointX="10.500001" PointY="18.93888590494792" />
+        <EntityTypeShape EntityType="Models.USER_MST" Width="1.5" PointX="5.2500005" PointY="18.21775553385417" />
+        <EntityTypeShape EntityType="Models.WARD_MST" Width="1.5" PointX="1.75" PointY="27.375" />
         <AssociationConnector Association="Models.FK_BILL_HDR_TBL_BRANCH_MST_CURRENT" />
         <AssociationConnector Association="Models.FK_BILL_HDR_TBL_BRANCH_MST_TEMP" />
         <AssociationConnector Association="Models.FK_BILL_HDR_TBL_CUST_MST_FROM" />
@@ -25,7 +25,7 @@
         <AssociationConnector Association="Models.FK_BILL_HDR_TBL_DISTRICT_MST_TO" />
         <AssociationConnector Association="Models.FK_BILL_HDR_TBL_USER_MST" />
         <AssociationConnector Association="Models.FK_BILL_HDR_TBL_WARD_MST_FROM" />
-        <AssociationConnector Association="Models.FK_BILL_HDR_TBL_WARD_MST_TO" />
+        <AssociationConnector Association="Models.FK_BILL_HDR_TBL_WARD_MST_TO" ></AssociationConnector>
         <AssociationConnector Association="Models.FK_BILL_TBL_BILL_HDR_TBL" />
         <AssociationConnector Association="Models.FK_BRANCH_MST_DISTRICT_MST" />
         <AssociationConnector Association="Models.FK_BRANCH_MST_WARD_MST" />

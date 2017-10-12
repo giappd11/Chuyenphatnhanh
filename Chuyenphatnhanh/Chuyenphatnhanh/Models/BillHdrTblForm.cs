@@ -16,8 +16,7 @@ namespace Chuyenphatnhanh.Models
         public string CUST_FROM_ID { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredField",
-        ErrorMessageResourceType = typeof(RGlobal))]
-        [ValidateFieldFromDb("CUST_MST,PHONE")]
+        ErrorMessageResourceType = typeof(RGlobal))] 
         [Display(Name = "Cust_Phone", ResourceType = typeof(RGlobal))]
         public string Cust_From_Phone { get; set; }
 
@@ -43,8 +42,7 @@ namespace Chuyenphatnhanh.Models
 
         public string CUST_TO_ID { get; set; }
         [Required(ErrorMessageResourceName = "RequiredField",
-        ErrorMessageResourceType = typeof(RGlobal))]
-        [ValidateFieldFromDb("CUST_MST,PHONE")]
+        ErrorMessageResourceType = typeof(RGlobal))] 
         [Display(Name = "Cust_Phone", ResourceType = typeof(RGlobal))]
         public string Cust_To_Phone { get; set; }
 

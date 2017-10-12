@@ -11,18 +11,6 @@
         _session = new Operator();
     }
 }
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <td></td>
-    </tr>
-
-</table>
-<hr />
 <table class="table">
     <thead>
         <tr>
@@ -64,50 +52,70 @@
                     {
                         @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Edit, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null)
                         @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_ChuyenHang, "TranferBranch", "Bill",  new { id = item.BILL_HDR_ID }, null)
-                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_GiaoHang,  "Edit", "Bill", new { id = item.BILL_HDR_ID }, null) 
-                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_HuyDon,   "Edit", "Bill", new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_GiaoHang, "Delivery", "Bill", new { id = item.BILL_HDR_ID }, null) 
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_HuyDon, "Cancle", "Bill", new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Print, "Report", new { id = item.BILL_HDR_ID }, new { target = "_blank" })
+
                     }
                     @if (Contant.DANG_CHUYEN_HANG.Equals(item.STATUS.Trim()))
                     {
-                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_ChuyenHangThanhCong, "TranferBranchComplete", "Bill", new { id = item.BILL_HDR_ID }, null) 
-                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_LuuKho, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_ChuyenHangThanhCong, "TranferBranchComplete", "Bill", new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Print, "Report", new { id = item.BILL_HDR_ID }, new { target = "_blank" })
+
                     }
 
                     @if (Contant.CHUYEN_HANG_THANH_CONG.Equals(item.STATUS.Trim()))
                     {
-                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_ChuyenHang, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null) 
-                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_GiaoHang, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null) 
-                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_HuyDon, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_ChuyenHang, "TranferBranch", "Bill", new { id = item.BILL_HDR_ID }, null) 
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_GiaoHang, "Delivery", "Bill", new { id = item.BILL_HDR_ID }, null) 
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_HuyDon, "Cancle", "Bill", new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Print, "Report", new { id = item.BILL_HDR_ID }, new { target = "_blank" })
+
                     }
                     @if (Contant.DANG_GIAO_HANG.Equals(item.STATUS.Trim()))
                     {
-                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_GiaoHangThanhCong, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null) 
-                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_HuyDon, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_GiaoHangThanhCong, "DeliveryComplete", "Bill", new { id = item.BILL_HDR_ID }, null) 
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_HuyDon, "Cancle", "Bill", new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Print, "Report", new { id = item.BILL_HDR_ID }, new { target = "_blank" })
+
                     }
                     @if (Contant.GIAO_HANG_THANH_CONG.Equals(item.STATUS.Trim()))
                     {
-                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.View, "Details", "Bill", new { id = item.BILL_HDR_ID }, null)  
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.View, "Details", "Bill", new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Print, "Report", new { id = item.BILL_HDR_ID }, new { target = "_blank" })
+
                     }
                     @if (Contant.HUY_DON_HANG.Equals(item.STATUS.Trim()))
                     {
-                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_ChuyenHangTraLai, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_ChuyenHangTraLai, "TranferCancel", "Bill", new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_GiaoHangTralai, "DeliveryCancel", "Bill", new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Print, "Report", new { id = item.BILL_HDR_ID }, new { target = "_blank" })
+
                     }
                     @if (Contant.DANG_CHUYEN_HANG_TRA.Equals(item.STATUS.Trim()))
                     {
-                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_LuuKhoHangTraLai, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_LuuKhoHangTraLai, "TranferCancelComplete", "Bill", new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Print, "Report", new { id = item.BILL_HDR_ID }, new { target = "_blank" })
+
                     }
                     @if (Contant.CHUYEN_HANG_TRA_THANH_CONG.Equals(item.STATUS.Trim()))
                     {
-                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_ChuyenHangTraLai, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null) 
-                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_GiaoHangTralai, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null) 
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_ChuyenHangTraLai, "TranferCancel", "Bill", new { id = item.BILL_HDR_ID }, null) 
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_GiaoHangTralai, "DeliveryCancel", "Bill", new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Print, "Report", new { id = item.BILL_HDR_ID }, new { target = "_blank" })
+
                     }
                     @if (Contant.DANG_GIAO_HANG_TRA.Equals(item.STATUS.Trim()))
                     {
-                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_TraHangThanhCong, "Edit", "Bill", new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.F_TraHangThanhCong, "DeliveryCancelComplete", "Bill", new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Print, "Report", new { id = item.BILL_HDR_ID }, new { target = "_blank" })
+
                     }
                     @if (Contant.TRA_THANH_CONG.Equals(item.STATUS.Trim()))
                     {
                         @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.View, "Details", "Bill", new { id = item.BILL_HDR_ID }, null)
+                        @Html.ActionLink(Chuyenphatnhanh.Content.Texts.RGlobal.Print, "Report", new { id = item.BILL_HDR_ID }, new { target = "_blank" })
+
                     } 
                      
                 </td>

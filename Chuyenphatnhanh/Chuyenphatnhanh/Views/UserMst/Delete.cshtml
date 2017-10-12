@@ -25,27 +25,27 @@
                     @Html.HiddenFor(model => model.NUMBER_LOGIN_FAIL)
                     @Html.HiddenFor(model => model.OLD_PASSWORD)
                     @Html.HiddenFor(model => model.USER_ID)
+                    @Html.HiddenFor(model => model.PASSWORD )
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.USER_NAME, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="frm-edit-client col-md-8">
-                            @Html.EditorFor(model => model.USER_NAME, new { htmlAttributes = new { @class = "col-xs-12" } })
+                            @Html.EditorFor(model => model.USER_NAME, new { htmlAttributes = new { @class = "col-xs-12", @readOnly = "readOnly" } })
                             @Html.ValidationMessageFor(model => model.USER_NAME, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
                     <div class="form-group">
-                        @Html.LabelFor(model => model.PASSWORD, htmlAttributes: new { @class = "control-label col-md-4" })
+                        @Html.LabelFor(model => model.NAME, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="frm-edit-client col-md-8">
-                            @Html.EditorFor(model => model.PASSWORD, new { htmlAttributes = new { @class = "col-xs-12" } })
-                            @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.NAME, new { htmlAttributes = new { @class = "col-xs-12", @readOnly = "readOnly" } })
+                            @Html.ValidationMessageFor(model => model.NAME, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.ADDRESS, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="frm-edit-client col-md-8">
-                            @Html.EditorFor(model => model.ADDRESS, new { htmlAttributes = new { @class = "col-xs-12" } })
+                            @Html.EditorFor(model => model.ADDRESS, new { htmlAttributes = new { @class = "col-xs-12", @readOnly = "readOnly" } })
                             @Html.ValidationMessageFor(model => model.ADDRESS, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.PHONE, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="frm-edit-client col-md-8">
-                            @Html.EditorFor(model => model.PHONE, new { htmlAttributes = new { @class = "col-xs-12" } })
+                            @Html.EditorFor(model => model.PHONE, new { htmlAttributes = new { @class = "col-xs-12", @readOnly = "readOnly" } })
                             @Html.ValidationMessageFor(model => model.PHONE, "", new { @class = "text-danger" })
                         </div>
                     </div>

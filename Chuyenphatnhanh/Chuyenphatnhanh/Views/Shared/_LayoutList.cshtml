@@ -33,7 +33,7 @@
                         </div>
                         <div class="info">
                             <p class="name Roboto-Regular" style="font-size: 14px">
-                                @_session.UserId - @_session.UserName
+                                @_session.UserName - @_session.NameUser
                                 <input type="hidden" id="txtClientID" name="txtClientID" value="@_session.UserId">
                             </p>
                             <div class="menu-user">
@@ -59,14 +59,28 @@
             </div>
             <div class="menu">
                 <ul>
-                    <li id="MenuViewByStatus" class="pst-tootip active">
+                    <li class=" pst-tootip">
+                        <a href="@Url.HttpRouteUrl(this.Culture==GlobalHelper.DefaultCulture ? "Default" : "LocalizedDefault",new { lang=GlobalHelper.CurrentCulture, action="Index", controller="Home"})">
+                            <span class="icon"><i class="fa fa-info-circle"></i></span>
+                            @Chuyenphatnhanh.Content.Texts.RGlobal.Home
+                        </a>
+                    </li>
+                    <li id="MenuViewByStatus" class="pst-tootip">
                         <a href="@Url.HttpRouteUrl(this.Culture==GlobalHelper.DefaultCulture ? "Default" : "LocalizedDefault",new { lang=GlobalHelper.CurrentCulture, action="Index", controller="Bill"})">
                             <span class="icon"><i class="fa fa-list-alt"></i></span>
                             Quản lý đơn hàng
                         </a>
-                    </li>
-                    <li class=" pst-tootip">
-                        <a href="/Bill"><span class="icon"><i class="fa fa-search"></i></span>Tìm kiếm đơn hàng</a>
+                        <i class="fa fa-plus toggle"></i>
+                        <div class="sub_menu" style="display:none">
+                            <ul class="">
+                                <li class="pst-tootip">
+                                    <a href="@Url.HttpRouteUrl(this.Culture==GlobalHelper.DefaultCulture ? "Default" : "LocalizedDefault",new { lang=GlobalHelper.CurrentCulture, action="Create", controller="Bill"})">
+                                        <span class="icon"><i class="fa fa-info-circle"></i></span>
+                                        @Chuyenphatnhanh.Content.Texts.RGlobal.F_TaomoiDonHang
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
 
                     <li class=" pst-tootip">
@@ -112,8 +126,9 @@
                         </a>
                     </li>
                     <li class=" pst-tootip">
-                        <a href="">
-                            <span class="icon"><i class="fa fa-info-circle"></i></span>Thông tin
+                        <a href="@Url.HttpRouteUrl(this.Culture==GlobalHelper.DefaultCulture ? "Default" : "LocalizedDefault",new { lang=GlobalHelper.CurrentCulture, action="Index", controller="Report"})">
+                            <span class="icon"><i class="fa fa-info-circle"></i></span>
+                            @Chuyenphatnhanh.Content.Texts.RGlobal.F_Report
                         </a>
                     </li>
                 </ul>

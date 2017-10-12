@@ -12,7 +12,8 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="link-login">
             <ul class="h-ul-li">
-                <li class="active"><a href="/Home/Login">Đăng nhập</a></li>
+                <li class="active"><a href="/@GlobalHelper.CurrentCulture/Login/Login">Đăng nhập</a></li>
+                <li class="active"><a href="/@GlobalHelper.CurrentCulture/Tracking/Index">Khách hàng</a></li>
             </ul>
         </div>
         @Html.ValidationMessageFor(modle => modle.MessageError,"", new { @class = "text-danger" } )

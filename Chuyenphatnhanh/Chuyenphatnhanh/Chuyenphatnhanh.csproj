@@ -172,15 +172,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Content\Texts\RGlobal.en-us.Designer.cs">
-      <DependentUpon>RGlobal.en-us.resx</DependentUpon>
+    <Compile Include="Content\Texts\RGlobal.Designer.cs">
+      <DependentUpon>RGlobal.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Content\Texts\RGlobal1.Designer.cs">
+    <Compile Include="Content\Texts\RGlobal.vi-vn.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RGlobal.resx</DependentUpon>
+      <DependentUpon>RGlobal.vi-vn.resx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BillController.cs" />
@@ -191,9 +191,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PrintController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RoleMstController.cs" />
     <Compile Include="Controllers\SecRoleMstController.cs" />
     <Compile Include="Controllers\TariffMstController.cs" />
+    <Compile Include="Controllers\TrackingController.cs" />
     <Compile Include="Controllers\UserMstController.cs" />
     <Compile Include="Controllers\WardMstController.cs" />
     <Compile Include="Extensions\UrlHelperExtensions.cs" />
@@ -216,6 +218,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Application.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\BillLogTblForm.cs" />
     <Compile Include="Models\BILL_HDR_TBL.cs">
       <DependentUpon>Application.tt</DependentUpon>
     </Compile>
@@ -237,6 +240,7 @@
     <Compile Include="Models\DISTRICT_MST.cs">
       <DependentUpon>Application.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MapMaker.cs" />
     <Compile Include="Models\ROLE_MST.cs">
       <DependentUpon>Application.tt</DependentUpon>
     </Compile>
@@ -280,6 +284,7 @@
     <Compile Include="Models\UserMstForm.cs" />
     <Compile Include="Models\WardMstForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\CommonUtil.cs" />
     <Compile Include="Util\ComplementUtil.cs" />
     <Compile Include="Util\Contant.cs" />
     <Compile Include="Util\GenerateID.cs" />
@@ -290,8 +295,10 @@
   <ItemGroup>
     <Content Include="Content\chosen-sprite%402x.png" />
     <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\images\banggia.png" />
     <Content Include="Content\images\ghn-loader.gif" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\Texts\Site.css" />
     <Content Include="Scripts\aplication.js" />
     <Content Include="Content\custom.css" />
     <Content Include="Content\fonts\Roboto-Bold.svg" />
@@ -457,6 +464,18 @@
     <Content Include="Views\CustMst\Details.cshtml" />
     <Content Include="Views\CustMst\Delete.cshtml" />
     <Content Include="Views\UserMst\Details.cshtml" />
+    <Content Include="Views\Bill\Cancle.cshtml" />
+    <Content Include="Views\Bill\TranferCancel.cshtml" />
+    <Content Include="Views\Bill\TranferCancelComplete.cshtml" />
+    <Content Include="Views\Bill\DeliveryCancel.cshtml" />
+    <Content Include="Views\Bill\DeliveryCancelComplete.cshtml" />
+    <Content Include="Views\Shared\_LayoutGuest.cshtml" />
+    <Content Include="Views\Tracking\Search.cshtml" />
+    <Content Include="Views\Tracking\Index.cshtml" />
+    <Content Include="Views\Tracking\BangGia.cshtml" />
+    <Content Include="Views\Tracking\Branch.cshtml" />
+    <Content Include="Views\Report\Report.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -482,14 +501,14 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Content\Texts\RGlobal.en-us.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>RGlobal.en-us.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Content\Texts\RGlobal.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>RGlobal1.Designer.cs</LastGenOutput>
+      <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content\Texts\RGlobal.vi-vn.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RGlobal.vi-vn.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

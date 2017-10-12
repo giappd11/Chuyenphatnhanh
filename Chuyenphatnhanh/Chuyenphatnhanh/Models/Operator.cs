@@ -13,5 +13,6 @@ namespace Chuyenphatnhanh.Models
         public string Role { get; set; }
         public string RoleName { get; set; }
         public string BranchID { get; set; }
+        public string NameUser { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace Chuyenphatnhanh.Controllers
             {
                 List<BILL_HDR_TBL> _BillHdr;
                 if (Contant.ROLE_ADMIN.Equals(_operator.RoleName)) { 
-                    _BillHdr = db.BILL_HDR_TBL.Where(u => u.DELETE_FLAG == false && u.BRANCH_ID_CURRENT == _operator.BranchID).ToList();
+                    _BillHdr = db.BILL_HDR_TBL.Where(u => u.DELETE_FLAG == false && u.BRANCH_ID_CURRENT == _operator.BranchID &&  u.UID_CURRENT == null).ToList();
                 }else
                 {
                     _BillHdr = db.BILL_HDR_TBL.Where(u => u.DELETE_FLAG == false && u.UID_CURRENT == _operator.UserId).ToList();

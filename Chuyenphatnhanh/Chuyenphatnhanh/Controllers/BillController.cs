@@ -262,7 +262,7 @@ namespace Chuyenphatnhanh.Controllers
                     BRANCH_MST _branch = db.BRANCH_MST.Where(u => u.BRANCH_ID == _operator.BranchID && u.DELETE_FLAG == false).FirstOrDefault();
                     if (_branch == null)
                     {
-                        ViewData[Contant.MESSSAGEERROR] = Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+                        ViewData[Contant.MESSSAGEERROR] = Chuyenphatnhanh.Content.Texts.RGlobal.UserLoginnotinBranch;
                         return View(form);
                     }
                     _Hdr.BRANCH_ID_CURRENT = _operator.BranchID;
@@ -296,8 +296,8 @@ namespace Chuyenphatnhanh.Controllers
                     }
                     WriteLog(_Hdr.BILL_HDR_ID);
                     db.SaveChanges();
-                    
-                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+                    form.BILL_HDR_ID = _Hdr.BILL_HDR_ID;
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.CreateSuccess;
                 }
                 return View(form);
             }
@@ -353,7 +353,7 @@ namespace Chuyenphatnhanh.Controllers
                 form.Cust_To_Name = bILL_HDR_TBL.CUST_MST_TO.CUST_NAME;
                 form.Cust_From_Phone = bILL_HDR_TBL.CUST_MST_FROM.PHONE;
                 form.Cust_To_Phone = bILL_HDR_TBL.CUST_MST_TO.PHONE;
-                form.statusString = GetStatusDes(bILL_HDR_TBL.STATUS);
+                form.statusString = CommonUtil.GetStatusDes(bILL_HDR_TBL.STATUS);
                 List<BillTblForm> billTbl = new List<BillTblForm>();
                 foreach (BILL_TBL bill in bILL_HDR_TBL.BILL_TBL)
                 {
@@ -440,6 +440,7 @@ namespace Chuyenphatnhanh.Controllers
                     
                     db.SaveChanges();
                     WriteLog(_BillHdrTbl.BILL_HDR_ID);
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.ChangeSuccess;
                 }
                 logger.Info("END EDIT BILL");
                 return View(form);
@@ -836,6 +837,7 @@ namespace Chuyenphatnhanh.Controllers
 
                     db.SaveChanges();
                     WriteLog(_BillHdrTbl.BILL_HDR_ID);
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.ChangeSuccess;
                 }
                 logger.Info("END EDIT BILL");
                 return View(form);
@@ -923,6 +925,7 @@ namespace Chuyenphatnhanh.Controllers
 
                     db.SaveChanges();
                     WriteLog(_BillHdrTbl.BILL_HDR_ID);
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.ChangeSuccess;
                 }
                 logger.Info("END EDIT BILL");
                 return View(form);
@@ -1002,7 +1005,8 @@ namespace Chuyenphatnhanh.Controllers
                     ComplementUtil.complement(form, _BillHdrTbl);
                     _BillHdrTbl.MOD_DATE = _date;
                     _BillHdrTbl.MOD_USER_NAME = _operator.UserName;
-                    _BillHdrTbl.STATUS = Contant.DANG_CHUYEN_HANG;
+                    _BillHdrTbl.UID_CURRENT = _operator.UserId;
+                    _BillHdrTbl.STATUS = Contant.DANG_GIAO_HANG;
 
                     db.Entry(_BillHdrTbl).State = EntityState.Modified;
 
@@ -1025,6 +1029,7 @@ namespace Chuyenphatnhanh.Controllers
 
                     db.SaveChanges();
                     WriteLog(_BillHdrTbl.BILL_HDR_ID);
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.ChangeSuccess;
                 }
                 logger.Info("END EDIT BILL");
                 return View(form);
@@ -1088,6 +1093,7 @@ namespace Chuyenphatnhanh.Controllers
                     _BillHdrTbl.MOD_DATE = _date;
                     _BillHdrTbl.MOD_USER_NAME = _operator.UserName;
                     _BillHdrTbl.BRANCH_ID_CURRENT = null;
+                    _BillHdrTbl.UID_CURRENT = null;
                     _BillHdrTbl.STATUS = Contant.GIAO_HANG_THANH_CONG;
 
                     db.Entry(_BillHdrTbl).State = EntityState.Modified;
@@ -1111,6 +1117,7 @@ namespace Chuyenphatnhanh.Controllers
 
                     db.SaveChanges();
                     WriteLog(_BillHdrTbl.BILL_HDR_ID);
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.ChangeSuccess;
                 }
                 logger.Info("END EDIT BILL");
                 return View(form);
@@ -1140,11 +1147,19 @@ namespace Chuyenphatnhanh.Controllers
                 ViewBag.WARD_ID_FROM = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
                 ViewBag.DISTRICT_ID_TO = new SelectList(db.DISTRICT_MST.OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
                 ViewBag.WARD_ID_TO = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
+                ViewData["UserName"] = new SelectList(db.USER_MST, "USER_ID", "NAME");
                 if (ModelState.IsValid)
-                {
-                    CUST_MST _CustMstFrom = new CUST_MST();
+                { 
                     DateTime _date = DateTime.Now;
-                    
+                    BILL_HDR_TBL _Cancel = db.BILL_HDR_TBL.Find(form.BILL_HDR_ID);
+                    _Cancel.MOD_DATE = _date;
+                    _Cancel.MOD_USER_NAME = _operator.UserName;
+                    _Cancel.STATUS = "XX";
+                    _Cancel.DELETE_FLAG = true;
+
+                    db.Entry(_Cancel).State = EntityState.Modified;
+
+
                     WARD_MST _wardFrom = db.WARD_MST.Find(form.WARD_ID_FROM);
                     WARD_MST _wardTo = db.WARD_MST.Find(form.WARD_ID_TO);
                     DISTRICT_MST _districtFrom = db.DISTRICT_MST.Find(form.DISTRICT_ID_FROM);
@@ -1157,10 +1172,18 @@ namespace Chuyenphatnhanh.Controllers
                     _Hdr.MOD_USER_NAME = _operator.UserName;
                     _Hdr.REG_USER_NAME = _operator.UserName;
                     _Hdr.DELETE_FLAG = false;
+                    _Hdr.AMOUNT = 0;
                     _Hdr.BILL_HDR_ID = GenerateID.GennerateID(db, Contant.BILLHDRTBL_SEQ, Contant.BILLHDRTBL_PREFIX);
                     _Hdr.STATUS = Contant.HUY_DON_HANG;
-                     
-
+                    string fromAdd = _Hdr.ADDRESS_FROM;
+                    string fromDis = _Hdr.DISTRICT_ID_FROM;
+                    string fromwar = _Hdr.WARD_ID_FROM;
+                    _Hdr.ADDRESS_FROM = _Hdr.ADDRESS_TO;
+                    _Hdr.DISTRICT_ID_FROM = _Hdr.DISTRICT_ID_TO;
+                    _Hdr.WARD_ID_FROM = _Hdr.WARD_ID_TO;
+                    _Hdr.ADDRESS_TO = fromAdd;
+                    _Hdr.DISTRICT_ID_TO = fromDis;
+                    _Hdr.WARD_ID_TO = fromwar;
                     BRANCH_MST _branch = db.BRANCH_MST.Where(u => u.BRANCH_ID == _operator.BranchID && u.DELETE_FLAG == false).FirstOrDefault();
                     
                     _Hdr.BRANCH_ID_CURRENT = _operator.BranchID;
@@ -1182,7 +1205,9 @@ namespace Chuyenphatnhanh.Controllers
                     }
                     db.SaveChanges();
                     WriteLog(_Hdr.BILL_HDR_ID);
-                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.CreateCustMstSuccess;
+                    WriteLog(_Cancel.BILL_HDR_ID);
+                    
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.ChangeSuccess;
                 }
                 return View(form);
             }
@@ -1193,61 +1218,354 @@ namespace Chuyenphatnhanh.Controllers
         }
 
 
-        public string GetStatusDes(string status)
+        
+
+        // GET: Bill/Edit/5
+        public ActionResult TranferCancel(string id)
         {
+            return Edit(id);
+        }
 
-            if (Contant.NHAN_HANG.Equals(status.Trim()))
-            {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_nhanHang;
-            }
 
-            else if (Contant.DANG_CHUYEN_HANG.Equals(status.Trim()))
+        // POST: Bill/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult TranferCancel(BillHdrTblForm form)
+        {
+            try
             {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_dangChuyenHang;
-            }
+                logger.Info("BEGIN EDIT BILL");
+                DateTime _date = DateTime.Now;
+                WARD_MST _wardFrom = db.WARD_MST.Where(u => u.WARD_ID == form.WARD_ID_FROM).FirstOrDefault();
+                WARD_MST _wardTo = db.WARD_MST.Where(u => u.WARD_ID == form.WARD_ID_TO).FirstOrDefault();
+                ViewBag.DISTRICT_ID_FROM = new SelectList(db.DISTRICT_MST.OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+                ViewBag.DISTRICT_ID_TO = new SelectList(db.DISTRICT_MST.OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+                ViewBag.BRANCH_ID_TEMP = new SelectList(db.BRANCH_MST.Where(u => u.DELETE_FLAG == false).OrderBy(u => u.BRANCH_NAME), "BRANCH_ID", "BRANCH_NAME");
+                if (_wardFrom != null)
+                {
+                    ViewBag.WARD_ID_FROM = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == _wardFrom.DISTRICT_ID), "WARD_ID", "WARD_NAME");
+                    form.DISTRICT_ID_FROM = _wardFrom.DISTRICT_ID;
+                }
+                else
+                {
+                    ViewBag.WARD_ID_FROM = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
+                }
+                if (_wardTo != null)
+                {
+                    ViewBag.WARD_ID_TO = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == _wardTo.DISTRICT_ID), "WARD_ID", "WARD_NAME");
+                    form.DISTRICT_ID_TO = _wardTo.DISTRICT_ID;
+                }
+                else
+                {
+                    ViewBag.WARD_ID_TO = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
+                }
 
-            else if (Contant.CHUYEN_HANG_THANH_CONG.Equals(status.Trim()))
-            {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_ChuyenHangThanhCong;
-            }
+                if (ModelState.IsValid)
+                {
+                    BILL_HDR_TBL _BillHdrTbl = new BILL_HDR_TBL();
+                    _BillHdrTbl = db.BILL_HDR_TBL.Find(form.BILL_HDR_ID);
+                    if (DateTime.Compare((DateTime)_BillHdrTbl.MOD_DATE, form.MOD_DATE) != 0)
+                    {
+                        ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _BillHdrTbl.BILL_HDR_ID, _BillHdrTbl.MOD_USER_NAME));
+                        return View(form);
+                    }
+                    ComplementUtil.complement(form, _BillHdrTbl);
+                    _BillHdrTbl.MOD_DATE = _date;
+                    _BillHdrTbl.MOD_USER_NAME = _operator.UserName;
+                    _BillHdrTbl.BRANCH_ID_TEMP = form.BRANCH_ID_TEMP;
+                    _BillHdrTbl.UID_CURRENT = _operator.UserId;
+                    _BillHdrTbl.STATUS = Contant.DANG_CHUYEN_HANG_TRA;
 
-            else if (Contant.DANG_GIAO_HANG.Equals(status.Trim()))
-            {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_ShipHang;
-            }
+                    db.Entry(_BillHdrTbl).State = EntityState.Modified;
 
-            else if (Contant.GIAO_HANG_THANH_CONG.Equals(status.Trim()))
-            {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_HangShiped;
-            }
+                    foreach (BillTblForm _form in form.Bill)
+                    {
+                        BILL_TBL _billTbl = db.BILL_TBL.Find(_form.BILL_ID);
 
-            else if (Contant.HUY_DON_HANG.Equals(status.Trim()))
-            {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_Cancle;
-            }
+                        if (DateTime.Compare((DateTime)_billTbl.MOD_DATE, _form.MOD_DATE) != 0)
+                        {
+                            ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _billTbl.BILL_HDR_ID, _billTbl.MOD_USER_NAME));
+                            return View(form);
+                        }
+                        ComplementUtil.complement(_form, _billTbl);
+                        _billTbl.MOD_DATE = _date;
+                        _billTbl.MOD_USER_NAME = _operator.UserName;
 
-            else if (Contant.CHUYEN_HANG_TRA_THANH_CONG.Equals(status.Trim()))
-            {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_ChuyenHangHuyThanhCong;
-            }
 
-            else if (Contant.DANG_CHUYEN_HANG_TRA.Equals(status.Trim()))
-            {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_DangVanChuyenHangHuy;
-            }
+                        db.Entry(_billTbl).State = EntityState.Modified;
+                    }
 
-            else if (Contant.DANG_GIAO_HANG_TRA.Equals(status.Trim()))
-            {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_ShipHangTraLai;
+                    db.SaveChanges();
+                    WriteLog(_BillHdrTbl.BILL_HDR_ID);
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.ChangeSuccess;
+                }
+                logger.Info("END EDIT BILL");
+                return View(form);
             }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
-            else if (Contant.TRA_THANH_CONG.Equals(status.Trim()))
+
+        // GET: Bill/Edit/5
+        public ActionResult TranferCancelComplete(string id)
+        {
+            return Edit(id);
+        }
+
+        // POST: Bill/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult TranferCancelComplete(BillHdrTblForm form)
+        {
+            try
             {
-                return Chuyenphatnhanh.Content.Texts.RGlobal.Status_HangShipedTraLai;
+                logger.Info("BEGIN EDIT BILL");
+                DateTime _date = DateTime.Now;
+                WARD_MST _wardFrom = db.WARD_MST.Where(u => u.WARD_ID == form.WARD_ID_FROM).FirstOrDefault();
+                WARD_MST _wardTo = db.WARD_MST.Where(u => u.WARD_ID == form.WARD_ID_TO).FirstOrDefault();
+                ViewBag.DISTRICT_ID_FROM = new SelectList(db.DISTRICT_MST.OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+                ViewBag.DISTRICT_ID_TO = new SelectList(db.DISTRICT_MST.OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+                ViewBag.BRANCH_ID_TEMP = new SelectList(db.BRANCH_MST.Where(u => u.DELETE_FLAG == false).OrderBy(u => u.BRANCH_NAME), "BRANCH_ID", "BRANCH_NAME");
+                if (_wardFrom != null)
+                {
+                    ViewBag.WARD_ID_FROM = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == _wardFrom.DISTRICT_ID), "WARD_ID", "WARD_NAME");
+                    form.DISTRICT_ID_FROM = _wardFrom.DISTRICT_ID;
+                }
+                else
+                {
+                    ViewBag.WARD_ID_FROM = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
+                }
+                if (_wardTo != null)
+                {
+                    ViewBag.WARD_ID_TO = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == _wardTo.DISTRICT_ID), "WARD_ID", "WARD_NAME");
+                    form.DISTRICT_ID_TO = _wardTo.DISTRICT_ID;
+                }
+                else
+                {
+                    ViewBag.WARD_ID_TO = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
+                }
+
+                if (ModelState.IsValid)
+                {
+                    BILL_HDR_TBL _BillHdrTbl = new BILL_HDR_TBL();
+                    _BillHdrTbl = db.BILL_HDR_TBL.Find(form.BILL_HDR_ID);
+                    if (DateTime.Compare((DateTime)_BillHdrTbl.MOD_DATE, form.MOD_DATE) != 0)
+                    {
+                        ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _BillHdrTbl.BILL_HDR_ID, _BillHdrTbl.MOD_USER_NAME));
+                        return View(form);
+                    }
+                    ComplementUtil.complement(form, _BillHdrTbl);
+                    _BillHdrTbl.MOD_DATE = _date;
+                    _BillHdrTbl.MOD_USER_NAME = _operator.UserName;
+                    _BillHdrTbl.BRANCH_ID_CURRENT = _BillHdrTbl.BRANCH_ID_TEMP;
+                    _BillHdrTbl.BRANCH_ID_TEMP = null;
+                    _BillHdrTbl.UID_CURRENT = null;
+                    _BillHdrTbl.STATUS = Contant.CHUYEN_HANG_TRA_THANH_CONG;
+
+                    db.Entry(_BillHdrTbl).State = EntityState.Modified;
+
+                    foreach (BillTblForm _form in form.Bill)
+                    {
+                        BILL_TBL _billTbl = db.BILL_TBL.Find(_form.BILL_ID);
+
+                        if (DateTime.Compare((DateTime)_billTbl.MOD_DATE, _form.MOD_DATE) != 0)
+                        {
+                            ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _billTbl.BILL_HDR_ID, _billTbl.MOD_USER_NAME));
+                            return View(form);
+                        }
+                        ComplementUtil.complement(_form, _billTbl);
+                        _billTbl.MOD_DATE = _date;
+                        _billTbl.MOD_USER_NAME = _operator.UserName;
+
+
+                        db.Entry(_billTbl).State = EntityState.Modified;
+                    }
+
+                    db.SaveChanges();
+                    WriteLog(_BillHdrTbl.BILL_HDR_ID);
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.ChangeSuccess;
+                }
+                logger.Info("END EDIT BILL");
+                return View(form);
             }
-            else
+            catch (Exception e)
             {
-                return null;
+                throw e;
+            }
+        }
+
+        // GET: Bill/Edit/5
+        public ActionResult DeliveryCancel(string id)
+        {
+            return Edit(id);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeliveryCancel(BillHdrTblForm form)
+        {
+            try
+            {
+                logger.Info("BEGIN EDIT BILL");
+                DateTime _date = DateTime.Now;
+                WARD_MST _wardFrom = db.WARD_MST.Where(u => u.WARD_ID == form.WARD_ID_FROM).FirstOrDefault();
+                WARD_MST _wardTo = db.WARD_MST.Where(u => u.WARD_ID == form.WARD_ID_TO).FirstOrDefault();
+                ViewBag.DISTRICT_ID_FROM = new SelectList(db.DISTRICT_MST.OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+                ViewBag.DISTRICT_ID_TO = new SelectList(db.DISTRICT_MST.OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+                ViewBag.BRANCH_ID_TEMP = new SelectList(db.BRANCH_MST.Where(u => u.DELETE_FLAG == false).OrderBy(u => u.BRANCH_NAME), "BRANCH_ID", "BRANCH_NAME");
+                if (_wardFrom != null)
+                {
+                    ViewBag.WARD_ID_FROM = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == _wardFrom.DISTRICT_ID), "WARD_ID", "WARD_NAME");
+                    form.DISTRICT_ID_FROM = _wardFrom.DISTRICT_ID;
+                }
+                else
+                {
+                    ViewBag.WARD_ID_FROM = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
+                }
+                if (_wardTo != null)
+                {
+                    ViewBag.WARD_ID_TO = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == _wardTo.DISTRICT_ID), "WARD_ID", "WARD_NAME");
+                    form.DISTRICT_ID_TO = _wardTo.DISTRICT_ID;
+                }
+                else
+                {
+                    ViewBag.WARD_ID_TO = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
+                }
+
+                if (ModelState.IsValid)
+                {
+                    BILL_HDR_TBL _BillHdrTbl = new BILL_HDR_TBL();
+                    _BillHdrTbl = db.BILL_HDR_TBL.Find(form.BILL_HDR_ID);
+                    if (DateTime.Compare((DateTime)_BillHdrTbl.MOD_DATE, form.MOD_DATE) != 0)
+                    {
+                        ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _BillHdrTbl.BILL_HDR_ID, _BillHdrTbl.MOD_USER_NAME));
+                        return View(form);
+                    }
+                    ComplementUtil.complement(form, _BillHdrTbl);
+                    _BillHdrTbl.MOD_DATE = _date;
+                    _BillHdrTbl.MOD_USER_NAME = _operator.UserName;
+                    _BillHdrTbl.UID_CURRENT = _operator.UserId;
+                    _BillHdrTbl.STATUS = Contant.DANG_GIAO_HANG_TRA;
+
+                    db.Entry(_BillHdrTbl).State = EntityState.Modified;
+
+                    foreach (BillTblForm _form in form.Bill)
+                    {
+                        BILL_TBL _billTbl = db.BILL_TBL.Find(_form.BILL_ID);
+
+                        if (DateTime.Compare((DateTime)_billTbl.MOD_DATE, _form.MOD_DATE) != 0)
+                        {
+                            ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _billTbl.BILL_HDR_ID, _billTbl.MOD_USER_NAME));
+                            return View(form);
+                        }
+                        ComplementUtil.complement(_form, _billTbl);
+                        _billTbl.MOD_DATE = _date;
+                        _billTbl.MOD_USER_NAME = _operator.UserName;
+
+
+                        db.Entry(_billTbl).State = EntityState.Modified;
+                    }
+
+                    db.SaveChanges();
+                    WriteLog(_BillHdrTbl.BILL_HDR_ID);
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.ChangeSuccess;
+                }
+                logger.Info("END EDIT BILL");
+                return View(form);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        // GET: Bill/Edit/5
+        public ActionResult DeliveryCancelComplete(string id)
+        {
+            return Edit(id);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeliveryCancelComplete(BillHdrTblForm form)
+        {
+            try
+            {
+                logger.Info("BEGIN EDIT BILL");
+                DateTime _date = DateTime.Now;
+                WARD_MST _wardFrom = db.WARD_MST.Where(u => u.WARD_ID == form.WARD_ID_FROM).FirstOrDefault();
+                WARD_MST _wardTo = db.WARD_MST.Where(u => u.WARD_ID == form.WARD_ID_TO).FirstOrDefault();
+                ViewBag.DISTRICT_ID_FROM = new SelectList(db.DISTRICT_MST.OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+                ViewBag.DISTRICT_ID_TO = new SelectList(db.DISTRICT_MST.OrderBy(u => u.DISTRICT_NAME), "DISTRICT_ID", "DISTRICT_NAME");
+                ViewBag.BRANCH_ID_TEMP = new SelectList(db.BRANCH_MST.Where(u => u.DELETE_FLAG == false).OrderBy(u => u.BRANCH_NAME), "BRANCH_ID", "BRANCH_NAME");
+                if (_wardFrom != null)
+                {
+                    ViewBag.WARD_ID_FROM = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == _wardFrom.DISTRICT_ID), "WARD_ID", "WARD_NAME");
+                    form.DISTRICT_ID_FROM = _wardFrom.DISTRICT_ID;
+                }
+                else
+                {
+                    ViewBag.WARD_ID_FROM = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
+                }
+                if (_wardTo != null)
+                {
+                    ViewBag.WARD_ID_TO = new SelectList(db.WARD_MST.Where(u => u.DISTRICT_ID == _wardTo.DISTRICT_ID), "WARD_ID", "WARD_NAME");
+                    form.DISTRICT_ID_TO = _wardTo.DISTRICT_ID;
+                }
+                else
+                {
+                    ViewBag.WARD_ID_TO = new SelectList(string.Empty, "WARD_ID", "WARD_NAME");
+                }
+
+                if (ModelState.IsValid)
+                {
+                    BILL_HDR_TBL _BillHdrTbl = new BILL_HDR_TBL();
+                    _BillHdrTbl = db.BILL_HDR_TBL.Find(form.BILL_HDR_ID);
+                    if (DateTime.Compare((DateTime)_BillHdrTbl.MOD_DATE, form.MOD_DATE) != 0)
+                    {
+                        ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _BillHdrTbl.BILL_HDR_ID, _BillHdrTbl.MOD_USER_NAME));
+                        return View(form);
+                    }
+                    ComplementUtil.complement(form, _BillHdrTbl);
+                    _BillHdrTbl.MOD_DATE = _date;
+                    _BillHdrTbl.MOD_USER_NAME = _operator.UserName;
+                    _BillHdrTbl.STATUS = Contant.TRA_THANH_CONG;
+                    _BillHdrTbl.UID_CURRENT = null;
+                    _BillHdrTbl.BRANCH_ID_CURRENT = null;
+
+                    db.Entry(_BillHdrTbl).State = EntityState.Modified;
+
+                    foreach (BillTblForm _form in form.Bill)
+                    {
+                        BILL_TBL _billTbl = db.BILL_TBL.Find(_form.BILL_ID);
+
+                        if (DateTime.Compare((DateTime)_billTbl.MOD_DATE, _form.MOD_DATE) != 0)
+                        {
+                            ModelState.AddModelError(Contant.MESSSAGEERROR, string.Format(Resource.RGlobal.CustMstModified, _billTbl.BILL_HDR_ID, _billTbl.MOD_USER_NAME));
+                            return View(form);
+                        }
+                        ComplementUtil.complement(_form, _billTbl);
+                        _billTbl.MOD_DATE = _date;
+                        _billTbl.MOD_USER_NAME = _operator.UserName;
+
+
+                        db.Entry(_billTbl).State = EntityState.Modified;
+                    }
+
+                    db.SaveChanges();
+                    WriteLog(_BillHdrTbl.BILL_HDR_ID);
+                    ViewData[Contant.MESSAGESUCCESS] = Chuyenphatnhanh.Content.Texts.RGlobal.ChangeSuccess;
+                }
+                logger.Info("END EDIT BILL");
+                return View(form);
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
     }
